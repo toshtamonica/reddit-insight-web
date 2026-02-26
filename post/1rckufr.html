@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我如何为报税开发了一个 OpenClaw 技能——TaxClaw - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我如何为报税开发了一个 OpenClaw 技能——TaxClaw</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>TaxClaw 核心要点总结</h2>
+<ol>
+<li><p><strong>本地优先的隐私保护</strong>：TaxClaw 完全在本地运行（通过 Ollama 使用 glm-ocr），税务文件（含 SSN/EIN 等敏感信息）不会上传到云端，解决用户对数据安全的顾虑。</p>
+</li>
+<li><p><strong>支持多种税务表格</strong>：覆盖 W-2、各类 1099 表格（NEC、DIV、INT、MISC、R、K、DA）及 K-1，特别针对 2024 年新增的 1099-DA（数字资产税表）提供自动化处理。</p>
+</li>
+<li><p><strong>人机协作的修正机制</strong>：提取结果附带置信度评分，用户可通过 Web UI 直接在线编辑错误字段，确保数据准确性后再导出。</p>
+</li>
+<li><p><strong>灵活的输出格式</strong>：支持将提取的结构化数据导出为 CSV 或 JSON，方便对接各类税务软件。</p>
+</li>
+<li><p><strong>OpenClaw 生态实践</strong>：该项目本身使用 OpenClaw 智能体（Wedge、Cassian 等）作为开发工作流，体现&quot;用 AI 工具构建 AI 工具&quot;的元理念。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>嘿，OpenClaw 的朋友们——我是 Doug。</p>
+<p>报税季是&quot;AI 无所不能&quot;时间线上最糟糕的部分……因为你遇到的第一个问题就是：&quot;挺酷的，但我不会把带 SSN/EIN 的 PDF 上传到某个来路不明的云端 OCR。&quot;</p>
+<p>所以我做了 TaxClaw：一个本地优先的税务文档提取工具，打包成 OpenClaw 技能。</p>
+<p><strong>为什么做这个</strong></p>
+<ul>
+<li>我想让 OpenClaw 直接处理一整个文件夹的税务 PDF，输出干净的结构化数据</li>
+<li>我想要一个界面，OCR 抽风时能快速修正字段</li>
+<li>而且我特别想要一个能处理 1099-DA（IRS 新出的数字资产表格）的工具，不用手打进今年各种拉胯的报税软件</li>
+</ul>
+<p><strong>安装</strong></p>
+<pre><code>openclaw skill install taxclaw
+</code></pre>
+<p>装完后打开网页界面：<a href="http://localhost:8421">http://localhost:8421</a></p>
+<p><strong>功能</strong></p>
+<ul>
+<li>完全本地运行（本地 AI：通过 Ollama 运行 glm-ocr）——你的文档不会离开你的电脑</li>
+<li>支持：W-2、1099-NEC、1099-DIV、1099-INT、1099-MISC、1099-DA、1099-R、1099-K、K-1</li>
+<li>显示提取置信度分数</li>
+<li>字段可在线编辑（一次修正，干净导出）</li>
+<li>导出格式：CSV / JSON</li>
+</ul>
+<p><strong>&quot;用 agents 构建&quot;的元角度</strong>
+这个项目是用 OpenClaw agents（Wedge、Cassian 等）作为开发工作流搭建的。如果你一直在用 OpenClaw 做实际的东西，你会懂这个感觉。</p>
+<p><strong>链接</strong></p>
+<ul>
+<li>GitHub：<a href="https://github.com/DougButdorf/TaxClaw">https://github.com/DougButdorf/TaxClaw</a></li>
+<li>官网：<a href="https://taxclaw.net">https://taxclaw.net</a></li>
+</ul>
+<p>如果你试了，我很想知道：你扔了哪些表格进去、哪里提取错了或者很烦、还想加什么表格。</p>
+<p>（另外：如果你有一堆 1099-DA，现在还在靠&quot;眯着眼重打&quot;来硬撑……我懂。这就是做这个的原因。）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我把它做成了纯本地运行的。除非你在设置里选择了云端模型，否则所有数据都会留在你自己的设备上。
+你可以试试看。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rckufr/how_i_built_an_openclaw_skill_for_tax_preparation/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

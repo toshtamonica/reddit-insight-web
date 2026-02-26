@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我造了个ClawGate：真正保留原消息内容的AI智能体自然语言调度系统 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我造了个ClawGate：真正保留原消息内容的AI智能体自然语言调度系统</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>ClawGate核心要点总结：</p>
+<ol>
+<li><p><strong>解决OpenClaw原生定时任务缺陷</strong> — 修复了内置cron截断消息（约100字符）、删除链接、破坏格式等问题，确保长消息和完整指令能原样送达AI代理。</p>
+</li>
+<li><p><strong>自然语言调度</strong> — 支持用日常用语创建定时任务（如&quot;9am every Monday&quot;、&quot;next Thursday at 3pm&quot;、&quot;every hour 4x&quot;），无需编写复杂cron表达式。</p>
+</li>
+<li><p><strong>增强功能特性</strong> — 支持限制运行次数（如执行4次后自动删除）、一次性提醒、自动清理等生活质量优化功能。</p>
+</li>
+<li><p><strong>技术实现机制</strong> — 不注入系统指令，而是将完整JSON载荷存储在磁盘，通过系统cron触发→UUID查找→OpenClaw API交付，保证消息完整性。</p>
+</li>
+<li><p><strong>实际应用验证</strong> — 作者日常用于3个代理（主助手、代码、研究），技术栈为TypeScript/Node + 系统cron + JSON文件存储。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>以下是翻译：</p>
+<hr>
+<p><a href="https://preview.redd.it/h56ip5de9ikg1.png?width=2752&format=png&auto=webp&s=0e73b0285cbc52d1cbf8261394b52e901b5818e4">https://preview.redd.it/h56ip5de9ikg1.png?width=2752&amp;format=png&amp;auto=webp&amp;s=0e73b0285cbc52d1cbf8261394b52e901b5818e4</a></p>
+<p>嘿，r/openclaw 的朋友们，</p>
+<p>我已经运行 OpenClaw（自托管 AI 网关）好几周了，但一直被一个令人头疼的问题困扰：它内置的定时任务系统会把消息截断到大约 100 个字符，还会去除链接，而且总体上无法可靠地将完整指令传递给我的智能体。对于一个要给我发送研究摘要和代码审查的 AI 助手来说，这根本没法用。</p>
+<p>于是我开发了 <strong>ClawGate</strong>，一个调度工具包，解决了这些问题，还增加了大量提升体验的功能。</p>
+<p><strong>它解决了什么问题：</strong></p>
+<ul>
+<li>OpenClaw 的定时任务会注入系统指令，把长消息搞得面目全非</li>
+<li>无法限制执行次数（比如&quot;执行 4 次后停止&quot;）</li>
+<li>链接被去除、格式被破坏，结果令人抓狂</li>
+</ul>
+<p><strong>ClawGate 的功能：</strong></p>
+<pre><code class="language-bash"># 自然语言调度，简单好用
+clawgate schedule create --name &quot;daily-digest&quot; \
+--schedule &quot;每周一上午9点&quot; \
+--agent research \
+--message &quot;完整的研究摘要，保留所有链接&quot;
+
+# 一次性提醒，自动删除
+clawgate schedule create --name &quot;meeting&quot; \
+--schedule &quot;下周四下午3点&quot; \
+--agent main \
+--message &quot;别忘了站会&quot;
+
+# 限制执行次数（执行4次后自动删除）
+clawgate schedule create --name &quot;check&quot; \
+--schedule &quot;每小时执行4次&quot; \
+--agent code \
+--message &quot;检查 CI 状态&quot;
+</code></pre>
+<p><strong>工作原理：</strong> ClawGate 不再向 OpenClaw 的定时任务注入指令，而是将完整的 JSON 负载存储在磁盘上。系统定时任务触发 ClawGate → UUID 查找 → 通过 OpenClaw API 传递完整负载。你的消息保持原样，毫发无损。</p>
+<p>ClawGate 还打包了一份详细的技能说明，让你的智能体能够高效地使用它。</p>
+<p><strong>GitHub：</strong> <a href="https://github.com/alubarikanikoko/clawgate">https://github.com/alubarikanikoko/clawgate</a><br><strong>技术栈：</strong> TypeScript/Node、系统定时任务、基于 JSON 文件的存储</p>
+<p>欢迎提问！我每天都在用，配合 3 个智能体（主助手、代码助手、研究助手），运行非常稳定。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r99dye/i_built_clawgate_natural_language_scheduling_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

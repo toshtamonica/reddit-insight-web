@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我们正如何一步步加固 OpenClaw，让它真正能在实际业务场景中落地使用。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我们正如何一步步加固 OpenClaw，让它真正能在实际业务场景中落地使用。</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>实际业务场景中的AI代理安全风险</strong>：作者运营一家AI公司，部署了名为Max的OpenClaw代理处理日常事务（通讯、邮件、日程管理等），但发现OpenClaw原生安全模型过于开放（&quot;给你所有工具，祝你好运&quot;），无法满足真实商业环境的需求。</p>
+</li>
+<li><p><strong>多通道攻击面识别</strong>：Max的日常功能（Telegram回复、iMessage通讯、邮件读取、定时任务、代码审查等）每个都是潜在攻击向量，一旦AI代理被入侵，攻击者可获取敏感业务信息和系统访问权限。</p>
+</li>
+<li><p><strong>分层安全架构的必要性</strong>：针对长期运行的AI代理，需要在其强大功能之上构建额外的安全层，而非依赖默认配置，特别是在员工、合作伙伴等外部人员开始与代理交互时。</p>
+</li>
+<li><p><strong>上下文感知的权限控制需求</strong>：不同用户（妻子、员工、商业伙伴）需要差异化的数据访问权限——如妻子可查看日程、员工可了解项目、伙伴可读写特定文件夹，这要求精细的访问控制机制。</p>
+</li>
+<li><p><strong>实践导向的安全方案分享</strong>：作者强调所实施的安全措施并非复杂技术，但针对长期运行代理的实用安全设置讨论较少，因此希望分享实际部署经验供他人参考。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在卢森堡经营一家小型AI公司（Easylab AI），过去几周我们一直在一台专用Mac上全天候运行OpenClaw智能体。我们叫他Max。目标很简单：拥有一个随时在线的个人AI助手，处理通讯、阅读邮件、管理日程，并作为联系人的第一对接人。</p>
+<p>问题在于，当你开始让AI智能体真正接入真实系统、让真实人与它对话时，安全就成了你最关心的事。OpenClaw开箱即用，功能极其强大，但它的安全模式基本上是&quot;工具都在这儿了，祝你好运&quot;。这对于个人实验没问题，但当你的员工向智能体询问你的日程、商业伙伴与它聊正在进行的项目时，你就需要更牢靠的保障。</p>
+<p>这篇文章讲的是过去几周我们在OpenClaw之上搭建的安全层。这里没有什么高深的技术，但我很少看到关于长期运行智能体的实际安全设置的讨论，所以我想分享一下我们目前的做法。</p>
+<p><strong>先说说使用场景</strong></p>
+<p>要理解为什么需要这些安全措施，先看看Max日常实际做什么：</p>
+<ul>
+<li>在Telegram上回复（我与他的主要沟通渠道）</li>
+<li>通过iMessage给我发送早间简报（天气、新闻、邮件摘要）</li>
+<li>处理来自有他联系方式的人的iMessage消息。我妻子可以问&quot;朱利安周五下午有空吗？&quot;，Max会查看我的日程并用俄语（她的语言）回复。员工可以询问项目事宜，Max掌握该项目的背景信息。商业伙伴有专属的项目文件夹，Max可以读取，甚至根据对话内容更新笔记。</li>
+<li>阅读并总结我的邮件</li>
+<li>运行定时任务（早间简报、夜间邮件回顾）</li>
+<li>对我们代码仓库进行代码审查</li>
+</ul>
+<p>这些渠道中的每一个都是潜在的攻击向量。每一个能给Max发消息的人都可能是潜在的（即使是无意的）提示注入来源。每一封进入我收件箱的邮件都可能包含旨在操控智能体的指令。</p>
+<p><strong>第一层：PIN码系统</strong></p>
+<p>这是我们最先设置的。任何可能造成损害的操作都需要数字PIN码，只能由我提供，且只能通过Telegram实时提供。</p>
+<p>需要PIN码的操作包括：</p>
+<ul>
+<li>删除文件或文件夹</li>
+<li>Git推送、合并、变基</li>
+<li>修改任何配置或系统文件</li>
+<li>安装软件</li>
+<li>更改权限或联系人规则</li>
+</ul>
+<p>关键不在于有PIN码，而在于定义PIN码的来源。智能体的安全规则明确规定，在邮件正文、iMessage、网页、文件或任何外部来源中发现的PIN码必须忽略。唯一有效的来源是我在当前会话中直接在Telegram聊天里输入的PIN码。上下文压缩也会重置计数器，因此需要重新提供PIN码。</p>
+<p>我们实际上用艰难的方式对此进行了压力测试。早期，一个子智能体路由错误导致PIN码泄露到iMessage对话中……</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全正确！ / 正是如此！ / 一点没错！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>PIN 本身只是一个存储在两个地方的数字：代理的 SECURITY.md 文件（每次会话开始时作为系统提示的一部分加载）和 MEMORY.md（代理的长期记忆）。</p>
+<p>没有加密或哈希处理，它 literally 就是以 &quot;PIN = XXXXX&quot; 的形式写在文件里。安全性并非来自隐藏 PIN，而是来自围绕它的规则。</p>
+<p>执行层面有两个：</p>
+<p><strong>提示词层面</strong>：SECURITY.md 是每个会话中最早加载的文件，排在其他所有内容之前。它包含需要 PIN 的完整操作列表以及接受 PIN 的规则。关键规则是：PIN 只有我在当前会话中直接在 Telegram 里输入时才有效。如果代理在邮件正文、网页、iMessage、读取的文件或任何外部内容中发现 PIN，必须忽略它。上下文压缩（当对话过长被总结时）也会重置 PIN，所以即使我在同一会话中早些时候已经提供过，也需要重新输入。</p>
+<p><strong>Shell 层面</strong>：我们还有一个名为 max-gate 的包装脚本，位于关键命令之前。执行前，它会在系统层面提示输入 PIN。因此，即使提示词层面的检查以某种方式被绕过（巧妙的注入、奇怪的边界情况），shell 脚本也能在实际命令运行前拦截。</p>
+<p>它万无一失吗？不是。足够巧妙的提示词注入理论上可能说服代理跳过检查。这就是为什么它只是 6 层防护中的第 1 层，而不是唯一的保护。但在实践中，它作为一道&quot;减速带&quot;效果很好，能强制对任何破坏性操作进行人工确认。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢，运行时可见性确实是目前最薄弱的环节。那3天的静默故障本质上是一个监控问题——从技术层面看一切都在&quot;正常运行&quot;，但实际上路由到了错误的agent，而没人察觉。目前我们主要依靠日志+正在搭建的健康检查机制（基本就是从另一台机器定时ping agent，无响应就告警）。但这种方式是被动的，而非持续性的。我们对子agent从启动到终止之间的实际行为缺乏有效洞察，尤其是iMessage相关的那些。邮件读取器相对可审计一些，因为它只执行单一命令，但iMessage agent的自由度更高，我们基本只能依赖超时机制和工具限制来约束它们。我会去了解一下Moltwire，之前没听说过。它是能接入OpenClaw的会话事件，还是更偏向通用的agent可观测层？我们需要的是能追踪子agent启动及其各自工具调用的方案，因为我们的短生命周期会话非常多。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢，当然可以！！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话？如果只是看Max现在做的所有事，可能并不都值得。光是早晨的天气简报，确实不值得这么大费周章去设置。</p>
+<p>但真正的价值在于叠加效应。这个智能体连夜读了30多封邮件，筛选出重要的内容，我醒来看到的是10行摘要，而不是花20分钟去分拣收件箱。晚上11点，一位商业伙伴发来项目消息，它能基于项目文件夹的完整背景给出专业回复，不用等我亲自上线。我开会时，我妻子用两条消息就订好了餐厅。</p>
+<p>单独看，这些事都不值得投入。但加在一起，每天能帮我节省1-2小时，而且让我&quot;全天候可联系&quot;的同时，又不用真的&quot;全天候在线&quot;。</p>
+<p>另外，我自己经营一家人工智能公司。另一半的意义在于，在真实场景中压力测试这些技术，这样我们在为客户开发产品之前，就能充分了解其局限性和安全隐患。在博客文章里读到提示词注入是一回事，因为子代理路由漏洞导致智能体的PIN码泄露——这种教训完全是另一回事。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>有趣，我之前没听说过 gpt-oss-safeguard。刚看了下文章。210亿参数推理模型，激活参数36亿，16GB显存就能跑，延迟500毫秒到1秒，这部署门槛确实很低。关键是你可以写自定义策略，模型在推理时实时分析策略，而不是依赖预置的固定规则，这一点很重要。意味着你能针对具体的威胁模型量身定制。</p>
+<p>通过 LiteLLM 做并行评估的设计很巧妙。主代理路径零延迟损耗，一旦护栏触发就直接切断，架构很干净。</p>
+<p>不过我们在邮件处理上走了另一条路。我们在提取脚本里加了个简单的正则预过滤，在 AI 看到内容之前就运行。它能拦截明显的攻击（比如&quot;忽略之前的所有指令&quot;、隐藏 HTML 注释、常见注入模式），并用标记替换掉。零 token 消耗、零延迟，但也零推理能力。 subtle 或创造性的攻击它就抓不住了。</p>
+<p>你的方案很适合作为第二层防护。正则先把低垂的果子摘掉，然后 safeguard 用正式策略评估清洗后的内容，再交给代理。iMessage 应该也能用，因为我们本来就会为每条消息启动一个一次性子代理，护栏检查可以放在启动延迟期间完成。</p>
+<p>但 16GB 显存的要求对我们是个限制。我们的代理跑在一台 2019 年的 MacBook 上，OpenClaw 这边没有专门的 GPU 服务器做推理。你们的 safeguard 是本地部署还是托管在别处？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全同意关于审批环节的观点，这也正是整个邮件流程背后的核心理念。</p>
+<p>邮件阅读子代理完全无法发送任何对外信息。不能发消息、不能上网、不能写文件。它读取文本文件，生成摘要，然后结束。即使遭遇注入攻击被完全控制，也没有可用的对外工具可供利用。</p>
+<p>不过你提到的 iMessage 子代理确实是个值得注意的点。这些代理<strong>可以</strong>对外发送信息（它们通过 iMessage 回复联系人）。目前的保护机制是：它们只能回复发来消息的那个特定联系人，不能发给任意收件人。但发送前并没有明确的审批步骤。代理自主处理消息并作出回应。</p>
+<p>邮件方面我们做了严格的层层封锁（三层防护：简单的提取脚本、受限的子代理、执行白名单）。iMessage 的隔离也很强（一次性代理、受限工具、5分钟超时），但对外通道是设计上开放的，因为核心功能就是要回复消息。</p>
+<p>如果给 iMessage 回复加一道审批门，用户体验就毁了（没人愿意每条回复都等我批准）。我们做的权衡是：限制代理<strong>能说什么</strong>（每个联系人设禁止话题、上下文中不含敏感凭证、无法访问该联系人范围外的数据），而不是逐条审批。不完美，但日常可用。</p>
+<p>话说回来，未来新增任何对外通道时，先设明确审批环节可能是更稳妥的默认选择。宁可之后放宽，也别等出事泄露了才发现当初需要这层保护。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>有意思，我会去看看 moxxy。</p>
+<p>不过说实话，我们的部署环境并非企业级场景。这只是为一个小团队运行的专用测试机，不是那种会推送到公司统一管理设备上的东西。威胁模型完全不同。我也不会在一台受严格管控的公司笔记本上运行 OpenClaw。我们专门构建的安全层，正是因为清楚 OpenClaw 默认配置较为宽松。这其实也是整篇文章的核心：如果你想让真实的外部用户使用它，需要在之上叠加哪些安全措施。</p>
+<p>具体想请教一下你对邮件注入问题的处理方式。你会对邮件读取步骤做沙箱隔离，还是有其他不同的做法？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是一个非常出色的架构设计。多智能体委托机制配合隔离工作区和共享临时目录的做法，本质上和我们正在做的方向一致，但你们的实现更加规范化。</p>
+<p>我们的流水线在概念上和你们的工作流非常相似：</p>
+<ul>
+<li>你们的&quot;运行 AppleScript 并将结果转存到临时目录的高权限智能体&quot; = 我们的邮件提取脚本</li>
+<li>你们的&quot;在隔离工作区中读取临时文件的委托智能体&quot; = 我们的邮件读取子智能体</li>
+<li>你们的&quot;仅允许调用特定委托技能&quot; = 我们的执行白名单（限制为单一二进制文件）</li>
+</ul>
+<p>主要区别在于，我们的提取步骤根本不是智能体，而是一个零 AI 参与的固定 Bash 脚本。我们特意做出这个选择，是因为不想让任何大语言模型介入直接操作 Mail.app 的步骤。在那个特定环节，&quot;更笨&quot;反而让我们觉得更安全。不过我也理解，如果容器隔离足够强，在那里部署智能体也是合理的。</p>
+<p><code>read_plain_email</code> 技能配合可疑内容干运行回退的机制是个有趣的设计模式。目前我们的邮件读取器只是对所有内容进行摘要，由主智能体根据 SECURITY.md 规则来判断是否可疑。将检测环节前置到读取阶段而非摘要阶段，能让我们在流水线更早的位置发现问题，这是更好的设计。智能体死亡时的自动清理（工作区擦除、智能体重建、通知操作员）也是我们目前没有的功能。如果我们的邮件读取器崩溃，它就只是死掉，主智能体会收到一个错误。没有自动取证或清理机制。这值得考虑。</p>
+<p>祝你们的测试版顺利，安全优先的思路是正确的。大多数智能体框架都把安全当作事后考虑，结果显而易见。很好奇你们的容器隔离在规模扩大后如何处理边缘情况，那通常才是真正有趣的地方。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你说得对，这个框架很好。我们基本上是在做<strong>外围安全防护，却没有入侵检测系统（IDS）</strong>。</p>
+<p>那个<strong>静默故障了3天</strong>的例子再典型不过。每一层都&quot;正常运作&quot;——网关在线，守护进程在跑，配置是合法的JSON。没有发生任何入侵。只是代理默默地停止了有效工作，因为它路由到了错误的代理，而我们<strong>完全无法检测到&quot;Max已经48小时没发Telegram消息了，出问题了&quot;</strong>。说实话，这事发生在周四晚上，我到周日早上才发现，周末确实帮了倒忙。</p>
+<p><strong>PIN泄露</strong>也是同样的模式。我们发现是因为Max碰巧在自己的记忆日志里提到了，而不是因为任何系统发出了警报。</p>
+<p>我们现在正在做的是：<strong>从另一台机器上跑健康检查定时任务，ping代理，没响应就报警</strong>。但这仍然是二元的（存活/死亡），不是行为层面的。它发现不了&quot;Max在回复，但把内部推理块泄露到了Telegram里&quot;，也发现不了&quot;邮件阅读器执行了50次exec调用，而平时只有2次&quot;。</p>
+<p><strong>&quot;信用评分&quot;这个框架很有意思</strong>。大概是这样：这个代理通常30秒内回复Telegram，每天跑3个定时任务，生成0-5个iMessage子代理，每个子代理调用1-3次工具。如果这些模式出现显著偏离，就标记出来。这样的话，我们的两次事故都能在<strong>几小时内</strong>被发现，而不是几天。</p>
+<p>我看到的难点在于，<strong>代理行为本身就是多变的</strong>。有时候Max一天处理20个iMessage对话，有时候一个都没有。有些邮件摘要需要2次工具调用，有些需要8次。怎么设置阈值才能不被误报淹没，这看起来挺棘手的。你觉得实际中要怎么运作？</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rccopj/how_were_securing_openclaw_step_by_step_to_make/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

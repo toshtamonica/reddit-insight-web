@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一套默认拒绝/令牌治理/内存保护系统 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一套默认拒绝/令牌治理/内存保护系统</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>双重防护架构</strong>：系统分为两部分——npm包（内置）和框架（外置），分别解决AI代理的&quot;失控行为&quot;和&quot;记忆破坏&quot;问题。</p>
+</li>
+<li><p><strong>内置令牌管控（open-bottlenose）</strong>：直接嵌入代理内部，硬性限制令牌消耗和上下文大小，强制代理在调用工具前自我论证，防止无限循环思考。</p>
+</li>
+<li><p><strong>外置记忆防火墙（open-bottlenose-framework）</strong>：独立于代理运行，采用读写分离设计，禁止代理直接操作数据库，避免其损坏自身历史记忆或重复错误。</p>
+</li>
+<li><p><strong>问题导向的开发背景</strong>：源于实际痛点——OpenClaw代理1小时消耗400万令牌，以及自制代理的越权行为。</p>
+</li>
+<li><p><strong>持续迭代更新</strong>：作者已补充更详细的安装配置说明，提升易用性。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>这是我第一个正经的项目。之前看着 OpenClaw 一小时烧掉 400 万 token，然后我自己瞎写的技能/代理又开始胡作非为，我决定认真对待这两件事。</p>
+<p>最终我把方案拆成了两部分。我的想法是：npm 包负责防止代理发疯，框架负责防止代理毁掉自己的历史记录、重复犯同样的错误。</p>
+<p>目前我用着挺顺手的，希望对别人也有帮助。</p>
+<p>以下是我的 OpenClaw 总结的概要：</p>
+<p><strong>open-bottlenose (npm)</strong>
+<a href="%E9%93%BE%E6%8E%A5">open-bottlenose - npm</a></p>
+<p>这个运行在代理内部：</p>
+<ul>
+<li>对 token 使用量和上下文大小设置硬性限制</li>
+<li>强制代理在需要记忆时给出理由，而不是直接拿工具</li>
+<li>基本能阻止代理陷入无限思考</li>
+</ul>
+<p><strong>open-bottlenose-framework (github)</strong>
+<a href="https://github.com/Azerax/open-bottlenose-framework">https://github.com/Azerax/open-bottlenose-framework</a></p>
+<p>这个运行在代理外部：</p>
+<ul>
+<li>读取服务和写入服务刻意分离</li>
+<li>代理不允许直接操作数据库</li>
+<li>相当于存储防火墙，防止代理破坏自己的记忆</li>
+</ul>
+<p>干杯，</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我更新了说明文档，添加了更多设置步骤的详细指导。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1raxcot/i_created_a_token_govenordeny_agents_by/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

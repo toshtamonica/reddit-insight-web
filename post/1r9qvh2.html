@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>如何降低 OpenClaw 的使用成本？能否用现有的 AI 订阅服务替代 OpenAI API？ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>如何降低 OpenClaw 的使用成本？能否用现有的 AI 订阅服务替代 OpenAI API？</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是这段内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>成本问题</strong>：用户使用OpenClaw配合OpenAI API时，token消耗过快，希望降低使用成本。</p>
+</li>
+<li><p><strong>替代方案探索</strong>：用户尝试利用现有的消费级订阅（GitHub Copilot Pro、Gemini Advanced等）替代按量付费的API，以减少开支。</p>
+</li>
+<li><p><strong>技术实现</strong>：通过OAuth认证和本地代理服务器，成功将OpenClaw路由到GitHub Copilot，但后续遇到模型报错问题。</p>
+</li>
+<li><p><strong>部署环境</strong>：用户在VPS（16GB RAM、4核CPU、无GPU）上运行OpenClaw，需要轻量级解决方案。</p>
+</li>
+<li><p><strong>技术栈</strong>：采用Node.js搭建本地代理，满足低资源消耗需求。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我最近开始使用 OpenClaw 搭配 OpenAI API（GPT-5.2），但短短几小时内就把所有 token 耗尽了。感觉除非准备花更多钱，并且制定严格的预算计划，否则根本无法有效使用 OpenClaw。</p>
+<p>为了降低 API 成本，我在想是否可以利用现有的付费订阅。我目前有这些活跃订阅：</p>
+<ul>
+<li>Gemini Pro</li>
+<li>Perplexity Pro</li>
+<li>GitHub Copilot Pro</li>
+</ul>
+<p>有没有可能将 OpenClaw 接入这些面向消费者的订阅服务，而不是按 token 付费调用 API 呢？</p>
+<p>如果不行的话，对于想控制开支的 OpenClaw 用户，您推荐哪种最划算的模型或配置方案？</p>
+<p>非常感谢任何建议或变通方法！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (7 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这正是我想要的变通方案！</p>
+<p>我目前订阅了 GitHub Copilot Pro 和 Gemini Advanced。你知道 OpenClaw 是否支持其中任一服务的 OAuth 认证吗？就像你配置 OpenAI/Codex 那样。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>GitHub Copilot 是如何工作的？我是直接使用 GitHub CLI 的 token 进行认证，还是有其他特定的认证方式？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好的，翻译如下：</p>
+<hr>
+<p>好的，成功了，谢谢！！</p>
+<p>不过模型好像又出问题了。每次给 OpenClaw 发消息都会报错。我是不是漏掉了什么？我看到代理部分设置的模型是 GitHub Copilot，你知道为什么会报这个错吗？</p>
+<hr>
+<p><strong>说明：</strong> 原文中 &quot;Yessir&quot; 是口语化的肯定回应，译为&quot;好的&quot;或&quot;没错&quot;均可；&quot;OpenClaw&quot; 和 &quot;GitHub Copilot&quot; 保留原文，假设为特定产品/工具名称。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这听起来非常实用，说实话正是我现在需要的！我很想看看那个 GitHub 仓库。</p>
+<p>顺便确认一下，这个代理是在本地运行的吗？资源占用轻量吗？我在一台 16GB 内存、4 核 CPU（无 GPU）的 VPS 上运行 OpenClaw，只要不需要太多资源，这对我来说就太完美了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>太棒了，感谢分享这个仓库和清晰明了的说明！Node.js 对我的 VPS 来说再合适不过了，因为它非常轻量。</p>
+<p>我这就去查看 GitHub 仓库并试着运行一下。能有一个本地仪表盘来实际查看代币的消耗情况，这简直是帮了大忙。等我把环境搭建好运行起来后，一定来反馈使用体验。再次感谢！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不幸的是，我目前在一台只有16GB标准内存和4核CPU的VPS上运行openclaw（完全没有独立显卡）。我想在这种配置下运行本地模型对于我的机器人来说会太慢且不实用，对吧？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>AI 表示单个请求的处理速度会非常慢，对我的情况来说根本行不通。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r9qvh2/how_can_i_reduce_openclaw_costs_can_i_use_my/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

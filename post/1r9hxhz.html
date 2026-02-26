@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个开源工具，可以逆向解析任意应用的 API，让你能通过命令行（或你的 AI 智能体）直接调用。求反馈！ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个开源工具，可以逆向解析任意应用的 API，让你能通过命令行（或你的 AI 智能体）直接调用。求反馈！</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该开源工具 Spectral 的 3-5 个核心要点：</p>
+<ol>
+<li><p><strong>核心功能</strong>：通过逆向工程捕获任意应用的 API 流量，自动生成 OpenAPI/GraphQL 规范，让无公开 API 的应用也能被 CLI 或 AI 代理调用。</p>
+</li>
+<li><p><strong>解决痛点</strong>：替代传统的浏览器自动化方案，大幅降低 AI 代理调用外部应用的成本（减少数千次视觉/DOM 解析的 LLM 调用），同时提升速度和稳定性。</p>
+</li>
+<li><p><strong>工作流程</strong>：三步完成——① Chrome 扩展/MITM 代理捕获流量 ② LLM 分析点击行为与 API 关联、识别认证流程 ③ 生成可直接调用的 CLI 配置。</p>
+</li>
+<li><p><strong>适用范围</strong>：支持 Web 应用（Chrome 扩展）、桌面/命令行工具（MITM 代理）及 Android 应用（APK 证书修补）。</p>
+</li>
+<li><p><strong>当前局限</strong>：认证检测尚不完善，简单流程（API 密钥、账号密码）可用，但 OAuth2 浏览器跳转类认证需手动获取 Token。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我一直在反复遇到同一个问题：我希望我的 OpenClaw 智能体能与那些没有公开 API 的应用进行交互。通常的做法是给智能体浏览器访问权限，让它通过点击 UI 来操作——但这成本高昂（每次点击都要消耗视觉识别和 DOM 解析的 token）、速度慢，而且不稳定。其实 API 就在底层，应用本来就在调用它。</p>
+<p>于是我开发了 Spectral。你只需浏览一次应用，它会捕获流量和你点击的内容，然后由大语言模型分析每个 API 调用实际做了什么。最终输出 REST 的 OpenAPI 3.1 规范，或 GraphQL 的 SDL 模式。</p>
+<p>项目已开源：<a href="https://github.com/romain-gilliotte/spectral">https://github.com/romain-gilliotte/spectral</a>
+文档：romain-gilliotte.github.io/spectral</p>
+<p>非常期待大家的反馈，特别是如果你用它搞定了某个一直让你头疼的应用。</p>
+<p>工作流程：
+<strong>捕获</strong> — Chrome 扩展在你浏览时记录流量（也可通过 MITM 代理用于移动应用）
+<strong>分析</strong> — 大语言模型将你的点击与 API 调用关联起来，检测认证流程，推断端点模式
+<strong>调用</strong> — 生成 Restish 配置，让你可以立即从命令行调用 API</p>
+<p>认证检测功能目前还不够成熟——简单的流程（API 密钥、用户名密码登录端点）表现不错，但涉及浏览器跳转的 OAuth2 还没有完善的解决方案。目前这类应用你可能需要手动获取 token。</p>
+<p>分析阶段只需一次大语言模型调用，就能替代运行时浏览器自动化所需的数千次调用。</p>
+<p>适用范围：</p>
+<ul>
+<li><strong>Web 应用</strong>（Chrome 扩展，捕获 UI 上下文以提升大语言模型分析效果）</li>
+<li><strong>桌面/命令行应用</strong>（MITM 代理）</li>
+<li><strong>Android 应用</strong>（修补 APK 以信任代理证书）</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r9hxhz/i_built_an_opensource_tool_that_reverseengineers/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

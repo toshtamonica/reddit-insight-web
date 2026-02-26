@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 搞不定现代网页，我整了个技能把 60 万 token 压缩到 1.3K - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>OpenClaw 搞不定现代网页，我整了个技能把 60 万 token 压缩到 1.3K</h1>
+        <div class="post-meta">
+          <span>👤 Aggressive_Bed7113</span> | <span>📅 2026/2/26</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ol>
+<li><p><strong>现代网页导致token消耗激增</strong>：OpenClaw在处理广告密集型网站时，token数量从1.5K暴涨至600K，主要源于追踪像素和广告iframe等冗余元素。</p>
+</li>
+<li><p><strong>提出ML元素筛选解决方案</strong>：作者开发了基于机器学习的元素排序技能，仅保留约50个高优先级可交互元素，将Slickdeals的token从598K压缩至1.3K（降幅超99%）。</p>
+</li>
+<li><p><strong>核心痛点与开源贡献</strong>：针对A11y树剪枝的行业难题，作者已开源具体实现（Predicate Snapshot技能），并寻求社区的其他优化方案。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我一直在不同网站上运行 OpenClaw，发现不同页面的 token 消耗差异巨大。</p>
+<p>我对默认无障碍树做了一些统计：</p>
+<table>
+<thead>
+<tr>
+<th align="left">网站</th>
+<th align="left">元素数量</th>
+<th align="left">Token 数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Slickdeals</td>
+<td align="left">24,567</td>
+<td align="left">~598K</td>
+</tr>
+<tr>
+<td align="left">Y Combinator</td>
+<td align="left">681</td>
+<td align="left">~16K</td>
+</tr>
+<tr>
+<td align="left">httpbin</td>
+<td align="left">34</td>
+<td align="left">~1.5K</td>
+</tr>
+</tbody></table>
+<p>广告密集型网站简直是噩梦——一个满是追踪像素和广告 iframe 的页面，光观察就要消耗 60 万 token。</p>
+<p>有人找到好的方法来精简无障碍（A11y）树再传给大模型吗？我一直在尝试基于机器学习的元素排序，只保留前 ~50 个（可配置）可交互元素。这样能把 Slickdeals 降到约 1.3K token。</p>
+<p>OpenClaw 技能：<a href="https://clawhub.ai/rcholic/predicate-snapshot">https://clawhub.ai/rcholic/predicate-snapshot</a>
+代码仓库：<a href="https://github.com/PredicateSystems/openclaw-predicate-skill">https://github.com/PredicateSystems/openclaw-predicate-skill</a></p>
+<p>好奇大家都用了什么方案。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1reyifm/openclaw_chokes_on_modern_web_tasks_i_built_a/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

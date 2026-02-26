@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>**翻译：**
+
+"每次都会触发 API 速率限制"
+
+或更口语化的说法：
+
+"API 请求老是被限流" - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>**翻译：**
+
+"每次都会触发 API 速率限制"
+
+或更口语化的说法：
+
+"API 请求老是被限流"</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点总结</h2>
+<h3>1. <strong>问题根源：免费/低价API的速率限制过严</strong></h3>
+<p>用户使用的是免费版Gemini和付费版GPT，但即使是付费GPT，在OpenClaw的持续对话场景下，1小时的一般讨论就会触发API调用上限，说明默认配置的速率限制较低。</p>
+<h3>2. <strong>解决方案方向：多Key轮换 + 服务商优化</strong></h3>
+<ul>
+<li><strong>添加多个API Key</strong>：通过配置多个Key实现轮询，分散请求压力</li>
+<li><strong>考虑OpenRouter</strong>：作为聚合服务商，可灵活切换底层模型，但需评估稳定性风险</li>
+</ul>
+<h3>3. <strong>成本优化策略</strong></h3>
+<ul>
+<li>轻量对话用免费/低价模型（如Gemini Flash、Claude Haiku）</li>
+<li>复杂任务再调用GPT-4等高性能模型</li>
+<li>在Hostinger上部署时，检查是否有请求缓存机制可减少重复调用</li>
+</ul>
+<h3>4. <strong>OpenRouter风险评估</strong></h3>
+<ul>
+<li><strong>优势</strong>：统一接口、模型选择多、价格透明</li>
+<li><strong>风险</strong>：第三方服务商的稳定性、延迟、数据隐私合规性需自行评估</li>
+</ul>
+<h3>5. <strong>非技术用户的实施建议</strong></h3>
+<ul>
+<li>在OpenClaw配置文件中添加<code>OPENAI_API_KEY_1</code>、<code>OPENAI_API_KEY_2</code>等多环境变量</li>
+<li>或直接使用支持自动负载均衡的代理工具（如LiteLLM）简化多Key管理</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>你好，</p>
+<p>我是 OpenClaw 的新手，非技术背景（我是市场人，也是联合创始人）。
+每次普通对话一小时左右，OpenClaw 就会触发 API 速率限制。没用任何技能，也没执行大任务。
+我目前用的是免费的 Gemini 和付费版 GPT。
+能帮我优化一下，推荐最省成本的方案吗？我用的是 Hostinger 的服务器。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>使用 OpenRouter 有什么重大风险吗？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>如何实现这一点？添加更多密钥吗？</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rc6l7x/api_rate_limit_reached_every_time/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

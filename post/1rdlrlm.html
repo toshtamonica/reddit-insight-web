@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>**翻译：**
+
+**友情提示：我是如何用一个简单的 Gmail 定时任务，在两天内烧光整周 Claude Sonnet 额度的** - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>**翻译：**
+
+**友情提示：我是如何用一个简单的 Gmail 定时任务，在两天内烧光整周 Claude Sonnet 额度的**</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点</h2>
+<ol>
+<li><p><strong>高频自动化消耗惊人</strong>：即使简单的Gmail检查任务（每30分钟运行一次），因每次调用都需加载完整的系统提示和上下文（约11k tokens），一周内可消耗近400万tokens，占配额的84%。</p>
+</li>
+<li><p><strong>频率比模型选择更关键</strong>：AI自动化的成本主要取决于调用频率，而非模型本身。再&quot;便宜&quot;的模型，高频调用也会迅速耗尽配额。</p>
+</li>
+<li><p><strong>优化策略</strong>：将常规/机械性任务迁移至更便宜的Haiku模型（成本降低约12倍），降低执行频率（如从30分钟改为2小时），仅对需要判断力的任务保留高级模型。</p>
+</li>
+<li><p><strong>上下文加载是隐形杀手</strong>：每次API调用都强制加载完整的系统提示和记忆上下文，导致实际任务tokens占比极低（本例中仅约2%）。</p>
+</li>
+<li><p><strong>事件驱动优于定时轮询</strong>：评论中提到使用事件钩子（event hooks）可实现零tokens消耗，是更优的长期架构方案。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我正在使用 Claude Max（每月200美元），通过 OpenClaw 作为 AI 网关。设置了14个自动化定时任务，包括 Gmail 检查、日历提醒、备份等。我的 Gmail 定时任务每30分钟运行一次，看起来人畜无害。但实际上每次运行会发生什么呢？</p>
+<p>系统提示词加载：约4000 token
+启动上下文（记忆、身份设定、规则）：约7000 token
+实际任务内容：约200 token
+每次运行最少 <strong>11,000 token</strong>，即使答案是&quot;没有新邮件&quot;</p>
+<p>算笔账：
+每天48次 × 7天 = 每周336次运行
+336 × 11,500 = 每周约 <strong>386万 Sonnet token</strong>
+这一个任务就占了我全部定时任务 token 消耗的 <strong>84%</strong></p>
+<p>我的每周 Sonnet 额度在 <strong>周二上午</strong> 就100%用完了，其他所有自动化任务也跟着停摆。</p>
+<p>我的调整方案：</p>
+<ul>
+<li>把所有常规/机械性定时任务迁移到 Haiku（配额成本约便宜12倍）</li>
+<li>Gmail 检查从每30分钟改为每2小时</li>
+<li>Opus 只留给需要判断力的任务（晨间简报、内容创作）</li>
+<li>现在完全不用 Sonnet</li>
+</ul>
+<p><strong>教训</strong>：AI 自动化中，<strong>频率远比模型选择重要</strong>。每次调用都要加载完整上下文窗口，根本不存在&quot;便宜&quot;的 AI 调用。一个每天触发48次的定时任务，无论任务多简单，都会把你的配额吃得干干净净。</p>
+<p>希望这能帮其他人避免一个糟心的周二上午。看来用 Opus 也没那么糟嘛 :P</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>一晚上4000美元，天哪。至少我的只是业绩指标，不是真金白银。Clawzempic是什么？从没听说过，但80%的降幅听起来值得了解一下。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话，从长远来看这确实可能是正确的做法。我才刚开始用 OpenClaw 没多久（第5天），所以还没碰过插件那边的东西，一直在忙着救火哈哈。看你用着每年200刀的订阅，大部分任务还都是0 token，就知道我这是把路走弯了。这周我得去研究下事件钩子。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我从第一天就开始使用我的订阅了。当初进行初始设置时，我进入Anthropic部分选择模型，那里有API和token两个选项。我选择了token来使用我的订阅，从那以后一直这样用着。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说得有道理。我之前是从Claude Max的配额权重角度来考虑的，而不是单纯的按token计价。在固定订阅模式下，关键是你的每周额度消耗得多快，而Haiku在这方面消耗得少得多。我应该把这一点说清楚的。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>还没看过 MiniMax 的模型。&quot;从 Opus 蒸馏而来&quot;这个说法挺大胆的，我去看看。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我就是这么干的哈哈。现在把11个定时任务放在Haiku上，3个真正需要动脑子的任务放在Opus上。早该这么做了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>方便分享一下你用的是什么软件/工具，以及你的硬件配置吗？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不错。你跑的是哪种量化版本？我用的是5070 Ti（16GB显存），所以32B Q4会很吃紧，但可能值得一试。8B感觉比较稳妥，但如果32B效果真的那么好……</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这得看你用它们来干什么。如果是写代码或者处理复杂任务，那它们确实比不上Claude。但如果是&quot;帮我看看Gmail，告诉我有没有紧急邮件&quot;这种需求，一个8B参数的模型完全能搞定吧？还是我漏掉了什么？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>已经在弄了。今天刚在5070 Ti上跑起了LM Studio，用的是Qwen 2.5。接下来打算测试Ollama + Qwen 3 8B来处理定时任务。计划是本地模型搞定那些简单活儿，比如查Gmail；正经工作再用云端大模型。感谢推荐。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rdlrlm/psa_how_i_burned_my_entire_weekly_claude_sonnet/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

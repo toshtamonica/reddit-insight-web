@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>架构检查：在同一台 Mac Mini 上同时运行 OpenClaw（商务/工作）和 NanoClaw（个人）——这样可行吗？ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>架构检查：在同一台 Mac Mini 上同时运行 OpenClaw（商务/工作）和 NanoClaw（个人）——这样可行吗？</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点总结</h2>
+<ol>
+<li><p><strong>双实例架构设计</strong>：在同一台 Mac Mini M4 Pro (48GB) 上部署两套隔离的 AI 代理系统——OpenClaw（商业用途，5个代理处理邮件/Slack/Notion）和 NanoClaw（个人助理，处理 WhatsApp/iMessage），通过独立 macOS 用户账户实现凭证与文件隔离。</p>
+</li>
+<li><p><strong>混合模型策略</strong>：本地 Ollama 运行 Qwen 2.5 14B 处理常规任务，云端通过 OpenRouter 调用 Claude Sonnet/Opus 应对复杂场景，NanoClaw 使用轻量 Haiku 或本地 8B 模型，形成成本与性能的分层方案。</p>
+</li>
+<li><p><strong>关键资源疑虑</strong>：48GB 内存是否足够同时承载 14B 本地模型、双代理实例、QMD 及 Docker 运行，以及是否值得为 70B 模型预留升级空间。</p>
+</li>
+<li><p><strong>隔离方案权衡</strong>：在独立 macOS 用户、Docker 容器、虚拟机三种隔离方式中寻求实践验证，官方文档推荐多用户方案用于不可信多网关场景。</p>
+</li>
+<li><p><strong>运维痛点关注</strong>：Gmail PubSub 7 天订阅续期机制的可靠性，以及端口绑定、Ollama 模型加载冲突等实际部署中的潜在问题。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我正在为一家小企业配置一台 Mac Mini M4 Pro（48GB / 512GB）作为常驻运行的智能代理服务器。计划运行两个独立的代理实例，想先确认架构设计再购买硬件。</p>
+<p><strong>架构划分：</strong></p>
+<p><strong>OpenClaw</strong>：业务代理团队（5 个代理：通讯分流、运营/任务管理、内容/研究、销售管道）。渠道：Gmail、Slack、Notion。按渠道进行多代理路由。</p>
+<p><strong>NanoClaw</strong>：个人助理。独立实例，独立的 macOS 用户账户。WhatsApp/iMessage。个人收件箱、提醒事项、联系人。</p>
+<p><strong>隔离方案</strong>：独立的 macOS 用户账户实现凭证和文件隔离。独立的钥匙串。Little Snitch 按进程设置网络规则。OpenClaw 走本地回环，Tailscale 用于远程访问。</p>
+<p><strong>模型策略</strong>：混合架构，本地 Ollama（Qwen 2.5 14B 或类似模型）处理常规心跳/监控/分类任务。通过 OpenRouter 调用 Claude Sonnet 起草内容。复杂综合任务用 Opus（晨间简报、长文撰写）。NanoClaw 使用 Haiku 或本地 8B 模型。</p>
+<p><strong>向有经验的人请教：</strong></p>
+<p>有人在一台机器上同时运行过 OpenClaw + NanoClaw 吗？有没有冲突（端口占用、资源争抢、Ollama 模型加载）？</p>
+<p>隔离方案选独立 macOS 用户、Docker 容器还是虚拟机——你们的实际体验如何？OpenClaw 文档建议对不可信的多网关设置使用独立用户。</p>
+<p>48GB 内存——同时加载 Ollama 14B 模型 + 两个代理实例 + QMD + Docker 是否宽裕？还是该按 70B 模型的需求规划，看看 48GB 是否吃紧？</p>
+<p>有人用 OpenRouter 配合 OpenClaw 实现本地/云端混合模型策略吗？按代理覆盖模型配置在实际使用中效果如何？</p>
+<p>Gmail PubSub——7 天 watch 刷新的定时任务可靠性如何？有人遇到过静默失败的情况吗？</p>
+<p>欢迎分享任何踩坑经验或&quot;早知如此&quot;的教训。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rb3zlr/architecture_check_openclaw_business_nanoclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

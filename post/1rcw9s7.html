@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>**"核心思维技巧：提升较弱模型的能力"**
+
+或者更口语化的译法：
+
+**"用内核思维技巧给弱模型升个级"** - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>**"核心思维技巧：提升较弱模型的能力"**
+
+或者更口语化的译法：
+
+**"用内核思维技巧给弱模型升个级"**</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点总结</h2>
+<ol>
+<li><p><strong>五阶段深度思考流程</strong>：通过复杂度评估（Stage 0）→理解起草→事实核查→对抗性质疑→问题解决→最终输出，强制AI进行结构化深度思考，减少错误。</p>
+</li>
+<li><p><strong>智能成本控制机制</strong>：Stage 0的复杂度评估为强制环节，简单问题直接退出（Early Exit），避免不必要的token消耗；同时兼容MiniMax 2.5按消息计费模式，增加推理深度却不额外收费。</p>
+</li>
+<li><p><strong>对抗性自我纠错</strong>：Stage 3专门设计&quot;攻击&quot;环节，主动识别逻辑跳跃、边缘案例、未验证假设等潜在漏洞，实现模型自我质疑与修正。</p>
+</li>
+<li><p><strong>置信度量化输出</strong>：最终输出包含1-5分的置信度评分及理由，明确区分已验证事实与推测内容，提升回答可靠性。</p>
+</li>
+<li><p><strong>适用场景</strong>：主要针对OpenAI、MiniMax 2.5、Claude等模型的OAth（多模型编排）设置，用于升级较弱模型的推理能力。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最适合用于运行 OAuth 配置场景（OpenAI、MiniMax 2.5 和 Claude，在合理范围内）。
+强制深度思考，减少 AI 错误。内置回退机制——若无需深度分析，则不会浪费 token。
+如有任何优化建议，欢迎告知！
+───
+思考管道技能
+触发条件：/think 或明确的深度分析请求
+成本说明：MiniMax 2.5 按消息数计费，非 token 计费——增加推理深度不产生额外费用。
+───
+阶段 0：复杂度评估（强制）</p>
+<table>
+<thead>
+<tr>
+<th>复杂度</th>
+<th>指标</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>简单</td>
+<td>事实查询、简单阅读、是/否问题</td>
+<td>提前退出——直接回答</td>
+</tr>
+<tr>
+<td>中等</td>
+<td>2-3 个来源，需一定分析</td>
+<td>执行 1-2 阶段，简化 3-4 阶段</td>
+</tr>
+<tr>
+<td>复杂</td>
+<td>多步骤、架构性、安全性问题</td>
+<td>完整 5 阶段管道</td>
+</tr>
+<tr>
+<td>───</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 1：理解与起草</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 用 1-2 句话概括意图</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 撰写完整的初稿</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 若知识有限：明确说明</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 2：事实核查</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 扫描每个事实性陈述</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 对照验证：内部知识、工作区文件、引用来源</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 未核实内容标记为 [未核实]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 3：对抗性质询</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 基于实际发现的漏洞生成 0-5 个问题</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 攻击点：逻辑跳跃、边缘情况、未明言假设、未核实数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 若无漏洞：&quot;无需质询——草稿合理。&quot;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 4：问题解决</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 明确回答每个问题</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 若无漏洞：&quot;无需解决——草稿保持原样。&quot;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 5：最终输出</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 基于已核实事实重新起草</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 置信度评分：5/5（已核实）→ 1/5（纯猜测）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>───</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>输出格式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 0：复杂度评估</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[简单/中等/复杂] — [一行理由]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 1：理解</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[摘要 + 草稿]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 2：事实核查</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[已核实 + 标记内容]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 3：对抗性质询</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[0-5 个问题 或 &quot;无需质询&quot;]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 4：问题解决</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[回答 或 &quot;无需解决&quot;]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>阶段 5：最终输出</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[重新起草的回应]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>[重新起草的回应]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>置信度评分：X/5 — [理由]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>复杂度：[简单/中等/复杂]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>───</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>何时使用</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>场景</td>
+<td>用例</td>
+<td>深度</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>研究</td>
+<td>文档分析、架构综合</td>
+<td>完整</td>
+</tr>
+<tr>
+<td>QA/安全</td>
+<td>代码审查、漏洞评估</td>
+<td>完整</td>
+</tr>
+<tr>
+<td>策略</td>
+<td>多选项建议</td>
+<td>中等-完整</td>
+</tr>
+<tr>
+<td>何时避免</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>场景</td>
+<td>用例</td>
+<td>原因</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>执行</td>
+<td>Shell 命令、文件读取</td>
+<td>开销过大</td>
+</tr>
+<tr>
+<td>路由</td>
+<td>意图分类</td>
+<td>无需推理</td>
+</tr>
+<tr>
+<td>查询</td>
+<td>事实查找</td>
+<td>过于简单</td>
+</tr>
+<tr>
+<td>───</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>约束条件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 若无漏洞，不生成问题（强制生成 = 幻觉）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 不自夸</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 若未核实，如实说明——不猜测</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• 仅  部分可被程序解析</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rcw9s7/kernal_thinking_skill_to_upgrade_weaker_models/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

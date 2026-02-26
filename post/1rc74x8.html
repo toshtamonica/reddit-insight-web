@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我与 OpenClaw 的两个月之旅：优点、缺点，以及它为何无法取代 Cursor - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我与 OpenClaw 的两个月之旅：优点、缺点，以及它为何无法取代 Cursor</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>硬件与远程管理建议</strong>：作者使用Mac Mini作为OpenClaw的专用运行设备，并强烈推荐通过Tailscale+SSH进行远程管理，以便在开发自定义技能/插件导致系统崩溃时能够及时修复。</p>
+</li>
+<li><p><strong>&quot;同事&quot;而非&quot;助手&quot;的使用理念</strong>：建议将OpenClaw视为独立同事而非简单助手，为其单独配置GitHub、Twitter、Google等账户，既能保持主开发环境整洁，又能降低未审计MCP技能带来的隐私风险。</p>
+</li>
+<li><p><strong>模型选择的关键性</strong>：OpenClaw对模型&quot;智能&quot;极度敏感，Claude Opus/Sonnet 4.6在工具使用方面表现最佳，Anthropic似乎专门针对&quot;Agentic&quot;任务训练了这些模型；但作者认为其他宣称可媲美Opus的模型要么任务过于简单，要么未用于严肃项目。</p>
+</li>
+<li><p><strong>上下文窗口的实际局限</strong>：尽管Opus提供1M上下文，但系统提示和技能会占用大量窗口空间，实际在约200K历史记录后就会出现&quot;健忘&quot;现象，开始遗忘原始目标。</p>
+</li>
+<li><p><strong>成本痛点与订阅诉求</strong>：Opus价格极其昂贵，作者曾在2天内用完Cursor的200美元订阅额度，因此向Cursor官方呼吁推出500-1000美元甚至无限量的月度订阅方案。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我从第一天就开始使用 OpenClaw（也叫 Clawdbot、Moltbot）。在桌下的专用 Mac mini 上跑了几个月后，我经历了足够多的&quot;原来如此&quot;顿悟时刻和&quot;怎么又崩了&quot;的崩溃瞬间，觉得值得写篇深度体验分享。</p>
+<p>如果你期待的是&quot;魔法般的 AI 助手&quot;，那它还没达到那个程度；但针对特定工作流，它确实很强。以下是我的真实使用感受：</p>
+<h2>部署：&quot;隐形&quot;的 Mac Mini</h2>
+<p>我一开始考虑过树莓派，最后还是选了绑在显示器背后的 Mac mini。<strong>专业建议：搭配 Tailscale + SSH 使用。</strong> 我在开发自定义技能/插件时把系统搞崩过好几次，能远程登录修复简直是救命稻草。</p>
+<h2>&quot;同事&quot;心态：而非&quot;助手&quot;</h2>
+<p>一位朋友早期给了我最好的建议：把 OpenClaw 当成<strong>同事</strong>，而不是助手。我给它单独注册了 GitHub、Twitter 和 Google 账号。这样既保证了我的主开发环境整洁，也降低了未经审计的 MCP 技能带来的隐私风险。</p>
+<h2>模型之争：Opus 碾压众生</h2>
+<p>OpenClaw 对模型的&quot;智商&quot;极其敏感。</p>
+<p><strong>Opus/Sonnet 4.6</strong>：工具调用能力遥遥领先。Anthropic 似乎专门针对这类&quot;智能体&quot;任务训练了模型。100万 token 的上下文窗口很棒，但 OpenClaw 的内部管理才是棘手之处。</p>
+<p><strong>上下文问题</strong>：系统提示和技能就占掉了大量窗口。我发现一旦历史记录达到约 20 万 token，它就开始&quot;老年痴呆&quot;——聊到一半就忘了最初的目标是什么。</p>
+<p>听够了&quot;xxx 堪比 Opus&quot;的说法，我觉得那些人要么只是做些很简单的事，要么就没在正经干活。</p>
+<p>但 Opus 的价格<strong>太他妈贵了</strong>，我 Cursor 订阅的前 200 美元额度总是在前两天就用光。所以：</p>
+<p><strong>喂，Cursor 团队：能不能出个月付 500 甚至 1000 美元的套餐？无限量最好！！</strong></p>
+<p>[我的 Cursor 账单截图]</p>
+<h2>强项：浏览器自动化</h2>
+<p>对我来说的杀手级功能不是写代码，而是<strong>浏览器自动化</strong>。它帮我管理两个 Twitter 账号。对于那些 API 烂到家（或根本没有 API）的平台，让智能体直接&quot;驾驶&quot;Chrome 出奇地好用。</p>
+<p><strong>注意</strong>：别什么都交给它自动登录。我通常先手动登录，再让它接管。</p>
+<h2>短板：与&quot;Cursor&quot;的对比</h2>
+<p>我试过让 OpenClaw 通过 CLI 或 UI 自动化控制 Cursor。<strong>千万别这么干。</strong> 感觉就像&quot;用三米长的铲子炒菜&quot;——极其笨拙。重度编码场景下，Cursor 仍是王者。OpenClaw 在长期任务中容易失去响应，而 Cursor 的智能体流程明显更稳健。</p>
+<h2>我的自定义&quot;补丁&quot;（开发者视角）</h2>
+<p>为了让它跑起来，我不得不做了几个辅助工具：</p>
+<p><strong>MacMate</strong>：我自己写的小工具，防止 Mac mini 休眠，并创建虚拟显示器/回环音频。如果你要测试 iOS 录屏应用之类的功能，这是必不可少的……</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (4 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你说得很对，我的朋友们也跟我提过同样的建议。不过我还是更喜欢用 IDE 来编程。我对 Claude Code 这类命令行工具还不太习惯。</p>
+<p>坚持现有配置还有几个原因：</p>
+<ol>
+<li>我在 Cursor 里配置了大量 mdc 规则，迁移这些要花不少时间。</li>
+<li>我最近一直在用 Cursor，它已经积累了很多关于我工作方式的&quot;记忆&quot;（上下文），这部分很难迁移。</li>
+</ol>
+<p>有时候我也分不清自己更依赖 Claude Opus 还是 Cursor。
+每次用 Claude Code 配合最新的 Opus 模型执行任务，结果总是让人失望。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>只是不同配置文件的CDP而已</p>
+<p>或更自然的表达：
+不过是用了不同配置文件的CDP</p>
+<p>（CDP通常指客户数据平台/Customer Data Platform，或持续数据保护/Continuous Data Protection，具体含义需根据上下文确定）</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>但你需要一台台式机和显示器才能运行 Chrome。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我只是用 CDP 配合不同的配置文件而已。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rc74x8/my_2month_journey_with_openclaw_the_good_the_bad/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

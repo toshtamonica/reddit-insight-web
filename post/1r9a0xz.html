@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>这条消息竟消耗2.9万输入token——哪怕只启用1个技能。为什么不做原生意图分流？ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>这条消息竟消耗2.9万输入token——哪怕只启用1个技能。为什么不做原生意图分流？</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点</h2>
+<ol>
+<li><p><strong>高昂的Token成本问题</strong>：即使只启用1个技能，每条消息仍消耗29K输入Token（约$0.03），仅心跳保活每天就花费$1.44，24/7运行成本过高。</p>
+</li>
+<li><p><strong>缺乏原生意图分流</strong>：系统未做意图分类，简单问候（如&quot;hello&quot;）也会注入完整的系统提示+所有技能定义，造成不必要的Token浪费。</p>
+</li>
+<li><p><strong>缓存机制缺陷</strong>：24K系统提示本应作为稳定前缀实现100%缓存命中，但实际仅50%命中率，这是OpenClaw架构设计问题。</p>
+</li>
+<li><p><strong>用户提出的优化方案</strong>：建议增加意图分类前置、技能懒加载（仅匹配领域时注入SKILL.md）、简化对话的系统提示等原生Token优化功能。</p>
+</li>
+<li><p><strong>第三方方案不可靠</strong>：虽有社区项目（ClawdMatrix）声称能解决，但未经审核（0 stars），用户不愿在生产环境运行未知代码。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在 Haiku 4.5 上通过 WhatsApp 运行 OpenClaw 代理。只有一个工作区技能（60 行代码）。所有 50 个捆绑技能都被屏蔽了（缺少二进制文件、操作系统不兼容）。但每条消息——包括&quot;嘿，最近怎么样&quot;——都要消耗 29K 输入 token。</p>
+<p>也就是每条消息约 $0.03。光是心跳包，每 30 分钟一次，什么都不干一天就要 $1.44。</p>
+<p>解决办法似乎很明显：意图分流。如果用户说&quot;你好&quot;，就别注入完整的系统提示 + 技能定义。只在消息确实相关时才加载技能。</p>
+<p>我找到一个第三方项目（ClawdMatrix）声称可以通过替换 system-prompt.ts 实现这一点，但它未经审核（0 star），我不会在生产 VPS 上运行不明代码。</p>
+<p>官方有计划添加原生 token 优化吗？比如：</p>
+<ul>
+<li>技能注入前进行意图分类</li>
+<li>惰性技能加载（仅当领域匹配时才注入 SKILL.md）</li>
+<li>简单对话使用更轻量的系统提示</li>
+</ul>
+<p>目前的基础开销让即使单用途代理 7×24 运行也变得很昂贵。想了解下这是否在路线图上，或者有人找到安全的减少输入 token 的方法吗？</p>
+<p><strong>环境配置：</strong> VPS（2 核 8GB）、Haiku 4.5、1 个工作区技能、WhatsApp + Telegram 频道。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我觉得这是一个断点。我目前在一台VPS上运行它，没错，用的是Ant API。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实如此，这就是为什么我们应该想办法在处理简单任务时减少它的使用。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我觉得你说得对，而且我发现缓存问题完全是 OpenClaw 的锅——他们应该正确使用缓存断点，让系统提示前缀总能命中缓存。</p>
+<p>说白了：OpenClaw 的架构对缓存不友好。那 24K 的系统提示本应该是一个稳定的前缀，每次都该命中缓存，结果现在只有 50% 的命中率。</p>
+<p><strong>这个问题我们必须解决。</strong></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r9a0xz/29k_input_tokens_per_message_even_with_1_skill/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用OpenClaw搭建全自动YT Shorts流水线——两个月踩坑实录：哪些管用、哪些崩了、重来我会怎么改 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>用OpenClaw搭建全自动YT Shorts流水线——两个月踩坑实录：哪些管用、哪些崩了、重来我会怎么改</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>避免单一大代理的陷阱</strong><br>初期用一个巨型代理处理所有任务，成功率仅40%，且易出现上下文丢失、自我矛盾、静默错误等问题。核心教训：不同目标的代理（如研究型与执行型）不应共享同一个上下文窗口。</p>
+</li>
+<li><p><strong>采用严格单一职责的代理架构</strong><br>将流程拆分为多个专用代理（如情报收集、素材获取、剪辑选择、叠加制作等），每个代理独立工作，仅通过标准化接口交互，大幅提升系统稳定性。</p>
+</li>
+<li><p><strong>代理间通信必须使用结构化数据</strong><br>关键决策：代理之间只通过JSON文件传递数据，杜绝自由文本。输入输出格式严格定义，确保每个代理&quot;只接受规定格式的输入，只产生规定格式的输出&quot;。</p>
+</li>
+<li><p><strong>静默错误比崩溃更难调试</strong><br>系统失败时，显式报错优于无声产生垃圾结果，架构设计需优先考虑可观测性和错误追溯。</p>
+</li>
+<li><p><strong>模块化设计适用于通用内容管道</strong><br>该架构不仅适用于YouTube Shorts，可推广至任何自动化内容生产流程，核心在于解耦各环节、明确接口契约。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>发这篇是因为 r/openclaw 比官方文档帮了我太多，我想回馈一下。这不是&quot;看我做了什么&quot;的炫耀，而是对真正关键的架构决策的直白拆解。</p>
+<p><strong>项目：全自动 YouTube Shorts 流水线。</strong> 研究、内容、媒体、叠加层和发布全部通过定时任务运行，零人工干预。我不会透露具体领域或提示词，因为项目正在运行，但这个架构适用于几乎任何自动化内容流水线。</p>
+<hr>
+<h2>第 1-2 个月：我完全做错了</h2>
+<p>我和大多数人一样开始：
+一个巨型智能体，一个庞大的提示词，一个试图包办一切的上下文窗口。</p>
+<p>它大约 40% 的时间能&quot;工作&quot;。另外 60%：</p>
+<ul>
+<li>智能体忘记了自己已经做过什么</li>
+<li>它与之前的输出自相矛盾</li>
+<li>最糟糕的是，它静默产出错误结果，没有明确的报错</li>
+</ul>
+<p>最后一点特别致命。<strong>静默的垃圾比崩溃更难调试。</strong></p>
+<p>核心错误不在于模型。而在于假设一个上下文窗口能处理多个相互冲突的目标。研究智能体和执行智能体的思维模式完全不同，它们不应该活在同一个会话里。</p>
+<hr>
+<h2>真正解决问题的方法</h2>
+<p><strong>严格的单一职责智能体。</strong>
+一个智能体，一份工作，一个工作空间，一份 SOUL.md。</p>
+<p>我的流水线现在长这样：</p>
+<pre><code>main → intel-agent → lead-historian → footage-sourcer → footage-downloader → clip-picker → overlay-producer
+</code></pre>
+<p>每个智能体对其他智能体的内部一无所知。它只知道：</p>
+<ul>
+<li>&quot;这是我接受的输入格式&quot;</li>
+<li>&quot;这是我必须产出的输出格式&quot;</li>
+</ul>
+<p>这引出了整个系统中最重要的一个决策。</p>
+<hr>
+<h2>智能体间通信：JSON 或死</h2>
+<p>我发现最简洁的交接方案也是最简单的：</p>
+<p><strong>每个智能体将结构化 JSON 文件作为输出写入。</strong>
+<strong>下一个智能体只读取该 JSON 作为输入。</strong></p>
+<ul>
+<li>没有自由格式文本传递</li>
+<li>没有智能体互相读取完整的对话历史</li>
+<li>没有永远增长、让下游智能体困惑的共享 markdown 文件</li>
+</ul>
+<p>只有干净、有类型、有版本的 JSON。一个智能体写，一个智能体读。</p>
+<p><strong>为什么这很重要：</strong></p>
+<ul>
+<li>如果 JSON 有效，下游智能体就能解析它</li>
+<li>如果无效，解析在边界处失败，你会得到明确的错误</li>
+</ul>
+<p>相比之下，下游智能体试图解读半混乱的文本，然后在三个阶段后产出无意义的内容，却找不到明显的根本原因。</p>
+<p>调试变得简单：</p>
+<ul>
+<li>流水线在任何时刻的状态就是一个 JSON 文件文件夹</li>
+<li>我可以打开一个，准确看到一个智能体交接给下一个的内容</li>
+</ul>
+<hr>
+<h2>Discord 作为多智能体控制平面——这让我意外</h2>
+<p><strong>The Imperial Claw Discord：</strong> 每个智能体有自己的频道，有自己的线程用于测试运行、升级日志和输出。那个 fact-review 线程里的 &quot;HISTORIAN HANDOFF COMPLETE&quot; 消息，就是 lead-historian 放下它的 JSON 包供下一阶段拾取。这就是流水线交接正常工作时的样子。</p>
+<p>在选定 Discord 之前我尝试了很多：</p>
+<ul>
+<li>共享 markdo</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>它为我制作短视频所需的叠加层——输入事实后，主历史学家会生成内容，并创建带有正确高亮文字的叠加层。现在我需要做的就是下载叠加层和最终片段，然后把它们拼在一起。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rc9761/built_a_fully_automated_yt_shorts_pipeline_on/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

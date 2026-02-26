@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"OpenClaw 多开代理总崩溃，我索性写了个开源'房东'编排器（UNIX 沙箱隔离 + 审计日志）🦞⚡" - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>"OpenClaw 多开代理总崩溃，我索性写了个开源'房东'编排器（UNIX 沙箱隔离 + 审计日志）🦞⚡"</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点</h2>
+<ol>
+<li><p><strong>问题背景</strong>：OpenClaw 在单机上运行多智能体（如 CEO、开发、财务）时存在严重缺陷——共享内存目录导致实例间相互干扰，端口冲突频发，单个实例崩溃会引发连锁反应。</p>
+</li>
+<li><p><strong>解决方案</strong>：开源工具 <strong>SurgeClaw Sentinel</strong> 作为&quot;房东&quot;编排层，通过 UNIX Vault 权限隔离（chmod 700）实现故障绝对隔离，避免单点崩溃影响全局。</p>
+</li>
+<li><p><strong>关键技术特性</strong>：</p>
+<ul>
+<li><strong>150端口规则</strong>：自动为每个实例分配独立端口块，消除网络冲突</li>
+<li><strong>合规审计</strong>：内置 SOC 2 / UAE AI Act 标准的 JSONL 审计日志</li>
+<li><strong>零维护设计</strong>：薄封装层不改动 OpenClaw 核心，自动继承上游更新</li>
+</ul>
+</li>
+<li><p><strong>使用方式</strong>：通过 npm 全局安装，10 秒内即可完成企业级 AI 部门部署（<code>npm install -g advantage-surgeclaw</code> → <code>surgeclaw onboard</code>）。</p>
+</li>
+<li><p><strong>开源动机</strong>：作者为解决自身机构规模化需求而开发，预判&quot;单体架构困境&quot;将成为行业共性问题，故选择开源共享。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>我很喜欢 OpenClaw，但当我尝试在单台 Mac Mini 上运行完整的&quot;AI 高管团队&quot;（CEO、开发、财务）时，遇到了瓶颈。在单体架构下，它们共享同一个 <code>~/.openclaw</code> 内存，尝试启动多个 <code>gateway</code> 命令会导致无休止的 WebSocket/CDP 端口冲突。如果我的开发代理崩溃了沙盒，连带着财务代理也会一起挂掉。</p>
+<p>我意识到 OpenClaw 不需要分叉，它需要一个**&quot;房东&quot;（Landlord）**。</p>
+<p>于是，我和团队开发并开源了 <strong>SurgeClaw Sentinel</strong>。这是一个零配置的编排层，能将单台机器变成企业级集群：</p>
+<p><strong>绝对故障隔离</strong>：每个 OpenClaw 实例都在锁定的 UNIX 保险箱中运行（<code>chmod 700</code>）。如果一个实例故障或被入侵，其他实例毫发无损。</p>
+<p><strong>150 端口规则</strong>：编排器自动搜寻并为每个实例预留安全的 150 端口区块。Canvas 和浏览器中继零网络冲突。</p>
+<p><strong>内置合规</strong>：维护符合 SOC 2 / 阿联酋 AI 法案的 JSONL 审计账本，精确记录谁启动了或访问了哪个实例。</p>
+<p><strong>零维护</strong>：这是一个轻量级包装器。我们不触碰 OpenClaw 的核心逻辑，因此 OpenClaw 更新时，SurgeClaw 即时继承。</p>
+<p>你可以在约 10 秒内启动一个完全隔离的企业级 AI 部门：</p>
+<pre><code>npm install -g advantage-surgeclaw
+surgeclaw onboard
+</code></pre>
+<p>代码仓库（含代码与架构图）：<a href="https://github.com/upsurge911-lgtm/SurgeClaw">https://github.com/upsurge911-lgtm/SurgeClaw</a></p>
+<p>我最初开发这个主要是为了解决自己公司的扩展问题，但我选择开源，因为我认为&quot;单体架构&quot;困境很快就会困扰很多人。</p>
+<p>非常期待任何关于架构或&quot;房东&quot;模式方法的反馈，尤其是其他正在运行多实例集群的朋友！</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbnr6y/i_got_tired_of_openclaw_crashing_when_running/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

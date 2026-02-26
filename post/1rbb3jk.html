@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个基于 AI 的本地文件管理器 —— 能自动分类、打标签，还支持自然语言搜索文件 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个基于 AI 的本地文件管理器 —— 能自动分类、打标签，还支持自然语言搜索文件</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>本地优先的AI文件管理工具</strong> — Claw Drive是一个完全本地运行的CLI工具，无需云端依赖，默认保护隐私，仅在用户明确授权时才读取文件内容。</p>
+</li>
+<li><p><strong>智能自动化处理</strong> — 支持自动分类归档、生成标签和描述，并通过SHA-256去重避免重复存储，解决传统文件夹混乱问题。</p>
+</li>
+<li><p><strong>自然语言检索</strong> — 用户可用日常语言搜索文件（如&quot;我的猫咪兽医报告在哪&quot;），无需记忆具体路径或文件名。</p>
+</li>
+<li><p><strong>简洁的技术架构</strong> — 采用JSONL纯文本索引而非SQLite，兼顾简单性与可移植性；可选配Google Drive同步备份。</p>
+</li>
+<li><p><strong>灵活的部署方式</strong> — 基于Bash编写，既可作为OpenClaw技能使用，也可作为独立CLI工具运行。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>受够了我的文件系统变成这样：<code>新建文件夹/新建文件夹(2)/最终版/最终版-真的/</code>。每次需要找保险卡或兽医报告，都得花十分钟在层层嵌套的文件夹里翻找。</p>
+<p>于是我做了 Claw Drive —— 一个本地优先的 CLI 工具，用 AI 智能体来管理文件。</p>
+<p>工作原理：</p>
+<ul>
+<li>发送文件（本地路径、邮件附件或聊天消息）→ 自动分类到结构化目录</li>
+<li>自动生成标签和描述</li>
+<li>SHA-256 去重 —— 再也不用把同一个文件存五遍</li>
+<li>JSONL 索引 —— 纯文本格式，方便查看和备份</li>
+<li>之后用自然语言搜索：&quot;我家猫的兽医报告在哪？&quot;</li>
+</ul>
+<p>隐私保护：</p>
+<ul>
+<li>完全本地运行</li>
+<li>除非你明确允许，否则不会读取文件内容</li>
+<li>没有你的回应 = 默认视为敏感文件</li>
+<li>不依赖任何云服务</li>
+</ul>
+<p>可选功能：</p>
+<ul>
+<li>通过 fswatch + rclone 同步 Google Drive（仅用于备份，非必需）</li>
+</ul>
+<p>用 bash 编写。可作为 OpenClaw 技能或独立 CLI 使用。</p>
+<p>GitHub：<a href="https://github.com/dissaozw/claw-drive">https://github.com/dissaozw/claw-drive</a></p>
+<p>很乐意解答架构方面的问题。特别想听听大家对索引方案的反馈（JSONL vs SQLite —— 我选择了 JSONL，为了简单和可移植性）。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbb3jk/i_built_an_clawpowered_file_manager_that_runs/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

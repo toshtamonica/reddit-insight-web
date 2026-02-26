@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为AI智能体打造了一个"红绿灯"系统，防止它们互相污染（开源） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为AI智能体打造了一个"红绿灯"系统，防止它们互相污染（开源）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>问题背景</strong>：多智能体系统在访问共享文件、API或上下文时，容易出现数据覆盖、执行顺序混乱和权限幻觉等问题，导致&quot;相互踩踏&quot;和环境污染。</p>
+</li>
+<li><p><strong>核心解决方案</strong>：作者开发了名为 <strong>Network-AI</strong> 的开源协议，采用&quot;红绿灯&quot;架构对智能体进行流量管控——高风险操作前必须获得&quot;绿灯&quot;许可。</p>
+</li>
+<li><p><strong>关键机制</strong>：通过 <strong>AuthGuardian</strong> 模块验证智能体凭证和环境状态，确保&quot;道路畅通&quot;（权限合法且无冲突）后才允许执行，同时生成不可篡改的审计日志用于事后调试。</p>
+</li>
+<li><p><strong>项目性质</strong>：完全开源，非商业目的，旨在解决智能体共享环境腐败的实际痛点。</p>
+</li>
+<li><p><strong>寻求反馈</strong>：作者希望社区验证该架构在实际用例中的合理性，或指出是否存在过度设计的问题。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>我是一名有金融科技背景的后端开发。最近我在研究多智能体系统时，反复遇到一个棘手的问题：<strong>冲突</strong>。</p>
+<p>当多个智能体（甚至单个智能体执行复杂任务时）同时访问相同的文件、API 或上下文时，它们很容易&quot;互相踩脚&quot;——数据被覆盖、执行顺序混乱、或者产生不该有的权限幻觉。简直一团糟。</p>
+<p>我意识到缺少的是一个<strong>红绿灯</strong>。</p>
+<p>于是我开发了 <strong>Network-AI</strong> —— 一个开源协议，作为智能体编排的交通控制系统。</p>
+<p><strong>工作原理</strong>：把它想象成一个十字路口。智能体在执行高风险操作（如写入数据库、移动文件或发送交易）前，会先遇到&quot;红灯&quot;。</p>
+<p><strong>检查环节</strong>：协议（具体是我称为 <strong>AuthGuardian</strong> 的模块）会核验智能体的凭证以及当前环境状态。</p>
+<p><strong>绿灯通行</strong>：只有当&quot;道路畅通&quot;（权限验证通过且无冲突）时，智能体才会获得绿灯许可。</p>
+<p><strong>监控记录</strong>：就像交通摄像头一样，系统会留下不可篡改的审计日志，记录每一次绿灯放行，方便后续排查故障。</p>
+<p><strong>发帖目的</strong>：我不是来推销的。我只是想解决智能体破坏共享环境的问题。</p>
+<p>希望大家能看看这个仓库，告诉我这种&quot;红绿灯&quot;架构是否符合你们的应用场景，还是说我过度设计了。</p>
+<p>仓库地址：<a href="https://github.com/jovanSAPFIONEER/Network-AI">https://github.com/jovanSAPFIONEER/Network-AI</a><br>欢迎一切反馈</p>
+<p>视频演示：<a href="https://youtu.be/UyMsNhaw9lU?si=Lsy4qcqkKf58wQVx">https://youtu.be/UyMsNhaw9lU?si=Lsy4qcqkKf58wQVx</a><br>项目主页：<a href="https://clawhub.ai/jovanSAPFIONEER/network-ai">https://clawhub.ai/jovanSAPFIONEER/network-ai</a></p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbqnhw/i_built_a_traffic_light_system_for_ai_agents_so/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个工具，可以将你的 Claude Code / Cursor / Copilot 历史记录导入到 OpenClaw 记忆中 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个工具，可以将你的 Claude Code / Cursor / Copilot 历史记录导入到 OpenClaw 记忆中</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>解决跨工具上下文断层问题</strong>：mempiper 工具将 Claude Code、Cursor、Copilot 等9种 AI 编码工具的历史记录导入 OpenClaw 的记忆系统，打破各工具间的信息孤岛。</p>
+</li>
+<li><p><strong>本地化处理流程</strong>：通过扫描、归一化、总结三个步骤，自动生成两种格式的 Markdown 文件——按日期的每日摘要（memory/YYYY-MM-DD.md）和长期 distilled 记忆（MEMORY.md）。</p>
+</li>
+<li><p><strong>隐私优先的架构设计</strong>：所有处理在本地完成，路径泛化、API 密钥脱敏后才与 LLM 交互，支持 OpenAI 兼容端点及本地模型。</p>
+</li>
+<li><p><strong>极简集成方式</strong>：输出格式与 OpenClaw 原生一致，只需复制或符号链接即可让智能体获得跨工具的全局上下文。</p>
+</li>
+<li><p><strong>早期版本寻求反馈</strong>：v0.1.0 阶段，开发者正收集关于新增数据源（如 Windsurf、Gemini CLI）、直接写入工作区等改进建议。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>OpenClaw 的内存系统很棒，但它只能感知 OpenClaw 内部发生的事情。如果你同时使用 Claude Code、Cursor、Copilot 或其他 AI 编程工具，所有这些上下文对你的智能体来说都是不可见的。</p>
+<p>我开发了 mempiper 来解决这个问题。它会扫描你的机器，从 9 款 AI 工具中提取聊天记录，将其标准化，并输出 OpenClaw 兼容的内存文件：</p>
+<ul>
+<li><code>memory/YYYY-MM-DD.md</code> —— 每日摘要（决策、结果、阻塞点）</li>
+<li><code>MEMORY.md</code> —— 提炼后的长期记忆（偏好、约定、技术决策）</li>
+</ul>
+<p>将它们复制到你的 OpenClaw 工作区，你的智能体就能立即获得你所用工具的完整上下文。</p>
+<p><strong>支持的数据源：</strong>
+Claude Code、Cursor、GitHub Copilot、Codex（OpenAI）、OpenCode、Aider、Chatbox、ChatGPT、Claude.ai</p>
+<p><strong>使用方法：</strong></p>
+<pre><code class="language-bash">npm install -g mempiper
+mempiper init      # 配置 LLM 提供商（OpenAI 兼容 / Anthropic）
+mempiper scan      # 自动检测本地聊天记录
+mempiper ingest    # 标准化对话内容
+mempiper organize  # 汇总为日/周/月报 + MEMORY.md
+</code></pre>
+<p>输出为纯 Markdown 格式——与 OpenClaw 使用的格式完全一致。只需用 <code>cp</code> 命令或创建符号链接将输出文件放入你的工作区即可。</p>
+<p>所有处理都在本地完成。路径信息会被泛化处理，API 密钥在提交给 LLM 之前会被自动脱敏。支持任意 OpenAI 兼容端点（因此你也可以使用本地模型），以及支持自定义 base URL 的 Anthropic。</p>
+<p><strong>GitHub：</strong> <a href="https://github.com/themez/mempiper">https://github.com/themez/mempiper</a><br><strong>npm：</strong> <code>npm install -g mempiper</code></p>
+<p>目前仍处于早期阶段（v0.1.0），非常期待听到你的反馈：</p>
+<ul>
+<li>还需要支持哪些其他数据源？（Windsurf？Gemini CLI？Warp？）</li>
+<li>mempiper 是否应该直接写入 OpenClaw 工作区，而不是单独的输出目录？</li>
+<li>还缺少哪些功能能让它真正融入你的工作流？</li>
+</ul>
+<p>欢迎提出建议——这个项目源于我自己的需求，但我希望它也能帮到其他人。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r9xhy9/i_built_a_tool_that_imports_your_claude_code/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用手机管理多个开发项目而不失控：来看看我的"护栏即代码"实践方案 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>用手机管理多个开发项目而不失控：来看看我的"护栏即代码"实践方案</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ol>
+<li><p><strong>从手机远程管理多个开发项目</strong> — 作者数周未打开IDE，完全通过Telegram在手机上管理多个项目，实现了真正的移动办公。</p>
+</li>
+<li><p><strong>&quot;护栏即代码&quot;（guardrails-as-code）核心理念</strong> — 将工作流逻辑从提示词（prompts）转移到实际代码中，而非依赖AI自主决策，从而减少对AI的&quot; babysitting&quot;式监控。</p>
+</li>
+<li><p><strong>解决多项目监控痛点</strong> — 针对OpenClaw多项目设置中常见的&quot;检查AI是否正确执行、是否破坏其他仓库、会话是否存活&quot;等问题，提供自动化管控方案。</p>
+</li>
+<li><p><strong>开源插件与反馈征集</strong> — 已将方案打包为OpenClaw插件开源发布，并邀请社区测试，特别关注用户对AI&quot;自主权限程度&quot;的偏好。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我已经好几周没打开 IDE 做正经的功能开发了。现在完全通过手机上的 Telegram 管理多个项目。有时候躺在床上处理，有时候在 Grab 车上搞定。而且居然真的能用？我是说，真的能行？</p>
+<p>让我从头说起。</p>
+<p>之前我深入研究多项目的 OpenClaw 配置，但一直遇到同一个问题。Agent 们干得不错，但我把所有时间都花在盯梢上了。它选对方案了吗？有没有搞坏另一个仓库？那个会话还活着吗？我基本上变成了全职保姆，照顾着我为了摆脱保姆工作而造出来的东西。</p>
+<p>最后的解决方案我称之为&quot;护栏即代码&quot;。听着挺高大上，其实挺简单：别把流程逻辑塞在提示词里，直接写成真正的代码。</p>
+<p>我把所有功能打包成了 OpenClaw 的插件。欢迎大家测试并反馈！有个问题我一直在纠结：你到底想要多大的自主权？很想听听大家的想法。</p>
+<p><a href="https://github.com/laurentenhoor/devclaw">https://github.com/laurentenhoor/devclaw</a></p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rckt9w/managing_multiple_dev_projects_from_my_phone/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

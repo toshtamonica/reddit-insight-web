@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用纯Rust一周打造了TitanClaw v1.0——大模型还在打字工具就开始运行了，周期性任务秒开，Swarm集群也已上线（完整升级清单见内文） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用纯Rust一周打造了TitanClaw v1.0——大模型还在打字工具就开始运行了，周期性任务秒开，Swarm集群也已上线（完整升级清单见内文）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是TitanClaw v1.0的核心要点总结：</p>
+<ol>
+<li><p><strong>极致低延迟执行</strong> — 工具在LLM仍在输出时就开始运行，实现零延迟管道执行和实时流式输出，告别等待。</p>
+</li>
+<li><p><strong>自进化性能优化</strong> — Reflex引擎将重复任务自动编译为WASM微技能，首次运行后完全绕过LLM；配合Shadow Workers预计算和JIT热补丁，实现亚毫秒级响应。</p>
+</li>
+<li><p><strong>深度代码理解</strong> — 基于Tree-sitter AST构建内存知识图谱，掌握函数调用关系与语义关联，而非简单文本分块。</p>
+</li>
+<li><p><strong>分布式Swarm架构</strong> — 通过libp2p实现多机负载共享与任务调度，支持确定性本地回退，突破单机性能瓶颈。</p>
+</li>
+<li><p><strong>生产级工程体验</strong> — 纯Rust构建、本地优先隐私设计、多模型Provider无缝故障转移、OpenAI兼容API、Docker一键部署与沙箱导出。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我用纯 Rust 在一周内打造了 TitanClaw v1.0.0——一个完全本地优先、极致注重隐私的 AI 编排引擎，它真正给人一种&quot;活&quot;的感觉。</p>
+<p>以下是现已上线的全部功能：</p>
+<p>• <strong>零延迟管道执行（默认开启）</strong>——当模型决定调用工具的瞬间，Shell/工具就开始执行。你可以实时观看输出流，而此时模型还在&quot;打字&quot;。无需等待。</p>
+<p>• <strong>实时 Shell 命令草稿</strong>——工具调用增量会立即显示为 <code>[draft] your_command_here</code>，需要审批的命令会明确显示等待状态。</p>
+<p>• <strong>反射引擎（Reflex Engine）</strong>——重复任务（每日日志、代码分析、CVE 检查等）会在首次运行后自动编译为亚毫秒级 WASM 微技能，此后完全绕过 LLM。</p>
+<p>• <strong>memory_graph + Tree-sitter AST 索引</strong>——为整个工作空间构建真正的知识图谱，包含函数调用、关系、有界多跳遍历、图谱评分和语义融合。它真正理解你的代码，而非简单分块。</p>
+<p>• <strong>完整 Swarm 网格</strong>——多台机器现在可通过 libp2p 共享工作负载。调度器将子任务卸载给最优节点，并具备确定性的本地回退机制。</p>
+<p>• <strong>影子工作器（Shadow Workers）</strong>——推测性缓存，预计算可能的后续提示（可配置 TTL + 最大预测数）。</p>
+<p>• <strong>内核监控 + JIT 热补丁</strong>——自动检测缓慢工具，可在运行时热补丁修复（支持可配置的自动审批/部署）。</p>
+<p>• <strong>Docker 工作器</strong>——首次运行镜像预检 + 自动拉取，确保全新安装时绝不失败。</p>
+<p>• <strong>一键沙箱产物导出</strong>——可直接从 Jobs 界面导出。</p>
+<p>• <strong>完全供应商独立</strong>——支持 NEAR AI、Ollama、OpenAI 兼容端点、Tinfoil，无缝故障转移。</p>
+<p>• <strong>OpenAI 兼容 API 端点</strong>——可与任何工具配合使用。</p>
+<p>• <strong>网页对话生命周期管理</strong>——可删除单个线程或一键清空全部。</p>
+<p>• <strong>默认安全运行时</strong>——每个工具在能力门控的 WASM 沙箱中运行，可选 Docker 隔离，并配备严格的出站白名单。</p>
+<p>一切默认 100% 本地运行。除非明确允许，否则数据绝不会离开你的机器。</p>
+<p>Windows（MSI + PowerShell）、Linux 和 macOS 的安装包已在发布页上线——一条命令即可运行。</p>
+<p>仓库：<a href="https://github.com/PhantomReaper2025/titanclaw">https://github.com/PhantomReaper2025/titanclaw</a></p>
+<p>我特别想了解社区对<strong>管道执行 + 反射引擎 + memory_graph + 早期 Swarm</strong> 这一组合的看法。这是否解决了你在其他 Agent 上遇到的最大痛点？</p>
+<p>（正在制作展示管道执行 + 反射绕过的演示 GIF——完成后会立即发在评论区。）</p>
+<p>如果你热爱 Rust、本地 AI 基础设施、隐私优先的 Agent，或正在构建下一代个人编排引擎，欢迎来看看。期待反馈！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (8 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>非常欢迎任何反馈和建议🙏</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>您可以随时查看🙏，我用的是个人GitHub账号，之所以分享出来并设为公开，是希望能获得大家的反馈和建议，以便进一步改进完善。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>此外，我正在为此训练一个模型，该模型将在Hugging Face上以开源形式发布。它将采用Tiny Recursion Model（TRM）方法进行训练，使其能够在普通消费级电脑上运行，同时具备当今大型语言模型的能力。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢 / 感谢 / 多谢</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，速度更快，因为它是用 Rust 写的，而且还能实现 OpenClaw 做不到的一些功能——毕竟那个是基于 Node.js 的。既然我们用了 Rust，就能绕开那些限制。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不是开源的，无法编辑代码并发布它</p>
+<p>或者更自然的表达：
+闭源软件，无法修改代码并公开发布</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，如果你仔细检查的话，就会知道我是怎么做到的了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是 Ironclaw 的升级版分支。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbs4cn/i_built_titanclaw_v10_in_pure_rust_in_just_one/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

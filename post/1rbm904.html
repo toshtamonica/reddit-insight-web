@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gmail 48小时就封了我代理的账号，终于找到一个真正能用的解决办法 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>Gmail 48小时就封了我代理的账号，终于找到一个真正能用的解决办法</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点</h2>
+<ol>
+<li><p><strong>Gmail 的封禁机制针对自动化行为模式，而非单纯的发送量</strong> — 即使未超出发送限制，新账户立即发信、纯 API/CLI 操作、规律的发送间隔（如每5-10分钟）等特征都会触发风控。</p>
+</li>
+<li><p><strong>常规解决方案存在明显缺陷</strong> — &quot;养号&quot;预热周期过长、多账户轮换增加连带封禁风险、自建邮件服务器维护成本过高。</p>
+</li>
+<li><p><strong>最终有效方案是切换至专用服务</strong> — 改用专为 AI Agent 设计的邮件服务（如 Agentmail），从根本上规避平台风控策略的冲突。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>简短版——Gmail 用了3天就封了我的智能体账号，尽管我严格遵守了发送上限。他们的滥用检测系统标记的是自动化行为模式，而不仅仅是发送量。后来换了一个专门面向智能体的邮件服务（Agentmail），从那以后一直运行正常。</p>
+<hr>
+<p>事情刚发生不久，我现在还有点郁闷。</p>
+<p>上周花了一周时间搭建了一个处理邮件的 AI 智能体。工作流程设计得很完善——智能体读取 incoming 邮件，检索我们的知识库，起草回复。发送前我都会最后把关确认。</p>
+<p>给智能体注册了一个全新的 Gmail 账号。当时觉得这是理所当然的选择，毕竟谁不用 Gmail 呢？</p>
+<p><strong>第一天</strong>：一切完美。智能体处理了大约 50 封邮件。回复质量都不错，我很满意。</p>
+<p><strong>第二天</strong>：醒来发现 30 封回复在队列里等着。智能体火力全开，当天总共发了大概 80-90 封邮件。</p>
+<p><strong>第三天</strong>：账号被封。&quot;您的账号因违反 Google 服务条款已被停用&quot;。</p>
+<p>没有任何预警，没有邮件说明我哪里做错了，直接彻底锁死。尝试通过 Google 账号恢复流程申诉，收到自动回复，大意是&quot;我们的决定是最终决定，账号不予恢复&quot;。</p>
+<p>深挖之后，我了解到这些：</p>
+<p>Gmail 的滥用检测<strong>不只是看发送量，它标记的是行为模式</strong>：</p>
+<ul>
+<li>新注册账号立即大量发邮件</li>
+<li>纯 CLI/API 调用，完全没有浏览器使用痕迹</li>
+<li>规律的发送节奏（我的智能体每 5-10 分钟发一封）</li>
+</ul>
+<p>哪怕没超出发送上限，只要行为看起来像自动化操作，照样封。</p>
+<p>有人给过这些建议：</p>
+<ul>
+<li>&quot;养号&quot;：用几周时间逐步增加发送量（太慢了，我需要马上能用）</li>
+<li>多注册几个 Gmail 账号轮换着用（这简直是求着被连环封号）</li>
+<li>自建邮件服务器（研究了大概两小时的 Postfix/Dovecot，然后意识到自己并不想变成系统管理员）</li>
+</ul>
+<p><strong>实际管用的方案</strong>：
+换了一个专门为 AI 智能体设计的邮件服务。我个人觉得 Agentmail 挺好用的。</p>
+<p>现在已经稳定运行 5 天了。智能体处理了 400 多封邮件，零问题，没被封，没有速率限制警告，也不用折腾 OAuth。</p>
+<p>真希望当初就知道这些，省得在 Gmail 上浪费一周时间。</p>
+<p>有人遇到过类似情况吗？还是说我只是运气不好，正好撞上了 Gmail 的检测机制？</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说得通！/有道理！</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbm904/gmail_banned_my_agents_account_after_48_hours/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

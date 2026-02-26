@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>**翻译：**
+
+终于让我的 OpenClaw 智能体能实时把操作过程推送到 iPhone 锁屏上了。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>**翻译：**
+
+终于让我的 OpenClaw 智能体能实时把操作过程推送到 iPhone 锁屏上了。</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ol>
+<li><p><strong>开发背景与功能</strong>：开发者厌倦了长时间等待AI任务时只能看到&quot;typing...&quot;提示，因此开发了iOS实时活动应用Chowder，能在iPhone锁屏上实时流式显示OpenClaw代理的思考步骤、工具调用和成本消耗。</p>
+</li>
+<li><p><strong>技术实现方式</strong>：该应用通过频繁轮询OpenClaw的chat.history接口，获取并可视化展示最新的任务/操作步骤，而非直接集成到OpenClaw内部。</p>
+</li>
+<li><p><strong>使用限制与设置</strong>：目前仅支持iOS系统，需要通过Xcode安装，并配合Tailscale在iPhone和MacMini之间建立连接使用，暂不支持Android。</p>
+</li>
+<li><p><strong>开源与改进空间</strong>：项目已在GitHub开源（newmaterialco/chowder-iOS），开发者承认代码较粗糙，长时间任务存在稳定性问题，欢迎社区贡献；同时提到实际返回的数据比当前可视化展示的更详细，可进一步扩展。</p>
+</li>
+<li><p><strong>成本注意事项</strong>：演示视频中的成本数据经过加速处理，实际1-2分钟任务费用不高，但复杂任务或配置可能导致成本快速上升，用户可通过开源代码查看自己设置的真实成本。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>厌倦了在漫长任务中盯着&quot;正在输入…&quot;的提示，我开发了一个 iOS 实时活动（Live Activity），可以直接在锁屏上实时展示我的 OpenClaw 智能体的每一步思考过程、调用的工具以及花费。开源代码在下面👇</p>
+<p>仓库链接：Chowder-iOS</p>
+<p>使用 Xcode + iPhone，再配合 Mac mini 和 Tailscale 搭建最为方便。</p>
+<p>目前还比较粗糙，让 OpenClaw 执行长任务时遇到过一些问题——希望尽快修复。</p>
+<p>欢迎试用！有任何建议或想贡献代码，欢迎联系我！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>花了点时间才搞定，不过我做了个小型 iOS 应用，它会轮询 OpenClaw 的 chat.history，然后把返回的最新步骤/操作可视化展示出来。如果你想试试的话，我很快会把仓库分享出来！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>来了！<a href="https://github.com/newmaterialco/chowder-iOS">https://github.com/newmaterialco/chowder-iOS</a> 很期待看到 Android 版本。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢提问——为了在一分钟的视频里把演示和核心观点讲清楚，我不得不加快了节奏。实际上，一到两分钟的简单任务并不会那么贵（我会在帖子里加个免责声明）。但价格确实会出人意料地快速攀升，要么是因为我的 OpenClaw 配置比较复杂，要么就是我发起的任务本身就容易让它陷入各种弯弯绕绕。我已经把代码仓库公开在这里，你可以看看你自己配置的实际成本：<a href="https://github.com/newmaterialco/chowder-iOS%EF%BC%88%E4%B8%8D%E8%BF%87%E7%9B%AE%E5%89%8D%E5%8F%AA%E8%83%BD%E9%80%9A%E8%BF%87">https://github.com/newmaterialco/chowder-iOS（不过目前只能通过</a> Tailscale 在 iOS 上使用，抱歉）。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！/ 感激不尽！/ 太感谢了！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>如果你有 iPhone，可以直接在这里获取开源代码：<a href="https://github.com/newmaterialco/chowder-iOS">https://github.com/newmaterialco/chowder-iOS</a> 祝你使用愉快！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不是，它只是一个频繁查询 OpenClaw 当前状态的程序，然后显示最新的任务。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不！/ 不是！/ 不对！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>实际上，每次你都会获得大量信息——比我这里展示的要多得多——所以如果你想查看非常详细的步骤，也能获取到那些信息。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbh7p2/got_my_openclaw_agent_to_stream_everything_its/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

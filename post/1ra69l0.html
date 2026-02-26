@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>**公告：如果你运行的是重度自动化任务，Anthropic 的缓存写入附加费可能占到账单的 60%** - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>**公告：如果你运行的是重度自动化任务，Anthropic 的缓存写入附加费可能占到账单的 60%**</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点总结</h2>
+<ol>
+<li><p><strong>缓存写入费用占比过高</strong>：Anthropic 的缓存写入附加费（比基础输入价高25%）占总账单的61%，是最大成本来源。</p>
+</li>
+<li><p><strong>缓存策略设计缺陷</strong>：默认5分钟、最长1小时的缓存有效期，导致心跳周期（55-180分钟）之间缓存必然过期，每次都要重新写入，无法有效复用。</p>
+</li>
+<li><p><strong>与竞争对手定价差距悬殊</strong>：OpenAI 和 Gemini 的缓存写入完全免费，且支持更长的缓存有效期（OpenAI 24小时，Gemini 任意时长）。</p>
+</li>
+<li><p><strong>实际成本对比惊人</strong>：相同工作负载下，OpenAI 方案可比 Anthropic 节省约62%的费用（从$109降至约$41）。</p>
+</li>
+<li><p><strong>高频自动化场景尤其吃亏</strong>：多代理、高频率心跳任务会反复支付写入附加费，缓存优势几乎无法发挥。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我让GPT总结了这段内容：</p>
+<p>过去两周，我一直在用OpenClaw运行10个智能体、每天84次心跳、15个定时任务。今天终于仔细研究了Anthropic的实际账单CSV，数字简直离谱。</p>
+<p><strong>2月19日账单：109美元</strong></p>
+<p>这笔钱在Sonnet 4.6上的实际去向：</p>
+<table>
+<thead>
+<tr>
+<th>Token类型</th>
+<th>Token数量</th>
+<th>单价($/MTok)</th>
+<th>费用</th>
+<th>占Sonnet账单比例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>缓存写入</td>
+<td>1670万</td>
+<td>$3.75</td>
+<td>$62.64</td>
+<td>61%</td>
+</tr>
+<tr>
+<td>缓存读取</td>
+<td>7900万</td>
+<td>$0.30</td>
+<td>$23.69</td>
+<td>23%</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>107万</td>
+<td>$15.00</td>
+<td>$16.02</td>
+<td>16%</td>
+</tr>
+<tr>
+<td>未缓存输入</td>
+<td>1.68万</td>
+<td>$3.00</td>
+<td>$0.05</td>
+<td>0%</td>
+</tr>
+</tbody></table>
+<p><strong>61%的Sonnet支出是缓存写入附加费。</strong></p>
+<p>很多人没意识到这点：Anthropic对写入缓存的token收取比基础输入价高25%的费用（Sonnet上$3.75 vs $3.00/MTok）。而且他们的缓存默认TTL只有5分钟，最长1小时（2倍基础价）。</p>
+<p>如果你像大多数人一样，每55-180分钟运行一次心跳——缓存会在每次心跳周期之间过期。于是每次心跳：</p>
+<ul>
+<li>以$3.75/MTok的价格，把整个启动文件（SOUL.md、AGENTS.md、TOOLS.md等，每个智能体约8000 token）重新写入缓存</li>
+<li>在该心跳期间的工具调用轮次中使用3-5次</li>
+<li>下次心跳前缓存过期</li>
+<li>重复循环</li>
+</ul>
+<p>你在为几乎没派上用场的缓存，一遍又一遍地支付写入附加费。</p>
+<p><strong>看看OpenAI和Gemini的收费：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Anthropic</th>
+<th>OpenAI</th>
+<th>Gemini</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>缓存写入附加费</td>
+<td>+25%(5分钟)或+100%(1小时)</td>
+<td>$0（免费）</td>
+<td>$0（免费）</td>
+</tr>
+<tr>
+<td>缓存读取折扣</td>
+<td>9折</td>
+<td>9折</td>
+<td>9折</td>
+</tr>
+<tr>
+<td>最大缓存TTL</td>
+<td>1小时</td>
+<td>24小时</td>
+<td>任意时长</td>
+</tr>
+<tr>
+<td>延长TTL定价</td>
+<td>2倍基础写入价</td>
+<td>同价</td>
+<td>每小时存储费</td>
+</tr>
+</tbody></table>
+<p>OpenAI对写入缓存不额外收费。延长保留期可保持24小时，价格不变。Gemini允许你设置任意TTL。</p>
+<p><strong>同样的工作量在其他厂商的成本：</strong></p>
+<p>按我2月19日的实际token量重新定价：</p>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>每日成本</th>
+<th>相比Anthropic</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Anthropic Sonnet 4.6（实际）</td>
+<td>$109</td>
+<td>—</td>
+</tr>
+<tr>
+<td>OpenAI GPT-5.1（相同缓存模式）</td>
+<td>~$41</td>
+<td>-62%</td>
+</tr>
+<tr>
+<td>OpenAI GPT-5.1（24小时缓存）</td>
+<td>~$28</td>
+<td>-74%</td>
+</tr>
+<tr>
+<td>多厂商路由（GPT-5.1 + Gemini Flash）</td>
+<td>~$31</td>
+<td>-72%</td>
+</tr>
+</tbody></table>
+<p>GPT-5.1的24小时缓存对自动化是游戏规则改变者。启动文件在凌晨4点会话重置后写入一次，全天保持缓存。之后每次心跳以$0.125/MTok读取，而不是以$3.75/MTok重新写入。</p>
+<p><strong>在有人说&quot;直接换OpenAI&quot;之前</strong></p>
+<p>我知道，没那么简单。OpenClaw是为Claude构建的。智能体提示词、工具使用模式，整个系统都是针对Claude的行为调优的。在我看来，Claude仍是复杂多步智能体工作的最佳模型。这不是一篇&quot;Claude不行&quot;的帖子。</p>
+<p>这专门是关于<strong>Anthropic的缓存定价在惩罚自动化工作负载</strong>。模型很棒，计费模式不行。</p>
+<p><strong>我在考虑的方案：</strong></p>
+<ul>
+<li>用Claude处理复杂智能体工作（交互式会话、规划、报告），质量是关键</li>
+<li>把心跳和常规定时任务路由到带24小时缓存的GPT-5.1，成本差3-4倍</li>
+<li>这意味着要在openclaw.json中为心跳模型覆盖配置单独的厂商</li>
+</ul>
+<p><strong>向社区提出的问题：</strong></p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (4 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这确实是个很好的想法。虽然1小时缓存比默认的5分钟缓存更贵，但正如你所说，总体成本仍然会更低。我认为Anthropic需要推出更长时间的缓存选项才能保持竞争力。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我不认为这个说法是正确的。这是Anthropic计费方式的问题。我的数据直接来自Anthropic的计费后台。同样的token消耗在15号之前就已经观察到了。Anthropic作为一家企业，默认只提供5分钟的缓存，最长也只有1小时，这意味着任何超出这个时间窗口的心跳检测或定时任务都将需要完整的缓存写入。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我会再仔细看看。谢谢！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是一个很有见地的观点。我还在深入研究，但我几乎可以肯定Anthropic的缓存最长只有5分钟或1小时，这意味着超出这个时间的任何心跳都会导致完整的缓存写入。在我看来，他们需要像其他平台一样提供24小时的缓存读取功能。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ra69l0/psa_anthropics_cache_write_surcharge_is_probably/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

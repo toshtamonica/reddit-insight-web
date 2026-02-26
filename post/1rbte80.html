@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个开源的语音合成命令行工具，支持声音克隆——基于 Qwen3-TTS 本地运行（支持 MLX 和 CUDA） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个开源的语音合成命令行工具，支持声音克隆——基于 Qwen3-TTS 本地运行（支持 MLX 和 CUDA）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>开源本地TTS工具</strong>：开发者创建了一个名为TTSCLI的开源命令行工具，基于Qwen3-TTS模型，可完全在本地运行，无需联网。</p>
+</li>
+<li><p><strong>支持语音克隆</strong>：该工具具备语音克隆功能，只需提供参考音频文件即可复制特定声音。</p>
+</li>
+<li><p><strong>双硬件后端支持</strong>：同时支持Apple Silicon（MLX框架）和NVIDIA显卡（CUDA）两种硬件加速方案。</p>
+</li>
+<li><p><strong>面向AI Agent设计</strong>：专为AI智能体打造，可自动生成音频播客、语音消息和配音演示视频等内容。</p>
+</li>
+<li><p><strong>实际应用案例</strong>：已与OpenClaw工作流结合使用，实现产品演示视频的自动化配音生成。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我开发了一个 TTS 命令行工具，让 AI 智能体能够开口说话。安装后，任何智能体都可以生成音频播客、语音消息或带旁白的产品演示视频。</p>
+<p>核心亮点：</p>
+<ul>
+<li>基于 Qwen3-TTS，完全本地运行</li>
+<li>支持参考音频文件进行声音克隆</li>
+<li>同时支持 Apple Silicon（MLX）和 NVIDIA（CUDA）后端</li>
+</ul>
+<p>我一直在配合 OpenClaw 使用它来自动生成带旁白的产品演示。下面这个演示视频完全由 OpenClaw + Remotion + TTSCLI 制作：</p>
+<p>GitHub：<a href="https://github.com/jiweiyuan/ttscli">https://github.com/jiweiyuan/ttscli</a></p>
+<p>非常期待大家的反馈——特别是那些希望 OpenClaw 拥有真实语音的朋友。</p>
+<p><a href="https://reddit.com/link/1rbte80/video/wr0tjv1x93lg1/player">https://reddit.com/link/1rbte80/video/wr0tjv1x93lg1/player</a></p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>抱歉，地址有拼写错误，现已更正为 jiweiyuan/ttscli。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbte80/i_built_an_opensource_tts_cli_with_voice_cloning/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

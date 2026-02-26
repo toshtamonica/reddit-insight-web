@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>领英自动化
+
+或者更口语化的说法：
+
+领英自动运营/自动操作
+
+（注：在中文互联网语境中，"LinkedIn"通常译为"领英"，这是其官方中文名） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>领英自动化
+
+或者更口语化的说法：
+
+领英自动运营/自动操作
+
+（注：在中文互联网语境中，"LinkedIn"通常译为"领英"，这是其官方中文名）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>应用场景与目标</strong>：一家HR招聘机构希望使用OpenClaw实现LinkedIn全流程自动化，包括自动评论帖子、发送私信、联系评论者、浏览群组、识别长期挂网的职位空缺等，同时尽量降低账号被封风险。</p>
+</li>
+<li><p><strong>已采取的防封措施</strong>：计划使用住宅IP、模拟人类行为模式（避免机器人特征）、通过浏览器自动化操作。</p>
+</li>
+<li><p><strong>核心技术痛点</strong>：鼠标/交互层不稳定——代理偶尔点击偏移，导致填错字段（如登录时）或在错误输入框打字，无法实现端到端的稳定运行。</p>
+</li>
+<li><p><strong>寻求的关键建议</strong>：</p>
+<ul>
+<li>如何让OpenClaw交互真正类人且可靠</li>
+<li>稳定的元素定位策略（选择器、锚定、重试、等待UI状态）</li>
+<li>各类任务流程的最佳实践（评论点赞、加好友附注、私信序列、联系评论者、群组浏览、识别长期职位）</li>
+<li>最关键的<strong>速率限制和行为模式</strong>以降低封禁风险</li>
+</ul>
+</li>
+<li><p><strong>核心诉求</strong>：希望获得稳健的OpenClaw配置方案，包括高层技巧或代码示例。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好——我正在寻求关于使用 OpenClaw 进行 LinkedIn 自动化的建议，希望尽可能降低封号风险。</p>
+<p><strong>背景情况</strong>
+我们是一家人力资源招聘机构，希望实现 LinkedIn 线索生成的全自动化：包括评论帖子、发送私信、联系帖子评论者、浏览群组、发现长期在线的招聘公司空缺职位等。</p>
+<p><strong>已有规划</strong></p>
+<ul>
+<li>住宅 IP</li>
+<li>模拟真人操作（尽量避免机器人行为模式）</li>
+<li>通过 OpenClaw 进行浏览器自动化</li>
+</ul>
+<p><strong>遇到的问题</strong>
+鼠标/交互层不够稳定：智能体有时会点击位置稍有偏差，导致填错字段（例如登录时），或在错误的输入框中打字。因此目前尚不足以支撑端到端的稳定运行。</p>
+<p><strong>向社区请教</strong></p>
+<ul>
+<li>如何让 OpenClaw 在 LinkedIn 上的交互真正像真人一样且稳定可靠？</li>
+<li>稳定元素定位的最佳实践（选择器、锚定策略、重试机制、等待 UI 状态）？</li>
+<li>如何构建以下流程：<ul>
+<li>评论/点赞帖子</li>
+<li>发送好友申请 + 附言</li>
+<li>私信序列</li>
+<li>打开帖子评论者列表并主动接触</li>
+<li>群组浏览</li>
+<li>检测&quot;长期开放&quot;的职位发布/招聘信号</li>
+</ul>
+</li>
+<li><strong>最重要的是</strong>：你们采用什么样的速率限制和行为模式来降低封号风险？</li>
+</ul>
+<p>如果有人有稳健的 OpenClaw 配置经验（高层建议或代码片段），我将不胜感激。🙏</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rcneda/linkedin_automation/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

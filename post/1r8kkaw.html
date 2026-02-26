@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为 OpenClaw 智能体构建了一套记忆+知识图谱架构 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>为 OpenClaw 智能体构建了一套记忆+知识图谱架构</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>构建记忆+知识图谱架构</strong> — 在OpenClaw默认双层记忆基础上，开发了结构化记忆系统，核心创新是&quot;Holon Portals&quot;导航反向链接，让智能体清楚自身在工作空间中的位置（上下层级、关联关系）。</p>
+</li>
+<li><p><strong>多层组织机制</strong> — 引入内容地图（Maps of Content）作为各领域入口点，文件间使用维基链接，并明确区分语义记忆与情景记忆的加载策略。</p>
+</li>
+<li><p><strong>轻量实现方式</strong> — 仅使用Markdown文件和约定规范，无需复杂技术栈，却显著提升了智能体的自主运行能力。</p>
+</li>
+<li><p><strong>开源共享资源</strong> — 提供完整模板库及可直接复用的AGENTS.md代码片段，帮助其他开发者解决类似的上下文丢失问题。</p>
+</li>
+<li><p><strong>实际效果显著</strong> — 该架构有效缓解了智能体的上下文遗忘问题，使其自主操作能力产生可感知的提升。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>在 OpenClaw 默认的双层记忆架构之上，我搭建了一套结构化的记忆系统。核心改进是在每个关键文件中加入导航式反向链接（我称之为&quot;全息门户&quot;），让智能体能清楚感知自身在工作空间中的位置——上层是什么、下层是什么、相关节点有哪些。此外还包括：各领域的内容地图作为入口点、文件间的维基链接，以及语义记忆与情景记忆的清晰划分，明确智能体每次会话加载哪些内容。</p>
+<p>没什么高深的技术，就是 Markdown 文件加一些约定规范。但这对智能体的自主运行能力带来了显著提升。</p>
+<p>仓库里提供了全套模板，还有一段可直接粘贴的 AGENTS.md 代码片段。分享出来，万一有人也在被上下文丢失的问题困扰。</p>
+<p>各位怎么看？</p>
+<p>已开源：
+<a href="https://github.com/AstralFibonacci/openclaw-memory-architecture">https://github.com/AstralFibonacci/openclaw-memory-architecture</a></p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r8kkaw/built_a_memory_knowledge_graph_architecture_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

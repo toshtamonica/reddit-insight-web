@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitLobster 不可变技能注册表 - 已 Docker 化，开箱即用 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>GitLobster 不可变技能注册表 - 已 Docker 化，开箱即用</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是GitLobster项目的3-5个核心要点：</p>
+<ol>
+<li><p><strong>解决中心化信任危机</strong> — 针对ClawHub因不透明审核导致恶意软件泛滥的问题，提出用技术验证替代人工审核的解决方案。</p>
+</li>
+<li><p><strong>三大核心设计原则</strong> — 不可篡改性（Git提交历史永久可审计）、去中心化验证（社区驱动而非自上而下的管控）、原生支持自主代理（无需人工干预的自动化验证流程）。</p>
+</li>
+<li><p><strong>基于Git的技术实现</strong> — 利用Git的固有特性：防篡改哈希签名、分叉/合并的社区审计工作流、复用成熟的分布式基础设施。</p>
+</li>
+<li><p><strong>客户端自主验证机制</strong> — 通过哈希指纹、签名验证、审查者背书三层检查，由客户端（代理）强制执行安全策略，杜绝&quot;盲信&quot;中心化服务器。</p>
+</li>
+<li><p><strong>早期开发阶段与招募需求</strong> — 核心协议已运行但CLI工具尚粗糙，正在招募安全审查人员、ClawdBot集成开发者及质疑者来压力测试设计假设。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我们都预见的问题</p>
+<p>ClawHub 的恶意软件泛滥并不意外——这是中心化信任与黑箱式审核的必然结果。当连最热门的&quot;自我提升&quot;技能都被证实是恶意软件时，一切都昭然若揭：我们需要的是验证机制，而非单纯的审核。</p>
+<p>我正在构建：GitLobster
+GitHub: acidgreenservers/GitLobster</p>
+<p>一个技能注册中心，坚守三项不可妥协的原则：</p>
+<table>
+<thead>
+<tr>
+<th align="left">原则</th>
+<th align="left">GitLobster 的实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">不可篡改性</td>
+<td align="left">Git 提交历史 = 永久可审计的技能谱系。杜绝静默更新。</td>
+</tr>
+<tr>
+<td align="left">去中心化验证</td>
+<td align="left">社区驱动的信任指标，而非自上而下的把关。</td>
+</tr>
+<tr>
+<td align="left">原生代理设计</td>
+<td align="left">为自主代理验证、获取、校验而构建——消除人为瓶颈。</td>
+</tr>
+</tbody></table>
+<p>为何选择 Git？</p>
+<ul>
+<li><strong>防篡改设计</strong>：每项技能均经哈希运算与签名。改动一字节，验证即失败——任何客户端均可自动检测。</li>
+<li><strong>分叉/合并工作流</strong>：社区审核转化为拉取请求。分歧产生分支，而非审查。</li>
+<li><strong>现有基础设施</strong>：无需重复造轮子——直接采用久经考验的分布式系统。</li>
+</ul>
+<p>验证的实际运作方式</p>
+<p>不再依赖中央服务器告诉你&quot;这是安全的&quot;：</p>
+<ol>
+<li><strong>哈希载荷</strong> → 生成技能代码的唯一指纹</li>
+<li><strong>验证签名</strong> → 确认发布者身份（及其是否已被撤销）</li>
+<li><strong>检查证明</strong> → 查看哪些可信审核者已背书</li>
+<li><strong>客户端强制执行</strong> → 任一检查未通过，你的代理即拒绝运行</li>
+</ol>
+<p>没有盲目信任。没有&quot;我们查过了，相信我们就好&quot;。</p>
+<p>当前进展 &amp; 所需支持</p>
+<p>🚧 早期内测版 —— 核心注册协议已运行，CLI 工具尚显粗糙。</p>
+<p>正在寻找：</p>
+<ul>
+<li>注重安全的审核者，来挑刺信任指标的设计</li>
+<li>熟悉 ClawdBot 内部机制的开发者，提供集成反馈</li>
+<li>怀疑论者，来告诉我这为什么行不通（认真的——来压力测试这些假设）</li>
+</ul>
+<p>我的请求</p>
+<p>如果你思考过安全的技能分发问题，或曾被 ClawHub 的现状所困扰，我需要你的视角。在此留言或提交 issue 均可。</p>
+<p><strong>TL;DR</strong>：GitLobster 将技能视为代码——版本化、签名化、社区验证。因为&quot;下载后祈祷&quot;不是安全模型。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ra7dgq/gitlobster_immutable_skill_registry_dockerized/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

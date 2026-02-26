@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 OpenClaw 搭建了一个自托管搜索引擎（零成本 + 私有雷达） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 OpenClaw 搭建了一个自托管搜索引擎（零成本 + 私有雷达）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>企业级搜索质量优化</strong>：不同于普通SearXNG工具仅返回杂乱JSON，该引擎提供&quot;Agent优化Markdown&quot;格式，使AI代理提取数据速度提升2倍且零幻觉。</p>
+</li>
+<li><p><strong>时间智能过滤</strong>：内置<code>--time</code>参数支持按天/月/年筛选，实现&quot;Radar&quot;模式——可强制代理仅扫描过去24小时内容，追踪实时市场动态。</p>
+</li>
+<li><p><strong>零成本+数据主权</strong>：完全自托管，无API费用，搜索数据不出本地Docker网络，避免项目信息泄露给第三方广告网络。</p>
+</li>
+<li><p><strong>替代商业搜索税</strong>：针对厌倦支付Brave/Google搜索费用或担心隐私泄露的用户，提供真正私有的搜索解决方案。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>ClawHub 上已有不少 SearXNG 技能，但大多只是&quot;傻管道&quot;——直接输出杂乱的 JSON。我们咨询公司需要企业级方案，于是自研了几项核心功能来提升搜索质量：</p>
+<p><strong>Agent 优化的 Markdown 格式</strong>：不再返回原始片段，而是输出高保真的 Markdown 层级结构。我的 Agent 现在提取数据速度翻倍，且零幻觉。</p>
+<p><strong>时间智能</strong>：原生支持 <code>--time</code> 过滤器（按天/月/年筛选）。这就是&quot;雷达模式&quot;——我可以强制 Agent 只扫描过去 24 小时，实时追踪市场动态。</p>
+<p><strong>数据主权</strong>：零 API 费用，零数据泄露。你的战略查询永远不会离开本地 Docker 网络。</p>
+<p>如果你厌倦了缴纳&quot;Brave/Google 税&quot;，或是不想把项目名称泄露给第三方广告网络，试试这个。</p>
+<p><strong>ClawHub 标识</strong>：upsurge-searxng</p>
+<p><img src="https://preview.redd.it/17x4jgv381lg1.png?width=1147&format=png&auto=webp&s=4f6f711641de90d367cdd30fbb40e61feec9a6a1" alt="预览图"></p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话，感觉就像解锁了超能力一样。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbjmgd/i_built_a_selfhosted_search_engine_for_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

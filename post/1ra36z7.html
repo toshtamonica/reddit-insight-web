@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"求教程：OpenClaw + Ollama 本地部署指南" - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>"求教程：OpenClaw + Ollama 本地部署指南"</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>本地模型功能缺失问题</strong>：用户在WSL Ubuntu中使用OpenClaw + Ollama本地部署时，多个模型（包括推荐的Qwen:8B、GPT-OSS:20B、DeepSeek-R1:8B）无法正常使用OpenClaw的核心功能——如会话历史、记忆、工具调用（读写文档）等，仅WhatsApp/Telegram集成和网页搜索可用。</p>
+</li>
+<li><p><strong>API模型表现正常</strong>：使用Gemini API时一切功能正常；本地模型中GML-4.7 Flash效果最接近但过于笨重，GPT-OSS:20B是性能甜点但工具支持不全，甚至直接在Ollama终端使用比通过OpenClaw效果更好，暗示存在兼容性问题。</p>
+</li>
+<li><p><strong>DeepSeek-R1工具支持争议</strong>：官方声称支持工具调用，实际使用时却报错&quot;不支持工具&quot;，存在文档与实际不符的情况。</p>
+</li>
+<li><p><strong>文档过时问题</strong>：OpenClaw和Ollama的官方文档均已过时，无法提供有效参考。</p>
+</li>
+<li><p><strong>替代搜索方案</strong>：Brave搜索API每月免费提供1000次搜索额度，超出后$5/千次；或建议尝试Ollama API作为网页搜索的替代方案。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在 Windows 上使用 Ubuntu WSL，一切运行正常，直到我为 OpenClaw 选择合适的模型时出了问题。我测试过的大多数模型都无法访问会话历史、无法访问记忆功能、也无法使用工具。我感觉自己漏掉了什么关键配置才能让这些功能正常工作。</p>
+<p>如果你运行 <code>ollama launch openclaw --configs</code>，系统会推荐使用 qwen:8B，但结果还是一样——LLM 的行为表现没有任何改善。除了 WhatsApp/Telegram 集成能正常工作外，OpenClaw 应该赋予 LLM 的其他&quot;超能力&quot;（会话历史、记忆、工具调用）全都无法使用。而且当我查找文档时，发现 OpenClaw 和 Ollama 的官方文档都已经过时了。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>非常感谢，我先自己试试看。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>使用 Gemini API 密钥时效果惊人，一切都运行得很完美。目前最接近 Gemini 效果的是 GML-4.7 flash，但这个模型实在太吃资源了。我还测试了 gpt-oss:20b，这个模型在我的配置下是最佳平衡点，但它无法访问记忆、历史记录，也不能使用读写文档等工具，不过倒是能进行网络搜索。然而这只是一项超能力，而我还需要其他功能。目前 GPT-OSS 直接在 ollama 终端里使用效果更好（它能记住对话、能搜索网页），比在 openclaw 里用强多了，看起来是某些模型的兼容性问题。Deepseek-R1:8b 本应该支持工具调用，但我用的时候却报错说此模型不支持工具，搞什么鬼？</p>
+<p>太让人沮丧了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>兄弟，Brave 浏览器每月给你 1000 次免费搜索额度。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是一个图片链接，内容本身无需翻译。该链接指向 Reddit 上的一张图片，参数说明如下：</p>
+<ul>
+<li>图片宽度：4032 像素</li>
+<li>格式：渐进式 JPEG</li>
+<li>自动转换为 WebP 格式</li>
+<li>图片哈希标识：e2acbf594a57bf641543a73cb3c0795c8031f582</li>
+</ul>
+<p>如果您能描述或提供这张图片的实际内容（文字或场景），我可以帮您翻译成中文。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>别慌，只需访问 brave.com/search/api，然后登录或注册，接着进入定价页面，你就能看到相关套餐了。它提供1000次免费查询，如果超过1000次，每额外1000次请求每月收费5美元。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>抱歉了，兄弟。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>或许可以试试 Ollama API。先去注册账号，创建 API 密钥，然后在你的模型中配置好，用于网络搜索功能。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>给想要看详情的人：我对 Gemini、GPT-OSS、修改版 GPT-OSS 和 Qwen:8B 进行了一项行为测试，以下是结果：</p>
+<p><a href="https://preview.redd.it/8lsfgyxznpkg1.png?width=1500&format=png&auto=webp&s=bcb7d22f035045579a30a3a6458e7a713cbaf43d">https://preview.redd.it/8lsfgyxznpkg1.png?width=1500&amp;format=png&amp;auto=webp&amp;s=bcb7d22f035045579a30a3a6458e7a713cbaf43d</a></p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我们说的可不是戴尔笔记本，至少得是5090的配置，最低也得是5070。这还用说吗。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>请给我一份攻略，兄弟。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ra36z7/please_a_guide_openclaw_ollama_local/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

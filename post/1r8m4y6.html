@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3分钟内部署具备身份认证、消息传递和紧急停止功能的 OpenClaw 智能体 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>3分钟内部署具备身份认证、消息传递和紧急停止功能的 OpenClaw 智能体</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>快速部署带身份认证的AI代理</strong>：通过7步流水线（约90秒）即可完成部署，自动生成加密身份（DID+密钥对）并注册到公共信任 registry，解决当前AI代理匿名化问题。</p>
+</li>
+<li><p><strong>多平台即时通讯集成</strong>：支持一键接入Telegram、Discord、Slack、WhatsApp等主流平台，其中WhatsApp支持仪表盘扫码绑定。</p>
+</li>
+<li><p><strong>实时控制与安全机制</strong>：提供实时状态监控、人格编辑、模型切换、设备管理以及**紧急终止开关（kill switch）**等完整控制平面功能。</p>
+</li>
+<li><p><strong>去中心化身份架构</strong>：采用KYA-OS协议和Know That AI信任 registry，以加密证明替代传统OAuth令牌，实现可验证身份、委托链和权限查询。</p>
+</li>
+<li><p><strong>面向多代理协作与商业化</strong>：该身份层被视为实现多代理协作和代理商业（agentic commerce）的基础设施，作者认为这对AI生态的安全发展至关重要。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>目前互联网上的每个 AI 智能体基本都是匿名的。你无法验证背后是谁，也不知道它被授权做什么。我一直在致力于解决这个问题，上周 OpenClaw 引发热议后，我搭建了一个部署流程，将身份认证内置其中。</p>
+<p>经过一些反馈，我发现它相当实用。我帮我那个不太懂技术的表弟在 Telegram 上部署了他自己的助手，听他反馈各种使用感受还挺有意思的。</p>
+<p><a href="https://kya.vouched.id/identiclaw">https://kya.vouched.id/identiclaw</a></p>
+<p>目前的进展如下：</p>
+<p>输入智能体名称、模型提供商（Anthropic/OpenAI）、粘贴 API 密钥，7 步流程约 90 秒完成运行。</p>
+<p>为你的智能体创建唯一身份（DID + 密钥对），在公共信任注册表中登记，配置服务器，启动 OpenClaw 运行时，健康检查验证，设置网关路由。</p>
+<p>每个智能体获得的是加密身份，而非用户名。一个在公共信任注册表中拥有真实密钥对的 DID。</p>
+<p>一键接入消息平台：Telegram（粘贴机器人令牌）、Discord（令牌 + 自动邀请链接）、Slack（机器人令牌 + 应用令牌）、WhatsApp（从控制面板扫描二维码）。</p>
+<p>实时控制面板：状态监控、人设编辑器、运行时模型切换、设备管理、紧急停止开关、启停重启。</p>
+<p>本周新增功能：控制面板 WhatsApp 二维码绑定、交互式 API 密钥流程、运行时模型切换、网关自动强制启用。</p>
+<p>技术栈：OpenClaw（运行时）、KYA-OS 协议（身份认证）、Know That AI（信任注册表）、Cloudflare（网关）。</p>
+<p>为什么身份认证很重要：在 OAuth 中，持有令牌 = 持有身份。大多数平台将智能体视为匿名的 API 调用。我们为智能体提供可验证的身份，包含公钥、授权链和注册表查询。不是&quot;给你一个不记名令牌&quot;，而是&quot;给你一份加密证明，证明我是谁以及我被允许做什么&quot;。</p>
+<p>这是实现多智能体协作和智能体商业的关键缺失层，我认为如果我们不解决这些问题，迟早会陷入麻烦。</p>
+<p>欢迎提问或反馈还缺什么功能！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好问题。目前 DID 是在启动时建立的，整个会话期间都信任这个委托链。工具调用在每次执行时还不会重新验证。这实际上是我们正在构建的下一层能力——每次调用都会签发令牌，将操作与具体资源绑定（这样代理就不能只靠启动时的信任状态一路通行了）。你可以把它理解为&quot;进门时出示身份证&quot;和&quot;每个项目都要出示门票&quot;的区别。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈，确实……这话在理，推广普及才是最难的部分。</p>
+<p>不过你看看SMTP的遭遇就知道了——一个开放协议，如今实际上却被少数几家巨头（Gmail、Outlook、Apple Mail）牢牢掌控。想找个开放25端口的VPS？门儿都没有。身份验证当初完全是事后诸葛亮，结果40年后我们不得不硬塞进SPF/DKIM/DMARC这套补丁，而Gmail照样说了算，想判你垃圾邮件就判你垃圾邮件。这就是通信层没有身份层的后果。</p>
+<p>现在智能体（Agents）正站在同样的十字路口——要么尽早把身份机制内嵌进去，把复杂性封装好；要么接下来十年都在跟一个个封闭花园死磕。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r8m4y6/deploy_an_openclaw_agent_with_identity_messaging/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

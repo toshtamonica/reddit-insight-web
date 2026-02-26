@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器工作流程 - 只读权限（电商业务） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>浏览器工作流程 - 只读权限（电商业务）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>需求背景</strong>：用户经营电商服装品牌，希望用Mac Mini M4部署OpenClaw AI代理，自动化完成目前手动进行的每周/每月数据收集工作，包括Shopify销售数据、Triple Whale广告花费、网站流量等，以支持次日商业决策。</p>
+</li>
+<li><p><strong>安全策略</strong>：采取保守的&quot;只读访问&quot;方式，将AI视为需要逐步建立信任的新员工；初期甚至考虑绕过Shopify直接访问，改为让代理读取已自动同步订单数据的Google表格。</p>
+</li>
+<li><p><strong>长期愿景</strong>：从基础数据汇总起步，最终目标是构建复杂的库存管理系统，用于需求预测规划；同时用户有意在该领域深造，未来可能创办相关公司。</p>
+</li>
+<li><p><strong>技术疑问</strong>：不确定哪种低成本LLM适合此类浏览器自动化数据抓取任务，以及token消耗成本如何计算——认为重复性数据收集比定制开发系统计算量更低。</p>
+</li>
+<li><p><strong>核心诉求</strong>：寻求关于LLM选型（低成本方案）和token成本优化的具体指导，以提升相关技术能力。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>背景：我经营一家电商业务（服装品牌）。我正打算入手一台 Mac Mini M4，想听听大家的意见——让 OpenClaw 智能体帮我做一些目前由我亲自完成的基础数据收集工作，这个上手难度如何？我理解有些人比较谨慎，不会一开始就给它最高权限，而是把它当作一个新员工，需要逐步建立信任。我完全赞同这种做法。另外，我不算技术出身，但也能凑合应付。我正在努力提升这方面的技能，因为我看到了其中的潜力，而且很有兴趣最终在这个特定领域创办另一家公司。</p>
+<p>我想从只读权限开始，让它访问我平时每周、有时每月手动收集数据的几个系统。包括 Shopify 和 Triple Whale（展示 Meta 和 Google 的广告支出），以及其他一些有用的数据。我甚至可以先绕过 Shopify 的权限，因为我有自动化流程，每次收到 Shopify 订单时都会触发，并以特定格式填充到 Google 表格中。我可以先让智能体访问这个 Google 表格，暂时不开放 Shopify 权限（等建立信任后再说）。</p>
+<p>一旦能实现基础的数据自动抓取——每天结束后通宵运行，获取当天的销售分析、广告支出、网站访问量等所有有助于我第二天做商业决策的宝贵数据，还有哪些产品卖出了。我希望最终能搭建一个复杂的需求预测库存系统。当然，这是后话 ☺️</p>
+<p>现在我不太确定的是，哪个大语言模型（LLM）能完成这些任务，比如有没有低成本的 LLM？如果有，是哪一个？</p>
+<p>我对 token 机制了解不深，但基本理解是：重复性的浏览器数据收集工作，相比编写定制化的库存系统，计算量应该不算大。也很希望能得到这方面的指导来提升技能！</p>
+<p>谢谢！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢回复。这需要 Shopify API 访问权限吗？我以为只需要像对待真人一样，给它只读权限（仅限特定区域，比如报表）就可以了？</p>
+<p>日常指标包括网站访问量、订单数量，用来计算转化率。还有各平台的广告支出，用于计算 ROAS、CAC、MER。如果能收到每日报告就太好了，或者最终搭建一个能展示所有这些数据的仪表盘。</p>
+<p>我得去研究一下 Ollama 能做什么！谢谢。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rcobnz/browser_workflows_readonly_access_ecom_business/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

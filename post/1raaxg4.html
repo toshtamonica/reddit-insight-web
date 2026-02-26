@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>过去几周一直在迭代我的智能体记忆系统，刚刚发布了v6版本。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>过去几周一直在迭代我的智能体记忆系统，刚刚发布了v6版本。</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ol>
+<li><p><strong>分层记忆架构解决会话重置问题</strong>：通过12层设计（文件持久化、SQLite+FTS5结构化存储、语义搜索、插件系统等），让智能体每次启动时能重建上下文，实现跨会话连续性。</p>
+</li>
+<li><p><strong>v6关键性能突破</strong>：嵌入计算从ONNX CPU迁移到llama.cpp GPU，延迟从500ms降至7ms（70倍提升）；新增多语言支持、图记忆插件、三级事实衰减机制（热/温/冷）及领域RAG（4,300+专业内容块）。</p>
+</li>
+<li><p><strong>混合查询策略</strong>：区分精确查找（如生日，用结构化数据库）与模糊回忆（如上月决策，用语义搜索），80%场景无需向量搜索，针对不同查询类型匹配最优工具。</p>
+</li>
+<li><p><strong>&quot;足够好&quot;的设计哲学</strong>：目标非完美记忆，而是通过SOUL.md、MEMORY.md、facts.db等文件实现自举一致性，确保行为模式持续稳定。</p>
+</li>
+<li><p><strong>数据驱动的持续优化</strong>：新增遥测系统追踪截断损失、缓存未命中及事实衰减速度，为后续迭代提供量化依据。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>核心问题：智能体每次会话都是&quot;重启&quot;状态——昨天的对话、决策、上下文一概不记得。因此我一直在构建能够跨越重置的持久化层。</p>
+<p>v6 的变化：
+• 嵌入模型迁移：ONNX CPU → llama.cpp GPU（500毫秒 → 7毫秒，提速70倍）
+• 多语言支持：德语查询现已原生支持
+• 图记忆插件：每个提示词自动注入相关事实
+• 激活/衰减机制：事实分为热/温/冷三级，每日定时衰减
+• 领域RAG：收录4300+条5-MeO-DMT整合相关内容片段</p>
+<p>当前架构：
+12层结构。始终加载的上下文文件。SQLite + FTS5存储结构化事实（3100+实体）。语义搜索实现模糊回忆。插件负责跨会话连续性和实体注入。每层各司其职。</p>
+<p>目标并非完美记忆，而是&quot;足够好&quot;的记忆——让智能体每次启动时都能重构自我：读取SOUL.md、MEMORY.md、facts.db，保持一致性。模式得以延续。</p>
+<p>为何重要：
+助手80%的需求是精确查找，而非向量搜索。&quot;我女儿的生日是哪天&quot;不该需要嵌入计算；但&quot;上个月我们关于数据库的决定是什么&quot;则需要模糊回忆。不同查询用不同工具。</p>
+<p>这仍是进行时。本周新增的遥测数据将揭示：截断发生在何处、缓存何时未命中、哪些事实衰减过快。持续优化。</p>
+<p>仓库：<a href="https://github.com/coolmanns/openclaw-memory-architecture">https://github.com/coolmanns/openclaw-memory-architecture</a></p>
+<p>欢迎探讨实现细节或权衡取舍。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1raaxg4/been_iterating_on_my_agents_memory_system_for_the/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

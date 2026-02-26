@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 OpenClaw 搭建了一个自托管的 Web 界面，现已开源 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 OpenClaw 搭建了一个自托管的 Web 界面，现已开源</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>项目背景与动机</strong>：作者因需要更好地监控和控制OpenClaw智能体（如子任务运行、文件编辑、定时任务等），开发了一个自托管的Web UI工具，最终发展成功能齐全的&quot;驾驶舱&quot;式仪表盘。</p>
+</li>
+<li><p><strong>核心功能亮点</strong>：包括实时聊天流（支持推理块、工具使用、文件差异对比）、内嵌图表渲染（TradingView/Recharts）、子代理会话窗口、定时任务面板、内存编辑器和内置代码编辑器。</p>
+</li>
+<li><p><strong>语音交互的突破</strong>：集成本地语音识别与合成（支持语音唤醒），完全本地运行，显著改变了用户交互方式——作者表示一旦开始使用语音，基本就不再打字了。</p>
+</li>
+<li><p><strong>技术架构与开源</strong>：采用React前端+Hono后端，通过WebSocket与网关通信，项目名为Nerve，MIT协议开源，支持一键安装部署。</p>
+</li>
+<li><p><strong>维护挑战</strong>：OpenClaw本身更新频繁且常有破坏性变更，给上层工具开发带来持续的适配压力。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>和你们大多数人一样，没过多久我就希望能更清楚地看到并掌控我的 Agent 在做什么。子 Agent 任务在后台运行、文件被修改、定时任务触发、Token 疯狂消耗……却根本看不到这一切是怎么发生的。</p>
+<p>于是我动手搭了一个仪表盘。一开始只是给自己用的，React 前端、Hono 后端，通过 WebSocket 连接网关。结果一发不可收拾。最初只是个带文件浏览器的聊天面板，后来演变成了完整的驾驶舱：定时任务管理、子 Agent 监控、内嵌 TradingView 图表、记忆编辑器，还有内置代码编辑器。整个项目花了大约两周时间，每天被 Agent 折腾来折腾去 :D。</p>
+<p>最让我意外的是语音功能。我加入了本地语音识别和语音合成，支持语音唤醒，完全在本地运行（也支持云端服务商）。结果发现，一旦开始跟 Agent 对话、听到它回应，基本上就不想打字了。现在除非万不得已，我都懒得动手输入。</p>
+<p>几个亮点：</p>
+<p><strong>实时聊天流</strong> —— 回复内容、推理过程、工具调用、文件修改的 diff 视图，所有内容都在发生时实时流入聊天窗口</p>
+<p><strong>内嵌图表渲染</strong> —— 想画什么图都行，Agent 在聊天里丢个标记，界面就会实时渲染 TradingView（如果是股票代码）或 Recharts（任何自定义数据）</p>
+<p><strong>子 Agent 会话窗口</strong> —— 完整查看后台 Agent 的工作对话，未来计划支持嵌套 Agent</p>
+<p><strong>定时任务面板</strong> —— 精确查看每个任务做了什么、何时运行、输出了什么</p>
+<p><strong>记忆编辑器</strong> —— 直接在界面里编辑 MEMORY.md 和每日文件</p>
+<p><strong>内置代码编辑器</strong> —— 在 Agent 的工作空间里浏览和编辑文件</p>
+<p>持续的挑战是要跟上 OpenClaw 本身的更新。几乎每天都有更新，经常有不兼容的改动。基本上就是一场猫鼠游戏，对任何在它之上做开发的人来说都是如此。</p>
+<p>这个项目叫 Nerve。MIT 协议，自托管，一条命令即可安装：</p>
+<p>GitHub: github.com/daggerhashimoto/openclaw-nerve<br>Discord: <a href="https://discord.gg/Aa6YS5zP4x">https://discord.gg/Aa6YS5zP4x</a></p>
+<p>你们的使用环境是什么样的？还有人在做自定义界面吗？或者你觉得 OpenClaw 的&quot;任务控制中心&quot;还缺什么？</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>很高兴你喜欢，祝你抓得开心！！</p>
+<p>（注：clawing 指玩抓娃娃机，保留&quot;抓&quot;字既对应动作又贴合中文表达习惯）</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实如此！我之前在VPS上运行OpenClaw时，为了获取更多可见性和控制权，不得不反复SSH登录服务器，真的很麻烦。很高兴你喜欢这个工具，接下来还会推出更多功能！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我在一台闲置的 MacBook 上运行它，但我也在 VPS 上部署了一个实例，通过 SSH 隧道连接到那里，在本地运行 Nerve UI。你是远程连接到你的网关 WebSocket 吗？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>太对了！语音输入、语音输出才是王道。我个人用的是 Qwen3 TTS 模型，因为它在声音定制方面自由度超高，而且效果跟 ElevenLabs 不相上下，价格却便宜一大截。唯一的缺点是要调用外部 API（我用的是 Replicate），所以响应速度会比本地 TTS 慢一些。</p>
+<p>本地 GPU 模型的取舍在于：回复几乎是即时的，对话感很真实，但声音质量会比较机械。Nerve UI 两种都支持，看你怎么选咯 :D</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！是的，工作区浏览器显示的是智能体的实际工作区文件夹（.openclaw/workspace/）。我的想法是：智能体能看到和编辑什么，我就要能看到和编辑什么。</p>
+<p>对于代码项目，我直接把仓库克隆到工作区里作为子文件夹。这样智能体就在它默认工作区里的一个 git 仓库中工作。</p>
+<p>至于我的配置，没错，工作区层面的东西（个性文件、记忆、技能）也是单独的仓库，就是工作区根目录，配一个 .gitignore 排除项目子文件夹和敏感信息。这样智能体的核心文件就和它正在处理的代码库分开版本控制了。（这救了我好几次，我测试时把 OpenClaw 搞崩过好多次 :D）</p>
+<p>说实话，我建议你放弃单独路径的方案。让智能体在它定义好的工作区之外干活总会出问题。直接把你要做的东西克隆到工作区里，让每个文件夹各自用 git 管理就好。这样对你和智能体来说都会少很多困惑。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话，需求挺多的！但 realistically 来说，我觉得主要有两大方面：</p>
+<p>一是很多人倾向于看板（Kanban）风格的界面，可以创建任务并分配给不同的 agent。我自己用 GitHub issues 来做这件事，所以一开始没往这个方向做，但我理解为什么原生的任务管理体验对很多人来说会很有用。</p>
+<p>二是移动端支持。目前产品是以桌面端优先的，但我一直在思考这个问题。主要难点不在于响应式 UI，而是连接性。你的 agent 跑在家庭服务器或 VPS 上，那怎么从手机安全地访问它呢？用 Tailscale/VPN 配合 Nerve 可以，但不够顺滑。直接把服务器暴露到公网也行，但如果你不懂行的话绝对不推荐。中继服务能解决，但又引入了信任层和依赖关系。我还在权衡最佳方案，但这肯定是优先级很高的事项。</p>
+<p>不过我很欢迎任何建议，更欢迎直接贡献代码！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，用 Caddy 放在前面确实可能是个不错的方案。其实我早就打算在文档里加一份反向代理的指南了。谢谢！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>期待您的反馈！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢试用！不过这似乎不是安装程序的问题，而是您系统上的 bash 补全函数（_python）与子 shell 配合不太好（运行 curl 命令时会创建一个子 shell）。这只是个非致命警告，安装程序应该会继续执行。</p>
+<p>实际安装失败了吗？还是只是打印了这个警告然后继续运行了？</p>
+<p>如果确实失败了，您可以尝试在干净的 shell 中运行：</p>
+<pre><code>env -i bash -l -c &quot;curl -fsSL nerve.zone/i | bash&quot;
+</code></pre>
+<p>告诉我结果如何，或者还需要其他帮助！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>很好，你成功运行起来了！<code>/api/transcribe</code> 返回 500 错误，最可能是缺少 <code>ffmpeg</code> 依赖。Nerve 需要它来转换音频格式，然后进行转录。自动安装程序会处理这个依赖，但手动安装时你可能跳过了这一步。</p>
+<p>假设你使用的是 Ubuntu/Debian：</p>
+<pre><code>sudo apt install ffmpeg
+</code></pre>
+<p>如果是 macOS：</p>
+<pre><code>brew install ffmpeg
+</code></pre>
+<p>然后重启 Nerve UI，应该就能正常使用了！</p>
+<p>如果还是不行，请在浏览器中打开 <code>http://localhost: /api/transcribe/config</code>，它会显示 whisper 模型是否已下载并准备就绪。（首次使用时，如果本地模型缺失，它会自动从 Hugging Face 下载）</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rcko7i/i_built_a_selfhosted_web_ui_for_openclaw_and/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

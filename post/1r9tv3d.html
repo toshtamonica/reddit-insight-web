@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我在Hetzner VPS上搭建OpenClaw的完整指南 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我在Hetzner VPS上搭建OpenClaw的完整指南</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点总结</h2>
+<ol>
+<li><p><strong>服务器选购与初始化</strong>：在 Hetzner 选择 Ubuntu 24.04 系统的 CPX22 机型（约$6.99/月），配置 SSH 密钥登录，获取公网 IP。</p>
+</li>
+<li><p><strong>基础环境搭建</strong>：通过 SSH 连接后更新系统，安装 Docker 和 Docker Compose，验证安装成功。</p>
+</li>
+<li><p><strong>安全加固配置</strong>：创建非 root 用户（openclaw），赋予 sudo 和 docker 权限，迁移 SSH 密钥；禁用 root 登录和密码认证，仅允许密钥登录。</p>
+</li>
+<li><p><strong>关键验证步骤</strong>：新开终端测试新用户 SSH 连接，确认无误后再锁定 root 账户，避免配置失误导致无法登录。</p>
+</li>
+<li><p><strong>成本控制</strong>：总月费约 $7.60（服务器）+ AI 模型调用费用，属于低成本自建方案。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在一台便宜的 Hetzner 服务器上搭建了 OpenClaw，并通过 Telegram 与它交互。以下是详细步骤，你也可以照着做。</p>
+<p>总费用：服务器约 $7.60/月 + 你使用的 AI 模型费用。</p>
+<h2>第一步：创建服务器</h2>
+<p>访问 hetzner.com，注册账号，进入云控制台。</p>
+<ul>
+<li>点击&quot;新建项目&quot;，命名为 &quot;openclaw&quot;</li>
+<li>点击&quot;添加服务器&quot;<ul>
+<li>位置：选择离你最近的</li>
+<li>镜像：Ubuntu 24.04</li>
+<li>类型：共享资源 &gt; 常规性能 &gt; CPX22（$6.99/月）</li>
+<li>网络：保持勾选公共 IPv4 和 IPv6</li>
+</ul>
+</li>
+</ul>
+<p>你需要准备 SSH 密钥。在本地电脑上执行：</p>
+<pre><code class="language-bash">ssh-keygen -t ed25519
+</code></pre>
+<p>一路按回车。然后：</p>
+<pre><code class="language-bash">cat ~/.ssh/id_ed25519.pub
+</code></pre>
+<p>复制全部输出内容，粘贴到 Hetzner 的 SSH 密钥字段。跳过其他选项（卷、防火墙、备份等）。命名后创建，复制 IP 地址。</p>
+<h2>第二步：连接服务器</h2>
+<pre><code class="language-bash">ssh root@你的服务器IP
+</code></pre>
+<p>在指纹提示处输入 &quot;yes&quot;。连接成功。</p>
+<h2>第三步：更新系统</h2>
+<pre><code class="language-bash">apt-get update &amp;&amp; apt-get upgrade -y
+</code></pre>
+<h2>第四步：安装 Docker</h2>
+<pre><code class="language-bash">apt-get install -y git curl ca-certificates
+curl -fsSL https://get.docker.com | sh
+</code></pre>
+<p>验证安装：</p>
+<pre><code class="language-bash">docker --version
+docker compose version
+</code></pre>
+<h2>第五步：安全配置——用户与 SSH</h2>
+<p><strong>不要跳过此步骤。</strong> 以 root 身份运行存在风险。</p>
+<p><strong>5a. 创建用户</strong></p>
+<pre><code class="language-bash">adduser openclaw
+</code></pre>
+<p>设置密码，跳过姓名/电话等字段，最后按 Y 确认。</p>
+<p><strong>5b. 添加 sudo 和 Docker 权限</strong></p>
+<pre><code class="language-bash">usermod -aG sudo openclaw
+usermod -aG docker openclaw
+</code></pre>
+<p><strong>5c. 复制 SSH 密钥</strong></p>
+<pre><code class="language-bash">mkdir -p /home/openclaw/.ssh
+cp /root/.ssh/authorized_keys /home/openclaw/.ssh/
+chown -R openclaw:openclaw /home/openclaw/.ssh
+chmod 700 /home/openclaw/.ssh
+chmod 600 /home/openclaw/.ssh/authorized_keys
+</code></pre>
+<p><strong>5d. 测试（重要！）</strong></p>
+<p>新开一个终端标签页（保持 root 会话不要关）：</p>
+<pre><code class="language-bash">ssh openclaw@你的服务器IP
+</code></pre>
+<p>如果看到 <code>openclaw@...:~$</code> 说明成功。</p>
+<p><strong>5e. 锁定 root 登录</strong></p>
+<p>返回 root 终端：</p>
+<pre><code class="language-bash">echo &quot;PermitRootLogin no&quot; &gt;&gt; /etc/ssh/sshd_config
+echo &quot;PasswordAuthentication no&quot; &gt;&gt; /etc/ssh/sshd_config
+systemctl restart ssh
+</code></pre>
+<p><strong>5f. 验证</strong></p>
+<p>在另一个标签页：</p>
+<pre><code class="language-bash">ssh root@你的服务器IP
+</code></pre>
+<p>应该显示&quot;Permission denied&quot;。root 已锁定。此后只使用 openclaw 用户。</p>
+<h2>第六步：克隆仓库</h2>
+<p>以 openclaw 用户身份执行：</p>
+<pre><code class="language-bash">sudo apt-get update &amp;&amp; sudo apt-get upgrade -y
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+</code></pre>
+<h2>第七步：创建目录</h2>
+<pre><code class="language-bash">sudo mkdir -p /home/openclaw/.openclaw/workspace
+sudo chown -R openclaw:openclaw /home/openclaw/.openclaw
+</code></pre>
+<p>这些目录放在 Docker 外部，以便数据在重建时不会丢失。</p>
+<h2>第八步：环境变量</h2>
+<p><strong>8a. 生成两个密钥</strong></p>
+<p>执行以下命令两次，分别保存结果：</p>
+<pre><code class="language-bash">openssl rand -hex 32
+</code></pre>
+<p><strong>8b. 创建 .env 文件</strong></p>
+<pre><code class="language-bash">nano .env
+</code></pre>
+<p>粘贴以下内容（将占位符替换为你的密钥）：</p>
+<pre><code>OPENCLAW_IMAGE=openclaw:latest
+OPENCLAW_GATEWAY_TOKEN=此处粘贴第一个密钥
+OPENCLAW_GATEWAY_BIND=loopback
+OPENCLAW_GATEWAY_PORT=18789
+OPENCLAW_CONFIG_DIR=/home/openclaw/.openclaw
+OPENCLAW_WORKSPACE_DIR=/home/openclaw/.openclaw/workspace
+OPENCLAW_SECRET=此处粘贴第二个密钥
+XDG_CONFIG_HOME=/home/node/.openclaw
+</code></pre>
+<p>保存：Ctrl+X → Y → 回车。</p>
+<p><strong>8c. 设置权限</strong></p>
+<pre><code class="language-bash">chmod 600 .env
+</code></pre>
+<p><code>loopback</code> 表示网关只监听 127.0.0.1——对外网不可见。</p>
+<h2>第九步：编辑 docker-compose</h2>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (7 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>太酷了，谢谢！如果感兴趣的话可以看看这里：<a href="https://www.reddit.com/r/openclawsetup/comments/1r4uw0r/the_ultimate_openclaw_setup_guide/">https://www.reddit.com/r/openclawsetup/comments/1r4uw0r/the_ultimate_openclaw_setup_guide/</a></p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说得在理，任何有 shell 权限的代理确实都能看到自己的环境变量。</p>
+<p>不过这个配置有几点值得说明：</p>
+<ul>
+<li><code>.env</code> 文件并没有挂载到容器里。Docker 只在启动时读取它，然后把值传进去。代理本身碰不到这个文件。</li>
+<li>代理确实可以执行 <code>printenv</code> 看到网关令牌，这没错。</li>
+<li>但这个令牌只在同一台机器的 <code>127.0.0.1</code> 上有效。</li>
+</ul>
+<p>如果是团队或公开部署，那确实该用密钥管理服务。但如果是个人代理，跑在一台锁定的 VPS 上，只有你能通过 SSH 和 Telegram 访问，情况就不一样了。</p>
+<p>讨论得挺好，大家确实应该了解这些权衡取舍。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>它在 Dockerfile 里。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>您当前是否在 openclaw 仓库中？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>请确保您已克隆 openclaw 仓库。
+运行 <code>ls</code> 命令查看目录。
+如果看到 openclaw 文件夹，请运行 <code>cd openclaw</code>。
+同时请运行 <code>pwd</code> 查看当前所在目录。
+另外请运行 <code>git status</code> 检查文件是否被意外删除或修改。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>希望现在能正常工作了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我把它当每日简报助手来用。每小时它会从我列出的约20个AI相关subreddit中随机选一个，抓取过去24小时内的前5热帖，然后在Telegram上给我发简报。它还会每天扫描Hacker News的前5页。</p>
+<p>对于每条抓取到的帖子，它会告诉我：</p>
+<ul>
+<li>发生了什么事</li>
+<li>大家在讨论什么</li>
+<li>为什么重要</li>
+</ul>
+<p>以前我每天要花1-2小时手动刷这些内容，才能跟上AI和智能体领域的动态。这还没算GitHub上的酷项目、新论文、其他科技新闻、X上的信息流。现在这些时间全省下来了。我还打算把它用在更多场景上。</p>
+<p>而且因为我是通过Codex OAuth来用的，所以也不在乎token成本。</p>
+<p>除此之外，我还在用他们的completions和responses API做一些实验，也在玩他们的多智能体系统——给不同的智能体写系统提示词，尝试让多智能体协作跑起来。这些我都是在同一台机器上的另一台服务器里控制的。不过我不用它来写代码，写代码我主要用Codex和Claude。</p>
+<p>以后想多分享一些。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r9tv3d/how_i_set_up_openclaw_on_a_hetzner_vps_full_guide/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

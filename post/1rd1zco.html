@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了ClawPhone——给你的OpenClaw智能体配个真实手机号（支持Twilio语音通话和短信，无需外部语音识别/语音合成服务） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了ClawPhone——给你的OpenClaw智能体配个真实手机号（支持Twilio语音通话和短信，无需外部语音识别/语音合成服务）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点</h2>
+<ol>
+<li><p><strong>产品定位</strong>：clawphone 是一个开源的 Node.js 网关，让 OpenClaw 智能体拥有真实的电话号码，支持语音通话和短信功能。</p>
+</li>
+<li><p><strong>核心优势</strong>：相比官方方案，无需配置外部 STT/TTS 服务（如 OpenAI、ElevenLabs），仅用一个 Twilio 账号即可，大幅降低部署门槛。</p>
+</li>
+<li><p><strong>技术取舍</strong>：采用 Twilio 内置的 <code>&lt;Gather&gt;</code> 和 <code>&lt;Say&gt;</code> 功能处理语音识别与合成，牺牲约 1-2 秒响应延迟，换取更简洁的架构。</p>
+</li>
+<li><p><strong>功能特性</strong>：支持语音通话、短信（同步+异步双路径）、Webhook 签名验证、速率限制、优雅关闭、结构化日志及 Discord 通知，可独立运行或作为插件嵌入。</p>
+</li>
+<li><p><strong>快速部署</strong>：通过 npm 安装、配置环境变量、启动服务并映射公网地址，即可将 Twilio 号码的 Webhook 指向该服务完成对接。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>嘿，r/openclaw 的朋友们 👋</p>
+<p>如果你想像给手机联系人打电话或发短信一样联系你的 OpenClaw 智能体，我为此做了个工具。</p>
+<p><strong>clawphone</strong> 是一个开源的 Node.js 网关，能把 Twilio 电话号码直接连接到你的 OpenClaw 智能体——同时支持语音通话和短信。采用 MIT 许可证，可在 npm 上获取。</p>
+<hr>
+<p><strong>为什么不用官方插件 u/openclaw/voice-call？</strong></p>
+<p>官方插件很棒，但需要完整的 WebSocket 媒体流管道，还得额外配置语音识别和语音合成服务（OpenAI、ElevenLabs 等）。如果你只是想用手机打个电话给智能体，这套配置太麻烦了。</p>
+<p>clawphone 采用了不同的思路——它使用 Twilio 内置的 <code>&lt;Gather&gt;</code> 和 <code>&lt;Say&gt;</code> TwiML 指令，让 Twilio 自己处理语音识别和语音合成。你只需要一个 Twilio 账号，无需其他 API。</p>
+<p><strong>坦诚的取舍：</strong> 相比流式管道，响应延迟大约多 1-2 秒。但对于个人助手或家庭场景来说，完全不是问题。</p>
+<hr>
+<p><strong>功能特性：</strong></p>
+<p>📞 与 OpenClaw 智能体语音通话<br>💬 短信支持（快速同步路径 + 长回复异步兜底）<br>🔒 Twilio Webhook 签名验证<br>🚦 单号码速率限制<br>🔄 优雅关闭——不会切断正在通话的用户<br>📋 结构化 JSON 日志 + 可选 Discord 频道日志<br>🔌 可作为独立服务器运行（Node/PM2），或作为 OpenClaw 插件嵌入</p>
+<hr>
+<p><strong>快速上手：</strong></p>
+<pre><code class="language-bash">npm install @ranacseruet/clawphone
+cp .env.example .env  # 填入你的 Twilio 凭证和 OpenClaw 配置
+node server.mjs
+cloudflared tunnel --url http://localhost:8787
+# 将 Twilio 号码的 Webhook 指向 cloudflared 的 URL → 完成
+</code></pre>
+<p>如果你想作为插件嵌入 OpenClaw 运行，完整安装文档在仓库里。</p>
+<hr>
+<p>很想听听大家如何使用 OpenClaw，以及这个工具是否适合你的场景。非常欢迎功能建议和 bug 反馈——尤其是已经尝试过官方语音插件但遇到阻碍的朋友。</p>
+<p>🔗 GitHub：<a href="https://github.com/ranacseruet/clawphone">https://github.com/ranacseruet/clawphone</a></p>
+<p><em>AI 智能体打造，为你的 OpenClaw 智能体服务</em></p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>很高兴听到这个消息！也欢迎你在 GitHub 的 issue 追踪器上提交 bug 报告或功能建议。🙏</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>🙏</p>
+<p>这个表情符号通常表示&quot;双手合十&quot;，在中文语境下可以翻译或理解为：</p>
+<ul>
+<li><strong>祈祷</strong> / <strong>祈福</strong></li>
+<li><strong>感谢</strong> / <strong>感激</strong></li>
+<li><strong>拜托</strong> / <strong>求求了</strong></li>
+<li><strong>合十礼</strong>（表示尊敬或问候）</li>
+</ul>
+<p>具体含义需根据上下文判断。如果是单独使用，常表达一种恳切、感恩或祈求的态度。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rd1zco/i_built_clawphone_give_your_openclaw_agent_a_real/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

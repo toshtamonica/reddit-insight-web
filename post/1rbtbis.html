@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我打造了 ClawBrain——让你的 AI 智能体拥有真正记得住的记忆
+
+或者更口语化的版本：
+
+我做了个 ClawBrain，让 AI 智能体的记忆不再"金鱼脑" - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我打造了 ClawBrain——让你的 AI 智能体拥有真正记得住的记忆
+
+或者更口语化的版本：
+
+我做了个 ClawBrain，让 AI 智能体的记忆不再"金鱼脑"</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>ClawBrain 核心要点总结</h2>
+<ol>
+<li><p><strong>解决AI记忆痛点</strong>：为AI Agent提供持久化记忆能力，使其能够跨会话记住用户信息、学习偏好并逐步发展个性，避免&quot;金鱼式&quot;的短期记忆问题。</p>
+</li>
+<li><p><strong>极简部署体验</strong>：两行命令即可完成安装配置（<code>pip install</code> + <code>clawbrain setup</code>），默认SQLite零配置开箱即用，同时支持PostgreSQL和Redis扩展。</p>
+</li>
+<li><p><strong>丰富的记忆功能</strong>：提供用户画像、情绪与意图实时检测、6维动态个性特征、加密存储敏感信息、服务重启自动恢复记忆等完整能力。</p>
+</li>
+<li><p><strong>安全优先设计</strong>：通过完整安全审计，无遥测/外呼，Fernet加密保护密钥，CLI敏感操作警告，并配备详细威胁模型文档。</p>
+</li>
+<li><p><strong>开源开放生态</strong>：MIT协议开源，提供GitHub、PyPI、Clawhub多渠道访问，欢迎社区反馈与贡献。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>有没有发现，AI 智能体一重启就忘得一干二净？我受够了这点，于是做了 ClawBrain——一个即插即用的记忆系统，让你的 AI 智能体能记住用户、学习偏好、并逐渐培养个性。</p>
+<p>两行命令快速开始</p>
+<pre><code>pip install clawbrain[all]
+clawbrain setup
+</code></pre>
+<p>零配置。开箱即用 SQLite。搞定。</p>
+<p>它能给你什么</p>
+<pre><code class="language-python">from clawbrain import Brain
+
+brain = Brain()
+
+# 一次调用，获取个性化回复所需的全部信息
+context = brain.get_full_context(
+    session_key=&quot;session_123&quot;,
+    user_id=&quot;user_456&quot;,
+    agent_id=&quot;assistant&quot;,
+    message=&quot;Hey, how&#39;s it going?&quot;
+)
+# 返回：用户画像、情绪状态、意图识别、相关记忆、个性引导
+</code></pre>
+<p>你的智能体现在可以：</p>
+<ul>
+<li><strong>记住</strong> 跨重启的对话历史</li>
+<li><strong>学习</strong> 每位用户的交流风格和兴趣</li>
+<li><strong>实时检测</strong> 情绪与意图</li>
+<li><strong>培养个性</strong> 通过 6 个动态演变的特质维度</li>
+<li><strong>安全存储</strong> 敏感信息（API 密钥、凭证）采用 Fernet 加密</li>
+<li><strong>自动刷新</strong> 服务重启时通过钩子自动恢复记忆</li>
+</ul>
+<p>为什么做这个项目
+我之前做的聊天机器人，聊起来像条金鱼——每次会话都是白板一块。ClawBrain 解决了这个问题，你的智能体真的能随着时间推移了解用户。</p>
+<p>安全性
+通过了完整的安全审计，所有问题均已修复：</p>
+<ul>
+<li>无遥测、无回连、无外部调用</li>
+<li>核心安装无需 sudo 权限</li>
+<li>加密密钥管理，CLI 暴露敏感数据前会发出警告</li>
+<li>完整的 SECURITY.md 含威胁模型</li>
+</ul>
+<p>后端支持
+SQLite（默认，零配置）| PostgreSQL（生产环境）| Redis（可选缓存）</p>
+<p>相关链接</p>
+<ul>
+<li><strong>GitHub</strong>：<a href="https://github.com/clawcolab/clawbrain">https://github.com/clawcolab/clawbrain</a></li>
+<li><strong>PyPI</strong>：<a href="https://pypi.org/project/clawbrain/">https://pypi.org/project/clawbrain/</a></li>
+<li><strong>Clawhub</strong>：<a href="https://clawhub.ai/clawcolab/clawbrain">https://clawhub.ai/clawcolab/clawbrain</a></li>
+</ul>
+<p>MIT 协议开源。欢迎反馈和提交 PR！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>想一起搭建它吗？ / 想一起动手做吗？</p>
+<p>（根据上下文，&quot;build&quot; 可译为&quot;搭建&quot;、&quot;构建&quot;、&quot;动手做&quot;等，表达合作参与的邀请。）</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>如果你有多个 API 密钥，可以试试 warpmode.io。如果你想找点乐子，它也挺有意思的。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>笑死我了 / 哈哈哈哈哈</p>
+<p>（&quot;LOL&quot; 是 &quot;laughing out loud&quot; 的缩写，中文网络语境中常译为&quot;笑死我了&quot;或直接保留原用法）</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈……什么鬼！！！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实如此。实际上，我就在 Claw/Clawd Bot 刚推出后不久做了这个。合并版本的下载量已经超过两千次了。不过，如果能有个官方版本那肯定更好。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实如此。我也对目前没有一个像样的解决方案感到沮丧。基于文件的系统实在太过时了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这想法不错。我的想法主要是实现一个可搜索的工具，并随着时间的推移逐步建立起定义关系。通过搜索功能，我们可以减少需要解析的 token 数量，而不必读取整个文件。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>是的，一个基础的知识图谱，这样就不会让人感到过于复杂，但同时又切实可用。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>非常好 / 真的很不错 / 太棒了</p>
+<p>（根据语境选择最合适的表达）</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>可能偶尔需要提醒一下，比如告诉对方&quot;你已经掌握这些知识了，请仔细看看&quot;。目前对我来说效果还不错，希望也能解决你的问题。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rbtbis/i_built_clawbrain_give_your_ai_agent_a_memory/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

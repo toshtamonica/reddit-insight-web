@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个工具，让我的 OpenClaw 无需泄露凭据就能访问 6754 个 API。来喷我！/ 求狠批！/ 轻点骂！ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个工具，让我的 OpenClaw 无需泄露凭据就能访问 6754 个 API。来喷我！/ 求狠批！/ 轻点骂！</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+<ol>
+<li><p><strong>解决AI工具凭证泄露问题</strong>：开发者针对OpenClaw等AI代理工具存在凭证泄露风险，构建了一个代理解决方案，使AI无需直接接触真实凭证即可调用API。</p>
+</li>
+<li><p><strong>工作原理</strong>：通过替换CURL/fetch()为keychains工具，使用占位符（如{{OAUTH2_ACCESS_TOKEN}}）代替真实凭证，经用户人脸/密码验证批准后，由安全服务器代理完成请求。</p>
+</li>
+<li><p><strong>核心安全机制</strong>：采用SSH密钥对认证、状态指纹交换、分级权限控制（可针对机器/服务商/子任务撤销），并提供完整审计日志，杜绝提示词注入导致的凭证窃取。</p>
+</li>
+<li><p><strong>产品形态</strong>：已上线keychains.dev，支持6754个API提供商，提供CLI、TypeScript SDK和Python SDK三种使用方式。</p>
+</li>
+<li><p><strong>开发者寻求反馈</strong>：作者希望了解该工具对更广泛用户群体的价值，邀请社区提出意见和改进建议。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>我很喜欢我的 OpenClaw 机器人，但最近频繁的凭证泄露问题让我有点担忧。</p>
+<p>作为开发者，我决定自己搭建一个解决方案——至少我自己能用——通过代理把请求转发到安全服务器，这样 OpenClaw 系统里根本不需要存储任何凭证。</p>
+<p>使用起来非常简单：</p>
+<p><strong>1. 直接替代 CURL 和 fetch()</strong></p>
+<p>不用 CURL 直接调用 API（或者在程序里用 fetch()），而是让 OpenClaw 使用 <code>npx -y keychains curl</code> 或 <code>keychainsFetch()</code>。然后告诉它用占位符替换需要凭证的地方，比如用 <code>{{OAUTH2_ACCESS_TOKEN}}</code> 代替真实的令牌。</p>
+<p><strong>2. 智能体发起请求，获取审批链接</strong></p>
+<p><code>npx -y keychains curl</code> 会创建 SSH 密钥对来认证你的 OpenClaw 机器，交换状态化的指纹和权限密钥，然后让你的智能体发送一个链接给你，用于审批凭证的使用。</p>
+<p><strong>3. 你点击链接，通过 FaceID/Passkey 批准请求</strong></p>
+<p>首次使用时，你需要通过 OAuth 向服务商认证，或者在 keychains.dev 服务器上输入 API 密钥。</p>
+<p>之后只需刷脸（证明你是真人）然后点击【批准】即可。</p>
+<p><strong>4. 你的智能体重放命令，搞定！</strong></p>
+<p>凭证不会传给 OpenClaw → 彻底杜绝提示词注入窃取的风险。</p>
+<p>你完全掌控一切，全程留痕审计。</p>
+<p>可以随时撤销权限：整台机器、特定服务商、或某个子智能体/任务。</p>
+<p>很想听听大家的反馈。</p>
+<p>项目托管在 keychains.dev，支持所有兼容 CURL 的 API，所以覆盖面很广。目前数据库里有 6754 家服务商。</p>
+<p>提供 CLI、TypeScript SDK 和 Python SDK。</p>
+<p>这对大家有帮助吗？有什么想法？你们觉得怎么样？</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1r8byjx/built_a_tool_to_make_my_openclaw_access_6754_apis/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
