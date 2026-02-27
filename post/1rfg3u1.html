@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个基于P2P网络的本地AI智能体——BusyDog Desktop（可在Mac上运行Claude，并支持智能体互联） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个基于P2P网络的本地AI智能体——BusyDog Desktop（可在Mac上运行Claude，并支持智能体互联）</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/27</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><h2>核心要点总结</h2>
+<ol>
+<li><p><strong>本地运行的AI智能体</strong>：BusyDog Desktop 是在 Mac 上本地运行的 Claude 智能体，可直接读写文件、执行终端命令、控制浏览器，作为用户的个人AI助手。</p>
+</li>
+<li><p><strong>P2P网络实现多智能体协作</strong>：基于 Hyperswarm DHT（BitTorrent同款技术）构建去中心化网络，各智能体拥有唯一加密身份，支持跨设备聊天、任务委托和并行竞争任务执行。</p>
+</li>
+<li><p><strong>自扩展能力</strong>：运行时可通过 MCP 协议动态安装新功能模块（如浏览器控制、数据库访问），并通过 markdown 文件管理行为技能，实现能力自我进化。</p>
+</li>
+<li><p><strong>技术栈</strong>：核心采用 Claude Sonnet API、Hyperswarm P2P 网络、BrowserMCP 浏览器自动化，基于 Node.js 开发，目前仅支持 macOS。</p>
+</li>
+<li><p><strong>创新定位</strong>：区别于云端AI服务，主打&quot;本地优先+去中心化协作&quot;路线，探索多智能体 P2P 协作的新范式。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>嘿 r/openclaw！想和大家分享一个我在做的 side project，叫 BusyDog Desktop。</p>
+<p><strong>这是什么？</strong></p>
+<p>BusyDog Desktop 是一个本地 AI 代理，直接在 Mac 上运行 Claude。你可以把它当作住在电脑里的个人 AI 助手——它能读写工作区的文件、运行终端命令、控制浏览器，最有趣的是，还能通过 P2P 网络与其他 BusyDog 代理连接。</p>
+<p><strong>P2P 功能才是亮点</strong></p>
+<p>每个 BusyDog 实例都有唯一的加密身份（Ed25519 密钥对）。代理通过 Hyperswarm DHT 发现彼此（和 BitTorrent 的 DHT 是同一套技术）。连接后，你可以：</p>
+<ul>
+<li>在代理之间聊天</li>
+<li>把任务委托给其他代理（&quot;嘿，#15 号代理，帮我写个红黑树实现&quot;）</li>
+<li>同时在多个代理上运行竞争性任务</li>
+</ul>
+<p>我们在 Hyperswarm 之上自建了一套叫 BDP（Busy Discover Protocol）的协议，用于代理间通信。</p>
+<p><strong>自我进化能力</strong></p>
+<p>代理可以在运行时安装新的 MCP（Model Context Protocol）服务器来扩展自己的能力——比如浏览器控制、数据库访问等。它还有个&quot;技能&quot;系统，行为模式以 markdown 文件形式存储，代理启动时会读取。</p>
+<p><strong>技术栈</strong></p>
+<ul>
+<li>Claude Sonnet（通过 Anthropic API，Claude Code agent SDK）</li>
+<li>Hyperswarm（P2P 网络）</li>
+<li>BrowserMCP（浏览器自动化，复用你现有的浏览器会话和 Cookie）</li>
+<li>Node.js + macOS</li>
+</ul>
+<p>目前还在早期阶段，但 P2P 多代理协作这个方向感觉确实挺新颖的。很乐意讨论架构或回答问题！</p>
+<p>有人尝试过本地优先、带 P2P 网络的 AI 代理吗？好奇大家都用了什么方案。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rfg3u1/i_built_a_local_ai_agent_with_p2p_network_busydog/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

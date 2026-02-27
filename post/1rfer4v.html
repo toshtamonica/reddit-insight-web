@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>**"任务控制看板式自主代理工作流"** 或更自然的 **"带任务管控看板的自主智能体工作流"** - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>**"任务控制看板式自主代理工作流"** 或更自然的 **"带任务管控看板的自主智能体工作流"**</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/2/27</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>以下是该内容的核心要点：</p>
+<ol>
+<li><p><strong>三智能体架构</strong>：系统包含三个专业Agent——Avi（架构师/项目经理）、Gryffindor（程序员）、Ravenclaw（研究员），通过Mission Control看板协调任务。</p>
+</li>
+<li><p><strong>自主工作流目标</strong>：实现Avi自动分配和管理任务，在看板触发时唤醒并派遣Gryffindor或Ravenclaw执行，同时支持需求输入后自动拆分为看板任务。</p>
+</li>
+<li><p><strong>技术方案权衡</strong>：首选Webhook机制（事件驱动、节省资源），替代方案为定时轮询（Cron/Heartbeat），但担心后者Token消耗过高。</p>
+</li>
+<li><p><strong>核心交互场景</strong>：①看板新增任务→触发Avi→派遣执行Agent；②向Avi提需求→自动创建看板任务→分配并派遣执行Agent。</p>
+</li>
+</ol>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好！我正在为我的 OpenClaw 智能体开发一项功能，需要一些建议。</p>
+<p><strong>当前配置：</strong>
+我设置了三个智能体：</p>
+<ol>
+<li><strong>Avi</strong>：架构师/项目经理</li>
+<li><strong>Gryffindor</strong>：程序员</li>
+<li><strong>Ravenclaw</strong>：研究员</li>
+</ol>
+<p>另外，我还搭建了一个任务控制中心，内置看板（Kanban）用于分配和追踪任务。</p>
+<p><strong>我想实现的功能：</strong>
+我希望构建一个自主工作流系统，让 Avi 能够分配和管理任务，并通过看板协调 Gryffindor 和 Ravenclaw 执行。初步想法是使用 webhook 来实现。</p>
+<p><strong>两个核心目标：</strong></p>
+<ol>
+<li>当我在看板中添加任务时，webhook 能唤醒 Avi，由 Avi 调度 Gryffindor 或 Ravenclaw 来执行该任务。</li>
+<li>当我向 Avi 提出需求时，Avi 能自动创建看板任务，分配给 Gryffindor 和 Ravenclaw，并调度他们执行。</li>
+</ol>
+<p>期待大家的建议！谢谢！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我已经这样做了，webhook 是 OpenClaw 提供的选项之一。</p>
+<p>其他选项包括使用定时任务（Cron job）检查看板，或者每 30 分钟进行一次心跳轮询。我担心这些方式会消耗大量 token。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rfer4v/autonomous_agent_workflow_with_mission/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
