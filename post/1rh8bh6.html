@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我们为 OpenClaw 构建了一个成本感知的 LLM 路由层，API 费用降低 60–80% - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我们为 OpenClaw 构建了一个成本感知的 LLM 路由层，API 费用降低 60–80%</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/3/1</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 通过轻量级KNN分类器实现语义路由，将请求自动分配至budget/balanced/premium三档模型
+• 无需改写提示词或复杂规则，仅基于语义相似度实时分类，降低API成本60-80%
+• 以本地代理形式作为OpenClaw技能插件，现有管道完全兼容，通过127.0.0.1:8765端点调用
+• 支持Google、Anthropic、OpenAI三家提供商，可单厂商内分层或跨厂商多模式路由
+• 响应包含完整成本透明度字段（_orkestra.cost、_orkestra.savings_percent）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>架构的模块化程度足够高，在模型调用层进行实验感觉很自然，不会显得 hacky，这让原型设计变得简单直接。</p>
+<p>于是我们构建了一个小型路由层，置于 OpenClaw 内部的模型调用之前，决定每个请求应由哪个层级处理。当提示词传入时，先进行嵌入，再通过一个轻量级的 KNN 分类器——该分类器基于已标注的历史工作负载训练而成。根据语义相似度，路由器将其归类为 budget、balanced 或 premium，并相应转发调用。</p>
+<p>没有提示词重写，也没有复杂的规则树——仅在调用时进行语义分类。实际运行中，这将我们的 API 成本降低了约 60–80%，主要原因是简单的提示词不再默认路由到最昂贵的模型。</p>
+<p>它通过本地代理以 OpenClaw skill 的形式接入，现有流水线完全不受影响。Agent 通过 bash/curl 调用 127.0.0.1:8765 上的 OpenAI 兼容端点，响应中包含完整的成本透明度（_orkestra.cost、_orkestra.savings_percent）。</p>
+<p>支持的提供商：Google（Gemini）、Anthropic（Claude）、OpenAI——可在每个提供商内部跨 budget/balanced/premium 层级路由，也可在多提供商模式下跨全部三家进行路由。</p>
+<p>仓库及 OpenClaw 集成：github.com/imperativelabs/orkestra → 详见 integrations/openclaw/ 目录获取 skill 文件、代理及配置示例。</p>
+<p>好奇在座的各位在 OpenClaw 中是如何考虑成本控制的。你们在用静态分层、基于置信度的降级、语义路由，还是完全不同的方案？很期待交流一下不同的思路。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rh8bh6/we_built_a_costaware_llm_routing_layer_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

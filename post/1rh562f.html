@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开源本地 OSINT 工具：航班追踪、新闻抓取与实时告警三合一 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>开源本地 OSINT 工具：航班追踪、新闻抓取与实时告警三合一</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/3/1</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 开源OSINT工具Clawdwatch实现本地化实时追踪航班、抓取新闻并发送警报，无需账户即可基础使用
+• 核心功能包括：实时追踪中东航班、抓取Al Jazeera等新闻源、监测北约军机呼号、识别紧急应答代码（7700/7600/7500）
+• 技术架构基于Node.js CLI，数据来源于OpenSky Network等免费API，Telegram警报需通过BotFather配置
+• 扩展功能（需API密钥）：Twitter/X监控、Sentinel Hub卫星图像、AIS船舶追踪
+• 开发动机：解决官方信息与媒体报道的滞后性，整合分散的公开数据源以获取冲突实时情报</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>行，搞了有一段时间了，发出来分享一下。</p>
+<p>鉴于目前美国和伊朗之间的局势，我实在是刷推特刷烦了，看CNN又总是慢半拍。所以就自己动手搞了个东西。</p>
+<p>Clawdwatch 从多个来源拉取实时数据，让你看到真正在发生什么：</p>
+<p><strong>目前的功能：</strong>
+刚跑了一下，得到这些：
+• 实时追踪中东上空 204 架航班
+• Al Jazeera 实时新闻（刚刚抢在大部分美国媒体之前抓到&quot;伊朗袭击巴林美军基地&quot;的消息）
+• 军机识别：监控 NATO 呼号并标记
+• 紧急代码监听：飞机广播 7700（紧急情况）、7600（通讯故障）或 7500（劫机）时立刻通知</p>
+<p><strong>工作原理：</strong>
+这是个命令行工具。clone 下来，npm install，就开始拉数据。基础功能不需要账号，航班数据来自 OpenSky Network（免费），新闻从 Al Jazeera 和 AP 抓取。</p>
+<p>想要 Telegram 推送？比如军机进入空域或者有异常情况时手机震动，用 BotFather 花 5 分钟就能配好。</p>
+<p><strong>已做好但需要 API key 的功能：</strong>
+• Twitter/X 监控（需要 bearer token）
+• Sentinel Hub 卫星影像
+• AIS 船舶追踪（监控油轮和海军动向）</p>
+<p><strong>为什么做这玩意：</strong>
+说实话？因为每次冲突都是老样子——政府一套说法，新闻慢两小时，推特上一半是机器人带节奏。但原始数据其实是有的。航班追踪器比任何报道都先发现伊朗导弹发射，船舶观察者看到油轮失联也比新闻早。</p>
+<p>我只是把这些东西整合到一个工具里。</p>
+<p><strong>上手：</strong></p>
+<pre><code>git clone https://github.com/cloudweaver/clawdwatch.git
+cd clawdwatch
+npm install
+npm run watch
+</code></pre>
+<p>立刻开始拉实时数据。默认中东地区，可以改成欧洲、美国或亚洲。</p>
+<p>GitHub: <a href="https://github.com/cloudweaver/clawdwatch">https://github.com/cloudweaver/clawdwatch</a></p>
+<p>还在加功能。还想加什么欢迎提。</p>
+<p>🦀</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rh562f/built_an_opensource_osint_tool_that_tracks/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
