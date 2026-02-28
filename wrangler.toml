@@ -2,9 +2,6 @@ name = "reddit-insight-web"
 account_id = "4eec8c98415d8604cb0e624f3584fbd3"
 compatibility_date = "2026-02-26"
 
-# 静态资源目录
-[assets]
-directory = "."
-
-# 或者指定 Worker 入口（如果需要）
-# main = "src/index.ts"
+# Cloudflare Pages 静态网站配置
+[site]
+bucket = "."
