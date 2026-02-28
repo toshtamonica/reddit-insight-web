@@ -194,13 +194,13 @@ class Translator {
     // 翻译标题
     const rawTitleZh = await this.translateWithKimi(post.title, 'title');
     const titleZh = this.cleanTitle(rawTitleZh);  // 清理标题格式
-    await this.delay(500);
+    await this.delay(10000);  // 10秒延迟
 
     // 翻译正文
     const bodyZh = post.body 
       ? await this.translateWithKimi(post.body, 'content')
       : '';
-    await this.delay(500);
+    await this.delay(10000);  // 10秒延迟
 
     // 翻译OP回复
     const repliesZh = [];
@@ -212,7 +212,7 @@ class Translator {
         score: reply.score,
         depth: reply.depth
       });
-      await this.delay(300);
+      await this.delay(10000);  // 10秒延迟
     }
 
     // 生成摘要
