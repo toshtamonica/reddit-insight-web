@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我在树莓派4B上用PicoClaw部署了一个机器人程序 - Reddit Insight</title>
+  <title>我用 picoclaw 在树莓派 4B 上部署了一个机器人 - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>我在树莓派4B上用PicoClaw部署了一个机器人程序</h1>
+        <h1>我用 picoclaw 在树莓派 4B 上部署了一个机器人</h1>
         <div class="post-meta">
-          <span>👤 undefined</span> | <span>📅 2026/2/27</span>
+          <span>👤 undefined</span> | <span>📅 2026/2/28</span>
         </div>
       </header>
       
@@ -56,15 +56,15 @@
           <h2>📋 内容摘要</h2>
           <div class="summary-box"><p>以下是这段内容的3-5个核心要点：</p>
 <ol>
-<li><p><strong>技术选型</strong>：作者在尝试多种工具（openclaw、zclaw、zeroclaw）后，最终选择 <strong>picoclaw</strong> 作为部署方案，因其易于维护，使机器人项目得以持续运行。</p>
+<li><p><strong>选择picoclaw作为部署方案</strong> — 作者在对比了openclaw、picoclaw、zclaw、zeroclaw等多个工具后，认为picoclaw最容易维护，是首次让其机器人项目能持续运行到第二天的解决方案。</p>
 </li>
-<li><p><strong>硬件环境</strong>：机器人在 <strong>树莓派4B</strong>（8GB RAM + 64GB microSD）上运行，并使用USB存储Ollama模型作为备用方案。</p>
+<li><p><strong>硬件配置环境</strong> — 在树莓派4B（8GB内存）上部署，使用64GB microSD卡，并通过USB外接存储来存放Ollama模型作为备用方案。</p>
 </li>
-<li><p><strong>权限设置</strong>：由于运行在隔离环境中，作者给予了机器人<strong>无限制的命令执行权限</strong>。</p>
+<li><p><strong>赋予高度权限</strong> — 由于运行环境完全隔离，作者给予了机器人无限制的命令执行权限。</p>
 </li>
-<li><p><strong>实际功能</strong>：机器人已实现多项自主操作，包括<strong>自动创建GitHub仓库</strong>、<strong>Telegram频道广播</strong>，以及<strong>维护静态GitHub页面</strong>。</p>
+<li><p><strong>已实现的功能</strong> — 机器人能够自主创建GitHub仓库、在Telegram频道主动发送广播，以及维护静态GitHub页面。</p>
 </li>
-<li><p><strong>项目展示</strong>：机器人的静态网站已上线，地址为 <a href="https://r3ggie.github.io/">https://r3ggie.github.io/</a></p>
+<li><p><strong>项目展示</strong> — 提供了机器人的静态网站链接（<a href="https://r3ggie.github.io/%EF%BC%89%E4%BE%9B%E8%AE%BF%E9%97%AE%E6%9F%A5%E7%9C%8B%E3%80%82">https://r3ggie.github.io/）供访问查看。</a></p>
 </li>
 </ol>
 </div>
@@ -74,11 +74,11 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>在折腾了 openclaw、picoclaw、zclaw 和 zeroclaw 之后，我发现最容易维护的是 picoclaw。这个封装工具第一次让我的机器人得以&quot;存活&quot;到第二天。</p>
-<p>我把它跑在一台树莓派 4B 上，配置是 8GB 内存、64GB 的 microSD 卡，外加一个 U 盘（用来存放 ollama 模型，作为最后的备用方案）。</p>
-<p>由于它运行在隔离环境中，我赋予了它执行所有可能命令的完全权限。</p>
-<p>到目前为止，它已经成功在 GitHub 上创建了自己的仓库，还能在 Telegram 频道上主动发送广播，以及维护一个静态的 GitHub 页面。</p>
-<p>来看看它的静态站点：<a href="https://r3ggie.github.io/">https://r3ggie.github.io/</a></p>
+          <div class="content-box"><p>在折腾了 openclaw、picoclaw、zclaw 和 zeroclaw 之后，我发现最容易维护的是 picoclaw。这是第一次，这个包装器让我的机器人能够&quot;活到&quot;第二天。</p>
+<p>我一直在树莓派 4B 上运行它，配置是 8GB 内存、64GB 的 microSD 卡，外加一个 U 盘（用来存放 ollama 模型，作为最后的备用方案）。</p>
+<p>由于它运行在隔离环境中，我赋予了它执行所有可能命令的无限制权限。</p>
+<p>到目前为止，它已经能够在 GitHub 上创建自己的仓库，在 Telegram 频道上主动发送广播，还搭建了一个静态的 GitHub 页面。</p>
+<p>来看看它的静态网站：<a href="https://r3ggie.github.io/">https://r3ggie.github.io/</a></p>
 </div>
         </section>
         

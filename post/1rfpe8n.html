@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我开发了一个 CLI 工具，一条命令即可迁移 OpenClaw 代理状态到不同服务器（Node + Python） - Reddit Insight</title>
+  <title>我开发了一个 CLI 工具，一条命令就能在服务器之间迁移 OpenClaw 代理状态（Node + Python） - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>我开发了一个 CLI 工具，一条命令即可迁移 OpenClaw 代理状态到不同服务器（Node + Python）</h1>
+        <h1>我开发了一个 CLI 工具，一条命令就能在服务器之间迁移 OpenClaw 代理状态（Node + Python）</h1>
         <div class="post-meta">
-          <span>👤 undefined</span> | <span>📅 2026/2/27</span>
+          <span>👤 undefined</span> | <span>📅 2026/2/28</span>
         </div>
       </header>
       
@@ -54,17 +54,17 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><p>以下是该内容的3-5个核心要点：</p>
+          <div class="summary-box"><p>以下是 BundleClaw 的 3-5 个核心要点：</p>
 <ol>
-<li><p><strong>解决痛点</strong>：针对OpenClaw代理在服务器间迁移时需手动复制配置、记忆和凭证的繁琐问题，开发了BundleClaw CLI工具，实现一键迁移。</p>
+<li><p><strong>一键迁移 OpenClaw 智能体状态</strong> — 解决手动复制配置、记忆、凭证的繁琐问题，通过一条命令完成跨服务器迁移。</p>
 </li>
-<li><p><strong>双运行时支持</strong>：提供Node（npx）和Python（uvx）两种运行方式，两种CLI生成的加密包完全互通。</p>
+<li><p><strong>双运行时支持</strong> — 同时提供 Node.js（npx）和 Python（uvx）版本，两种 CLI 生成的加密包完全互通。</p>
 </li>
-<li><p><strong>安全机制</strong>：采用AES-256-GCM加密、SHA-256校验，支持自动备份，确保迁移过程安全可靠。</p>
+<li><p><strong>安全可靠的传输机制</strong> — 采用 AES-256-GCM 加密、SHA-256 校验，支持自动备份，确保数据安全完整。</p>
 </li>
-<li><p><strong>灵活导出</strong>：提供三种导出配置——完整迁移、排除凭证、仅迁移记忆，满足不同场景需求。</p>
+<li><p><strong>灵活的导出配置</strong> — 提供三种导出模式（完整/无凭证/仅记忆），满足不同场景的安全与隐私需求。</p>
 </li>
-<li><p><strong>完整工作流</strong>：涵盖导出（export）、传输（transfer）、部署（bootstrap）三个命令，内置验证和健康检查，避免文件遗漏。</p>
+<li><p><strong>全流程自动化</strong> — 集成导出、SCP 传输、目标机引导部署及健康检查，避免遗漏文件，实现无缝切换。</p>
 </li>
 </ol>
 </div>
@@ -74,20 +74,19 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>受够了在切换机器时手动复制 OpenClaw 的配置、内存和凭证，所以我开发了 BundleClaw。</p>
-<p>它能将你的完整 agent 状态导出为加密的 .bcz 压缩包，通过 SCP 传输到目标机器，并在新机器上完成初始化，同时附带验证和健康检查。一条命令搞定，绝不遗漏任何文件。</p>
+          <div class="content-box"><p>每次需要在不同机器间切换时，手动复制 OpenClaw 的配置、内存状态和凭据实在太麻烦了，于是我做了 BundleClaw。</p>
+<p>它能将你的完整 Agent 状态导出为加密的 .bcz 压缩包，通过 SCP 传输到目标机器，并完成新机器的初始化部署，全程带验证和健康检查。一条流程走到底，不会漏掉任何文件。</p>
 <ul>
-<li>npx bundleclaw 或 uvx bundleclaw —— 任选一个运行时</li>
-<li>两个 CLI 生成的压缩包完全一致（完全互通）</li>
+<li>用 npx bundleclaw 或 uvx bundleclaw 都行，随你喜欢选运行环境</li>
+<li>两个 CLI 生成的包完全一致，完全互通</li>
 <li>AES-256-GCM 加密、SHA-256 校验、自动备份</li>
-<li>导出模式可选：完整版 / 去除凭证 / 仅内存</li>
+<li>三种导出模式：完整导出 / 不含凭据 / 仅内存状态</li>
 </ul>
-<pre><code class="language-bash">bundleclaw export --source ~/.openclaw --encrypt-pass &#39;pass&#39; --out agent.bcz
+<pre><code>bundleclaw export --source ~/.openclaw --encrypt-pass &#39;pass&#39; --out agent.bcz
 bundleclaw transfer --bundle agent.bcz --to user@host:/tmp/agent.bcz
 bundleclaw bootstrap --bundle /tmp/agent.bcz --encrypt-pass &#39;pass&#39; --target ~/.openclaw
 </code></pre>
-<p>欢迎反馈！
-<a href="https://preview.redd.it/7lra5bxf5xlg1.jpg?width=1690&format=pjpg&auto=webp&s=033caf3e513a553077d3797ad61e5bb53265aa64">图片预览</a></p>
+<p>欢迎反馈！</p>
 </div>
         </section>
         
