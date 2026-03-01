@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我让 OpenClaw 代理使用我的 API 密钥，在零人工干预的情况下运行了整整 24 小时的冷启动外联，这是完整的技术栈和提示词。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我让 OpenClaw 代理使用我的 API 密钥，在零人工干预的情况下运行了整整 24 小时的冷启动外联，这是完整的技术栈和提示词。</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/3/1</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 实验设置：让OpenClaw AI代理在零人工干预下自主运行24小时冷邮件外展，涵盖潜在客户挖掘、筛选、个性化邮件撰写和发送全流程
+• 技术栈组合：OpenClaw框架 + Zapier MCP（连接Gmail/Sheets）+ Brave Search API（网络调研）+ Gemini/OpenRouter（大上下文推理）
+• 三阶段执行循环：搜索抓取目标公司信息 → 按规则筛选合格线索 → 撰写个性化邮件并自动发送
+• 关键成功因素：通过严格的系统提示词设定约束条件，防止AI产生幻觉或发送垃圾邮件
+• 核心前提：需预先配置完整的API权限和集成环境，才能实现真正的无人值守自动化运营</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我想看看，如果把AI代理的&quot;训练轮&quot;拆掉，让它对真实的营销运营拥有完全的读写权限，会发生什么。</p>
+<p>24小时内，我彻底离开键盘，让一个自主运行的OpenClaw代理全权负责潜客开发、资质筛选、超个性化冷邮件撰写和内容排期。零监督。零人工审批。</p>
+<p>结果居然成功了，但搭建环境需要一套非常特定的技术栈，才能防止它产生幻觉或发送垃圾邮件。</p>
+<p>技术栈（&quot;手脚&quot;与&quot;大脑&quot;）
+代理框架：OpenClaw（负责自主循环和推理）
+执行/集成：Zapier MCP（模型上下文协议）。这让代理原生接入Gmail、Google表格和社媒排期工具
+&quot;眼睛&quot;（调研）：Brave搜索API。代理用它主动查询网页、阅读公司&quot;关于我们&quot;页面、识别痛点
+大脑：Gemini/OpenRouter（在资质筛选阶段处理超长上下文窗口）</p>
+<p>三步执行循环
+搜索与抓取：代理用Brave查询特定类型的公司
+资质筛选：将抓取的数据与严格规则交叉验证（如公司规模、特定细分信号）。通过后，通过Zapier拉取联系人信息并记入表格
+执行：撰写高度个性化的邮件，引用在对方网站上找到的具体细节，然后触发Zapier Gmail集成发送</p>
+<p>主系统提示词
+让代理自主运行而不搞砸事情，关键全在于约束。以下是我注入代理的提示词蓝图：</p>
+<p>[ 你是一位精英级自主增长营销代理。你的目标是在未来24小时内无人干预的情况下，全权负责我的潜客开发和内容营销运营。
+以下是我的业务背景：[插入产品、目标受众和独特价值主张]。
+第一阶段：潜客开发：使用Brave搜索工具寻找[Niche]领域的公司。根据以下规则进行资质筛选：[规则1]、[规则2]。所有合格潜客通过Zapier记入指定Google表格。
+第二阶段：外联：针对每个合格潜客，撰写一封超个性化的冷邮件。必须引用通过搜索在对方网站上找到的一个具体细节。使用Zapier Gmail集成发送。
+第三阶段：内容：生成[X]条关于[Topic]的社交帖子，匹配我的语气。搭配视觉素材，通过Zapier排期。
+遇到错误时，用替代搜索词重试。24小时结束时提供完整总结报告。 ]</p>
+<p>开发者启示
+最大的瓶颈已经不是大模型的推理能力了，而是速率限制，以及如何让集成干净利落地触发而不超时。但看到代理在我睡觉时独立调研一家公司、判断它是优质匹配、并发送一封定制邮件，这感觉太疯狂了。</p>
+<p>有人试过把真实的邮件凭证交给代理吗？你们设置了什么防护措施防止它失控？</p>
+<p>这是完整的架构和提示词拆解，如果你想自己尝试的话——</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (5 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>直接用 Python 脚本原生调用 API 绝对是生产级的做法。我这里用 Zapier MCP 纯粹是为了快速验证概念，先确认 agent 能不能在超时前跑完推理循环。你那边发私信用的什么技术栈？是 Playwright/Browser-use 还是直接调 API？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我编辑了帖子，更新了提示词
+谢谢</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>修复方案是强制让 agent 使用严格的框架（例如：Hook → 从对方网站抓取的一个具体痛点 → 软性 CTA），并在上下文窗口中喂给它几封成功的人工邮件作为 few-shot 示例。这绝对是当前最该重点迭代的方向。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>由于这只是一个严格的24小时概念验证，仅用于测试自主循环，因此预约成功的样本量仍然较小。真正的突破在于规模——与我手动操作的方式相比。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>快速提示：我最初遇到 Zapier MCP 在处理较大搜索查询时超时的问题，因此建议将 Brave Search 的提示词保持高度具体。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rhf0dy/i_gave_an_openclaw_agent_my_api_keys_and_let_it/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

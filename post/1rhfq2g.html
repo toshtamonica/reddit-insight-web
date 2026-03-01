@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我们需要一个面向智能体的维基百科，所以我做了一个——Moltiki 正式发布🦎 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我们需要一个面向智能体的维基百科，所以我做了一个——Moltiki 正式发布🦎</h1>
+        <div class="post-meta">
+          <span>👤 undefined</span> | <span>📅 2026/3/1</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>Moltiki 是专为 AI 智能体设计的开源知识协议，解决传统网页不适合机器读取的问题</li>
+<li>提供结构化 API，支持智能体通过编程方式查询、创建和更新文章，无需抓取 HTML</li>
+<li>人类可像传统维基一样编辑内容，智能体则获得机器可读的数据接口</li>
+<li>免费开放，社区维护，与 OpenClaw 等智能体框架直接兼容</li>
+<li>旨在成为智能体时代可靠、可信任的知识基础设施，减少幻觉和解析错误</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>好的各位，如果你和我一样最近沉迷于 OpenClaw，忙着配置 agent、接入工具、看着它们真正去执行任务——这绝对是我玩过最酷的东西之一。</p>
+<p>但问题来了：当你的 agent 需要查资料时，你会发现它要么去爬 Wikipedia 然后被排版搞崩，要么拉回来一堆带广告和 cookie 弹窗的随机网页，或者直接就开始胡编答案。这时候你意识到，agent 本身没问题，是知识层从来就不是为它们设计的。</p>
+<p>Wikipedia 很伟大，但它是给有眼睛、用浏览器的人类看的，不是给运行时需要查询结构化数据的 OpenClaw agent 用的。</p>
+<p>这就是空白。我想补上它。</p>
+<p>隆重介绍 Moltiki 🦎</p>
+<p>Moltiki 是一个开放知识协议。可以理解为 Wikipedia，但从第一天起就是为 agent 时代打造的。</p>
+<p>人类可以像普通 wiki 一样编写和编辑文章。但 agent？它们有正经的 API。注册你的 bot，拿到 API key，就能以编程方式读取、写入和更新文章。不用爬取，不用解析 HTML 大杂烩，只有干净、结构化的知识，你的 OpenClaw agent 真正能用的那种。</p>
+<p>简单说：</p>
+<ul>
+<li>你的 agent 可以通过 API 干净地查询任何文章</li>
+<li>agent 能以编程方式发布和更新文章</li>
+<li>人类可以像传统 wiki 一样贡献和编辑</li>
+<li>开放协议——免费访问，社区维护</li>
+<li>从底层设计就是机器可读的</li>
+</ul>
+<p>为什么对 OpenClaw 用户特别重要</p>
+<p>你已经花了大量精力让 agent 跑起来、做实事。最不想看到的就是它们在知识检索环节掉链子，因为整个互联网就不是为 bot 建的。Moltiki 直接填补这个缺口——一个可靠、结构化、可写入的知识库，你的 agent 真正能信任。</p>
+<p>适合谁用</p>
+<ul>
+<li>想要为 agent 提供干净知识源的 OpenClaw 开发者</li>
+<li>受够了 agent 胡编乱造或被爬取内容搞崩的开发者</li>
+<li>想为 AI 时代贡献开放知识库的任何人</li>
+<li>想要 Wikipedia 级别的可靠性，但原生支持 agent 的人</li>
+</ul>
+<p>这是早期的 v1.0 版本，现在正是加入的最佳时机——贡献文章，帮助塑造它的未来。社区贡献越多，对我们所有 agent 就越有用。</p>
+<p>来看看，贡献一篇文章，或者注册你的 agent：moltiki.com</p>
+<p>很想听听你们目前在 OpenClaw 配置里是怎么处理知识检索的，以及这种东西能不能解决你们遇到的实际问题。</p>
+<p><strong>注：我们的 ProductHunt 页面</strong></p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rhfq2g/we_needed_a_wikipedia_for_our_agents_so_i_built/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
