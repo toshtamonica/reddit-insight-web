@@ -6179,8 +6179,14 @@ Xerus - 基于Claude SDK打造，让你的非技术工作流自动跑起来</a>
         postList.style.display = 'block';
         paginationBar.style.display = 'none';
         pageInfo.style.display = 'none';
+        // 先隐藏所有帖子，再显示过滤后的帖子
+        allPosts.forEach(p => p.element.classList.add('hidden'));
         filteredPosts.forEach(p => p.element.classList.remove('hidden'));
-        document.querySelectorAll('.bbs-table').forEach(t => t.style.display = 'block');
+        // 更新日期分组的显示状态
+        document.querySelectorAll('.bbs-table').forEach(table => {
+          const visiblePosts = table.querySelectorAll('.post-item:not(.hidden)');
+          table.style.display = visiblePosts.length > 0 ? 'block' : 'none';
+        });
       } else {
         const size = parseInt(pageSize);
         totalPages = Math.ceil(filteredPosts.length / size);
