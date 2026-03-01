@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>从零基础到4天开发出国际象棋教学网站，我人傻了 - Reddit Insight</title>
+  <title>为啥我的智能体干着干着就停了？没几分钟就没反应了，活动日志里只剩个"cron timer armed"，啥情况啊？ - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>从零基础到4天开发出国际象棋教学网站，我人傻了</h1>
+        <h1>为啥我的智能体干着干着就停了？没几分钟就没反应了，活动日志里只剩个"cron timer armed"，啥情况啊？</h1>
         <div class="post-meta">
-          <span>👤 undefined</span> | <span>📅 2026/2/28</span>
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
         </div>
       </header>
       
@@ -54,15 +54,17 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><p>以下是该内容的核心要点总结：</p>
+          <div class="summary-box"><h2>核心要点总结</h2>
 <ol>
-<li><p><strong>零编程基础快速入门</strong>：作者此前从未接触过编程，通过AI辅助（Claude和OpenClaw）在4天内从零学会开发，完成了一个国际象棋教练网站。</p>
+<li><p><strong>问题现象</strong>：OpenClaw 智能体在执行复杂任务时会在几分钟后停止工作，无响应，仅显示&quot;cron timer armed&quot;日志，且无法按设定发送定期状态更新。</p>
 </li>
-<li><p><strong>AI大幅降低技术门槛</strong>：遇到问题时直接向AI提问即可获得解决方案，无需预先掌握终端命令等技术知识，实现了&quot;边做边学&quot;的模式。</p>
+<li><p><strong>失败尝试</strong>：用户尝试多种方式（包括 Discord 集成和持久化子代理）让智能体持续工作，但子代理虽能接收任务却无法完成，问题依旧存在。</p>
 </li>
-<li><p><strong>解决真实痛点的产品设计</strong>：针对初学者学棋时&quot;沉默思考却不敢表达&quot;的困境，强制用户用语言阐述下棋思路，AI再评分反馈，弥补了传统引擎只给答案不讲原因的缺陷。</p>
+<li><p><strong>根本原因</strong>：单一智能体或简单子代理架构缺乏自我监控和故障恢复机制，容易在长时间任务中&quot;卡住&quot;或进入空闲状态。</p>
 </li>
-<li><p><strong>AI编程工具的变革性影响</strong>：作者将OpenClaw形容为&quot;放下一切立即加入&quot;的运动，认为这类工具正在彻底改变编程学习和应用的方式。</p>
+<li><p><strong>解决方案</strong>：采用<strong>三任务分离架构</strong>——Worker 任务（执行实际工作）、Heartbeat 任务（定期状态上报）、Watchdog 任务（监控并重启异常 Worker），实现任务的持续运行和自我修复。</p>
+</li>
+<li><p><strong>关键经验</strong>：复杂长时间任务需要专门的<strong>监控-保活-重启</strong>机制，而非依赖单一智能体的自我维持能力。</p>
 </li>
 </ol>
 </div>
@@ -72,28 +74,39 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>我听Lex Friedman的播客，所以那个OpenClaw的人来做客时，我老实说根本跟不上他们在聊什么。</p>
-<p>我有一台旧的MacBook笔记本，插上电源就硬是用TUI（终端界面）安装了。开始之前我连终端是什么都没听说过。遇到了无数问题，但你就问AI怎么办，它会告诉你怎么继续推进。</p>
-<p>4天后，靠着Loveable和OpenClaw的结合，我终于做出了点东西。</p>
-<p>我喜欢下棋，喜欢解谜题，也会看YouTube听别人讲解某些棋步。象棋引擎只会告诉你<strong>走哪步</strong>，但不会告诉你<strong>为什么</strong>。</p>
-<p>而且当我看到初学者学棋时，我发现他们会盯着棋盘沉默5分钟。我知道他们其实没聪明到能真的算清变化，只是不好意思开口而已。</p>
-<p>这迫使学生<strong>阐明</strong>自己的想法。而这能帮助人们进步——落子并用实际的语言为自己的思路辩护。AI象棋引擎会给他们的回答打分，让他们逐步提升。</p>
-<p>OpenClaw真的是那种&quot;放下手头一切，立刻加入&quot;的运动。</p>
-<p>我把它叫做ElucidateChess（阐棋）。</p>
+          <div class="content-box"><p>过去一天，我一直在尝试让 OpenClaw 持续处理一项复杂任务。我用各种方式向它提问，它建议我做一个 Discord 集成，配合持久化的子代理。我照做了，看起来所有子代理都接收到了任务，但它们似乎并没有真正完成。在 <code>openclaw logs --follow</code> 的实时监控里，几分钟后我只能看到：</p>
+<p>15:07:41 debug cron {&quot;module&quot;:&quot;cron&quot;,&quot;storePath&quot;:&quot;/home/agent/.openclaw/cron/jobs.json&quot;} {&quot;nextAt&quot;:1771920000000,&quot;delayMs&quot;:60000,&quot;clamped&quot;:true} cron: timer armed</p>
+<p>……反复循环。</p>
+<p>我还让机器人每30分钟给我发送一次状态更新，但它就是不做。它尝试了很多方法来给我定期汇报，但都没成功。我感觉它一直在忽悠我，或者是在幻觉中瞎编。</p>
+<p>使用的是 ChatGPT oAuth 5.3-codex。</p>
+<p><strong>更新：</strong></p>
+<p>它终于给出一个可行的方案了：</p>
+<ul>
+<li><strong>Worker 任务</strong>（执行实际任务，独立会话）</li>
+<li><strong>Heartbeat 任务</strong>（每15分钟向 Discord 发送状态）</li>
+<li><strong>Watchdog 任务</strong>（检查 Worker 是否运行；若停止则重启并告警）</li>
+</ul>
+<p>现在它不会卡住了。耶！</p>
 </div>
         </section>
         
         
         
         <section class="post-section replies-section">
-          <h2>💬 OP 回复译文 (2 条)</h2>
+          <h2>💬 OP 回复译文 (3 条)</h2>
           
           <div class="reply-item">
             <div class="reply-header">
               <span class="reply-num">1</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>他们不让发，就是那个&quot;底部短语&quot;网站（dot com）</p>
+            <div class="reply-content"><p>它最终提出了一种可行的方案：</p>
+<ul>
+<li>工作进程（执行实际任务，独立会话）</li>
+<li>心跳进程（每15分钟向Discord发送状态）</li>
+<li>看门狗进程（检查工作进程是否运行；若停止则重启并告警）</li>
+</ul>
+<p>现在不会再卡住了。耶！</p>
 </div>
           </div>
           
@@ -102,8 +115,22 @@
               <span class="reply-num">2</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>克劳德·奥普斯</p>
-<p>（注：Claude 是 Anthropic 公司开发的 AI 助手名称，通常音译为&quot;克劳德&quot;；Opus 是拉丁语，意为&quot;作品、著作&quot;，在音乐领域常指&quot;编号作品&quot;，此处作为 Claude 的顶级模型版本名称，保留音译&quot;奥普斯&quot;或意译&quot;杰作版&quot;均可，目前中文技术圈多直接使用&quot;Claude Opus&quot;或译为&quot;克劳德·奥普斯&quot;）</p>
+            <div class="reply-content"><p>谢谢，我会试试看！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你说得对！它终于给出一个可行的方案了：</p>
+<ul>
+<li><strong>Worker 任务</strong>（执行实际工作，独立会话）</li>
+<li><strong>心跳任务</strong>（每15分钟向 Discord 发送状态）</li>
+<li><strong>看门狗任务</strong>（检查 Worker 是否在运行；如果停止，则自动重启并发出警报）</li>
+</ul>
+<p>现在它不会卡住了，耶！</p>
 </div>
           </div>
           
@@ -112,7 +139,7 @@
       </div>
       
       <div class="links-box">
-        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rfm5ge/from_never_coded_before_to_coded_a_chess_coaching/" target="_blank">查看 Reddit 原文</a>
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rck9y8/why_dont_agents_keep_on_working_they_just_stop/" target="_blank">查看 Reddit 原文</a>
       </div>
       
       <div class="post-footer-bar">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anthropic刚把OpenClaw活活煮了，而OpenAI直接挖走了它的创始人——这瓜太炸裂了🍺😂 - Reddit Insight</title>
+  <title>开发了ClawRouter：自动将OpenClaw查询路由至性价比最优的可用模型，节省70%成本 - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>Anthropic刚把OpenClaw活活煮了，而OpenAI直接挖走了它的创始人——这瓜太炸裂了🍺😂</h1>
+        <h1>开发了ClawRouter：自动将OpenClaw查询路由至性价比最优的可用模型，节省70%成本</h1>
         <div class="post-meta">
-          <span>👤 undefined</span> | <span>📅 2026/2/28</span>
+          <span>👤 undefined</span> | <span>📅 2026/2/25</span>
         </div>
       </header>
       
@@ -54,17 +54,17 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><p>以下是这段内容的3-5个核心要点：</p>
+          <div class="summary-box"><h2>ClawRouter 核心要点总结</h2>
 <ol>
-<li><p><strong>OpenAI挖角与Anthropic的反击</strong>：OpenAI刚聘请了OpenClaw创始人Peter Steinberger，Anthropic随即推出&quot;co-work&quot;功能，被形容为&quot;活煮龙虾&quot;式的激烈竞争。</p>
+<li><p><strong>智能成本优化</strong>：通过本地分析自动将查询路由至最便宜且能胜任的模型（DeepSeek/GPT-4o-mini/Claude/o3），实现约70%的成本节省，避免简单查询支付高端模型费用。</p>
 </li>
-<li><p><strong>Anthropic大幅降低使用门槛</strong>：通过原生Windows支持、数据直连连接器、定时任务等功能，Anthropic将80%真实场景的使用门槛降低了99%，尽管OpenClaw技术上功能更强。</p>
+<li><p><strong>完全开源透明</strong>：路由算法完全开源（MIT协议），用户可审计逻辑；相比OpenRouter等黑盒路由，提供完整的可见性和可验证性。</p>
 </li>
-<li><p><strong>技术民主化的双刃剑</strong>：AI巨头整合功能可能颠覆SaaS行业（会议总结、ERP、Salesforce等），最终可能只剩下基础设施和实施服务业务。</p>
+<li><p><strong>Agent原生支付</strong>：采用USDC（Base链x402）支付，无需信用卡和API密钥，一个钱包通用所有模型，适合无传统金融基础设施的用户。</p>
 </li>
-<li><p><strong>技术普及的不均衡性</strong>：&quot;我们都拥有&quot;AI工具的说法仅适用于少数高技能、高收入的美国企业人群，全球范围内并非如此。</p>
+<li><p><strong>隐私与零数据保留</strong>：本地分析请求，不依赖第三方路由逻辑；强调零数据保留政策，解决隐私顾虑。</p>
 </li>
-<li><p><strong>变革速度前所未有</strong>：双方共识是AI发展节奏远超历史任何时期，竞争态势和技术迭代都在加速。</p>
+<li><p><strong>Token深度优化</strong>：利用开源优势进行大量Token使用优化，用户可将代码输入ChatGPT等工具验证优化逻辑，2周内获3.1K星标认可。</p>
 </li>
 </ol>
 </div>
@@ -74,16 +74,25 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>Anthropic 这是直接把龙虾活煮了？</p>
-<p>OpenAI 刚刚挖来了 Peter Steinberger——OpenClaw 的发明者。绝对的传奇人物，对他充满敬意。（Lex Fridman 播客里听过他的故事，太精彩了。）</p>
-<p>Anthropic 的回应？
-&quot;看我的&quot;，然后甩出这些：
-• 完整的原生 Windows 支持
-• 直连你的数据源
-• 定时任务</p>
-<p>他们不只是竞争……他们是把龙虾给活煮了（这里用波士顿口音读 &quot;lobstah&quot;）</p>
-<p>技术上 OpenClaw 功能更强；但 Anthropic 把真实世界 80% 使用场景的入门门槛直接砍掉了 99%</p>
-<p>同意的举手？不同意的呢？想听听大家的看法！</p>
+          <div class="content-box"><p><strong>太长不看版：</strong> 别再为简单问题支付 Sonnet 的高价了。ClawRouter 在本地分析每个请求，根据复杂度自动路由到 DeepSeek（$0.27/百万 tokens）、GPT-4o-mini（$0.60/百万 tokens）、Claude Sonnet（$15/百万 tokens）或 o3（$10/百万 tokens）。</p>
+<p><strong>为什么做这个：</strong>
+之前我通过 OpenClaw 用 Claude Sonnet 处理所有任务。&quot;东京现在几点？&quot;这种简单查询和复杂的重构任务收费一样。手动切换模型又不现实。</p>
+<p><strong>工作原理：</strong>
+现在每个请求都会：</p>
+<ol>
+<li>在本地进行复杂度分析</li>
+<li>自动路由到最便宜的可用模型</li>
+<li>通过 x402 USDC 在 Base 链上支付（一个钱包，所有模型，无需 API 密钥）</li>
+</ol>
+<p><strong>路由示例：</strong></p>
+<ul>
+<li>&quot;JSON 转 YAML&quot; → DeepSeek（$0.27/百万）</li>
+<li>&quot;写个 React 组件&quot; → GPT-4o-mini（$0.60/百万）</li>
+<li>&quot;架构重构&quot; → Sonnet（$15/百万）</li>
+<li>&quot;证明这个定理&quot; → o3（$10/百万）</li>
+</ul>
+<p><strong>效果：</strong> 成本降低约 70%（大部分查询其实比我们想象的简单）</p>
+<p><strong>开源地址：</strong> <a href="https://github.com/BlockRunAI/ClawRouter%EF%BC%88MIT">https://github.com/BlockRunAI/ClawRouter（MIT</a> 协议）</p>
 </div>
         </section>
         
@@ -97,9 +106,8 @@
               <span class="reply-num">1</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>感谢交流。澄清一下，我之前说的是 co-work，不是 Claude Code。我用 Claude Code 做过不少疯狂的事（越接近命令行越好，我还专门写过一篇文章，它能像打了兴奋剂的疯狂科学家一样狂敲 Salesforce 或 GCP 的命令行）。</p>
-<p>我确实喜欢 OpenClaw，还为此做了一个管理工具 → <a href="https://github.com/ClariSortAi/openclaw-manager-plugin%EF%BC%8C%E6%89%80%E4%BB%A5%E5%AF%B9">https://github.com/ClariSortAi/openclaw-manager-plugin，所以对</a> OC 没有贬低的意思。</p>
-<p>Anthropic 这次设定的方向很明确。把龙虾烤了吧（意指：大势已定，顺势而为）。</p>
+            <div class="reply-content"><p>有些人由于自身的金融基础设施限制，没有信用卡。
+用户可以选择发送到 OpenRouter，但他们的服务比我们差。</p>
 </div>
           </div>
           
@@ -108,8 +116,9 @@
               <span class="reply-num">2</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>我喜欢你的想法，让技术民主化。</p>
-<p>但可怕的是，当2-3家公司掌握所有权力时——更糟的是，它们已经让所有SaaS公司倒闭（比如，一旦协作软件有了Zoom插件，你就不再需要那个会议摘要软件的订阅了），或者严重扰乱了它们的收入模式（ERP系统、Salesforce）——那还剩下什么？只剩下基础设施和实施服务业务了吗？</p>
+            <div class="reply-content"><p>因为你根本不知道他们是怎么给你安排路线的。
+而且他们什么都不商量。
+把你所有的隐私信息都拿走。</p>
 </div>
           </div>
           
@@ -118,8 +127,7 @@
               <span class="reply-num">3</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>你这句话里唯一的问题在于&quot;我们都经历过&quot;。（还有&quot;很长时间&quot;这个说法，这也稍微有点争议哈哈）这只适用于极少数美国本土的高技能、高薪酬、企业级公司人员，更不用说全球范围了。</p>
-<p>归根结底，我们达成共识的地方是：变化的速度前所未有。</p>
+            <div class="reply-content"><p>这背后的算法是什么？零数据保留？你发邮件给他们的律师核实过了吗？</p>
 </div>
           </div>
           
@@ -128,7 +136,7 @@
               <span class="reply-num">4</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>这东西的设置和管理完全是给 Linux 极客设计的。我说那可不是我，于是为它写了一个 Claude Code 插件来处理所有复杂的东西。<a href="https://github.com/ClariSortAi/openclaw-manager-plugin">https://github.com/ClariSortAi/openclaw-manager-plugin</a> 反正这里大家都在卷，不如开源点能让事情变得更简单、更容易上手的东西 😂</p>
+            <div class="reply-content"><p>关于路由，你知道结果——可能是成功，也可能是失败。但你知道他们是如何为你选择路由的吗？我们拥有完全开源的路由算法，如果你愿意贡献代码，我们可以做得更好。</p>
 </div>
           </div>
           
@@ -137,7 +145,7 @@
               <span class="reply-num">5</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>我认为&quot;AaaS&quot;（智能体即服务）——尽管这个缩写很糟糕——是唯一可行的商业模式。SaaS？不行，软件我们可以自己开发（自建还是外购的趋势正在转变）。那些巨头暂时还安全（比如ERP系统、Salesforce），但软件生态系统正在瓦解，取而代之的是能够完成任务的智能体，而非制造任务的软件。</p>
+            <div class="reply-content"><p>我们大幅降低了 token 消耗……不妨一试。</p>
 </div>
           </div>
           
@@ -146,7 +154,7 @@
               <span class="reply-num">6</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>哈哈，可能吧 / 大概率是 / 十有八九</p>
+            <div class="reply-content"><p>OpenRouter 与我们之间的区别在于：OpenRouter 是一家以人类为中心的公司，采用信用卡收费模式；而我们是一家原生面向智能体的公司，使用 USDC 收费，并且开源。</p>
 </div>
           </div>
           
@@ -155,7 +163,7 @@
               <span class="reply-num">7</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>没问题兄弟。这既是比拼谁更厉害的竞赛，又是技术军备竞赛，全都搅在一起，疯狂得很。</p>
+            <div class="reply-content"><p>得益于开源优势，我们在 token 使用优化方面做了大量工作。你可以将我们的源代码输入 ChatGPT，询问我们是如何进行 token 优化的——两周内获得 3100 颗 star 就是最好的证明。</p>
 </div>
           </div>
           
@@ -164,7 +172,10 @@
               <span class="reply-num">8</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>哈哈，确实如此，兄弟……不过，既然你都订阅了 Anthropic 的高额度套餐，干嘛不用 Opus / Sonnet / Haiku 这套组合拳呢？</p>
+            <div class="reply-content"><p>我们对自身的逻辑拥有完全的透明度——因为我们开源，您可以亲自检查代码，准确了解路由决策是如何做出的。</p>
+<p>这是设计文档：<a href="https://github.com/BlockRunAI/ClawRouter/blob/main/docs/plans/2026-02-03-smart-routing-design.md">https://github.com/BlockRunAI/ClawRouter/blob/main/docs/plans/2026-02-03-smart-routing-design.md</a></p>
+<p>您也可以让AI为您总结我们的代码。</p>
+<p>相比之下，OpenRouter是一个&quot;黑箱&quot;方案。由于他们是闭源的，用户无法知晓其自动路由的实际运作方式。我们选择透明化，以便社区能够验证并改进这一逻辑。</p>
 </div>
           </div>
           
@@ -173,9 +184,14 @@
               <span class="reply-num">9</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>是啊，Ollama 真是不断突破极限 😂</p>
-<p>或者更口语化一点：
-Ollama 这波操作确实够激进的 😂</p>
+            <div class="reply-content"><p>我无法直接访问或查看这些链接的内容，因为它们需要网络连接才能打开。第一个链接是 Reddit 的图片预览，第二个是 GitHub 上的 Markdown 文档。</p>
+<p><strong>请您提供需要翻译的具体文本内容</strong>，我可以帮您翻译成流畅自然的中文。</p>
+<p>如果您能：</p>
+<ul>
+<li><strong>复制粘贴</strong> GitHub 文档的文字内容，或</li>
+<li><strong>描述图片中的文字内容</strong></li>
+</ul>
+<p>我将立即为您进行翻译。</p>
 </div>
           </div>
           
@@ -184,9 +200,7 @@ Ollama 这波操作确实够激进的 😂</p>
               <span class="reply-num">10</span>
               <span>楼主回复</span>
             </div>
-            <div class="reply-content"><p>怎么会呢？模型（表现）无可匹敌。</p>
-<p>或根据语境调整为：
-怎么说？这些模型可是 unbeatable（无法被击败/无可超越）的。</p>
+            <div class="reply-content"><p>我们目前已支持日语、中文、德语和俄语。如果您有其他语言需求，欢迎提交 Issue 或 Pull Request，帮助我们扩展更多语言支持。</p>
 </div>
           </div>
           
@@ -195,7 +209,7 @@ Ollama 这波操作确实够激进的 😂</p>
       </div>
       
       <div class="links-box">
-        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rflkg6/anthropic_just_boiled_openclaw_alive_while_openai/" target="_blank">查看 Reddit 原文</a>
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rafxrw/built_clawrouter_autoroutes_openclaw_queries_to/" target="_blank">查看 Reddit 原文</a>
       </div>
       
       <div class="post-footer-bar">
