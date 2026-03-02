@@ -3,11 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>"Clawdbot 实时与客户/用户对话的能力如何？"
-
-或者更自然的说法：
-"Clawdbot 的实时对话功能体验怎么样？"
-"Clawdbot 实时聊天功能好用吗？" - Reddit Insight</title>
+  <title>我用 IP 桥接让远程 OpenClaw VPS 原生控制本地 Chrome 标签页（CDP + Tailscale） - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -48,13 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>"Clawdbot 实时与客户/用户对话的能力如何？"
-
-或者更自然的说法：
-"Clawdbot 的实时对话功能体验怎么样？"
-"Clawdbot 实时聊天功能好用吗？"</h1>
+        <h1>我用 IP 桥接让远程 OpenClaw VPS 原生控制本地 Chrome 标签页（CDP + Tailscale）</h1>
         <div class="post-meta">
-          <span>👤 Picklejar75</span> | <span>📅 2026/2/25</span>
+          <span>👤 S_B_B_B_K</span> | <span>📅 2026/3/2</span>
         </div>
       </header>
       
@@ -62,32 +54,40 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><p>根据内容，以下是关于Clawdbots实时聊天能力的3-5个核心要点：</p>
-<ol>
-<li><p><strong>实时响应能力</strong> — Clawdbots具备与客户/用户进行即时对话的功能，能够快速回复咨询。</p>
-</li>
-<li><p><strong>自然语言交互</strong> — 支持流畅的人机对话，理解并回应用户的自然语言输入。</p>
-</li>
-<li><p><strong>全天候可用性</strong> — 作为自动化系统，可实现7×24小时不间断的实时在线服务。</p>
-</li>
-<li><p><strong>多场景应用</strong> — 适用于客户服务、销售咨询、技术支持等多种实时沟通场景。</p>
-</li>
-<li><p><strong>智能化处理</strong> — 能够即时处理常见问题，并在必要时无缝转接人工客服。</p>
-</li>
-</ol>
-<hr>
-<p><em>注：由于原文仅提供了问题标题而未给出具体回答内容，以上要点是基于&quot;实时聊天机器人&quot;这一主题的通用特征总结。如需更准确的总结，请提供完整的回答文本。</em></p>
+          <div class="summary-box"><ul>
+<li>作者构建了IP桥接方案，让远程OpenClaw VPS能原生控制本地Chrome浏览器，解决云端AI代理无法处理认证任务的痛点</li>
+<li>技术栈组合：Tailscale组网 + socat端口转发 + Node.js本地队列 + Manifest V3扩展，通过CDP协议执行点击、输入等操作</li>
+<li>方案在95%网站运行良好，但无法绕过Meta Lexical框架等现代SPA的反自动化机制</li>
+<li>作者认为视觉+PyAutoGUI的&quot;计算机使用&quot;方案才是终极解决方案</li>
+<li>完整架构解析和源码已开源：<a href="https://stormap.ai/post/how-to-build-a-custom-openclaw-chrome-relay-extension-in-2026">https://stormap.ai/post/how-to-build-a-custom-openclaw-chrome-relay-extension-in-2026</a></li>
+</ul>
 </div>
         </section>
         
         
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>云端 AI 智能体（比如 Operator）在处理需要登录认证的任务时基本派不上用场，因为它们跑在沙盒浏览器里。我希望能在无头 VPS 上运行的本地大模型，能直接接管我笔记本上的 Chrome 浏览器。</p>
+<p>问题卡在这儿：Chrome 扩展严格禁止远程 eval() 注入，而且 OpenClaw 强制绑定 localhost。</p>
+<p>我花了 5 个小时死磕这个问题，最终搭了一个双向 IP 桥接方案：</p>
+<ul>
+<li>Tailscale 把 VPS 和笔记本组进同一 mesh 网络</li>
+<li>socat 转发隔离的网关端口</li>
+<li>本地 Node.js Express 队列</li>
+<li>一个 Manifest V3 扩展，用 chrome.debugger 轮询 Node 服务端，执行原生 Chrome DevTools Protocol (CDP) 指令（点击、输入、穿透 Shadow DOM）</li>
+</ul>
+<p>95% 的网站都能完美运行。但有个坑：Meta 的 Lexical 框架（React 18）完全无视合成的 CDP 事件。想搞定现代 SPA，Anthropic 那种&quot;Computer Use&quot;路线（视觉 + pyautogui）才是唯一终极方案。</p>
+<p>我把完整架构拆解和 Node/扩展源码都放这儿了，想抄作业的自取：<a href="https://stormap.ai/post/how-to-build-a-custom-openclaw-chrome-relay-extension-in-2026">https://stormap.ai/post/how-to-build-a-custom-openclaw-chrome-relay-extension-in-2026</a></p>
+</div>
+        </section>
         
         
         
       </div>
       
       <div class="links-box">
-        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ra0zy5/how_is_clawdbots_ability_to_chat_with/" target="_blank">查看 Reddit 原文</a>
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rhcjw7/i_built_an_ip_bridge_to_let_a_remote_openclaw_vps/" target="_blank">查看 Reddit 原文</a>
       </div>
       
       <div class="post-footer-bar">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>开源本地 OSINT 工具：航班追踪、新闻抓取与实时告警三合一 - Reddit Insight</title>
+  <title>开源本地 OSINT 工具：实时追踪航班、抓取新闻并推送告警 - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>开源本地 OSINT 工具：航班追踪、新闻抓取与实时告警三合一</h1>
+        <h1>开源本地 OSINT 工具：实时追踪航班、抓取新闻并推送告警</h1>
         <div class="post-meta">
-          <span>👤 redbulls2014</span> | <span>📅 2026/3/1</span>
+          <span>👤 redbulls2014</span> | <span>📅 2026/3/2</span>
         </div>
       </header>
       
@@ -54,11 +54,11 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><p>• 开源OSINT工具Clawdwatch实现本地化实时追踪航班、抓取新闻并发送警报，无需账户即可基础使用
-• 核心功能包括：实时追踪中东航班、抓取Al Jazeera等新闻源、监测北约军机呼号、识别紧急应答代码（7700/7600/7500）
-• 技术架构基于Node.js CLI，数据来源于OpenSky Network等免费API，Telegram警报需通过BotFather配置
-• 扩展功能（需API密钥）：Twitter/X监控、Sentinel Hub卫星图像、AIS船舶追踪
-• 开发动机：解决官方信息与媒体报道的滞后性，整合分散的公开数据源以获取冲突实时情报</p>
+          <div class="summary-box"><p>• 开源OSINT工具Clawdwatch：本地运行的CLI工具，整合航班追踪、新闻抓取和实时警报功能
+• 核心功能：实时监控中东等地区航班（含军机识别）、抓取Al Jazeera等新闻源、监测紧急应答代码（7700/7600/7500）
+• 数据来源：OpenSky Network（免费航班数据）、网页抓取新闻，可选Twitter/X、卫星图像、AIS船舶追踪（需API密钥）
+• 技术特点：无需账户即可基础使用，支持Telegram警报推送，默认监控中东但可切换区域
+• 开发动机：解决官方信息与媒体报道的滞后问题，通过整合公开数据源实现冲突事件的早期预警</p>
 </div>
         </section>
         
@@ -66,39 +66,93 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>行，搞了有一段时间了，发出来分享一下。</p>
-<p>鉴于目前美国和伊朗之间的局势，我实在是刷推特刷烦了，看CNN又总是慢半拍。所以就自己动手搞了个东西。</p>
-<p>Clawdwatch 从多个来源拉取实时数据，让你看到真正在发生什么：</p>
-<p><strong>目前的功能：</strong>
-刚跑了一下，得到这些：
-• 实时追踪中东上空 204 架航班
-• Al Jazeera 实时新闻（刚刚抢在大部分美国媒体之前抓到&quot;伊朗袭击巴林美军基地&quot;的消息）
-• 军机识别：监控 NATO 呼号并标记
-• 紧急代码监听：飞机广播 7700（紧急情况）、7600（通讯故障）或 7500（劫机）时立刻通知</p>
-<p><strong>工作原理：</strong>
-这是个命令行工具。clone 下来，npm install，就开始拉数据。基础功能不需要账号，航班数据来自 OpenSky Network（免费），新闻从 Al Jazeera 和 AP 抓取。</p>
-<p>想要 Telegram 推送？比如军机进入空域或者有异常情况时手机震动，用 BotFather 花 5 分钟就能配好。</p>
-<p><strong>已做好但需要 API key 的功能：</strong>
-• Twitter/X 监控（需要 bearer token）
-• Sentinel Hub 卫星影像
-• AIS 船舶追踪（监控油轮和海军动向）</p>
-<p><strong>为什么做这玩意：</strong>
-说实话？因为每次冲突都是老样子——政府一套说法，新闻慢两小时，推特上一半是机器人带节奏。但原始数据其实是有的。航班追踪器比任何报道都先发现伊朗导弹发射，船舶观察者看到油轮失联也比新闻早。</p>
-<p>我只是把这些东西整合到一个工具里。</p>
+          <div class="content-box"><p>行，搞了一段时间了，发出来分享一下。</p>
+<p>最近美伊那边事情不断，刷推特刷烦了，CNN又老是慢半拍，干脆自己撸了一个东西。</p>
+<p>Clawdwatch 从多个数据源拉实时数据，让你看到真正在发生什么：</p>
+<p><strong>目前能干的事：</strong></p>
+<p>刚跑了一下，拿到这些：</p>
+<ul>
+<li>实时追踪中东上空 204 架航班</li>
+<li>Al Jazeera 实时新闻（刚刚比大多数美国媒体早一步抓到&quot;伊朗袭击巴林美军基地&quot;）</li>
+<li>军机识别：监控 NATO 呼号并标红</li>
+<li>紧急代码监听：飞机广播 7700（紧急情况）、7600（通讯故障）、7500（劫机）立刻知道</li>
+</ul>
+<p><strong>怎么跑：</strong></p>
+<p>命令行工具。clone 下来，<code>npm install</code>，就开始拉数据。基础功能不用账号，航班数据来自 OpenSky Network（免费），新闻从 Al Jazeera 和 AP 爬。</p>
+<p>想要 Telegram 推送？军机进空域或者有什么异常的时候手机震动，花 5 分钟找 BotFather 配一下就行。</p>
+<p><strong>已经写好但要 API key 的：</strong></p>
+<ul>
+<li>Twitter/X 监控（要 bearer token）</li>
+<li>Sentinel Hub 卫星图像</li>
+<li>AIS 船舶追踪（看油轮和军舰动向）</li>
+</ul>
+<p><strong>为啥做这玩意：</strong></p>
+<p>说实话？每次冲突都这德行，政府一套说法，新闻慢两小时，推特上一半是机器人带节奏。但原始数据其实都在。航班追踪器比任何报道都早发现伊朗导弹发射，船舶观察者看到油轮消失比新闻早。</p>
+<p>我只是把点连成线，塞到一个工具里。</p>
 <p><strong>上手：</strong></p>
-<pre><code>git clone https://github.com/cloudweaver/clawdwatch.git
+<pre><code class="language-bash">git clone https://github.com/cloudweaver/clawdwatch.git
 cd clawdwatch
 npm install
 npm run watch
 </code></pre>
-<p>立刻开始拉实时数据。默认中东地区，可以改成欧洲、美国或亚洲。</p>
+<p>立刻开始拉实时数据。默认中东，可以切欧洲、美国或亚洲。</p>
 <p>GitHub: <a href="https://github.com/cloudweaver/clawdwatch">https://github.com/cloudweaver/clawdwatch</a></p>
-<p>还在加功能。还想加什么欢迎提。</p>
+<p>还在加功能。还想看点啥有用的，欢迎说。</p>
 <p>🦀</p>
 </div>
         </section>
         
         
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (5 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>去 GitHub 页面看看实时仪表盘，刚更新过。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>收到，感谢建议，确实很有价值。我会拨一些预算出来，注册一个域名。我会提供两个托管选项供大家选择，也会增加一些方式让其他人能够围观或跟进。目前还在思考这种情况下哪些信息最有用。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我来检查一下并测试它。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>必须立即修复</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢了兄弟！</p>
+</div>
+          </div>
+          
+        </section>
         
       </div>
       

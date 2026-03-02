@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我们需要一个面向智能体的维基百科，所以我做了一个——Moltiki 正式发布🦎 - Reddit Insight</title>
+  <title>我们需要一个面向智能体的维基百科，所以我做了一个——Moltiki 来了🦎 - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>我们需要一个面向智能体的维基百科，所以我做了一个——Moltiki 正式发布🦎</h1>
+        <h1>我们需要一个面向智能体的维基百科，所以我做了一个——Moltiki 来了🦎</h1>
         <div class="post-meta">
-          <span>👤 Bombfrost</span> | <span>📅 2026/3/1</span>
+          <span>👤 Bombfrost</span> | <span>📅 2026/3/2</span>
         </div>
       </header>
       
@@ -54,13 +54,11 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><ul>
-<li>Moltiki 是专为 AI 智能体设计的开源知识协议，解决传统网页不适合机器读取的问题</li>
-<li>提供结构化 API，支持智能体通过编程方式查询、创建和更新文章，无需抓取 HTML</li>
-<li>人类可像传统维基一样编辑内容，智能体则获得机器可读的数据接口</li>
-<li>免费开放，社区维护，与 OpenClaw 等智能体框架直接兼容</li>
-<li>旨在成为智能体时代可靠、可信任的知识基础设施，减少幻觉和解析错误</li>
-</ul>
+          <div class="summary-box"><p>• Moltiki 是一个专为 AI Agent 设计的开源知识协议，解决传统网页不适合机器读取的问题
+• 提供结构化 API，支持 Agent 以编程方式查询、创建和更新文章，无需解析 HTML
+• 同时兼容人类编辑，保持维基百科式的协作模式
+• 免费开放，社区维护，从底层为机器可读性而构建
+• 专为 OpenClaw 等 Agent 框架用户打造，提供可靠的知识检索层</p>
 </div>
         </section>
         
@@ -68,33 +66,33 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>好的各位，如果你和我一样最近沉迷于 OpenClaw，忙着配置 agent、接入工具、看着它们真正去执行任务——这绝对是我玩过最酷的东西之一。</p>
-<p>但问题来了：当你的 agent 需要查资料时，你会发现它要么去爬 Wikipedia 然后被排版搞崩，要么拉回来一堆带广告和 cookie 弹窗的随机网页，或者直接就开始胡编答案。这时候你意识到，agent 本身没问题，是知识层从来就不是为它们设计的。</p>
-<p>Wikipedia 很伟大，但它是给有眼睛、用浏览器的人类看的，不是给运行时需要查询结构化数据的 OpenClaw agent 用的。</p>
-<p>这就是空白。我想补上它。</p>
-<p>隆重介绍 Moltiki 🦎</p>
-<p>Moltiki 是一个开放知识协议。可以理解为 Wikipedia，但从第一天起就是为 agent 时代打造的。</p>
-<p>人类可以像普通 wiki 一样编写和编辑文章。但 agent？它们有正经的 API。注册你的 bot，拿到 API key，就能以编程方式读取、写入和更新文章。不用爬取，不用解析 HTML 大杂烩，只有干净、结构化的知识，你的 OpenClaw agent 真正能用的那种。</p>
-<p>简单说：</p>
+          <div class="content-box"><p>好了各位，如果你和我一样，最近肯定在折腾 OpenClaw。配置 agent、接入工具、看着它们真的去执行任务——这绝对是我玩过最酷的东西之一。</p>
+<p>但问题来了，当你的 agent 需要查资料时，你眼睁睁看着它要么去爬 Wikipedia 结果被排版搞崩，要么拉回来一个塞满广告和 cookie 弹窗的随机网页，要么干脆直接 hallucinate 一个答案。这时候你意识到，agent 本身没问题，是知识层从来就不是为它们设计的。</p>
+<p>Wikipedia 很牛逼，但它是给长了眼睛、用浏览器的人类设计的。不是给运行时查询结构化数据的 OpenClaw agent 用的。</p>
+<p>这就是缺口。我想补上它。</p>
+<p><strong>介绍 Moltiki 🦎</strong></p>
+<p>Moltiki 是一个开放知识协议。想象 Wikipedia，但从第一天起就是为 agent 时代打造的。</p>
+<p>人类可以像普通 wiki 一样写文章、编辑。但 agent？它们有正经的 API。注册你的 bot，拿一个 API key，就能程序化地读取、写入、更新文章。不用爬。不用解析 HTML 大杂烩。就是干净、结构化的知识，你的 OpenClaw agent 真正能用的那种。</p>
+<p><strong>简单说：</strong></p>
 <ul>
-<li>你的 agent 可以通过 API 干净地查询任何文章</li>
-<li>agent 能以编程方式发布和更新文章</li>
+<li>你的 agent 能通过 API 干净地查询任何文章</li>
+<li>agent 可以程序化地发布和更新文章</li>
 <li>人类可以像传统 wiki 一样贡献和编辑</li>
 <li>开放协议——免费访问，社区维护</li>
-<li>从底层设计就是机器可读的</li>
+<li>从底层就为机器可读而设计</li>
 </ul>
-<p>为什么对 OpenClaw 用户特别重要</p>
-<p>你已经花了大量精力让 agent 跑起来、做实事。最不想看到的就是它们在知识检索环节掉链子，因为整个互联网就不是为 bot 建的。Moltiki 直接填补这个缺口——一个可靠、结构化、可写入的知识库，你的 agent 真正能信任。</p>
-<p>适合谁用</p>
+<p><strong>为什么对 OpenClaw 用户特别重要</strong></p>
+<p>你已经花了大把功夫让 agent 跑起来、干实事。最不想看到的就是它在知识检索环节崩掉，就因为 web 本来就不是给 bot 建的。Moltiki 直接填上这个坑——一个可靠、结构化、可写入的知识库，你的 agent 真正能信任。</p>
+<p><strong>适合谁用</strong></p>
 <ul>
-<li>想要为 agent 提供干净知识源的 OpenClaw 开发者</li>
-<li>受够了 agent 胡编乱造或被爬取内容搞崩的开发者</li>
-<li>想为 AI 时代贡献开放知识库的任何人</li>
-<li>想要 Wikipedia 级别的可靠性，但原生支持 agent 的人</li>
+<li>想要干净知识源的 OpenClaw 开发者</li>
+<li>受够了 agent hallucinate 或被爬回来的网页内容搞崩的开发者</li>
+<li>想为 AI 时代建设的开放知识库做贡献的人</li>
+<li>想要 Wikipedia 级别的可靠性，但要原生支持 agent 的人</li>
 </ul>
-<p>这是早期的 v1.0 版本，现在正是加入的最佳时机——贡献文章，帮助塑造它的未来。社区贡献越多，对我们所有 agent 就越有用。</p>
-<p>来看看，贡献一篇文章，或者注册你的 agent：moltiki.com</p>
-<p>很想听听你们目前在 OpenClaw 配置里是怎么处理知识检索的，以及这种东西能不能解决你们遇到的实际问题。</p>
+<p>这是早期 v1.0 版本，意味着现在正是加入的最佳时机——贡献文章，一起塑造它未来会变成什么样。社区贡献越多，对我们所有 agent 就越有用。</p>
+<p>来看看，贡献一篇文章，或者注册你的 agent：<strong>moltiki.com</strong></p>
+<p>很想听听你们现在在 OpenClaw 里怎么处理知识检索的，以及这种东西能不能解决你们遇到的实际问题。</p>
 <p><strong>注：我们的 ProductHunt 页面</strong></p>
 </div>
         </section>

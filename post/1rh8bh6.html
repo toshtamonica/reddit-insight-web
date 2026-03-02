@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我们为 OpenClaw 构建了一个成本感知的 LLM 路由层，API 费用降低 60–80% - Reddit Insight</title>
+  <title>我们为 OpenClaw 构建了一个成本感知型 LLM 路由层，API 费用降低 60–80% - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>我们为 OpenClaw 构建了一个成本感知的 LLM 路由层，API 费用降低 60–80%</h1>
+        <h1>我们为 OpenClaw 构建了一个成本感知型 LLM 路由层，API 费用降低 60–80%</h1>
         <div class="post-meta">
-          <span>👤 s3309</span> | <span>📅 2026/3/1</span>
+          <span>👤 s3309</span> | <span>📅 2026/3/2</span>
         </div>
       </header>
       
@@ -54,11 +54,11 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><p>• 通过轻量级KNN分类器实现语义路由，将请求自动分配至budget/balanced/premium三档模型
-• 无需改写提示词或复杂规则，仅基于语义相似度实时分类，降低API成本60-80%
-• 以本地代理形式作为OpenClaw技能插件，现有管道完全兼容，通过127.0.0.1:8765端点调用
-• 支持Google、Anthropic、OpenAI三家提供商，可单厂商内分层或跨厂商多模式路由
-• 响应包含完整成本透明度字段（_orkestra.cost、_orkestra.savings_percent）</p>
+          <div class="summary-box"><p>• 通过轻量级KNN分类器对提示进行语义分类，自动路由至budget/balanced/premium三个成本层级，无需重写提示或复杂规则
+• 实现60-80%的API成本削减，核心原因是简单提示不再默认使用最昂贵的模型
+• 以本地代理形式作为OpenClaw技能插件部署，现有流水线完全无需改动，通过bash/curl调用兼容OpenAI的本地端点
+• 支持Google、Anthropic、OpenAI三大厂商，可在单一厂商内分层或跨厂商多模式路由
+• 提供完整成本透明度，响应中包含_orkestra.cost和_orkestra.savings_percent等元数据</p>
 </div>
         </section>
         
@@ -66,17 +66,31 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>架构的模块化程度足够高，在模型调用层进行实验感觉很自然，不会显得 hacky，这让原型设计变得简单直接。</p>
-<p>于是我们构建了一个小型路由层，置于 OpenClaw 内部的模型调用之前，决定每个请求应由哪个层级处理。当提示词传入时，先进行嵌入，再通过一个轻量级的 KNN 分类器——该分类器基于已标注的历史工作负载训练而成。根据语义相似度，路由器将其归类为 budget、balanced 或 premium，并相应转发调用。</p>
-<p>没有提示词重写，也没有复杂的规则树——仅在调用时进行语义分类。实际运行中，这将我们的 API 成本降低了约 60–80%，主要原因是简单的提示词不再默认路由到最昂贵的模型。</p>
-<p>它通过本地代理以 OpenClaw skill 的形式接入，现有流水线完全不受影响。Agent 通过 bash/curl 调用 127.0.0.1:8765 上的 OpenAI 兼容端点，响应中包含完整的成本透明度（_orkestra.cost、_orkestra.savings_percent）。</p>
-<p>支持的提供商：Google（Gemini）、Anthropic（Claude）、OpenAI——可在每个提供商内部跨 budget/balanced/premium 层级路由，也可在多提供商模式下跨全部三家进行路由。</p>
-<p>仓库及 OpenClaw 集成：github.com/imperativelabs/orkestra → 详见 integrations/openclaw/ 目录获取 skill 文件、代理及配置示例。</p>
-<p>好奇在座的各位在 OpenClaw 中是如何考虑成本控制的。你们在用静态分层、基于置信度的降级、语义路由，还是完全不同的方案？很期待交流一下不同的思路。</p>
+          <div class="content-box"><p>架构的模块化程度足够高，在模型调用层进行实验感觉很自然，不会显得 hacky，这让原型验证变得非常简单。</p>
+<p>于是我们构建了一个小型的路由层，嵌入在 OpenClaw 的模型调用之前，决定每个请求应该由哪个层级来处理。当 prompt 进来时，先进行向量化，然后经过一个轻量级的 KNN 分类器——该分类器基于已标注的历史 workload 训练而成。根据语义相似度，路由器将其归类为 budget、balanced 或 premium，并相应转发调用。</p>
+<p>没有 prompt 重写，也没有复杂的规则树——纯粹是调用时的语义分类。实际运行中，这将我们的 API 成本降低了约 60–80%，主要是因为简单的 prompt 不再默认路由到最贵的模型。</p>
+<p>它通过本地代理以 OpenClaw skill 的形式接入，现有流水线完全不受影响。Agent 通过 bash/curl 调用 127.0.0.1:8765 上的 OpenAI 兼容端点，响应中包含完整的成本透明信息（_orkestra.cost、_orkestra.savings_percent）。</p>
+<p>支持的厂商：Google（Gemini）、Anthropic（Claude）、OpenAI——可在每个厂商内部跨 budget/balanced/premium 层级路由，也可在三方厂商间以多厂商模式路由。</p>
+<p>仓库及 OpenClaw 集成：github.com/imperativelabs/orkestra → 详见 integrations/openclaw/ 目录下的 skill 文件、代理和配置示例。</p>
+<p>好奇大家在这里是如何考虑 OpenClaw 的成本控制的。你们在用静态分层、基于置信度的降级、语义路由，还是完全不同的方案？很想对比一下不同的思路。</p>
 </div>
         </section>
         
         
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好！我很快会分享一个 YouTube 视频。</p>
+</div>
+          </div>
+          
+        </section>
         
       </div>
       
