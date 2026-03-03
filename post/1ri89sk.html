@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>让 OpenClaw 对外界攻击坚不可摧 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>让 OpenClaw 对外界攻击坚不可摧</h1>
+        <div class="post-meta">
+          <span>👤 laddermanUS</span> | <span>📅 2026/3/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 通过 macOS 桌面应用作为唯一入口访问树莓派上的 OpenClaw，阻断外部浏览器和 SSH 直接访问
+• 桌面应用内置安全层，自动检查技能和工具的安全风险
+• OpenClaw 开机自启动，无需手动命令行操作，消除连接和令牌问题
+• 计划开发 iOS 聊天认证应用，实现人机交互和关键操作的人工审批推送机制</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>为了兼顾 OpenClaw 的出色性能与安全性，我开发了一款 macOS 桌面应用（见附图红圈处），用于启动运行在树莓派 AI 代理服务器上的 OpenClaw。</p>
+<p>OpenClaw 部署在树莓派上，仅能通过安装在我那台旧款 27 英寸 iMac 上的桌面配套应用访问，无法通过普通浏览器或 SSH 连接。如前文所述，OpenClaw 仍处于完全隔离状态。</p>
+<p>这款桌面配套应用还内置了智能安全层，会对运行的技能和工具进行安全检查。</p>
+<p>这套架构确保 OpenClaw 不仅对外网不可见，而且只能通过我的桌面配套应用访问。OpenClaw 已设置为开机/重启后自动运行，无需执行任何终端命令来启动实例或建立连接。不再有连接问题，不再有令牌问题，更不再有安全隐患。</p>
+<p>我的下一个项目是开发一款 iOS 聊天与认证应用。该应用将用于与 OpenClaw 及各代理进行对话，更重要的是，我将构建一套人工认证系统——当代理需要执行特定操作时，会向应用发送通知请求授权。用户收到推送通知后，阅读操作摘要，然后点击&quot;批准&quot;或&quot;拒绝&quot;。一种简单直接的方式，让人始终掌握主动权。</p>
+<p><a href="https://preview.redd.it/n17g5b9zuhmg1.png?width=2916&format=png&auto=webp&s=ccf150581e1418166e82fcf9ed57dbccc9f545bf">https://preview.redd.it/n17g5b9zuhmg1.png?width=2916&amp;format=png&amp;auto=webp&amp;s=ccf150581e1418166e82fcf9ed57dbccc9f545bf</a></p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ri89sk/making_openclaw_bullet_proof_from_the_outside/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

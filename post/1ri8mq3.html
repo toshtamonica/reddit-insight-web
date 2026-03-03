@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我让 OpenClaw 智能体接入 LaunchScore API，让它自主验证 SaaS 创意，结果如下。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我让 OpenClaw 智能体接入 LaunchScore API，让它自主验证 SaaS 创意，结果如下。</h1>
+        <div class="post-meta">
+          <span>👤 Legitimate-Ant9884</span> | <span>📅 2026/3/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者让 OpenClaw 智能体自主调用 LaunchScore API，实现从寻找 SaaS 创意、创建落地页到发布的全流程自动化</li>
+<li>智能体创建了 Lobster Labs 工作室，研究独立开发者痛点，筛选出 4 个产品创意进行验证</li>
+<li>每个创意通过真实访客行为（注册、反馈、转化率）获得兴趣评分，30+ 访客后置信度提升，仅最高分项目进入开发</li>
+<li>技术栈组合：OpenClaw（智能体循环）、LaunchScore API（创意创建与发布）、PostHog（数据分析）</li>
+<li>形成&quot;自主研究-选题-建站-生成内容&quot;的 SaaS 验证流水线，人工仅负责审核批准</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我开发了 LaunchScore（launchscore.app），用真实的落地页和兴趣评分来验证创业想法。然后我把 OpenClaw 代理指向这个 API，告诉它：找想法、创建落地页、发布。全程无需人工干预。</p>
+<p>代理创建了一个名为 Lobster Labs 的工作室，研究了独立开发者的痛点，挑出了 4 个想法：</p>
+<p><strong>SaaS Churn Predictor</strong>——在客户取消前标记高风险用户<br><strong>ShipPage</strong>——粘贴 GitHub 仓库链接，60 秒生成营销落地页<br><strong>LaunchKit</strong>——自动化分发到 Reddit、X、IH 等 50+ 平台<br><strong>CommitContent</strong>——把 Git 提交记录转成&quot;公开构建&quot;社交媒体内容</p>
+<p>每个想法都会根据真实访客行为（注册、反馈、转化率）计算兴趣评分。30 个访客以上置信度才会提升。只建评分最高的那个。</p>
+<p>技术栈：OpenClaw 负责代理循环，LaunchScore API 处理想法创建和发布，PostHog 做分析追踪。</p>
+<p>代理包办调研、选想法、做落地页、生成内容。我负责审核批准。基本上就是个自动化的 SaaS 验证流水线。</p>
+<p>还有谁在用 OpenClaw 做产品验证或业务自动化？想听听大家的配置方案。</p>
+<p>工作室：lobsterlabs.dev<br>验证工具：launchscore.app</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ri8mq3/i_gave_my_openclaw_agent_access_to_the/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

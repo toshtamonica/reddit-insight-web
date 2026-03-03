@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了 ClawGuard，这样就不用把 API 密码/令牌交给 OpenClaw（开源审批网关） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了 ClawGuard，这样就不用把 API 密码/令牌交给 OpenClaw（开源审批网关）</h1>
+        <div class="post-meta">
+          <span>👤 lombax85</span> | <span>📅 2026/3/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• <strong>核心问题</strong>：AI代理需要API凭证才能工作，但将真实token放在代理运行的机器上存在安全风险（如提示注入攻击可能导致凭证泄露或滥用）。
+• <strong>解决方案</strong>：ClawGuard作为开源安全网关，让代理仅持有虚拟凭证，真实token存储在独立机器上，通过自定义base URL或本地转发器路由API请求。
+• <strong>审批机制</strong>：敏感操作需通过Telegram人工审批（支持批准/拒绝/超时及限时授权），借鉴银行CIBA认证模式。
+• <strong>审计功能</strong>：记录所有请求的方法、路径及可选负载，支持LLM调用日志记录，便于监控和追溯。
+• <strong>架构优势</strong>：即使代理被攻击，攻击者也无法读取或外泄真实凭证，实现凭证与执行环境的物理隔离。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在使用 OpenClaw 时遇到了一个实际问题：要让 agent 真正有用，它需要调用各种 API（GitHub、Slack、Todoist、OpenAI 等）。但我实在不想把真实 token 放在 agent 运行的同一台机器上。</p>
+<p>风险显而易见：一次 prompt 注入（可能来自网页、粘贴的文档、issue 评论等）就能诱骗 agent 用我的凭证做出破坏性操作。</p>
+<p>于是我做了 ClawGuard：一个轻量安全网关，架在 agent 和外部 API 之间。</p>
+<p>• agent（或 agent 构建的工具）仍调用原 API，但它只有假凭证
+• 真实 token 存放在另一台机器上（agent 无法读取或外泄）
+• API 调用通过两种方式路由到 ClawGuard：
+  • 模式 A：如果 SDK 支持自定义 base URL，直接指向 ClawGuard
+  • 模式 B：如果 SDK 写死了 URL，在 agent 机器上用一个小小的转发器/重定向器（基于 hosts 文件）透明地将流量导到 ClawGuard（agent 机器上依然没有真实 token）
+• 对于敏感调用，ClawGuard 会向我发起 Telegram 审批（批准/拒绝/超时，支持限时授权）
+• 保留请求审计日志（方法/路径 + 可选 payload）</p>
+<p>灵感来自银行业身份认证流程中的 CIBA 模式，但我把它用在了&quot;AI agent → API 调用&quot;这个场景。</p>
+<p>仓库 + README：<a href="https://github.com/lombax85/clawguard">https://github.com/lombax85/clawguard</a></p>
+<p>好奇大家是怎么处理这个问题的：你们会让 agent 持有长期 token，还是会给工具/API 操作加道闸门？</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (5 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你想的话完全可以。你可以让所有大模型调用都经过 ClawGuard，并记录请求（包括请求体）。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不，智能体仍然可以访问这些密钥并将其泄露。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谁知道呢🤣 不过你可以让你的 openclaw 审计一下我的工具，看看好不好用！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>详细说说！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>ClawGuard 也有一个（轻量级的）日志记录和监控层，我计划后续加入限流功能，并在出现异常使用情况时触发告警。Moltwire 我也会好好研究一下，感谢推荐 👍</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rhuzam/i_built_clawguard_so_i_dont_have_to_give_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

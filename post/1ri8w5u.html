@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个 HACS 集成，可将 OpenClaw 用作 Home Assistant 语音助手 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个 HACS 集成，可将 OpenClaw 用作 Home Assistant 语音助手</h1>
+        <div class="post-meta">
+          <span>👤 Alternative_Kale_295</span> | <span>📅 2026/3/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>开发者创建了 HACS 集成，将 OpenClaw 接入 Home Assistant 作为语音助手，通过 OpenAI 兼容 API 连接 HA 语音管道</li>
+<li>支持完整 OpenClaw 代理功能（工具、记忆、个性），可搭配任意 STT/TTS 引擎（Whisper、Piper 等）</li>
+<li>安装方式：通过 HACS 添加自定义仓库 <code>nicolasglg/openclaw-conversation</code>，配置网关 URL 和 API token 即可</li>
+<li>前置要求：OpenClaw Gateway（启用 Chat Completions 端点）、Home Assistant 2024.1+、STT/TTS 引擎</li>
+<li>不仅限于家居控制，可像 Telegram 一样自然对话，询问任何问题</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>声明：本文在 AI 辅助下起草。</p>
+<p>大家好，</p>
+<p>我一直在用 OpenClaw 作为个人 AI 助手，想把它接入 Home Assistant 当语音对话代理用。没找到现成的方案，就自己写了一个。</p>
+<p>这个集成把 HA 的语音管道接到 OpenClaw Gateway 的 OpenAI 兼容 API 上。你完整的 OpenClaw 代理——包括所有工具、记忆和个性——就成了你的语音助手。</p>
+<p>工作流程：
+唤醒词 → Whisper 语音转文字 → OpenClaw 代理 → Piper 文字转语音 → 扬声器</p>
+<p>你能得到：</p>
+<ul>
+<li>OpenClaw 代理作为 HA 对话代理</li>
+<li>通过 HA Voice PE、手机 App 或浏览器进行语音控制</li>
+<li>兼容任意 STT/TTS 引擎（Whisper、Piper、HA Cloud 等）</li>
+<li>配置简单：填上 OpenClaw Gateway 地址和 Token 即可</li>
+</ul>
+<p>HACS 安装方式：
+自定义仓库 &gt; 添加 <code>nicolasglg/openclaw-conversation</code> 作为集成
+安装并重启
+添加集成，填入网关地址和 API Token
+创建语音助手，选择 OpenClaw 作为对话代理</p>
+<p>前置要求：</p>
+<ul>
+<li>已启用 Chat Completions 端点的 OpenClaw Gateway</li>
+<li>Home Assistant 2024.1 及以上版本</li>
+<li>STT + TTS 引擎（Whisper + Piper、HA Cloud 等）</li>
+</ul>
+<p>GitHub：<a href="https://github.com/nicolasglg/openclaw-conversation">https://github.com/nicolasglg/openclaw-conversation</a></p>
+<p>已经在用 OpenClaw 的朋友可以试试，欢迎反馈！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你可以问任何问题，哪怕是和家里无关的。就像用 Telegram（如果你在用这个渠道的话）自然地跟你的 open Claw 聊天一样。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！其实我几个月前就开发了这个功能，当时还没发布，但我想先用一段时间再发出来！</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ri8w5u/i_built_a_hacs_integration_to_use_openclaw_as_a/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

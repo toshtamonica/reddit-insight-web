@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用 OpenClaw + Alexa + 本地大模型（Ollama）搭了个语音助手——教程在此 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用 OpenClaw + Alexa + 本地大模型（Ollama）搭了个语音助手——教程在此</h1>
+        <div class="post-meta">
+          <span>👤 cormazacl</span> | <span>📅 2026/3/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>构建了一个四层路由的语音助手系统：快速响应、本地LLM、云端Claude、延迟任务，实现成本与性能平衡</li>
+<li>采用OpenClaw作为核心框架，结合Alexa Custom Skill、Ollama本地大模型和Home Assistant完成全链路整合</li>
+<li>关键优化经验：本地LLM节省80% API成本但需设置业务查询过滤器，Alexa语音识别是主要瓶颈需优化意图样本</li>
+<li>认证机制采用userId而非sessionId，并将授权持久化到文件避免代理重启丢失状态</li>
+<li>未来计划包括唤醒词检测、智能家居控制和基于 presence 的扬声器路由功能</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好！我一直在用 OpenClaw 作为核心构建一个语音优先的助手，想分享一下目前的进展。</p>
+<h2>功能介绍</h2>
+<p>&quot;Alexa，打开 Lucy&quot; 会触发我自定义的 Alexa 技能，连接到 OpenClaw</p>
+<p>查询通过四层系统路由：</p>
+<ul>
+<li><strong>快速通道（0ms）</strong> — 时间、日期、硬编码回复</li>
+<li><strong>本地 Ollama LLM（Claude 智能体，5-12秒）</strong> — 个人上下文、记忆、复杂推理</li>
+<li><strong>延迟执行 + 工具调用（最长2分钟）</strong> — 邮件、网页搜索、数据库查询，通过 HA TTS 返回</li>
+<li>回复自动返回到发起请求的 Alexa 设备（通过 HA last_called 自动检测）</li>
+</ul>
+<p>Sonos 音箱使用 Home Assistant 上的 Piper 神经网络 TTS</p>
+<p>语音播报晨间简报：市场数据、日程安排、业务指标</p>
+<h2>技术栈</h2>
+<ul>
+<li><strong>OpenClaw</strong> — AI 智能体核心（支持 Telegram + Alexa + 语音）</li>
+<li><strong>Alexa 自定义技能</strong> — Node.js 代理，带 PIN 认证，支持会话链</li>
+<li><strong>Ollama + Qwen 2.5 3B</strong> — Mac Mini（Apple Silicon）本地运行，约0.5秒响应</li>
+<li><strong>Home Assistant</strong> — Alexa Media Player + Piper TTS + 设备路由</li>
+<li><strong>Piper TTS</strong> — Sonos 音箱的西班牙语神经网络语音</li>
+</ul>
+<h2>关键经验</h2>
+<ul>
+<li>本地 LLM 节省约80%的 API 费用 — 简单问题不需要 Claude</li>
+<li>但本地模型容易幻觉 — 我为商业/金融查询添加了绕过过滤器</li>
+<li>Alexa 语音识别是瓶颈 — AMAZON.SearchQuery + 大量样本语句有帮助</li>
+<li>按 userId 认证，而非 sessionId — Alexa 每次调用都生成新会话</li>
+<li>认证信息持久化到文件 — 内存中的 Map 在代理重启时会丢失</li>
+</ul>
+<h2>开源</h2>
+<p>代理代码：<a href="https://github.com/yourusername/openclaw-alexa-voice">openclaw-alexa-voice</a></p>
+<p>下一步：唤醒词检测（&quot;Hey Lucy&quot;）、智能家居控制、基于人在场的音箱路由。</p>
+<p>欢迎提问！</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>Mac mini M4</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rhzht7/i_built_a_voice_assistant_with_openclaw_alexa/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

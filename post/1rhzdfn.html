@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用 Openclaw 智能体搭了个 Trello 看板来管项目 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用 Openclaw 智能体搭了个 Trello 看板来管项目</h1>
+        <div class="post-meta">
+          <span>👤 TraumaMcTerror</span> | <span>📅 2026/3/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者开发了一个类 Trello 的看板工具，用于与 Openclaw AI 代理协作管理项目，因担心安全而不愿授权官方 Trello API
+• 技术栈采用 Node.js + Express 后端、React + react-trello 前端，数据以 Markdown + YAML frontmatter 文件形式本地存储，无需数据库
+• AI 代理绕过 API 直接读写文件系统操作任务卡片，用户通过 Telegram 通知代理新任务
+• 当前局限：专为 Ubuntu 和&quot;代理运行在独立机器&quot;场景设计，尚未适配云端代理或同机部署等更通用的环境
+• 作者考虑进一步完善并开源，但需先解决跨平台兼容性问题以扩大适用性</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我为 Openclaw 智能体搭建了一个 Trello 看板来管理项目。</p>
+<p>我一直用 Trello 管理所有项目，也想让 Openclaw 用上它。但我对 Openclaw 的安全性极度偏执，不想把它接入我的 Trello 账号（上面有客户项目和信息，不想被泄露）。</p>
+<p>于是快速捣鼓了这么个东西，效果出奇地好。它跑在 Openclaw 的机器上（一台旧笔记本），我在本地网络访问。可以创建卡片、检查清单、上传图片、添加评论等等——Trello 的基本功能都有。所有卡片都存成 Markdown 文件。我在 Telegram 上 ping 我的智能体，告诉他有新卡片就绪，他们就开始干活。他们甚至自己创建卡片、管理优先级、检查清单什么的。</p>
+<p>技术栈
+Node.js + Express（API 服务 + 静态文件服务）
+React + react-trello（看板 UI，支持拖拽）
+Markdown 文件配合 YAML frontmatter（数据层——无数据库）
+gray-matter（frontmatter 解析）
+multer（图片上传）
+nanoid（卡片唯一 ID 生成）
+lucide-react（图标）</p>
+<p>工作原理
+每张卡片都是磁盘上的一个 .md 文件。Express 服务端通过 REST API 读写这些文件，React 前端调用这个 API。AI 智能体（OpenClaw）完全绕过 API，直接在文件系统上读写卡片文件。图片存在本地目录，通过 API 配合 token 认证提供访问。</p>
+<p>目前放在私有仓库里，但琢磨着是否值得再花点时间完善一下。</p>
+<p>你们觉得呢？会有人想用这东西吗？</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嘿，感谢反馈。很高兴不止我一个人觉得它有用！</p>
+<p>我觉得要公开的话，主要障碍是得让它更通用。目前它是基于 Ubuntu 构建的，而且假设 agent 运行在另一台机器上。我得考虑怎么让它能在云端运行 agent、和用户同一台机器运行，以及支持 macOS 的情况。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rhzdfn/i_built_a_trello_board_for_managing_projects_with/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

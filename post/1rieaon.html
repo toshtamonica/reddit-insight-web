@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我因为 OpenClaw 连我觉得很简单的任务都搞不定而火大，于是自己写了个技能。 - Reddit Insight</title>
+  <title>我气不过 OpenClaw 连我以为很简单的功能都做不到，于是自己写了个技能。 - Reddit Insight</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
@@ -44,9 +44,9 @@
   <div class="container">
     <article class="post-detail">
       <header class="post-header">
-        <h1>我因为 OpenClaw 连我觉得很简单的任务都搞不定而火大，于是自己写了个技能。</h1>
+        <h1>我气不过 OpenClaw 连我以为很简单的功能都做不到，于是自己写了个技能。</h1>
         <div class="post-meta">
-          <span>👤 krisco65</span> | <span>📅 2026/3/2</span>
+          <span>👤 krisco65</span> | <span>📅 2026/3/3</span>
         </div>
       </header>
       
@@ -54,11 +54,10 @@
         
         <section class="post-section">
           <h2>📋 内容摘要</h2>
-          <div class="summary-box"><p>• 作者因OpenClaw无法自动通知任务完成而开发了agent-wake.py脚本
-• 该脚本在Claude Code任务结束时自动发送Discord提醒，并通过HTTP API唤醒AI代理发布摘要
-• 关键配置：需在openclaw.json中解锁cron工具权限，并在请求体中传递sessionKey以定位正确会话
-• 开发过程耗时数天，主要难点在于网关API的权限配置和会话密钥传递
-• 已作为免费技能发布至ClawHub平台供他人使用</p>
+          <div class="summary-box"><p>• 开发者因Claude Code后台运行任务完成后无通知的问题，创建了agent-wake.py脚本实现任务完成自动提醒
+• 该脚本通过Discord提及通知用户，并通过gateway HTTP API触发agent唤醒，自动读取完成内容并在对应频道发布摘要
+• 开发过程中遇到两个关键问题：需在openclaw.json中手动添加cron工具到白名单，且必须在请求体中传递sessionKey以确保agent在正确频道唤醒
+• 该技能已作为免费技能发布到clawhub平台供他人使用</p>
 </div>
         </section>
         
@@ -66,15 +65,15 @@
         
         <section class="post-section">
           <h2>📝 正文翻译</h2>
-          <div class="content-box"><p>如果你在后台运行 Claude Code，肯定遇到过这种情况：任务跑完了，却毫无动静。你得手动去查日志，或者干脆把这事忘得一干二净。你的 AI agent 也一脸懵。
-我被烦得不行，决定自己动手解决。</p>
-<p>我搞了个叫 agent-wake.py 的 Python 脚本，让 Claude Code 在每个任务结束时调用。它会在 Discord 里发一条 @ 提醒，同时通过 gateway HTTP API 向 agent 的会话发送唤醒事件。Agent 被唤醒后，读取任务完成信息，在对应的频道里发一份总结。全程无需额外提示。</p>
-<p>有几个坑把我绊了一下：
-gateway HTTP API 默认禁用了 cron 工具。你得在 openclaw.json 里把它加到 gateway.tools.allow 白名单，否则唤醒调用会静默失败。
-另外必须在请求体里传 sessionKey，不然 agent 会醒在你的默认频道，而不是你实际工作的那个频道。</p>
-<p>我知道有人可能会说：&quot;兄弟这有啥难的&quot;，但我花了好几天才让 agent 最终跑通。
-希望能帮到谁。
-已作为免费 skill 发布：<a href="https://clawhub.com/skills/agent-wake">https://clawhub.com/skills/agent-wake</a></p>
+          <div class="content-box"><p>如果你在后台运行 Claude Code，肯定遇到过这种情况：任务跑完了，却毫无动静。你得手动去查日志，或者干脆把这事忘了。你的 AI 代理也一样蒙在鼓里。</p>
+<p>我被烦得不行，决定自己动手解决。</p>
+<p>我做了一个叫 agent-wake.py 的 Python 脚本，让 Claude Code 在每个任务结束时调用。它会往 Discord 发一条 @ 提醒，同时通过 gateway HTTP API 向代理会话发送唤醒事件。代理被唤醒后，读取任务完成信息，在对应频道发个摘要。全程无需额外提示。</p>
+<p>有几个坑踩了我：</p>
+<p>gateway HTTP API 默认屏蔽了 cron 工具。你得把它加到 openclaw.json 的 gateway.tools.allow 里，不然唤醒调用会静默失败。</p>
+<p>另外必须在请求体里传 sessionKey，否则代理会在默认频道醒来，而不是你实际工作的那个频道。</p>
+<p>我知道有人可能觉得&quot;兄弟这有啥难的&quot;，但我花了好几天才让代理最终跑通。</p>
+<p>希望能帮到谁。</p>
+<p>已作为免费 skill 发布：<a href="https://clawhub.com/skills/agent-wake">https://clawhub.com/skills/agent-wake</a></p>
 </div>
         </section>
         
