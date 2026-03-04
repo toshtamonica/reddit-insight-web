@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的 OpenClaw 智能体运行着一个 AI 新闻室：自动扫描、大模型筛选、完整发布流水线（用例概览） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我的 OpenClaw 智能体运行着一个 AI 新闻室：自动扫描、大模型筛选、完整发布流水线（用例概览）</h1>
+        <div class="post-meta">
+          <span>👤 KobyStam</span> | <span>📅 2026/3/4</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 构建自动化AI新闻采集系统，整合RSS、Reddit、Twitter/X、GitHub、Tavily搜索等5类数据源，每日定时运行8次
+• 采用多层级质量评分机制，基于来源等级、关键词信号和突发新闻指标打分，并通过80%标题相似度去重，筛选前50条
+• 设置确定性URL预过滤，对比历史扫描记录和已发布内容，避免重复处理
+• 最终由Gemini大模型进行编辑决策，从Top 8完整文章中生成内容，形成全自动发布流水线
+• 最终输出至Telegram频道，实现从信息采集、智能筛选到发布的端到端自动化新闻室</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>受够了因为没时间刷25个RSS源、多个subreddit和Twitter而错过AI新闻的日子，于是我搭了一套自动化流程来帮我搞定。
+后来决定把它开放出来，做成了Telegram上的AI新闻频道。</p>
+<p>整套系统以OpenClaw定时任务运行，每天8次（美东时间早6:40到晚8:40，每两小时一次）。每次运行拉取5类信源，打分去重后交给大模型做编辑决策。以下是完整流程。</p>
+<p><strong>第一阶段：扫描</strong></p>
+<p>五个信源并行抓取，互不影响（一个挂了其他的继续跑）：</p>
+<ul>
+<li><strong>25个RSS源</strong>：通过blogwatcher抓取（TechCrunch、OpenAI博客、路透社科技、Simon Willison等），带关键词过滤和三级信源评级</li>
+<li><strong>13个Reddit子版块</strong>：通过公开JSON API（无需API密钥），按热度和标签过滤，比如technology版块只留AI帖子，不会出现泳池加热器评测</li>
+<li><strong>Twitter/X</strong>：双路抓取——bird CLI按分级维护的账号列表，以及twitterapi关键词搜索（最少50赞、5K粉丝过滤噪音）</li>
+<li><strong>GitHub趋势+版本监控</strong>：追踪16个核心AI仓库</li>
+<li><strong>Tavily网页搜索</strong>：5条定向查询，2天新鲜度窗口捕捉突发新闻</li>
+</ul>
+<p><strong>第二阶段：打分、去重、筛选</strong></p>
+<p>核心环节在这里。</p>
+<p>质量评分脚本根据信源等级、关键词信号和突发新闻指标赋分，然后做<strong>标题相似度匹配（80%阈值）</strong>，&quot;OpenAI Releases GPT-5&quot;和&quot;OpenAI just dropped GPT-5&quot;会被合并为一条。前50名进入下一轮。</p>
+<p>接着<strong>确定性URL预过滤</strong>会逐一比对两个历史文件：扫描器曾经呈现过的所有内容，以及我曾经发布过的所有内容。只要出现过，就绝不会送到大模型面前。</p>
+<p>之后前8篇文章拉取全文（优先Cloudflare Markdown，HTML兜底，1200字符上限）。然后<strong>Gemini Flash</strong>拿到带分列表、富化后的文章，以及描述我频道偏好（什么该要、什么该扔）的编辑画像，选出前7名并排序。</p>
+<p>我试过纯Python过滤，太死板、漏稿太多。大模型加入后才有了真正的判断力。</p>
+<p><strong>第三阶段：编辑画像（它会学习）</strong></p>
+<p>编辑画像是个markdown文件，记录我的偏好演变。必选题（Anthropic动态、1亿美元以上并购、AI安全事件、地缘政治、科技硬新闻等）和必跳题（加密货币、泛泛而谈的评论等）。目前扫描器通过率82%，即它挑的5篇里我有4篇满意。每晚定时任务根据我当天的采纳/拒稿决策更新画像。</p>
+<p>目标是几周内实现足够自主，直接往频道发稿。</p>
+<p><strong>第四阶段：发布</strong></p>
+<p>扫描结果把7条排序好的新闻送到我的Telegram新闻编辑群。想发哪条就说&quot;Draft #3&quot;，主代理随即启动发布流程：</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>使用 OpenClaw 已经进入第四周，达到现在的熟练度花了我几周时间。一开始非常简单基础，只用 perplexity。每天通过咨询外部 AI、不断试错，慢慢增加功能。
+你也这么做，很快就能上手。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>已完成，见我最新帖子
+TLDR：<a href="https://github.com/jacob-bd/openclaw-newsroom">https://github.com/jacob-bd/openclaw-newsroom</a></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rj7q72/my_openclaw_agent_runs_an_ai_newsroom_automated/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

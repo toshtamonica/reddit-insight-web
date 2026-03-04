@@ -74,7 +74,7 @@
   <div class="stats-bar">
     <div class="container">
       <div class="stats">
-        <span class="stat-item">📊 主题: <strong>268</strong></span>
+        <span class="stat-item">📊 主题: <strong>271</strong></span>
         <span class="stat-item page-size-selector">
           <label>每页显示:</label>
           <select id="pageSize" onchange="changePageSize(this.value)">
@@ -98,10 +98,76 @@
     <div id="searchResults" class="no-results" style="display:none;"></div>
     
     <div id="postList">
+    <div class="bbs-table" data-date="2026-03-04">
+      <div class="table-header">
+        <span>📅 2026-03-04</span>
+        <span class="today-label">今日更新 (3 个新帖)</span>
+      </div>
+      <ul class="post-list">
+        <li class="post-item" data-id="1rj36vc" data-title="我开源了一个 agent 技能注册中心，求反馈" data-summary="• 作者开源了一个 agent skill registry，定位为&quot;面向 skills 的 nexus/gitlab&quot;，解决 agent skill 的安全与隐私问题
+• 核心功能：本地 skill 锁定 + sha-256 校验、单命令 docker 自托管私有仓库、无需 api/mcp 的 shell 直连 cli
+• 正在征集社区反馈，重点关注：现有 skill/prompt 管理方式、最大痛点（信任/版本/发现等）、功能缺失或设计缺陷">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rj36vc.html">我开源了一个 Agent 技能注册中心，求反馈</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 kai98k-tw</span>
+              <span>📅 2026/3/4</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rj36vc.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rj6bm6" data-title="我搭建了一个 ai 智能体的托管运行环境，求反馈" data-summary="- 针对ai代理的基础设施痛点，提供持久化、隔离的运行时环境，替代重复的devops工作
+- 核心功能包括文件系统、工具执行、定时任务和长进程保活，非聊天界面或低代码平台
+- 采用&quot;自带api密钥&quot;模式，首月1美元降低实验门槛，避免完整订阅承诺
+- 目标用户为构建复杂代理（超越简单提示链）的开发者，仍在验证产品市场契合
+- 寻求反馈：用户是否倾向自托管方案，以及现有工具缺失的运行时层关键能力">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rj6bm6.html">我搭建了一个 AI 智能体的托管运行环境，求反馈</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 one-escape-left</span>
+              <span>📅 2026/3/4</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rj6bm6.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rj7q72" data-title="我的 openclaw 智能体运行着一个 ai 新闻室：自动扫描、大模型筛选、完整发布流水线（用例概览）" data-summary="• 构建自动化ai新闻采集系统，整合rss、reddit、twitter/x、github、tavily搜索等5类数据源，每日定时运行8次
+• 采用多层级质量评分机制，基于来源等级、关键词信号和突发新闻指标打分，并通过80%标题相似度去重，筛选前50条
+• 设置确定性url预过滤，对比历史扫描记录和已发布内容，避免重复处理
+• 最终由gemini大模型进行编辑决策，从top 8完整文章中生成内容，形成全自动发布流水线
+• 最终输出至telegram频道，实现从信息采集、智能筛选到发布的端到端自动化新闻室">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rj7q72.html">我的 OpenClaw 智能体运行着一个 AI 新闻室：自动扫描、大模型筛选、完整发布流水线（用例概览）</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 KobyStam</span>
+              <span>📅 2026/3/4</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rj7q72.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="bbs-table" data-date="2026-03-03">
       <div class="table-header">
         <span>📅 2026-03-03</span>
-        <span class="today-label">今日更新 (22 个新帖)</span>
+        
       </div>
       <ul class="post-list">
         <li class="post-item" data-id="1rhn4p1" data-title="开放式婚礼策划师" data-summary="- 作者基于 openclaw 的成功经验，开发了专门用于婚礼规划的 ai 智能体 open wedding planner
@@ -109,11 +175,11 @@
 - 采用严格的权限控制系统，关键操作需用户批准后方可执行
 - 集成 google 办公套件，支持通过命令行工具操作
 - 项目已开源，欢迎社区贡献代码">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhn4p1.html">开放式婚礼策划师</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 tr0picana</span>
@@ -129,11 +195,11 @@
 • 核心目标是将人类投票结果转化为训练数据，用于优化模型的幽默感、策略性和说服力
 • 计划未来基于这些数据训练定制模型，并开放数据集供社区使用
 • 创作者寻求合作者加入开发或获取方向性反馈">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhobph.html">我搭建了一个AI智能体对战平台，由人类担任裁判——求反馈</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Former-Advantage-309</span>
@@ -148,11 +214,11 @@
 - 月收入（mrr）达 670 美元
 - 单周视频播放量突破 120 万
 - 完整工作流程即将详细拆解">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhqwn0.html">OpenClaw 智能体自动运营 TikTok：月入 670 美元，一周 120 万播放，完整工作流拆解</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 EstablishmentSea4024</span>
@@ -168,11 +234,11 @@
 - 实际编码工作仍使用codex和claude code（cursor环境），避免用实验性工具触碰生产代码
 - 核心需求：寻找可信赖的外部技能来源及安全评估方法
 - 建议谨慎对待第三方技能，优先使用官方或经过审核的工具">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhrg8w.html">可信且实用的技能？</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Mission-Jellyfish-53</span>
@@ -186,11 +252,11 @@
         <li class="post-item" data-id="1rhrrum" data-title="考虑用 mac studio 做 7×24 小时自动化任务" data-summary="- 用户计划购买 mac studio（96gb 或 128gb ram）用于 24/7 运行 openclaw 自动化营销任务，以替代 api 调用降低成本
 - 已通过 openrouter 测试 qwen3.5-122b-a10b，效果出乎意料地好，因此对本地部署效果存疑
 - 核心顾虑：投入 4000 美元+ 前，想确认是否有人实际用本地模型主力运行 openclaw，以及潜在问题">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhrrum.html">考虑用 Mac Studio 做 7×24 小时自动化任务</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 RestFew3254</span>
@@ -205,11 +271,11 @@
 • 采用&quot;基线测量→生成假设→小批量a/b测试→保存最优配置&quot;的迭代循环，控制变量并记录实际效果，避免无效调整
 • 在steam deck上保持用户空间/容器化的自动化栈，避免深度系统修改，通过openclaw集中管理任务路由、基准测试和报告生成
 • 破除旧优化误区，强调稳定帧时间优于峰值帧率，针对单个游戏建立独立配置文件而非全局通用设置">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhrw46.html">我如何在 Steam Deck 上用 Claude Code/Codex + OpenClaw 优化游戏（告别无脑乱调参数）🎮🤖</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 okaiukov</span>
@@ -224,11 +290,11 @@
 • 技术进步使个人无需团队即可运营企业
 • 创业门槛降低，个体创业者能力边界大幅扩展
 • 未来公司形态可能向超小型化、个人化发展">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhufuu.html">一人公司已近在咫尺</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Glum_Pool8075</span>
@@ -244,11 +310,11 @@
 • **审批机制**：敏感操作需通过telegram人工审批（支持批准/拒绝/超时及限时授权），借鉴银行ciba认证模式。
 • **审计功能**：记录所有请求的方法、路径及可选负载，支持llm调用日志记录，便于监控和追溯。
 • **架构优势**：即使代理被攻击，攻击者也无法读取或外泄真实凭证，实现凭证与执行环境的物理隔离。">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhuzam.html">我开发了 ClawGuard，这样就不用把 API 密码/令牌交给 OpenClaw（开源审批网关）</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 lombax85</span>
@@ -262,11 +328,11 @@
         <li class="post-item" data-id="1rhvqvp" data-title="让智能体自动在 playtomic 上预订板式网球场地" data-summary="- 开发者逆向工程了 playtomic 应用程序
 - 创建了 tui/cli 工具实现自动预订板球场地的功能
 - 该工具可让用户的代理程序（agent）自动完成场地预订">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhvqvp.html">让智能体自动在 Playtomic 上预订板式网球场地</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 ph1l337</span>
@@ -282,11 +348,11 @@
 - 在reddit分享经历后意外获得47人主动求用，3周内零成本增长至200用户，累计为用户节省超2.8万美元
 - 核心经验：从个人痛点出发快速构建产品，真实问题自带市场需求，无需融资即可启动
 - 当前困境：工具仍免费开放，尚未找到盈利模式">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhw9rx.html">一觉醒来收到2100美元API账单，于是做了个监控工具，现在200人在用</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 West-Law-9581</span>
@@ -300,11 +366,11 @@
         <li class="post-item" data-id="1rhxaj1" data-title="openclaw 实用场景：让生活更轻松｜github 11k+ star 仓库" data-summary="- openclaw 是一个拥有 11k+ github stars 的开源项目
 - 该项目旨在通过自动化用例简化日常生活和工作流程
 - 主要价值在于提升效率、降低操作复杂度">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhxaj1.html">OpenClaw 实用场景：让生活更轻松｜GitHub 11k+ Star 仓库</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 HuckleberryEntire699</span>
@@ -320,11 +386,11 @@
 - 亚马逊政策虽严格但至少文档清晰，便于排查问题
 - &quot;静默失败&quot;是最大痛点：代理看似正常运行，实际订单未成功，难以调试定位原因
 - 身份未识别、速率限制、页面不稳定等问题混杂，ai代理无法判断具体失败原因">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhyscj.html">商家正悄悄封禁不表明身份的AI代理——实际情况是这样的</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Opposite-Exam3541</span>
@@ -340,11 +406,11 @@
 • ai 代理绕过 api 直接读写文件系统操作任务卡片，用户通过 telegram 通知代理新任务
 • 当前局限：专为 ubuntu 和&quot;代理运行在独立机器&quot;场景设计，尚未适配云端代理或同机部署等更通用的环境
 • 作者考虑进一步完善并开源，但需先解决跨平台兼容性问题以扩大适用性">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhzdfn.html">我用 Openclaw 智能体搭了个 Trello 看板来管项目</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 TraumaMcTerror</span>
@@ -360,11 +426,11 @@
 - 关键优化经验：本地llm节省80% api成本但需设置业务查询过滤器，alexa语音识别是主要瓶颈需优化意图样本
 - 认证机制采用userid而非sessionid，并将授权持久化到文件避免代理重启丢失状态
 - 未来计划包括唤醒词检测、智能家居控制和基于 presence 的扬声器路由功能">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rhzht7.html">我用 OpenClaw + Alexa + 本地大模型（Ollama）搭了个语音助手——教程在此</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 cormazacl</span>
@@ -380,11 +446,11 @@
 - 竞争对手研究代理实现自动化周报，消除重复性手动工作
 - 核心认知转变：ai 处理&quot;思考之外的劳动&quot;，让人保持专注和心流状态
 - ai 代理虽会出错需人工修正，但远优于被琐事淹没的工作状态">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1ri6pm1.html">我和联合创始人就是整个组织架构图</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Future_Minute7002</span>
@@ -400,11 +466,11 @@
 - **定期审计技能插件**：检查已安装技能列表，及时更新至最新安全版本
 - **隔离与备份**：敏感操作使用独立节点，docker容器化限制ai访问，重要数据定期备份
 - **监控与日志**：启用详细日志记录，对异常操作设置告警机制">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1ri87zv.html">马斯克刚刚点名批评 OpenClaw 安全性。一位真实用户的理性分析 + 最佳实践</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Specialist_Major_976</span>
@@ -419,11 +485,11 @@
 • 桌面应用内置安全层，自动检查技能和工具的安全风险
 • openclaw 开机自启动，无需手动命令行操作，消除连接和令牌问题
 • 计划开发 ios 聊天认证应用，实现人机交互和关键操作的人工审批推送机制">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1ri89sk.html">让 OpenClaw 对外界攻击坚不可摧</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 laddermanUS</span>
@@ -439,11 +505,11 @@
 - 每个创意通过真实访客行为（注册、反馈、转化率）获得兴趣评分，30+ 访客后置信度提升，仅最高分项目进入开发
 - 技术栈组合：openclaw（智能体循环）、launchscore api（创意创建与发布）、posthog（数据分析）
 - 形成&quot;自主研究-选题-建站-生成内容&quot;的 saas 验证流水线，人工仅负责审核批准">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1ri8mq3.html">我让 OpenClaw 智能体接入 LaunchScore API，让它自主验证 SaaS 创意，结果如下。</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Legitimate-Ant9884</span>
@@ -459,11 +525,11 @@
 - 安装方式：通过 hacs 添加自定义仓库 `nicolasglg/openclaw-conversation`，配置网关 url 和 api token 即可
 - 前置要求：openclaw gateway（启用 chat completions 端点）、home assistant 2024.1+、stt/tts 引擎
 - 不仅限于家居控制，可像 telegram 一样自然对话，询问任何问题">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1ri8w5u.html">我开发了一个 HACS 集成，可将 OpenClaw 用作 Home Assistant 语音助手</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Alternative_Kale_295</span>
@@ -478,11 +544,11 @@
 - 正在寻找具有在线营销经验的商业合作伙伴
 - 希望合作伙伴能够帮助产品进行正确的市场定位
 - 有意者可通过私信联系进行初步沟通">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1riar1z.html">寻找商业合作伙伴</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 stapia4</span>
@@ -497,11 +563,11 @@
 • 该脚本通过discord提及通知用户，并通过gateway http api触发agent唤醒，自动读取完成内容并在对应频道发布摘要
 • 开发过程中遇到两个关键问题：需在openclaw.json中手动添加cron工具到白名单，且必须在请求体中传递sessionkey以确保agent在正确频道唤醒
 • 该技能已作为免费技能发布到clawhub平台供他人使用">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rieaon.html">我气不过 OpenClaw 连我以为很简单的功能都做不到，于是自己写了个技能。</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 krisco65</span>
@@ -517,11 +583,11 @@
 - 建议关注 ai 智能体市场（如 openai gpt store、github marketplace、 gumroad 或专业开发者平台）
 - 可考虑垂直领域平台：交易技能针对加密社区（如 tradingview、discord 服务器），社媒工具面向营销人员
 - 直接面向企业客户或建立个人品牌/网站可能是更高收益的销售渠道">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rig36b.html">有卖 OpenClaw 技能的市场平台吗？</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 saltfishcake</span>
@@ -6870,7 +6936,7 @@ Xerus - 基于Claude SDK打造，让你的非技术工作流自动跑起来</a>
     
     <div class="pagination-bar" id="paginationBar" style="display:none;">
       <div class="pagination-info">
-        显示 <span id="showingStart">1</span> - <span id="showingEnd">268</span> / 268 篇
+        显示 <span id="showingStart">1</span> - <span id="showingEnd">271</span> / 271 篇
       </div>
       <div class="pagination-controls" id="paginationControls">
         <button class="page-btn" onclick="goToPage(1)">« 首页</button>
