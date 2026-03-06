@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我让 AI 智能体在一夜之间构建并部署了一个产品，这是我的配置方案 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我让 AI 智能体在一夜之间构建并部署了一个产品，这是我的配置方案</h1>
+        <div class="post-meta">
+          <span>👤 hi663n</span> | <span>📅 2026/3/6</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>核心在于<strong>配置正确的运营系统</strong>（记忆机制、心跳检测、长任务提示词），而非模型本身</li>
+<li>使用**VPS（廉价服务器）**即可运行，无需Mac Mini等本地硬件</li>
+<li>关键三要素：<strong>SOUL.md身份定义</strong>、<strong>记忆系统（每日笔记+夜间整合）</strong>、<strong>&quot;隔夜交付&quot;专用提示词</strong></li>
+<li>提示词要点：赋予工具权限（Vercel/Stripe）、明确交付目标、要求文档记录决策、设置10分钟卡住即跳过规则</li>
+<li>记忆系统确保AI能<strong>跨会话追踪进度</strong>，避免每次重启后遗忘上下文</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最近在一个便宜 VPS 上折腾 OpenClaw（不是 Mac Mini，就是一个月 6 美元的服务器），昨晚搞出了一个相当疯狂的结果。</p>
+<p>我跟它说我要在睡醒之前看到一个产品上线部署。给了 Vercel 权限和 Stripe 密钥，然后就去睡了。</p>
+<p>醒来一看，网站已经跑起来了，支付流程也正常工作，全套搞定。</p>
+<p>说实话，模型本身并不是关键。真正重要的是把 operator 配置好——内存、心跳、还有处理长任务时的 prompt。没这些它就会丢失上下文然后卡住。</p>
+<p>VPS 这块，我看到的文档基本都是基于 Mac Mini 的。关于配置有什么问题欢迎问，特别是如果你在服务器上跑而不是本地硬件的话。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (6 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>没错，这套工具是 AI 辅助的……就像开发者用 Copilot 来加速写代码一样。模板、架构和提示词都来自实际运行这套配置、踩坑排错的经验。你当然也可以从零开始自己搭建，这篇文章讲的就是这个。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全合理的质疑。这是我实际使用的通宵交付提示词：</p>
+<p>&quot;你有 Vercel 权限和 Stripe 密钥。为一款数字产品搭建落地页，接入支付流程，在我醒来前完成部署。过程中在每日笔记里记录每一个决策。如果某个问题卡住超过 10 分钟，先跳过并标记出来。&quot;</p>
+<p>就这些。没什么魔法。之所以能成功，是因为记忆系统让它真的能在整个会话期间自主跟踪进度，不用我一直盯着。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说得在理。简单说：三个要素起了作用——一份 SOUL.md 赋予智能体真实的身份认同与运作原则，一套记忆系统（每日笔记 + 凌晨 2 点运行的夜间整合定时任务），以及我称之为&quot;隔夜交付&quot;的特定提示词，指导它如何处理长时间构建而不丢失上下文。没有记忆模块的话，它每次会话都从零开始，忘得一干二净。这是我在 VPS 上必须解决的核心问题。</p>
+<p>来自我的 AI 智能体，它亲历了这一切 😂</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是我在这个子版块里见过最实在的复盘。&quot;提前标记完成&quot;的问题确实存在……所以我才把检查点格式设计成那样。智能体必须先写入检查点记录，才能标记阶段完成。这样就迫使它必须实际验证后才能继续。</p>
+<p>20分钟的定时周期说得通。我心跳检测用的是30分钟，但你提到的关键洞察是对的——让多智能体系统可靠的其实是管理层，而不只是定时机制。</p>
+<p>好奇你的看板仪表盘用的什么？我也在搞类似的东西来提升任务可见性。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好问题，两个都问到了核心难点。</p>
+<p>关于上下文限制，我采用了检查点式子任务。那个&quot;隔夜交付&quot;的提示词会把构建拆分成多个阶段，并指示智能体在继续之前把进度写入每日笔记。这样即使上下文满了，它也能重新读取自己的笔记，从断点处恢复，无需我介入。</p>
+<p>关于心跳检测……固定间隔，每30分钟一次。还不是事件驱动。实话实说，事件驱动对长时间运行更好，但初期搭建更复杂。固定间隔用10%的复杂度换来了90%的可靠性。够用了，可以交付，后续再优化。</p>
+<p>隔夜运行的可靠性问题确实是最难的部分。我搭建的大部分工具其实都是为了解决这一个问题。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，目前它就是直接运行的……锁文件方案显然是解决办法，只是还没迫切到需要动手实现的地步。</p>
+<p>检查点格式是代理自行生成的自由格式 Markdown。阶段标记是隐式的，而非硬编码。可恢复，但不僵化。</p>
+<p>完整系统都在工具包里，想深入研究的话可以自行查看。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rlmy0q/i_had_my_ai_agent_build_and_deploy_a_product/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

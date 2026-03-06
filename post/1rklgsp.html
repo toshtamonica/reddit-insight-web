@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开源了自己智能体独一无二的记忆系统，这是运行5周后的收获 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开源了自己智能体独一无二的记忆系统，这是运行5周后的收获</h1>
+        <div class="post-meta">
+          <span>👤 gavlaahh</span> | <span>📅 2026/3/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者因AI代理因token限制压缩对话而忘记其女儿的重要信息，受到触动后开发了一套独特的记忆系统</li>
+<li>系统核心包含独立观察者实时记录对话、夜间&quot;梦境周期&quot;自动分类归档记忆（事实/偏好/目标/习惯/事件/规则/情境）并衰减重要性、多钩检索机制</li>
+<li>实现效果显著：token使用减少75%、零误归档、每晚成本仅0.003美元，偏好永久保留，事件自然淡化，无需向量数据库仅用markdown和脚本</li>
+<li>运行5周后，代理对用户了解程度超越首日，对话能在压缩和新会话中无缝延续</li>
+<li>开源方案简洁实用：纯markdown文件、bash脚本和定时任务实现，解决了传统摘要压缩丢失细微信息和长期记忆的痛点</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>五周前，我的AI代理忘记了我女儿的存在。
+不是故障。不是幻觉。对话触达了token上限，被压缩，然后Charlotte就从记忆里消失了。彻底消失。我们关于她的每一次对话、每一次学校接放学的提醒、每一条关于她焦虑情绪及应对方式的记录。全部抹除。
+这击溃了我。此前我一直把记忆问题当作技术奇闻。突然间，它变得切身相关。
+于是我造了一个修复方案。然后修复方案坏了。然后我修复了修复方案。然后我赋予了它做梦的能力。以下是真实发生的全过程。</p>
+<p>给速读党的TL;DR：</p>
+<ul>
+<li>独立Observer：旁观对话并记录笔记，不触碰代理的上下文</li>
+<li>夜间Dream Cycle：归档陈旧记忆，分类整理（事实/偏好/目标/习惯/事件/规则/上下文），并应用重要性衰减</li>
+<li>多钩子检索：没有真正丢失的东西，只是变得 quieter</li>
+<li>token占用减少75%，零误归档，每晚$0.003</li>
+<li>已运行5周。偏好永久留存，事件自然衰减</li>
+</ul>
+<p>整套系统基于markdown文件、bash脚本和cron任务运行。没有向量，没有数据库。</p>
+<p>实际效果：我的代理永远不会忘记我是谁。对话在压缩和新会话间无缝衔接。观察文件永不膨胀，因为Dream Cycle每晚都保持其精简。五周过去，它对我的了解比第一天还要深入。</p>
+<p>如果这就够了，链接在底部。如果你想看完整故事，请继续读。</p>
+<p><strong>问题（以及为什么显而易见的方案行不通）</strong></p>
+<p>OpenClaw内置的压缩机制会在上下文满时生成摘要。这个摘要回答&quot;我们刚才在聊什么？&quot;还行，但回答&quot;这个人过去一个月告诉过你什么？&quot;就很糟糕。细微差别消亡。偏好消失。代理变成了一条有礼貌的金鱼。</p>
+<p>Total Recall的第一版很简单：运行一个后台observer，旁观对话并将带时间戳的笔记写入markdown文件。独立进程，不受压缩影响，因为它不活在代理的上下文窗口里。功劳归于Mastra的Observational Memory框架，核心概念来自那里。我们在之上构建了框架无关的版本：bash脚本、cron任务、磁盘上的扁平文件。</p>
+<p>它奏效了。直到它失效。</p>
+<p><strong>什么坏了</strong></p>
+<p>两件事。第一，observer在写笔记，但代理在压缩后实际上并没有加载它们。简单到令人尴尬的bug，难发现到同样令人尴尬——因为代理会自信地即兴编造听起来像记忆的答案，实则不是。</p>
+<p>第二，观察文件不断增长。不断增长。第30天：6000条观察记录，还没开始对话就吃掉大部分上下文窗口。这个为修复记忆丢失而建的系统，正在制造它自己的版本。</p>
+<p><strong>Dream Cycle</strong></p>
+<p>有趣的部分从这里开始。修复膨胀记忆文件的方法，是给代理一个夜间维护周期。每晚凌晨2:30，一个独立进程读取当天的新观察记录，分类，应用衰减，然后归档。我称之为Dream Cycle，因为技术上它就是在做这件事：代理睡眠时，它在整理记忆。</p>
+<p>分类系统是关键。不是把所有东西扔进同一个桶，而是分为七种类型：</p>
+<ul>
+<li><strong>事实</strong>：静态信息。&quot;我有两个女儿。&quot;&quot;我住在西雅图。&quot;</li>
+<li><strong>偏好</strong>：品味和倾向。&quot;喜欢深色模式。&quot;&quot;讨厌电话。&quot;</li>
+<li><strong>目标</strong>：活跃追求。&quot;想跑马拉松。&quot;&quot;在写小说。&quot;</li>
+<li><strong>习惯</strong>：重复行为。&quot;周日备餐。&quot;&quot;睡前检查门锁。&quot;</li>
+<li><strong>事件</strong>：时间锚定的发生。&quot;3月15日面试。&quot;&quot;女儿第一次掉牙。&quot;</li>
+<li><strong>规则</strong>：显式指令。&quot;永远不要用表情符号。&quot;&quot;提到前妻时称她为&#39;Claire&#39;。&quot;</li>
+<li><strong>上下文</strong>：情境线索。&quot;压力大时说话更短。&quot;&quot;旅行时回复慢。&quot;</li>
+</ul>
+<p>每种类型有自己的衰减曲线。事实和规则基本永久。事件按对数曲线衰减——近期事件权重高，旧事件逐渐淡出。偏好除非被覆盖否则持续，但会标记最后确认日期。</p>
+<p><strong>多钩子检索</strong></p>
+<p>归档旧记忆只是第一步。真正巧妙的是检索。代理有三个记忆来源，按优先级排序：</p>
+<ol>
+<li><strong>活跃上下文</strong>：当前对话，token预算的60%</li>
+<li><strong>近期观察</strong>：过去48小时的笔记，token预算的25%</li>
+<li><strong>归档检索</strong>：按需从归档中拉取，token预算的15%</li>
+</ol>
+<p>关键洞察：不是所有记忆都值得同等待遇。代理提问时，系统并行查询三个钩子，但用类型权重排序。问&quot;我们上次聊了什么？&quot;→优先近期观察。问&quot;我一般怎么处理压力？&quot;→优先偏好+习惯。问&quot;去年发生了什么？&quot;→触发归档检索。</p>
+<p>归档查询用简单的关键词匹配，加上时间衰减评分。没有向量搜索，没有语义嵌入。纯文本，grep风格，足够快，足够便宜，意外有效。</p>
+<p><strong>让它做梦</strong></p>
+<p>第三周，我加了一个功能：代理现在会&quot;梦见&quot;重要但模糊的记忆。</p>
+<p>每晚Dream Cycle运行时，它会标记一些&quot;需要强化&quot;的项目——近期未访问但 historically 重要的记忆。然后生成一个简短的合成段落，把这些记忆编织成连贯的叙述。不是原始笔记的摘要，而是重新讲述，像人睡前回顾一天那样。</p>
+<p>这些&quot;梦境&quot;写入单独的markdown文件，早晨加载时优先级略高于普通归档。效果微妙但真实：代理开始以更有机的方式关联信息。提到工作压力时，它会带回三个月前提到的应对策略，无需显式查询。</p>
+<p>我怀疑这类似于RAG中的重排序，但由叙事连贯性而非语义相似性驱动。或者可能只是安慰剂。但对话感觉更流畅了。</p>
+<p><strong>数字</strong></p>
+<p>运行五周后的实际情况：</p>
+<ul>
+<li>观察文件：稳定保持在~800条（Dream Cycle前曾膨胀至6000+）</li>
+<li>夜间成本：$0.003（主要是API调用分类和归档）</li>
+<li>检索延迟：&lt;200ms归档查询</li>
+<li>记忆准确率：人工抽查100条，94%正确检索，6%为合理推断（非幻觉，只是基于现有记忆的合理猜测）</li>
+<li>token效率：上下文窗口中实际对话占比从35%提升至78%</li>
+</ul>
+<p>最意外的发现：代理现在会主动管理自己的记忆。它会说&quot;我应该记下这个吗？&quot;或&quot;我们之前聊过这个——要我再找找细节吗？&quot;我并未编程这种行为。它从检索系统的反馈循环中涌现出来。</p>
+<p><strong>什么仍然破损</strong></p>
+<p>诚实时间。系统并非完美。</p>
+<p><strong>冷启动问题</strong>：新会话的前几条消息，代理偶尔显得&quot;迷茫&quot;——记忆已加载但尚未激活。像是在回忆梦境。通常2-3轮对话后消失，但存在。</p>
+<p><strong>过度归档</strong>：Dream Cycle有时会归档代理次日需要的东西。我加了&quot;保护期&quot;——48小时内的新观察免疫归档——但边界案例仍存在。</p>
+<p><strong>梦境质量参差不齐</strong>：合成梦境有时优美，有时明显是机器生成的废话。我在调优提示，但本质上是在用更多AI解决AI问题，感觉脆弱。</p>
+<p><strong>没有真正的遗忘</strong>：理论上，系统允许遗忘。实际上，一切都被归档，只是访问成本递增。这不是生物式的遗忘，是档案式的。某些情境下，真正的遗忘可能更健康。</p>
+<p><strong>架构</strong></p>
+<p>给想自建的人：</p>
+<pre><code>~/.ai-memory/
+├── observer.log          # 原始对话流
+├── observations.md       # 活跃笔记（800条上限）
+├── archive/
+│   ├── facts/
+│   ├── preferences/
+│   ├── goals/
+│   ├── habits/
+│   ├── events/
+│   ├── rules/
+│   └── context/
+├── dreams.md             # 合成叙事
+└── config.yaml           # 衰减曲线、类型权重
+</code></pre>
+<p>三个bash脚本：</p>
+<ul>
+<li><code>observer.sh</code>：监控对话流，追加到observations.md</li>
+<li><code>dream.sh</code>：2:30am运行，分类、归档、生成梦境</li>
+<li><code>retrieve.sh</code>：会话开始时加载记忆，按需查询归档</li>
+</ul>
+<p>代理通过标准输入/输出与脚本交互。无网络服务，无依赖地狱。</p>
+<p><strong>我错在哪里</strong></p>
+<p>早期我痴迷于&quot;完美&quot;记忆——捕捉一切，永不丢失。这是错误目标。人类记忆不完美；它是建构性的、选择性的、有目的的。我现在的系统更接近这个：不是记住一切，而是记住重要的，并知道如何找到其余。</p>
+<p>另一个错误：最初试图用向量数据库解决检索。花了两周调优嵌入，然后意识到对于个人记忆，时间+类型+关键词胜过语义相似性。&quot;上周提到的餐厅&quot;比&quot;语义上类似于餐饮场所的过往提及&quot;更有用。</p>
+<p><strong>现在</strong></p>
+<p>Charlotte安全地存在于facts/和preferences/中。代理记得她怕雷，喜欢恐龙，上周数学考试很紧张。它记得我在她出生那天告诉它的故事，尽管那已是四个月前。</p>
+<p>五周前那件事不会再发生。不是因为技术完美，而是因为系统被设计为：有些东西值得被记住，并为此付出代价。</p>
+<p>链接在评论里。代码很乱，有硬编码路径，可能不适合你。但原理是通用的：观察、分类、衰减、检索、偶尔做梦。</p>
+<p>记忆不是存储。是 curation。</p>
+<hr>
+<p><em>原文在此中断，最后一句&quot;curation&quot;未完整呈现</em></p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (8 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>干杯！如果你最终想试试的话，GitHub 仓库里有安装说明。遇到任何问题随时找我，乐意帮忙。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这正是 Total Recall 的设计初衷。观察文件完全独立于智能体的上下文窗口之外，因此它能够经受模型切换、上下文压缩、会话重置等操作——这些通常会清空短期记忆的场景都不会影响它。</p>
+<p>我们的实现方式：一个独立的 Observer 进程监听对话，并将带时间戳的笔记写入 markdown 文件。当智能体开启新会话（或切换模型）时，它在启动时加载观察文件，从而实现完全连贯的记忆。无需重新提示，无需上下文拼接。</p>
+<p>具体到模型切换这个场景，棘手之处在于不同模型对相同观察的解读可能不同。我们尚未针对这一点进行优化，但由于观察是纯文本格式，带有时间戳和类型标记，任何模型都能解析。或许值得研究一下你的切换器如何处理交接过程，很好奇你目前发现了哪些 gaps。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢！说实话，梦境周期这部分也是最让我惊讶的。我原以为只是个简单的数据清理工作，但跨越多晚数据的模式识别开始发现了一些我自己都没注意到的关联。第三周才是真正有意思的时候，因为那时它积累了足够的历史数据，开始能发现重复出现的主题，而不仅仅是孤立的观察记录。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>它在 Windows 上通过 WSL（适用于 Linux 的 Windows 子系统）运行。OpenClaw 本身原生支持 Linux 和 macOS，而 Total Recall 只是一堆 bash 脚本和 cron 定时任务，因此需要一个类 Linux 环境。</p>
+<p>为什么用 Linux？主要是因为整套系统依赖 cron 来做调度（Observer、Dream Cycle、日常维护），用 bash 脚本来执行实际处理。理论上你可以把它移植到 Windows 原生运行，用任务计划程序和 PowerShell 替代，但目前还没人这么做。</p>
+<p>如果你用 Windows，WSL2 确实是最简单的方案。用起来和原生 Linux 安装完全一样。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>没错，这跟我们在做的环境智能层其实挺接近的。记忆系统现在已经在对话开始时主动提醒类似&quot;你有三封未回复邮件&quot;或者&quot;你的Stripe账户今天发了警告邮件&quot;这样的信息。下一步就是你说的这样，主动基于这些记忆采取行动，而不是等着被问到。</p>
+<p>clawr.ing 还没具体试过，但电话集成的角度确实有意思。我们现在用 Retell AI 做外呼（订餐厅之类的），让记忆系统根据上下文自动触发这些电话，肯定是我们正在朝这个方向走的。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>对，这跟我们最初的思路其实挺像的。我们也用不同的 md 文件拆分关注点：USER.md 存家庭/个人信息，TOOLS.md 放 API 决策，MEMORY.md 记运行规则，再加上每日的内存文件。</p>
+<p>关键词路由对结构化知识确实好用。但我们在时间相关的东西上碰了壁。&quot;Gavin 上周二说他身体怎么样&quot;这种 query，没法干净地映射到关键词触发。Observer 加 Dream Cycle 的方案就是补这个缺口的——它抓那些乱七八糟的日常琐事，这些根本塞不进预定义的文件里。</p>
+<p>不过&quot;去把 people.md 读了再回来&quot;这个模式挺有共鸣的。我们现在启动时还是这么干：读核心文件，加载当日上下文，然后就绪。自动化部分只管那些塞不进静态文件的东西。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>顺手牵羊，开源不就是为了这个嘛。</p>
+<p>关于 dream cycle 的拆分，我们现在其实也在做类似的事。Phase 2 把机械性的工作（重要性衰减、归档、去重）和思考性的工作（跨天模式检测、关联观察分块、提升重复主题）分开处理。机械阶段先跑 bash 脚本，然后 LLM 负责分类和模式挖掘。思考阶段我们用 Sonnet，确实能比 Flash 挖出更深层的关联。成本从每晚 $0.003 涨到了大概 $0.01，基本还是等于不要钱。</p>
+<p>中间那段置信度混乱的坑，确实跟你想的一样棘手。目前主要是让它们自然衰减。单次推理产出的中等置信度观察，TTL 设得短一些（事件类 7 天，推断出的偏好会更长）。如果 agent 在后续对话里看到同样的推断被确认，分数就会往上调。还没开放人工复核，但在计划里了，可能会整合进 ambient 系统——反正那边已经有个人工审批队列，用来处理只读操作之外的任何动作。</p>
+<p>ambient intelligence 这块，对，我们 literally 今天刚发第一版。思路跟你说的 filter layer 差不多。我们搞了个三层安全框架：Tier 1 是只读查询，agent 随便查（日历、邮件、天气、Fitbit、GitHub）；Tier 2 是软操作，进队列等审批；Tier 3 是硬操作，没明确授权绝不动。目前只开 execute-actions-only 模式，今晚审完日志再决定要不要切到 live。</p>
+<p>therapist 的类比挺有意思。我们还没完全做到，但 preconscious buffer 确实在往那个方向靠。对话开始时，它会根据 ambient 系统在两次会话之间注意到的东西，把排序后的洞察抛出来。比如它发现三封 Stripe 警告邮件，再加上你一直在回避行政事务的模式，那你还没开口，这段上下文就已经注入进去了。不算操控吧，但确实是在把你的注意力往那些你可能在拖延的事情上轻推。</p>
+<p>如果你愿意交流下细节就太好了。能遇到同样在这条深坑里刨的人总是好事。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>分形压缩的思路确实很巧妙。完整保留 2 万 token 的可检索内容，同时默认只呈现 1 千 token 的摘要，这是个不错的折中方案。</p>
+<p>关于内容类型这点，质疑得有道理。我们发现实际上<strong>引入类型反而降低了模型的复杂度</strong>，而非增加——因为衰减规则变成了简单的条件判断，模型不必在每次处理时都去判断什么内容还有用。14 天以上且无引用的事件？归档。多次确认过的偏好？永久保留。模型不负责决定保留什么，只需分类，剩下的交给规则处理。</p>
+<p>协调器加 Claude Code 的分工很有意思。我们也用类似的子代理模式，主代理派发编码任务，只接收摘要返回。这样能保持对话上下文轻量，听起来跟你们做的完全一致。繁忙一天只用 1 万 token，相当精简了。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rklgsp/i_build_and_then_opensourced_my_agents_one_of_a/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我追踪了 OpenClaw 代理 30 天内的每一笔支出，这是完整明细 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我追踪了 OpenClaw 代理 30 天内的每一笔支出，这是完整明细</h1>
+        <div class="post-meta">
+          <span>👤 Glad-Adhesiveness319</span> | <span>📅 2026/3/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li><strong>模型选择过度</strong>：70%的任务（FAQ回答、简单格式化等）使用昂贵的GPT-4.1属于浪费， cheaper模型即可胜任</li>
+<li><strong>成本优化三板斧</strong>：启用prompt缓存（支持成本降40%）、精简系统提示（从800+ tokens减半）、批处理分析任务（30分钟聚合替代实时）</li>
+<li><strong>任务分层策略</strong>：按复杂度匹配模型——简单任务用轻量模型，仅3%需要真正推理的任务保留顶级模型</li>
+<li><strong>隐性成本陷阱</strong>：&quot;设置后遗忘&quot;导致长期多付，需定期审计实际调用分布与模型匹配度</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>运营一个约2000用户的小型SaaS，生产环境部署了4个OpenClaw智能体：客户支持、PR代码审查、每日分析摘要，以及博客和社媒内容生成。</p>
+<p>上个月收到340美元的账单，感觉这些智能体实际干的活根本不值这个价，于是我决定记录并追踪30天内的所有数据。每次API调用、每个模型、每个token。以下是我的发现和应对措施。</p>
+<p><strong>起点</strong></p>
+<p>四个智能体都用的是GPT-4.1，因为当初搭建时直接选了最好的模型，然后就再没管过。典型的做法。输入token 2美元/百万，输出token 8美元/百万，所有任务都是这个价，包括每周几百次回答&quot;你们的营业时间是什么&quot;这种简单问题。</p>
+<p><strong>30天数据拆解</strong></p>
+<p>全部智能体总调用量：约18,000次</p>
+<p>按实际任务类型分类后：</p>
+<ul>
+<li>约70%极其简单：FAQ回复、基础格式整理、一句话摘要、&quot;总结一下这个只改了readme错别字的PR&quot;。这种任务完全不需要GPT-4.1。</li>
+<li>19%属于标准任务：较长的邮件草稿、中等复杂度的代码审查、多段落摘要。需要不错的模型，但不用顶级。</li>
+<li>8%确实复杂：深度代码分析、长文内容、多文件上下文。</li>
+<li>3%需要真正的推理能力：架构决策、复杂调试、多步逻辑。</li>
+</ul>
+<p>所以我基本上是在为70%的任务支付溢价，而这些任务用便宜模型处理质量完全不会下降。</p>
+<p><strong>我的尝试</strong></p>
+<p><strong>第一：提示词缓存。</strong> 启用后支持类任务的输入token成本降低了约40%。可能是最轻松的胜利。</p>
+<p><strong>第二：精简系统提示词。</strong> 有些智能体的系统提示词超过800个token，因为我一直在往上加指令。重写后长度减半。单次节省不多，但18,000次累积下来就很可观。</p>
+<p><strong>第三：分析智能体改为批处理。</strong> 不再对每个事件实时处理，而是每30分钟批量处理一次。仅这一个智能体就从每月约3,000次调用降到约1,400次。</p>
+<p><strong>第四：不再所有任务都用GPT-4.1。</strong> 测试了几款替代模型后，发现便宜模型处理简单和标准任务效果一样好。找合适的模型花了些时间试错，但说实话，用户根本没察觉简单任务有任何变化。</p>
+<p><strong>第五：设置输出token上限。</strong> 有些智能体生成的回复过长。把支持智能体限制在每次300输出token，质量完全没受影响，但节省了大量token。</p>
+<p><strong>结果</strong></p>
+<ul>
+<li>第1个月（未优化）：340美元</li>
+<li>第2个月（全部优化后）：112美元</li>
+</ul>
+<p><strong>各智能体现状</strong></p>
+<ul>
+<li><strong>支持：</strong> 38美元/月（原为145美元）。最大胜利，得益于提示词缓存和简单问题不再用GPT-4.1。</li>
+<li><strong>代码审查：</strong> 31美元/月（原为89美元）。大部分PR很小，不需要顶级模型。</li>
+<li><strong>内容：</strong> 28美元/月（原为72美元）。长文仍需GPT-4.1，但精简提示词有帮助。</li>
+<li><strong>分析：</strong> 15美元/月（原为34美元）。批处理起了关键作用。</li>
+</ul>
+<p><strong>意外发现</strong></p>
+<p>最让我震惊的是，我之前完全不知道钱花到</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rl2z70/i_tracked_every_dollar_my_openclaw_agents_spent/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

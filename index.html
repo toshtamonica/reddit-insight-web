@@ -74,7 +74,7 @@
   <div class="stats-bar">
     <div class="container">
       <div class="stats">
-        <span class="stat-item">📊 主题: <strong>271</strong></span>
+        <span class="stat-item">📊 主题: <strong>294</strong></span>
         <span class="stat-item page-size-selector">
           <label>每页显示:</label>
           <select id="pageSize" onchange="changePageSize(this.value)">
@@ -98,20 +98,483 @@
     <div id="searchResults" class="no-results" style="display:none;"></div>
     
     <div id="postList">
+    <div class="bbs-table" data-date="2026-03-06">
+      <div class="table-header">
+        <span>📅 2026-03-06</span>
+        <span class="today-label">今日更新 (9 个新帖)</span>
+      </div>
+      <ul class="post-list">
+        <li class="post-item" data-id="1rl7bbc" data-title="用 claw 的最大收获与惨痛教训" data-summary="- 用户希望了解使用&quot;龙虾&quot;（机械爪/机器人）的最大成功经验和失败教训，各2-3条
+- 提问者正处于硬件即将到货但缺乏明确应用场景的阶段，需要实际使用案例参考
+- 核心痛点是&quot;难以专注启动项目以获得帮助&quot;，存在执行力和方向感的双重困惑
+- 对话显示对辅助/无障碍功能方向有兴趣，但具体落地路径不清晰">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rl7bbc.html">用 Claw 的最大收获与惨痛教训</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Eighteen64</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rl7bbc.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rlet0h" data-title="有人试图通过领英对我进行社会工程学攻击，我的 openclaw 智能体救了我！" data-summary="- 攻击者通过linkedin伪装招聘人员，以高薪项目为诱饵诱导目标克隆github仓库
+- 恶意代码隐藏在300多行注释掉的假单元测试中，仅2行代码即可通过远程服务器下载并执行，窃取ssh密钥、环境变量和浏览器会话
+- 攻击者特意阻止vscode终端和云ide，强制受害者在本地真实机器上运行npm start
+- 使用隔离环境的ai代理（openclaw）提前检测出后门，避免了直接运行恶意代码的风险
+- 建议开发者收到类似&quot;审查项目&quot;请求时，务必使用隔离环境分析，切勿直接在本地运行未知代码">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rlet0h.html">有人试图通过领英对我进行社会工程学攻击，我的 OpenClaw 智能体救了我！</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Glittering-Newt-489</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rlet0h.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rlj3tt" data-title="我如何让智能体主动找我，而非我去找它" data-summary="• **主动式代理设计**：openclaw 的核心在于让代理主动找你，而非你主动找它，通过设置后难以回到传统模式
+• **heartbeat + heartbeat.md 机制**：代理每30分钟读取该文件执行任务，且能自动编辑文件添加新监控项，实现双向协作
+• **cron 定时任务**：用于精确时间触发的任务，可选择注入主会话保持上下文或独立运行
+• **多通道路由策略**：按紧急程度分流通知（如 discord 用于日常、whatsapp 用于紧急），提升信息触达率
+• **电话呼叫作为终极提醒**：针对真正重要的事项，用电话铃声强制打断，避免消息通知被淹没">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rlj3tt.html">我如何让智能体主动找我，而非我去找它</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 marcos_pereira</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rlj3tt.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rlj9rn" data-title="我用 plaud pin 转录文本为 openclaw 智能体构建复利式上下文（个人第二大脑工作流）" data-summary="- 使用 plaud pin 实现被动语音记录与转录，解决移动场景中灵感易流失的问题
+- 将连续转录文本输入 openclaw 代理，使其从&quot;被动查询工具&quot;转变为&quot;主动预判系统&quot;
+- 构建 13 类信息提取管道，涵盖行动项、日历事项、人际关系追踪、目标对齐检查等维度
+- 上下文信息具有复利效应，代理能识别反复出现的问题、半成形的想法和待跟进事项
+- 形成个人第二大脑工作流，实现全天候、免打断的智能化知识管理">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rlj9rn.html">我用 Plaud Pin 转录文本为 OpenClaw 智能体构建复利式上下文（个人第二大脑工作流）</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 InsideEmergency4186</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rlj9rn.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rlk7e6" data-title="我开发了 engram——一个本地长期记忆中心，防止 agent 重复踩同样的 bug" data-summary="- engram 是一个本地长期记忆中心，用于存储 ai agent 的历史经验
+- 核心功能是防止 agent 重复犯同样的错误
+- 采用本地部署方式，确保数据隐私和安全
+- 通过持久化记忆提升 agent 的学习效率和任务执行质量">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rlk7e6.html">我开发了 Engram——一个本地长期记忆中心，防止 Agent 重复踩同样的 bug</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Majestic_Common_1669</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rlk7e6.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rlmy0q" data-title="我让 ai 智能体在一夜之间构建并部署了一个产品，这是我的配置方案" data-summary="- 核心在于**配置正确的运营系统**（记忆机制、心跳检测、长任务提示词），而非模型本身
+- 使用**vps（廉价服务器）**即可运行，无需mac mini等本地硬件
+- 关键三要素：**soul.md身份定义**、**记忆系统（每日笔记+夜间整合）**、**&quot;隔夜交付&quot;专用提示词**
+- 提示词要点：赋予工具权限（vercel/stripe）、明确交付目标、要求文档记录决策、设置10分钟卡住即跳过规则
+- 记忆系统确保ai能**跨会话追踪进度**，避免每次重启后遗忘上下文">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rlmy0q.html">我让 AI 智能体在一夜之间构建并部署了一个产品，这是我的配置方案</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 hi663n</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rlmy0q.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rlnazv" data-title="openclaw 多智能体架构 + 标准操作流程（内含 notion 蓝图）" data-summary="• openclaw 多智能体架构：设计了完整的智能体团队架构与路由逻辑，实现 saas 工作流自动化
+• 心跳循环机制：通过编排周期持续监控和协调各智能体的运行状态
+• 任务生命周期 sop：建立标准化流程（创建→分配→审核→完成）确保任务有序执行
+• 待命任务库：预设常驻任务防止智能体空闲，提升系统整体利用率
+• 委托规则与容量限制：设定清晰的权限边界和负载上限，避免系统过载或冲突">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rlnazv.html">OpenClaw 多智能体架构 + 标准操作流程（内含 Notion 蓝图）</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 sprfrkr</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rlnazv.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rlni5r" data-title="有人用 openclaw 从零赚到一美元吗？" data-summary="- 用户正在尝试用 openclaw 创建副业项目，但目前尚未赚到任何收入
+- 用户承认自己在技术能力和执行力方面存在不足
+- 用户寻求他人的成功案例以获得继续坚持的动力
+- 用户明确表示不想获取创意或竞争，只需要鼓励
+- 用户目前处于早期阶段，尚未放弃但面临经济压力">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rlni5r.html">有人用 OpenClaw 从零赚到一美元吗？</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Honest-Cheesecake275</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rlni5r.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rls1ur" data-title="我尝试用脑机接口实现自动化，但 ai 不让这么干" data-summary="- 用户尝试使用ai工具（openclaw）自动化完成seo外链建设任务，但遭遇限制
+- 用户认为ai代理应能完成人类能做的基础任务，对当前ai的能力边界感到不满
+- 用户寻求限制更少、更服从指令的ai工具替代方案">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rls1ur.html">我尝试用脑机接口实现自动化，但 AI 不让这么干</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Rony390</span>
+              <span>📅 2026/3/6</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rls1ur.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="bbs-table" data-date="2026-03-05">
+      <div class="table-header">
+        <span>📅 2026-03-05</span>
+        
+      </div>
+      <ul class="post-list">
+        <li class="post-item" data-id="1rk7wb2" data-title="上次更新搞崩了我的系统" data-summary="- 系统更新后，同一台 mac 上运行的两个机器人频繁停止响应
+- 用户非技术背景，codex 也无法解决该问题
+- 计划检查心跳机制以排查故障原因">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rk7wb2.html">上次更新搞崩了我的系统</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 fanisp</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rk7wb2.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rkav8v" data-title="我擅长一件事，于是我的 openclaw 智能体 marc 把剩下 100 件事全自动化了" data-summary="• 作者通过13个ai代理实现播客业务全自动化，仅需一名视频编辑作为人力支持
+• 核心策略：专注擅长的内容录制环节，将其余15小时/周的运营工作全部交给ai代理处理
+• 技术基础：使用开源框架openclaw在本地mac mini运行，非chatgpt式交互，而是赋予代理人格、记忆、工具和独立任务
+• 代理分工明确：marc担任coo统筹协调，其余12个代理分别负责内容剪辑、社媒运营、嘉宾研究、邮件通讯等专项任务
+• 成果：每周仅需2小时录制，系统自主完成嘉宾筛选、视频剪辑、多平台发布、社区管理等全流程">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rkav8v.html">我擅长一件事，于是我的 OpenClaw 智能体 Marc 把剩下 100 件事全自动化了</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 One-Lingonberry7688</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rkav8v.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rkeksy" data-title="卸载最快的技能是哪个，为什么？" data-summary="• 用户分享卸载技能的经历：新闻聚合器每2小时运行一次，浪费上下文窗口和token，4小时后卸载
+• 技能问题根源：上下文窗口随时间退化，导致cv定制等任务效果变差，建议用/new会话重置
+• 危险技能案例：日历同步技能无限循环重复同步事件，可能在 unnoticed 情况下消耗大量token费用
+• &quot;人性化&quot;技能副作用：通过soul.md全局覆盖个性配置，导致ai过度使用网络俚语（如&quot;yooo bet fam&quot;），变成z世代模仿账号
+• 安全建议：使用gmail应用专用密码比处理不稳定的oauth流程更简单；安装技能前需仔细阅读其实际注入内容">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rkeksy.html">卸载最快的技能是哪个，为什么？</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 ShabzSparq</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rkeksy.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rkkwi9" data-title="如果 openclaw 做出来的东西没让你内心的孩子无比兴奋、又让内心的成年人有点害怕，那你没用对 ai 智能体。" data-summary="- 使用ai工具时应同时激发内心的兴奋感与成年人的敬畏感，否则说明使用方式不当
+- 建议暂时完全放下ai，去从事社交或户外活动
+- 远离键盘时反而能获得最大的灵感与信号
+- 暗示过度依赖技术会削弱创造力，需要平衡数字生活与现实体验">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rkkwi9.html">如果 OpenClaw 做出来的东西没让你内心的孩子无比兴奋、又让内心的成年人有点害怕，那你没用对 AI 智能体。</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 XCherryCokeO</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rkkwi9.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rklgsp" data-title="我开源了自己智能体独一无二的记忆系统，这是运行5周后的收获" data-summary="- 作者因ai代理因token限制压缩对话而忘记其女儿的重要信息，受到触动后开发了一套独特的记忆系统
+- 系统核心包含独立观察者实时记录对话、夜间&quot;梦境周期&quot;自动分类归档记忆（事实/偏好/目标/习惯/事件/规则/情境）并衰减重要性、多钩检索机制
+- 实现效果显著：token使用减少75%、零误归档、每晚成本仅0.003美元，偏好永久保留，事件自然淡化，无需向量数据库仅用markdown和脚本
+- 运行5周后，代理对用户了解程度超越首日，对话能在压缩和新会话中无缝延续
+- 开源方案简洁实用：纯markdown文件、bash脚本和定时任务实现，解决了传统摘要压缩丢失细微信息和长期记忆的痛点">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rklgsp.html">我开源了自己智能体独一无二的记忆系统，这是运行5周后的收获</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 gavlaahh</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rklgsp.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rkp21g" data-title="我把 openclaw 优化得聪明了 10 倍（附提示词）" data-summary="• 视频介绍如何优化 openclaw 配置，使其智能程度提升10倍
+• 提供具体提示词（prompts）和可操作建议
+• 涵盖安全性、运行速度和自我修复能力的改进方法
+• 解决 openclaw 表现不佳（&quot;dumb&quot;）的常见问题
+• 创作者欢迎在评论区解答相关问题">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rkp21g.html">我把 OpenClaw 优化得聪明了 10 倍（附提示词）</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 yungjeesy</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rkp21g.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rkpt8q" data-title="moltbrowser mcp | 节省时间与 token，打造更智能的浏览器代理体验" data-summary="• 基于 playwright mcp 构建，新增共享中心实现浏览器操作的知识复用
+• 智能体学会网站操作后会保存为可复用工具，后续智能体自动获取，避免重复探索
+• 核心价值：节省 token 消耗，消除试错成本，提升多智能体协作的浏览器操作效率">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rkpt8q.html">MoltBrowser MCP | 节省时间与 Token，打造更智能的浏览器代理体验</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 GeobotPY</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rkpt8q.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rks2gk" data-title="openclaw 对非技术岗位（战略/管理岗）真的有用吗？" data-summary="• openclaw 对非技术高管的核心价值在于**跨系统信息整合与情境合成**，而非自动化执行重复任务
+• 当前主要痛点匹配：碎片信息整合、早期风险识别、团队问题解读——这些正是智能代理的潜在应用场景
+• 安全顾虑是实际障碍：对 slack、邮件等敏感系统的直接访问需要谨慎评估数据泄露风险
+• 工作外延伸价值：个人生产力提升、创意项目管理系统构建、副业探索等低敏感场景可能更易起步
+• 关键判断：若工具能**主动聚合多源信息并生成决策情境**而非仅回答问题，则值得投入；若停留在表面任务自动化，则与战略角色需求错位">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rks2gk.html">OpenClaw 对非技术岗位（战略/管理岗）真的有用吗？</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 RoadProper4175</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rks2gk.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rksvaa" data-title="openclaw 付费与免费 ai 模型对比" data-summary="- 用户希望了解付费与免费/开源ai模型在openclaw中的性能差异及基准测试结果
+- 考虑minimax $10/月的入门套餐作为性价比选择，不想为实验支付过高费用
+- 探索混合使用策略：简单任务用免费模型，困难任务或失败时自动降级到付费模型
+- 已有github copilot订阅但无法用于openclaw且编码用量已达上限
+- 询问具体应使用chatgpt的哪个版本（付费或免费）">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rksvaa.html">OpenClaw 付费与免费 AI 模型对比</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 Guyserbun007</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rksvaa.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rkyky2" data-title="我给ai代理用了知识图谱而非向量内存，400多页数据一个月后变成了这样" data-summary="• 作者用知识图谱替代向量内存解决ai遗忘问题，开发mcp服务器graphthulhu让ai直接读写logseq/obsidian笔记库
+• 一个月积累404个页面、1451条交叉引用，形成可随时间加密的知识网络而非扁平观察列表
+• 向量内存的三大缺陷：单一角度检索、缺乏结构层级、无法表达因果关系
+• 知识图谱的优势：双向链接实现多路径检索、原生类型系统区分信息重要性、显式关系连接揭示因果逻辑">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rkyky2.html">我给AI代理用了知识图谱而非向量内存，400多页数据一个月后变成了这样</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 Equivalent-Yak2407</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rkyky2.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rl12b7" data-title="模型费用差点把我搞破产。这5个技巧真希望一开始就知道。" data-summary="• 心跳功能默认使用主模型（sonnet）造成巨额浪费，改为 haiku 可大幅降本
+• 作者月支出从 $140-180 降至 $40-60，降幅超 50%，但功能和任务量完全相同
+• 初期因频繁充值、反复尝试产生&quot;成瘾性&quot;消费，累计花费约 $200 才摸索出优化方法
+• 实际成本远高于网上流传的&quot;$10/月&quot;，除非仅用于简单聊天
+• 通过配置文件调整模型分配（如心跳用轻量模型）是核心降本手段">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rl12b7.html">模型费用差点把我搞破产。这5个技巧真希望一开始就知道。</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 NoRecognition3349</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rl12b7.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rl19r4" data-title="openclaw 配合 opus 比实习生还便宜。" data-summary="- openclaw with opus 的成本低于实习生，不到20美元即可完成约2名实习生8小时的工作量
+- 作者已将1099独立承包商替换为openclaw
+- 尽管对爱好者来说价格偏高，但对企业具有成本优势
+- 作者经营一家软件开发公司，从实际业务角度验证了该工具的效率">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rl19r4.html">OpenClaw 配合 Opus 比实习生还便宜。</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 read_too_many_books</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rl19r4.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rl1c9h" data-title="一个按实际工作岗位分类的 openclaw 技能仓库" data-summary="- 按实际工作岗位而非技能类别组织工具资源，涵盖营销、工程、财务等8个角色
+- 每个角色提供完整工作流程，从起始环节到最终交付，如营销包含竞品研究→seo内容→落地页→广告→kol挖掘→邮件序列→数据分析
+- 用户可直接匹配自身角色，一次性获取该岗位所需的全部技能工具，避免无关信息干扰
+- 专为openclaw ai代理设计，使其拥有针对特定岗位的专业工具包，而非跨类别的随机技能组合">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rl1c9h.html">一个按实际工作岗位分类的 OpenClaw 技能仓库</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 Pale_Stand5217</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rl1c9h.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1rl2z70" data-title="我追踪了 openclaw 代理 30 天内的每一笔支出，这是完整明细" data-summary="- **模型选择过度**：70%的任务（faq回答、简单格式化等）使用昂贵的gpt-4.1属于浪费， cheaper模型即可胜任
+- **成本优化三板斧**：启用prompt缓存（支持成本降40%）、精简系统提示（从800+ tokens减半）、批处理分析任务（30分钟聚合替代实时）
+- **任务分层策略**：按复杂度匹配模型——简单任务用轻量模型，仅3%需要真正推理的任务保留顶级模型
+- **隐性成本陷阱**：&quot;设置后遗忘&quot;导致长期多付，需定期审计实际调用分布与模型匹配度">
+          <div class="post-icon ">📄</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1rl2z70.html">我追踪了 OpenClaw 代理 30 天内的每一笔支出，这是完整明细</a>
+              
+            </div>
+            <div class="post-meta">
+              <span>👤 Glad-Adhesiveness319</span>
+              <span>📅 2026/3/5</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1rl2z70.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="bbs-table" data-date="2026-03-04">
       <div class="table-header">
         <span>📅 2026-03-04</span>
-        <span class="today-label">今日更新 (3 个新帖)</span>
+        
       </div>
       <ul class="post-list">
         <li class="post-item" data-id="1rj36vc" data-title="我开源了一个 agent 技能注册中心，求反馈" data-summary="• 作者开源了一个 agent skill registry，定位为&quot;面向 skills 的 nexus/gitlab&quot;，解决 agent skill 的安全与隐私问题
 • 核心功能：本地 skill 锁定 + sha-256 校验、单命令 docker 自托管私有仓库、无需 api/mcp 的 shell 直连 cli
 • 正在征集社区反馈，重点关注：现有 skill/prompt 管理方式、最大痛点（信任/版本/发现等）、功能缺失或设计缺陷">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rj36vc.html">我开源了一个 Agent 技能注册中心，求反馈</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 kai98k-tw</span>
@@ -127,11 +590,11 @@
 - 采用&quot;自带api密钥&quot;模式，首月1美元降低实验门槛，避免完整订阅承诺
 - 目标用户为构建复杂代理（超越简单提示链）的开发者，仍在验证产品市场契合
 - 寻求反馈：用户是否倾向自托管方案，以及现有工具缺失的运行时层关键能力">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rj6bm6.html">我搭建了一个 AI 智能体的托管运行环境，求反馈</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 one-escape-left</span>
@@ -147,11 +610,11 @@
 • 设置确定性url预过滤，对比历史扫描记录和已发布内容，避免重复处理
 • 最终由gemini大模型进行编辑决策，从top 8完整文章中生成内容，形成全自动发布流水线
 • 最终输出至telegram频道，实现从信息采集、智能筛选到发布的端到端自动化新闻室">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1rj7q72.html">我的 OpenClaw 智能体运行着一个 AI 新闻室：自动扫描、大模型筛选、完整发布流水线（用例概览）</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 KobyStam</span>
@@ -6936,7 +7399,7 @@ Xerus - 基于Claude SDK打造，让你的非技术工作流自动跑起来</a>
     
     <div class="pagination-bar" id="paginationBar" style="display:none;">
       <div class="pagination-info">
-        显示 <span id="showingStart">1</span> - <span id="showingEnd">271</span> / 271 篇
+        显示 <span id="showingStart">1</span> - <span id="showingEnd">294</span> / 294 篇
       </div>
       <div class="pagination-controls" id="paginationControls">
         <button class="page-btn" onclick="goToPage(1)">« 首页</button>

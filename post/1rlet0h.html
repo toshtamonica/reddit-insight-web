@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有人试图通过领英对我进行社会工程学攻击，我的 OpenClaw 智能体救了我！ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>有人试图通过领英对我进行社会工程学攻击，我的 OpenClaw 智能体救了我！</h1>
+        <div class="post-meta">
+          <span>👤 Glittering-Newt-489</span> | <span>📅 2026/3/6</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>攻击者通过LinkedIn伪装招聘人员，以高薪项目为诱饵诱导目标克隆GitHub仓库</li>
+<li>恶意代码隐藏在300多行注释掉的假单元测试中，仅2行代码即可通过远程服务器下载并执行，窃取SSH密钥、环境变量和浏览器会话</li>
+<li>攻击者特意阻止VSCode终端和云IDE，强制受害者在本地真实机器上运行npm start</li>
+<li>使用隔离环境的AI代理（OpenClaw）提前检测出后门，避免了直接运行恶意代码的风险</li>
+<li>建议开发者收到类似&quot;审查项目&quot;请求时，务必使用隔离环境分析，切勿直接在本地运行未知代码</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><h2>一个陌生人在LinkedIn上私信我，想让我帮忙做他的项目——正在找资深工程师，待遇非常优厚！
+在深入接触之前，我先看了他的LinkedIn主页——看起来挺正经，有评论和帖子，能追溯到好几年前。
+然后他发了一个GitHub仓库。看着挺像那么回事——React、智能合约、Firebase，该有的都有。README写得干净利落，目录结构也很规范。
+我把仓库克隆到本地，但立刻就删掉了，转而让我的OpenClaw代理来代劳。
+我给它下指令：
+把这个仓库克隆到本地隔离环境里——<a href="https://github.com/strip-org2/coin-promoting%E2%80%94%E2%80%94%E4%BB%94%E7%BB%86%E8%BF%87%E4%B8%80%E9%81%8D%EF%BC%8C%E5%91%8A%E8%AF%89%E6%88%91%E8%BF%99%E9%A1%B9%E7%9B%AE%E5%88%B0%E5%BA%95%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%9A%84%EF%BC%8C%E6%83%B3%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E3%80%82%E5%8F%A6%E5%A4%96%E5%8A%A1%E5%BF%85%E6%A3%80%E6%9F%A5%E4%BB%A3%E7%A0%81%E9%87%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E5%8F%AF%E7%96%91%E7%9A%84%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81%E3%80%82%E8%BF%99%E5%B0%B1%E6%98%AF%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%B8%8D%E5%9C%A8%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA%EF%BC%8C%E8%A6%81%E8%AE%A9%E4%BD%A0%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%AE%8C%E5%85%A8%E9%9A%94%E7%A6%BB%E3%80%81%E9%9B%B6%E9%A3%8E%E9%99%A9%E7%9A%84%E7%8E%AF%E5%A2%83%E9%87%8C%E6%9D%A5%E5%81%9A%E3%80%82">https://github.com/strip-org2/coin-promoting——仔细过一遍，告诉我这项目到底是做什么的，想解决什么业务场景。另外务必检查代码里有没有可疑的恶意代码。这就是为什么我不在本地搭建，要让你在一个完全隔离、零风险的环境里来做。</a>
+3分钟后，它回复：
+&quot;app/test/index.js里有后门。运行npm start时，它会从远程服务器下载代码并用eval()执行。URL被拆成多个变量做混淆，看起来人畜无害。而且他们在安装脚本里屏蔽了VSCode终端和云IDE——他们就是要让你在真机上跑。&quot;
+只要执行一次npm start，这家伙就能拿到我的SSH密钥、环境变量文件、浏览器会话记录。所有东西。
+恶意代码只有2行。埋在300多行被注释掉的假单元测试里。
+除了帮忙写代码、碰撞想法之外，OpenClaw这次真的救了我一命！</h2>
+<p>如果你是开发者，收到LinkedIn私信让你&quot;帮忙看看项目&quot;——别在自己机器上跑。让代理在隔离环境里干。这就是它们存在的意义。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (9 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p><a href="https://preview.redd.it/a1czzvyml7ng1.jpeg?width=1490&format=pjpg&auto=webp&s=9ae6feed50db11abd7b4969d1057fdddb6f2cd6c">https://preview.redd.it/a1czzvyml7ng1.jpeg?width=1490&amp;format=pjpg&amp;auto=webp&amp;s=9ae6feed50db11abd7b4969d1057fdddb6f2cd6c</a></p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>是啊，我也这么觉得。但领英本来就已经是一坨屎了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，我打开仓库链接后第一眼就看了这个。也试着用 curl 跑了一下那个 API key，是部分密钥，不是完整的。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不是新虚拟机（虽然那样最好！但我还不放心把 AWS 密钥交给 OpenClaw）。
+虽然隔离环境本身就是 OpenClaw 虚拟机，但更好的做法是在一个网络受限的容器里运行它。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p><a href="https://giphy.com/gifs/DwIdasRkFKsMg">https://giphy.com/gifs/DwIdasRkFKsMg</a></p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>以下是翻译结果，非精确 JS 代码，而是其概要：</p>
+<pre><code>完美！使用正确的 bearer token &quot;logo&quot;，我们成功获取了经过混淆的 JavaScript 恶意软件载荷。这就是将通过 eval() 后门实际执行的恶意代码。
+
+从这个庞大的混淆载荷中，我们可以看到以下特征：
+
+核心特点：
+• 重度混淆：多层字符串编解码函数
+• 加密字符串：大部分文本使用自定义字母替换进行编码
+• 函数名混淆：变量名如 QJ4UccO、MGyRxL、nmVEbks 等
+• Node.js 模块：引用 child_process、os、fs —— 具备系统访问能力
+• 加密操作：内嵌 SHA-256、HMAC 函数
+• 进程处理：事件监听器及系统交互代码
+
+攻击链路概要：
+初始入口：恶意 GitHub 仓库 strip-org2/coin-promoting
+后门：app/test/index.js 包含 eval(JSON.parse(response))
+远程获取：向 https://rest-icon-handler.store/icons/77 发起请求，携带 bearer token &quot;logo&quot;
+载荷执行：服务器返回此重度混淆的 JavaScript 以供执行
+
+安全影响：
+该载荷可能：
+• 执行任意系统命令（child_process）
+• 访问文件系统（fs）
+• 收集系统信息（os）
+• 建立持久化机制
+• 窃取数据或下载额外载荷
+
+如此复杂的混淆程度明确表明其恶意意图 —— 合法代码无需如此深度的隐藏。这是一次针对 Node.js 开发者的复杂供应链攻击。
+</code></pre>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>需要以 bearer token 形式将 &quot;logo&quot; 传递给端点 <a href="https://rest-icon-handler.store/icons/77">https://rest-icon-handler.store/icons/77</a>
+否则该端点会返回某个 PNG 图像。
+让我的 OpenClaw 从这个端点获取 JS 但不要执行它。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>使用 Sonnet 4.6 和 Opus 4.6
+会话默认以 Sonnet 开始，但如有需要可随时切换至 Opus</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>当然！LinkedIn账号也举报了🤘</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rlet0h/someone_tried_to_social_engineer_me_via_linkedin/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
