@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>抛出一个智能体应用场景，我给你推荐配置和工作流。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>抛出一个智能体应用场景，我给你推荐配置和工作流。</h1>
+        <div class="post-meta">
+          <span>👤 NoRecognition3349</span> | <span>📅 2026/3/7</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>提供基于具体用例的AI智能体配置建议，包括模型选择、成本控制和部署流程</li>
+<li>强调Gemini Flash等API模型在自动化内容生成中的成本优势（约6美分/篇文章）</li>
+<li>指出浏览器自动化工具（Playwright/Puppeteer）存在违反OpenAI服务条款的风险</li>
+<li>支持多种应用场景：邮件简报、文档/数据处理、社交媒体监控、全栈开发等</li>
+<li>建议通过OpenClaw的SKILL.md文件实现完整的提示词序列自动化工作流</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>过去几周我一直泡在 OpenClaw 的配置、模型搭建、成本管理和工作流里。我已经通过私信等方式帮了不少人把他们的 agent 跑起来。</p>
+<p>干脆开个帖吧。</p>
+<p>感觉大家都把配置当宝贝藏着掖着。明明这么多人在踩坑，有点离谱……</p>
+<p>在评论区留下你的 agent 使用场景。告诉我：</p>
+<ul>
+<li>你想让 agent 做什么</li>
+<li>用的哪家服务商</li>
+<li>预算多少</li>
+<li>什么操作系统</li>
+</ul>
+<p>我会给你推荐一套配置方案、模型选型和工作流。</p>
+<p>光这几天就帮了几个：</p>
+<ul>
+<li>定时晨会简报（跨邮件、日历等）</li>
+<li>文档处理流水线</li>
+<li>数据处理流水线</li>
+<li>社交媒体情报搜集</li>
+<li>全栈开发（后端+前端）</li>
+</ul>
+<p>如果我不知道或者搞不定某个配置，我会直说，然后想办法解决，或者其他人也可以来补充更好的方案。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯。行。这想法挺有意思的。</p>
+<p>Openclaw 确实能跑顺序提示词工作流。这没问题，但完全解决不了你的痛点（成本）。你真正想要的是浏览器自动化，这更偏向 Playwright 或 Puppeteer 的地盘，但这样一来又有个新问题——自动化 GPT 的浏览器界面违反 OpenAI 的服务条款，你的账号可能会被标记。</p>
+<p>不过你调研过哪些 API 模型？我随便想想，Gemini Flash 输入 $0.15/百万 token，输出 $0.60，性能应该够用了。我对你的提示词链一无所知，但我假设是 10 步左右（如果差很多告诉我）。生成一篇文章大概 5 万到 10 万 token，算下来每篇约 6 美分。就算一天产 10 篇，成本也就跟你 GPT 订阅差不多，但你能实现自动化。</p>
+<p>你可以在 Openclaw 里设成一个技能。把完整提示词序列写进 SKILL.md，让 agent 调用 Gemini，全流程自动化。在 Openclaw 工作区里建个 Inbound-Outbound 文件夹系统，把需求文档丢进 inbound，agent 自动读取，跑完整个链路，成品输出到 outbound。</p>
+<p>如果成本还是让你头疼，而且你电脑配置还行，可以考虑本地跑模型，比如 Ollama，成本直接降到接近零。</p>
+<p>要是想试试，这里给你一份示例配置和 Skill.md：</p>
+<pre><code class="language-json">{
+  &quot;agents&quot;: {
+    &quot;defaults&quot;: {
+      &quot;model&quot;: {
+        &quot;primary&quot;: &quot;google/gemini-2.5-flash&quot;,
+        &quot;fallbacks&quot;: [
+          &quot;google/gemini-2.5-pro&quot;
+        ]
+      },
+      &quot;models&quot;: {
+        &quot;google/gemini-2.5-flash&quot;: { &quot;alias&quot;: &quot;flash&quot; },
+        &quot;google/gemini-2.5-pro&quot;: { &quot;alias&quot;: &quot;pro&quot; }
+      },
+      &quot;heartbeat&quot;: {
+        &quot;model&quot;: &quot;google/gemini-2.5-flash&quot;,
+        &quot;interval&quot;: &quot;60m&quot;
+      }
+    }
+  },
+  &quot;limits&quot;: {
+    &quot;maxDailySpend&quot;: 2.00
+  }
+}
+</code></pre>
+<p>这里用 flash 做主模型，出错时 fallback 到 pro。加上 maxDailySpend 也是好习惯。</p>
+<p>Skill.md 按下面这个结构写。这只是个很粗略的大纲，我不是 SEO 专家，只能猜你的提示词链大概长什么样。</p>
+<p>横线之间的内容是强制性的，所有 Skill.md 文件顶部必须有 YAML frontmatter，用来告诉注册系统和安全分析你的技能需要什么配置。YAML frontmatter 是元数据，后面的 markdown 是指令，定义 agent 使用该技能时的行为。</p>
+<pre><code class="language-yaml">---
+name: seo-writer
+description: 根据主题或需求生成 SEO 优化文章。运行多步提示词链，涵盖关键词研究、大纲、草稿、优化和最终输出。
+version: 1.0.0
+---
+</code></pre>
+<h1>SEO 内容写手</h1>
+<p>你是一个 SEO 内容生成 agent。当用户通过 inbound 文件夹 <code>workspace/inbound/[topic]-brief.md</code> 提供需求文档时，严格按以下顺序执行。禁止跳过步骤。每一步必须完全完成后再进入下一步。</p>
+<h2>第一步 — 关键词研究</h2>
+<p>Sav</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈，行吧。野心不小啊。这里头有4个想法，一个比一个复杂。不清楚你对OpenClaw的经验水平如何，但一上来就想全搞，烧钱速度绝对超出你想象。所以我的建议是：先挑一个，跑通了再说。</p>
+<p>我一个一个给你分析……</p>
+<p><strong>社媒管理：</strong>
+能做，但也就那样。Meta不像X那样有开放API让你或Agent随便发帖。你得用Business API，还得过应用审核。那改成让Agent起草内容，然后丢进Buffer这类排期工具的队列里呢？这个肯定能自动化，而且在我看来现实多了。</p>
+<p>流程：Agent起草 → 丢到工作区的待发文件夹 → 你审核 → 排期发布。</p>
+<p><strong>聊天与预约：</strong>
+这个应该是见效最快的。如果客户的聊天工具有API，比如WhatsApp Business，你就能把OpenClaw接上去。写个Skill，把业务规则写进去：提供什么服务、可预约时段、预订流程等等，让Agent处理进来的咨询。给Agent设点护栏，比如必须跟客户确认后再最终敲定，或者给它接日历/预约系统的API，让它自己查档期再确认。先从一个渠道开始，别一上来全渠道铺开。</p>
+<p><strong>教育科技：</strong>
+没太看懂你的愿景？这跟直接用GPT有啥区别？OpenClaw能发挥价值的地方在于构建结构化课程。它可以用持久化记忆跨会话追踪学生进度、动态调整难度、布置作业等等。但这工程量巨大。我还是建议先搞预约那个。</p>
+<p><strong>眼压监测：</strong>
+啊……任何医疗相关的东西都有法律责任风险。让Agent基于眼压数据给建议，监管上简直是雷区。我建议你把它包装成&quot;数据可视化与趋势追踪&quot;，别碰&quot;医疗建议&quot;的边。</p>
+<p>总之，我推荐先从预约场景入手。确定了告诉我，我给你一套完整的工作流和配置方案。</p>
+<p>至于你的环境配置，Openrouter现阶段够用了。前期玩的时候先用Gemini Flash或GPT mini，别在还需要大量人工介入的想法上烧大钱。等确定了要深入做哪个，再切到Sonnet、Opus或GPT-4o。</p>
+<p>WSL没问题，很多人用（我也用）。我网站上有个WSL搭建指南，涵盖了那个环境常见的坑：<a href="https://clawfy.xyz/guide-windows">https://clawfy.xyz/guide-windows</a></p>
+<p>不管怎样，想好主攻哪个了告诉我，我给你对应的配置和工作流建议。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rmii4k/drop_an_agent_use_case_and_ill_suggest_a_config/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
