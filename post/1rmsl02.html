@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我正在制作一个"终极精选"版 OpenClaw 单仓库，支持一键安装。求建议 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我正在制作一个"终极精选"版 OpenClaw 单仓库，支持一键安装。求建议</h1>
+        <div class="post-meta">
+          <span>👤 adamb0mbNZ</span> | <span>📅 2026/3/8</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者正在创建一个&quot;最佳配置&quot;的 OpenClaw 单一仓库，提供简化安装流程和交互式设置向导
+• 支持三种代理层级（Solo/Team/Squad）和三种界面选择（Discord/网页仪表盘/两者兼具）
+• 预置多 LLM 提供商支持，包括 GitHub Copilot、OpenAI、Anthropic 及手动配置
+• 内置多层安全防护：零明文密钥存储、防循环规则、提示注入防御、输入验证和符号链接攻击防护
+• 计划本周末发布，正在征求社区反馈以完善功能清单</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>在发布了我的101和102教程后，收到了大量私信，因此我决定整理一个GitHub仓库，包含我认为最优的技能集、MCP和预装仓库，以及一键安装文件。</p>
+<p>我投入了大量时间测试这些技能/仓库，它们目前都在我自己的环境中运行。显然我是OpenClaw的忠实用户，所以希望每个人都能有机会体验它的真正潜力，而无需经历我们很多人为搭建环境所经历的痛苦配置过程。</p>
+<p>目前的进展如下，文末列出了一些后续计划添加或完善的功能。如果认为有遗漏的重要功能，欢迎留言反馈。预计本周末发布。</p>
+<p>感谢大家的建议！</p>
+<hr>
+<p>安装向导</p>
+<p>交互式向导，逐步引导完成所有配置：</p>
+<p>智能体层级</p>
+<ul>
+<li>单人模式：单一主智能体</li>
+<li>团队模式：主智能体 + 通讯 + 研究智能体</li>
+<li>小队模式：主智能体 + 通讯 + 研究 + 安全智能体</li>
+</ul>
+<p>界面选择</p>
+<ul>
+<li>Discord：每个智能体独立频道的机器人配置</li>
+<li>Web仪表盘：聊天、文件浏览器、终端、成本分析（基于ClawSuite，MIT协议）</li>
+<li>双模式：Discord + 仪表盘并行</li>
+</ul>
+<p>大模型提供商</p>
+<ul>
+<li>GitHub Copilot代理（需Copilot订阅）</li>
+<li>OpenAI API直连</li>
+<li>Anthropic API直连</li>
+<li>手动配置（任意提供商）</li>
+</ul>
+<hr>
+<p>预配置内容</p>
+<p>安全（内置于每个智能体）</p>
+<ul>
+<li>零明文密钥：所有API密钥存储于&#39;.env&#39;（600权限），配置使用&#39;${VAR}&#39;引用</li>
+<li>防循环规则：连续失败后自动停止（避免令牌消耗螺旋）</li>
+<li>提示注入防御 — 外部内容隔离、伪造系统消息检测、虚假审计模式拦截</li>
+<li>向导输入全校验：雪花ID、智能体名称、路径、时区</li>
+<li>配置文件写入时防范符号链接攻击</li>
+<li>工作空间创建时防护路径遍历</li>
+</ul>
+<p>WAL协议（预写日志）：上下文持久化
+智能体在压缩/重启后会丢失上下文，WAL解决此问题：</p>
+<ul>
+<li>&#39;SESSION-STATE.md&#39;：每次响应前将活跃工作内存持久化到磁盘</li>
+<li>&#39;memory/working-buffer.md&#39;：上下文使用率达~60%时激活的危险区域日志</li>
+<li>压缩恢复：会话压缩后自动恢复上下文，无需询问&quot;我们之前在做什么&quot;</li>
+<li>每条消息扫描修正、决策、偏好、专有名词 — 立即写入磁盘</li>
+</ul>
+<p>专家智能体模板
+每个专家智能体拥有独立工作空间、个性配置和WAL文件：</p>
+<ul>
+<li>通讯智能体：消息处理、内容创作、邮件管理</li>
+<li>研究智能体：网络搜索、数据分析、调查研究</li>
+<li>安全智能体：基础设施加固、漏洞扫描、提示注入防御</li>
+</ul>
+<p>多智能体架构</p>
+<ul>
+<li>专家智能体模板：通讯（消息/内容）、研究（搜索/分析）、安全（加固/审计）</li>
+<li>智能体间通信：所有部署的智能体之间自动配置白名单</li>
+<li>Cha</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rmsl02/im_making_a_best_of_the_best_single_repo_of/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

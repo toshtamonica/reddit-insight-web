@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品展示：我开发了一个 CLI 工具，用于安全地对 Notion 页面进行 AI 编辑 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>作品展示：我开发了一个 CLI 工具，用于安全地对 Notion 页面进行 AI 编辑</h1>
+        <div class="post-meta">
+          <span>👤 okcdz</span> | <span>📅 2026/3/8</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 构建了一个CLI工具，解决AI安全编辑Notion页面的问题，支持精确定位修改位置、防止重复写入和保留历史记录
+• 支持将Notion页面导出为Markdown格式，便于下游处理如摘要、对比审查或接入其他AI工作流
+• 该工具定位为Notion自动化、AI工具和安全编辑层的结合体
+• 作者正在探索最实用的应用场景，并向读者征集使用需求</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最近我对炫酷的 AI 演示关注得少了，反而在想一个无聊但重要的问题：
+怎么让 AI 长期跟现有系统交互，同时不把事情搞砸？</p>
+<p>有个地方一直让我头疼，就是 Notion。</p>
+<p>用 AI 生成内容很简单。难的是让 agent 或脚本可靠地更新现有 Notion 页面：</p>
+<ul>
+<li>追加到正确的章节</li>
+<li>重试时避免重复写入</li>
+<li>最好还能保留历史记录，方便查看变更或回滚</li>
+</ul>
+<p>所以我围绕这个想法做了个小型 CLI。
+<a href="https://github.com/vincentdchan/solid-notion">https://github.com/vincentdchan/solid-notion</a></p>
+<p>另一个意外好用的功能是导出页面内容为 Markdown。倒不是因为 Markdown 有多神奇，而是这样下游处理方便多了——做摘要、diff 对比、审阅，或者丢进另一个 AI 工作流，都不用背着整套 Notion block 格式到处跑。</p>
+<p>所以这个项目大概介于：</p>
+<ul>
+<li>Notion 自动化</li>
+<li>AI 工具</li>
+<li>以及轻量级的&quot;安全编辑&quot;层</li>
+</ul>
+<p>我还在摸索最有吸引力的使用场景到底是什么。</p>
+<p>好奇问一句：如果你有这样的工具，实际会用来做什么？</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rmzn9z/showcase_i_built_a_small_cli_for_safer_ai_edits/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

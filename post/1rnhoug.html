@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 OpenClaw 开发了一个 AI 图像生成技能——1300+ 精选提示词、本地 ComfyUI 支持，而且真的能跑 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 OpenClaw 开发了一个 AI 图像生成技能——1300+ 精选提示词、本地 ComfyUI 支持，而且真的能跑</h1>
+        <div class="post-meta">
+          <span>👤 Deep-Huckleberry-752</span> | <span>📅 2026/3/8</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 为 OpenClaw 构建 AI 图像生成技能，实现终端内完整创意工作流，无需切换工具
+• 免费提供 1300+ 精选提示词库、提示词自动增强和多模型管理功能
+• 支持三种后端：OpenAI 兼容 API、云端服务及 100% 本地隐私的 ComfyUI
+• ComfyUI 支持自动检测工作流节点，可直接导入现有工作流并动态填充参数
+• 支持从概念生成到批量并行生成，再到产品 mockup 的完整设计链条</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>每次我需要快速做个原型图、产品展示图或设计素材时，都得离开当前环境，切换到完全不同的工具。于是我写了个技能来解决这个问题。</p>
+<p><strong>它能做什么</strong></p>
+<p>这个技能让 OpenClaw 拥有完整的图像生成能力——不是那种&quot;调个 API 返回个链接&quot;的敷衍方案，而是真正的创意工作流编排：</p>
+<ul>
+<li>描述一个模糊的想法 → 它会自动优化提示词，补充合适的光影、构图和风格细节 → 生成图像</li>
+<li>想要&quot;5 个 Logo 方案&quot; → 它会写出 5 个真正差异化的提示词，并行生成</li>
+<li>选中喜欢的 → &quot;把这个印到马克杯和 T 恤上&quot; → 它会用你的 Logo 作为参考，生成产品样机</li>
+</ul>
+<p>全程不用离开终端。</p>
+<p><strong>免费功能（无需 API Key）</strong></p>
+<p>这点对我很重要——试用个技能不应该强制注册任何东西：</p>
+<ul>
+<li><strong>1300+ 精选提示词库</strong>——按关键词搜索、按分类浏览、一键复制完整提示词。这些都是人工筛选的高质量提示词，不是爬来的垃圾数据</li>
+<li><strong>提示词增强</strong>——输入&quot;一只猫&quot;，它会扩展成包含相机镜头、光线方向、材质纹理的详细提示词</li>
+<li><strong>模型列表</strong>——查看所有已配置服务商的可用模型</li>
+</ul>
+<p><strong>三种后端，任你选择</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">服务商</th>
+<th align="left">成本</th>
+<th align="left">隐私</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">任意 OpenAI 兼容 API</td>
+<td align="left">按服务商定价</td>
+<td align="left">云端</td>
+</tr>
+<tr>
+<td align="left">本地 ComfyUI</td>
+<td align="left">免费</td>
+<td align="left">100% 本地，数据不出本机</td>
+</tr>
+</tbody></table>
+<p>ComfyUI 支持是我最自豪的部分。你可以导入现有的工作流，技能会自动识别关键节点（KSampler、CLIPTextEncode 等），并在运行时填入提示词/种子/尺寸。如果你已经在本地跑 ComfyUI，直接指向 localhost:8188 就完事了。</p>
+<p><strong>安装方式</strong></p>
+<p>从 ClawHub 安装：</p>
+<pre><code>clawhub install jau123/creative-toolkit
+</code></pre>
+<p>ClawHub 页面：见下方评论 👇</p>
+<p>期待反馈，特别是本地跑 ComfyUI 的朋友。你们希望支持哪些工作流？</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p><a href="https://clawhub.ai/jau123/creative-toolkit">https://clawhub.ai/jau123/creative-toolkit</a></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rnhoug/i_built_an_ai_image_generation_skill_for_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我搭建了一个三层记忆系统，让 OpenClaw 智能体不再每次都从零开始。完整架构如下。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我搭建了一个三层记忆系统，让 OpenClaw 智能体不再每次都从零开始。完整架构如下。</h1>
+        <div class="post-meta">
+          <span>👤 duridsukar</span> | <span>📅 2026/3/8</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>三层记忆架构解决AI代理&quot;每次从零开始&quot;的问题：L1 Brain（基础配置文件）、L2 Body（短期工作记忆）、L3 Life（长期历史记录）</li>
+<li>核心设计原则：信息单向流动、永不重复存储、七个基础文件定义代理的&quot;操作系统&quot;（个性、角色、当前状态、用户偏好等）</li>
+<li>关键痛点：缺乏上下文导致信任崩塌、业务损失（错失潜在客户、重复犯错、错过截止日期）</li>
+<li>五种触发机制确保记忆及时更新：用户显式声明、代理检测到状态变化、任务完成、错误发生、定期心跳检查</li>
+<li>实际效果：将&quot;每日发生的上下文丢失问题&quot;转变为&quot;几乎不再发生&quot;，使AI代理从工具升级为真正的团队成员</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在房地产业务中使用 OpenClaw 运行多智能体系统。合规审查、线索筛选、交易分析、社交媒体、交易协调，每个智能体都有自己的工作空间和职责。</p>
+<p>几个月来，每次对话都从零开始。我问某个智能体项目进展到哪了，它一无所知。没有上下文，没有线索可追。每次都得从头再解释一遍。</p>
+<p>代价不只是我的时间，更是信任。当你的智能体记不住昨天聊过什么，你就不再把它当团队成员，而是当成工具。在房地产行业，这个代价是实实在在的：智能体把熟线索当陌生人对待；因为没有状态可查而错过截止日期；重复犯之前已经纠正过的错误。</p>
+<p>于是我在 OpenClaw 的工作空间和记忆基础设施之上搭建了一套记忆架构。三层结构、五个触发器、一组规则，把上下文丢失从日常问题变成了几乎不再发生的事。</p>
+<h2>三层架构</h2>
+<p>每层只负责一件事。信息向下流动，层间不重复。</p>
+<h3>L1：大脑（根工作区文件，每轮自动注入）</h3>
+<p>OpenClaw 每轮自动将固定的工作区文件作为项目上下文注入。这是智能体的操作系统，共七个文件：</p>
+<ul>
+<li><strong>SOUL.md</strong>：人格、语气、价值观。不是指令或规则</li>
+<li><strong>AGENTS.md</strong>：角色、规则、边界。不是人格或项目状态</li>
+<li><strong>MEMORY.md</strong>：当前活跃事项。每项一行，现在时。不是历史记录</li>
+<li><strong>USER.md</strong>：用户的思维方式和需求。只记录会改变智能体行为的信息</li>
+<li><strong>TOOLS.md</strong>：机器专属命令和变通方案。不是通用文档</li>
+<li><strong>IDENTITY.md</strong>：名称、角色、速查参考</li>
+<li><strong>HEARTBEAT.md</strong>：周期性检查的常驻任务。不是项目细节</li>
+</ul>
+<p><strong>预算规则</strong>（我们的规则，非 OpenClaw 限制）：OpenClaw 允许每文件最多 20,000 字符，但我们发现臃肿的文件会被略读，智能体开始漏掉指令。我们将目标设为每文件 500 到 1,000 token，L1 总量控制在 7,000 token 以内。这样既节省成本，也确保智能体真正阅读而非略读。运行 trim（详见下文）来强制执行。</p>
+<p><strong>稳定性规则</strong>：只有你自己或检查点能更新 L1 文件。智能体不能随意修改自身规则。例外：MEMORY.md 可更新以反映当前状态。</p>
+<p>L1 决定了你的智能体醒来时知道自己是谁，还是像个陌生人面对满屋子无法访问的上下文。</p>
+<h3>L2：记忆（memory/ 目录，由 OpenClaw 语义搜索）</h3>
+<p>你的长期回忆。OpenClaw 内置 memory_search 工具，可对 MEMORY.md 和 memory/ 目录下所有内容进行语义搜索。这是 OpenClaw 原生功能。当智能体被问及先前工作、决策或上下文时，它会自动搜索 L2。无需额外添加规则，开箱即用。</p>
+<p>这里存放两类文件：</p>
+<p><strong>每日笔记</strong>：memory/YYYY-MM-DD.md。这是 OpenClaw 协</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我写得这么详细正是为了这个目的。让你的 OpenClaw 智能体指向这篇帖子，它就知道该怎么做了。架构描述得足够具体，AI 可以自行遵循并适配。</p>
+<p>接下来你只需要根据自己的使用场景进行定制和优化即可。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>正是那个手动检查点的问题促使我构建了这套系统。我曾经历过一场两小时的精彩会话，结果忘了保存，眼睁睁看着智能体开启下一段对话，仿佛之前的一切都没发生过。自动压缩注入解决了这个问题——系统不再需要我去记得保存，它会自动触发。</p>
+<p>至于那个面包屑机制，纯粹是为了节省 token 的权宜之计。我的 L1 文件在智能体开始思考前就吃掉 12,000 个 token。改为指向引用文件而非直接加载，token 消耗直接减半，却没有任何信息损失。智能体只在需要时才拉取所需内容。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>是的，我这边的 QMD 已经启用了。它确实能提升检索效果。</p>
+<p>但问题是：QMD 只能找到实际被记录下来的内容。如果你的智能体在会话结束前没有设置检查点，或者压缩机制触发时什么都没保存下来，那这部分上下文就丢了。技术上来说它还在对话记录里，但要恢复的话智能体得把整个记录读一遍，这会吃掉 token 预算，进而触发更多压缩。恶性循环。</p>
+<p>这篇文章里的架构解决的是写入端的问题——确保数据首先被保存下来。QMD 解决的是读取端的问题——确保智能体能快速找到它。两者缺一不可。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rnku5b/i_built_a_3layer_memory_system_that_stopped_my/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

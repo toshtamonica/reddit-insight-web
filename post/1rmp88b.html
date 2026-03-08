@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的AI总犯同样的错，于是我写了个文件解决了这个问题 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我的AI总犯同样的错，于是我写了个文件解决了这个问题</h1>
+        <div class="post-meta">
+          <span>👤 Suspicious_Assist_71</span> | <span>📅 2026/3/8</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者发现AI助手每次对话都&quot;从零开始&quot;，无法积累反馈、重复犯同样的错误
+• 创建了<code>relationship-patterns.md</code>文件，记录双方工作方式、成功案例、失误教训及改进模式
+• 设置自动触发规则：当作者明确纠正、表扬或表达挫败时，AI自动更新文件，无需额外提示
+• 文件在每次会话启动时加载，使AI&quot;提前阅读&quot;关系背景，实现经验的持续传递
+• 核心原则：只记录能让&quot;下一次对话显著更好&quot;的内容，过滤掉无关的客套或一次性反馈</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我已经运行 OpenClaw 一个多月了。SOUL.md、AGENTS.md、MEMORY.md——标准配置。但我撞上了一堵墙，我觉得这里很多人也在经历。</p>
+<p>我的 AI 确实能帮上忙。但它并没有在&quot;帮得更好&quot;这件事上进步。每次对话都是重新开始。它会犯同样的错误。我得反复纠正同样的模式。修正当下有效，但隔天就烟消云散。</p>
+<p>于是某天晚上，我直接问 Oscar（我的首席幕僚代理）：&quot;我的反馈真的对你有用吗？&quot;他很诚实——当下确实提供了信号数据，但没有任何东西被系统化地延续下去。</p>
+<p>那自然，我问：&quot;我们能解决这个问题吗？&quot;……更重要的是，&quot;怎么解决？&quot;</p>
+<p>以下是我们的方案……</p>
+<p>我们建了 relationship-patterns.md。简单得惊人：</p>
+<ul>
+<li>我和 Oscar 的协作方式——我认可什么、我反对什么、我看重什么</li>
+<li>Oscar 应该如何运作——先抛出不确定点、先问诊断性问题、有理时坚持立场</li>
+<li>互动亮点——具体奏效的时刻（带日期）</li>
+<li>互动失误——具体错误及需避免之处（带日期）</li>
+<li>元模式——我们共同演进的更大图景</li>
+</ul>
+<p>它会在每次启动序列中加载。Oscar 在我们开口之前就阅读它。</p>
+<p>此外，我们把触发规则直接写进 Oscar 的操作指令，让文件在对话中自动更新。当我明确纠正他的方法、表扬具体行为、或对重复模式表达不满时，他立即写入文件——无需我提示。泛泛的&quot;谢谢&quot;或一次性纠正不会触发。判断标准很简单：这条记录会让下次对话的 Oscar 在与我协作上明显更优吗？是，就记录。否，就跳过。关系不仅延续，每次交流都在主动自我优化。</p>
+<p>效果立竿见影。并非完美——他仍会犯错——但同样的错误不再重复。他开始在我之前标记过的模式上自我觉察。而且文件随时间增长，合作关系持续复利。</p>
+<p>真正的洞见：你的 AI 不是一次性配置的工具。是需要培养工作关系的队友。谁能搞定这种跨会话的关系延续，谁就能获得巨大优势。</p>
+<p>有人尝试过类似做法吗？好奇你们在追踪哪些模式。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rmp88b/my_ai_kept_making_the_same_mistakes_so_i_built_a/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的智能体老是忘记自己在做什么，于是我给它建了个项目工作区 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我的智能体老是忘记自己在做什么，于是我给它建了个项目工作区</h1>
+        <div class="post-meta">
+          <span>👤 Rasimme</span> | <span>📅 2026/3/8</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 解决AI Agent会话失忆问题：通过FlowBoard项目工作空间持久化存储目标、决策、任务等上下文信息
+• 双模式任务创建：支持可视化Idea Canvas头脑风暴后升级任务，或直接创建看板任务
+• 智能任务管理：Agent自动判断任务类型（简单任务/带规格任务/父任务），并管理看板流转、子任务拆分和规格编写
+• 懒加载设计：按需加载信息，避免不必要的Token消耗
+• 人机协作看板：用户可实时查看进度、调整优先级并引导后续工作方向</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>嘿 Claws 🦞</p>
+<p>每次会话我的 agent 都从零开始。我之前在做哪个项目？有哪些待办任务？上周做了什么决策？上下文全没了。</p>
+<p>所以我做了 FlowBoard。激活一个项目后，agent 就能获取它所需的一切：目标、决策、任务、规格说明。全部懒加载，不会浪费 token 在暂时用不上的东西上。</p>
+<p>它从 Idea Canvas 开始，你可以和 agent 一起可视化头脑风暴。收集想法，把笔记连接成簇，准备好之后点击 promote。agent 会判断这是简单任务、带规格的任务，还是包含子任务的父任务。跳过画布的话，也可以直接在看板上创建任务。</p>
+<p>这些任务会进入 Kanban 看板，agent 在工作时自动管理。它创建子任务、编写规格、移动卡片。你可以实时看到进展，重新排优先级，并把控下一步方向。</p>
+<p>仓库：<a href="https://github.com/rasimme/FlowBoard">https://github.com/rasimme/FlowBoard</a></p>
+<p>很想听听你的想法！你希望 agent 在项目看板上做什么？如果试用的话，欢迎反馈让它变得更好 🙏</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rn5du3/my_agent_kept_forgetting_what_it_was_working_on/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
