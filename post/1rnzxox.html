@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 OpenClaw 打造了一个自动更新的翻译系统，可跨语言自动维护领域术语表 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 OpenClaw 打造了一个自动更新的翻译系统，可跨语言自动维护领域术语表</h1>
+        <div class="post-meta">
+          <span>👤 jamiethecoles</span> | <span>📅 2026/3/9</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 基于 Kimi2.5 API 构建自动化字幕翻译系统，保留 SRT 文件的索引、时间戳和分段结构
+• 为每个客户建立项目档案，包含锁定术语表（glossary.json）、风格指南（style.md）和翻译记忆（memory.jsonl），确保术语一致性和企业官方用词
+• 通过定时任务每6小时扫描官方多语言站点，自动提取新术语并更新术语表，实现术语库的有机增长
+• 维护独立知识库文件，整合近期新闻、官方通告等上下文信息，提升翻译的时效性和准确性
+• 设置 QA 校验环节，检查时间码重叠、索引异常等结构问题，并在后处理阶段规范化锁定术语</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我们为在多语言环境中运营的客户处理大量字幕翻译工作。使用AI时的挑战在于：当同一概念在不同语言中有细微差异的表达时，如何保持术语一致性，同时确保使用官方企业词汇。</p>
+<p>核心系统：
+一个Python脚本封装Kimi2.5 API，在翻译.srt文件时保留块索引、时间戳和分段。这部分没什么特别的。</p>
+<p>有意思的部分是项目配置。每位客户在projects/下有一个专属文件夹，包含：
+• glossary.json — 锁定术语映射（如特定人名拼写、赛事名称、技术行话）
+• style.md — 语气指南、格式规则、文化注释
+• memory.jsonl — 历史翻译积累的上下文</p>
+<p>翻译时，脚本加载配置并在交付前强制执行锁定术语。QA关卡会验证SRT结构（无时间重叠、时间码递增、无异常索引）。</p>
+<p>自动更新机制：
+每6小时运行的定时任务，扫描所有语言的官方源站点。提取新术语候选，与现有词表条目比对，将差异追加至glossary_deltas.jsonl。</p>
+<p>这意味着词表随领域发展自然生长。官方名称、新兴术语或机构用语的变化都会被捕获，无需人工审核周期。</p>
+<p>监控模块还维护独立知识库文件，保存上下文快照——近期新闻、官方公告、人事或产品动态。这些信息反哺翻译质量，因为模型翻译时能知晓当前事态。</p>
+<p>使用方式：
+python3 scripts/translate_srt.py <br>--input source.srt <br>--output output.en.srt <br>--to English <br>--project clientname</p>
+<p>锁定术语在后处理阶段统一规范化，随后运行结构QA再交付文件。</p>
+<p>效果：
+• 100+字幕文件术语一致
+• 人名拼写和技术词汇无漂移
+• 无需人工监控源站即可获取最新上下文</p>
+<p>整套系统无界面运行。文件进，译件出，词表在后台静默更新。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rnzxox/i_built_a_selfupdating_translation_system_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

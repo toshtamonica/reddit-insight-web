@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用 OpenClaw 时学到的实用经验 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>使用 OpenClaw 时学到的实用经验</h1>
+        <div class="post-meta">
+          <span>👤 divyanshu_bansal</span> | <span>📅 2026/3/9</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 初始设置是最大难点，需要一定深度才能正确配置
+• 虚拟机足以满足大多数使用场景，Mac Mini 仅在依赖苹果生态时才必要
+• Skills 通常比直接集成 MCP 服务器表现更好，建议将现有 MCP 包装为 Agent Skill
+• 上下文结构至关重要，Telegram 等渠道的线程需有意组织以保持会话清晰
+• 多代理功能被低估，可为不同代理配置独立的 SOUL、IDENTITY 和记忆以实现职责分离
+• 模型选择需按场景优化：轻量任务用 Gemini Flash-Lite/Haiku 等低成本模型，复杂推理用 Opus/Codex 等并配置为后台子代理
+• 凭证管理需谨慎，避免敏感信息存入工作区文件，应存放于 .openclaw/.env 等安全位置</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最近深度体验了 OpenClaw，分享几个实际使用中的心得：</p>
+<ol>
+<li><p>配置是最难的环节
+OpenClaw 功能强大，但初次配置比较棘手，需要花点心思才能搞定。</p>
+</li>
+<li><p>虚拟机足以应对大部分场景
+大多数情况下，在虚拟机上运行就够用了。Mac Mini 只有在你离不开苹果生态的软件或工作流时才值得考虑。</p>
+</li>
+<li><p>很多时候 Skills 比原生 MCP 集成更实用
+在复杂的 Agent 工作流中，Skills 的表现往往比直接接入 MCP 服务器更好。如果你已经有 MCP 服务器，不妨把它封装成 Agent Skill，体验会更顺畅。</p>
+</li>
+<li><p>上下文结构非常重要
+以 Telegram 为例，一个频道可以包含多个群组，每个群组又能有多个话题。由于话题之间是相互独立的会话，有意识地规划结构能让上下文保持清晰。</p>
+</li>
+<li><p>注意凭证安全
+Agent 可能会把敏感凭证或密码存到内存或工作区文件中，进而作为上下文传给模型提供商。更好的做法是把密钥放在 .openclaw/.env 这类地方。</p>
+</li>
+<li><p>多 Agent 的价值被低估了
+OpenClaw 支持创建多个 Agent（与子 Agent 不同），每个都有独立的 SOUL、IDENTITY 和记忆。这让职责分离变得更加容易。</p>
+</li>
+<li><p>没有万能的模型
+OpenClaw 消耗额度很快，所以模型选择很关键。</p>
+</li>
+</ol>
+<ul>
+<li>聊天/轻量指令处理：Gemini Flash-Lite、Haiku、MiniMax、Kimi 都是性价比不错的选择。</li>
+<li>重度推理任务：Opus、Codex、Gemini Pro（高思考模式）更合适，尤其是作为子 Agent 调度，让它们在后台长时间运行。</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rofilu/practical_things_i_learned_while_using_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
