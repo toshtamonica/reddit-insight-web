@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为 OpenClaw 多智能体系统打造了一个零外部依赖的共享内存插件，仅用 SQLite 实现 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>为 OpenClaw 多智能体系统打造了一个零外部依赖的共享内存插件，仅用 SQLite 实现</h1>
+        <div class="post-meta">
+          <span>👤 TechnicianSuper2644</span> | <span>📅 2026/3/13</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 为 OpenClaw 多智能体系统构建了无需外部服务的共享内存插件，使用 SQLite 和 Markdown 实现智能体间的自动上下文共享
+• 核心功能包括：显式/隐式内存共享、访问控制、跨智能体实体关系追踪、矛盾信息检测、CLI 管理工具
+• 解决多智能体完全隔离的痛点，避免重复 briefing，替代 Google Sheets 等临时方案
+• 设计原则保持本地化：纯 SQLite、离线可用、无 Docker 或外部依赖
+• 当前局限：缺少内存修剪机制和细粒度权限控制</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>一直在为我的项目运行 3-4 个 OpenClaw agent，最大的痛点不是某个单独的 agent，而是它们彼此之间完全隔离。Agent A 做了个决定，Agent B 完全不知道。最后你得把另一个 agent 已经掌握的上下文重新 briefing 给每一个 agent。看到社区里有人用 Google Sheets 做变通方案，感觉不太对劲。</p>
+<p>所以我写了个插件让 agent 共享记忆。当一个 agent 学到值得分享的东西，其他 agent 在下一轮之前会自动收到作为上下文，不用手动复制粘贴。</p>
+<p>主要功能：</p>
+<ul>
+<li>Agent 可以显式共享记忆（<code>memory_share</code> 工具），也可以设为隐式模式，让便宜模型在每轮后自动提取</li>
+<li>访问控制，不是什么东西都共享给所有人</li>
+<li>跨 agent 追踪实体和关系（所以&quot;Alice 负责 auth 团队&quot;所有 agent 都知道，而不只是学到它的那个）</li>
+<li>标记两个 agent 信息矛盾的情况</li>
+<li>CLI 查看共享记忆内容、发现矛盾、重建索引</li>
+</ul>
+<p>保持 SQLite-only、Markdown 作为 source of truth，跟 OpenClaw 的工作方式一致。没有 Docker，没有外部服务，默认用本地 embedding 模型，离线也能跑。</p>
+<p>还没做记忆修剪、per-agent 细粒度 ACL，但这是第一版实现。github.com/dhruvja/openclaw-shared-memory</p>
+<p>还有人在跑多 agent 架构吗？好奇你们遇到了什么痛点。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这张工单是客服创建的，还是人工创建的然后由客服接单？我在想既然看板只是给人做可视化用的，为什么还需要它。对客服来说，用 Markdown 不就够了吗？</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rrqyru/built_a_shared_memory_plugin_for_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
