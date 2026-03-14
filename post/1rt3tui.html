@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用树莓派搭了个 Docker 化的安全沙盒来自托管 OpenClaw，求大佬们指点 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>用树莓派搭了个 Docker 化的安全沙盒来自托管 OpenClaw，求大佬们指点</h1>
+        <div class="post-meta">
+          <span>👤 wwlarsww</span> | <span>📅 2026/3/14</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者开发了名为 Lobster Cage 的开源项目，用于在树莓派上通过 Docker 容器安全地自托管 OpenClaw</li>
+<li>核心目标是通过限制出站访问、代理路由等机制，为自主编程代理创建隔离的&quot;沙箱&quot;环境</li>
+<li>项目目前处于实验阶段，作者主动寻求社区反馈以改进架构安全性和隔离强度</li>
+<li>重点关注领域包括：潜在安全漏洞、过度设计或防护不足的部分、以及树莓派环境下的进一步强化方案</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>我一直在尝试在树莓派上自托管 OpenClaw，主要是想更好地理解如何在家用环境中安全地运行它，并对其能访问什么、不能访问什么有更多掌控。</p>
+<p>我的目标不只是让 OpenClaw 跑起来，而是搭建一个环境，让我可以真正动手把玩、测试和实验，而不是感觉像是给一个自主编码智能体无限制的网络访问权限。</p>
+<p>所以我搞了个小项目叫 Lobster Cage：
+<a href="https://github.com/wwlarsww/lobster-cage">https://github.com/wwlarsww/lobster-cage</a></p>
+<p>核心思路就是把 OpenClaw 放进一个更严格的 Docker Compose 环境里，限制出站访问、走代理路由，整体是一个更适合在树莓派上自托管的受控方案。</p>
+<p>目前还是个实验性项目，但已经做到可以拿出来分享、听听外界意见的程度了。</p>
+<p>特别希望能得到以下方面的反馈：</p>
+<ul>
+<li>整体架构设计</li>
+<li>明显的薄弱点或错误假设</li>
+<li>哪些部分过度设计了，哪些又不够严格</li>
+<li>如何进一步加固</li>
+<li>在树莓派上隔离或限制这类智能体的更好方法</li>
+<li>任何我可能忽略的重要事项</li>
+</ul>
+<p>尤其想听听那些尝试过安全自托管 OpenClaw 的朋友的意见。任何反馈、批评或想法都欢迎。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rt3tui/built_a_dockerized_security_cage_for_selfhosting/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

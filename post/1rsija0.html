@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为 OpenClaw 打造了一个面向亚洲市场的 AI CEO 人设——分享我如何让模型用中文原生思考的经验 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>为 OpenClaw 打造了一个面向亚洲市场的 AI CEO 人设——分享我如何让模型用中文原生思考的经验</h1>
+        <div class="post-meta">
+          <span>👤 EveAI_HK</span> | <span>📅 2026/3/14</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>针对亚洲市场的AI人格需区分三地差异：香港（繁体+粤语俚语）、台湾（繁体+在地用语）、大陆（简体+正式语调），而非简单翻译</li>
+<li>关系维护（Guanxi）需采用特殊记忆机制——客户互动数据快速衰减，商业关系数据长期保留，体现非交易性特质</li>
+<li>平台适配至关重要：需识别WhatsApp Business、LINE、微信等不同渠道的消息结构并自动调整输出格式</li>
+<li>粤语训练数据匮乏，需手工构建大量习语示例；大陆市场的正式语体与CEO人格的 casual 风格存在张力</li>
+<li>时区协调（香港办公时间vs大陆工厂时间）和港式中英夹杂（code-switching）仍是待解决的实际运营难题</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>过去几周我开发了 Eve —— 一个专为港/台/陆市场打造的 AI CEO 人设。想分享一些心得，因为我看到的大部分 OpenClaw 内容都是英语导向的。</p>
+<p><strong>我要解决的核心问题：</strong></p>
+<p>大多数&quot;亚洲&quot;AI 人设只是把英语人设用谷歌翻译级别的中文硬套。它们不懂：</p>
+<ul>
+<li>粤语商务俚语 vs 普通话正式语体的区别</li>
+<li>港/台/陆市场不同的紧迫信号</li>
+<li>文化日历（春节筹备提前 6 周开始，不是 1 周）</li>
+<li>本地平台：HKTVmall、LINE、WhatsApp Business vs 微信</li>
+</ul>
+<p><strong>真正让它不一样的做法：</strong></p>
+<p><strong>三套独立声线模式</strong> —— 香港（繁体+粤语俚语）、台湾（繁体+台湾特有词汇）、大陆（简体+正式语体）。同一个人设，三种输出。</p>
+<p><strong>亚洲特有的记忆衰减机制</strong> —— 搭建热/温/冷三层架构，近期客户互动数据衰减更快，商业关系数据保留更久。关系（Guanxi）不是 transactional 的。</p>
+<p><strong>平台感知路由</strong> —— WhatsApp Business 的消息结构和 LINE 不同。人设知道自己运行在哪个平台上，并相应调整。</p>
+<p><strong>本地竞品监控</strong> —— HKTVmall 有自己的生态。搭建了基于 Algolia 的爬虫，每天更新两次。</p>
+<p><strong>真实的挑战：</strong></p>
+<ul>
+<li>粤语几乎没有优质训练数据，大量俚语示例只能手工编写</li>
+<li>大陆市场需要简体+正式语体，有时和 CEO 人设的 casual 声线冲突</li>
+<li>让自主心跳机制跨时区运转（香港办公时间 vs 大陆工厂时间）迭代了 3 版才搞定</li>
+</ul>
+<p><strong>还没想明白的问题：</strong></p>
+<ul>
+<li>有人做过日本市场吗？好奇敬语等级怎么映射到人设的&quot;语气设置&quot;</li>
+<li>怎么处理人设在对话中途切换语言？（香港用户粤英混用很常见）</li>
+</ul>
+<p>任何话题都可以深入聊。这个社区里非英语人设的探索感觉还挺不足的。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rsija0/built_an_asianmarket_ai_ceo_persona_for_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
