@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11个客户，每月3840美元经常性收入。全都来自我为一个客户App频繁崩溃而开发的OpenClaw智能体。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>11个客户，每月3840美元经常性收入。全都来自我为一个客户App频繁崩溃而开发的OpenClaw智能体。</h1>
+        <div class="post-meta">
+          <span>👤 Economy-Mud-6626</span> | <span>📅 2026/3/15</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>开发者因客户应用频繁出现基础Bug，基于OpenClaw构建了自动化测试代理工具</li>
+<li>根源问题：客户虽有近百万下载量的成熟应用，但测试流程极其简陋（仅人工点击主屏幕），导致竞态条件等严重Bug长期未被发现</li>
+<li>具体案例：评价系统因按时间戳而非订单ID关联数据，导致用户评分错误归属到不同服务商</li>
+<li>该工具已发展为拥有11个客户、月收入3840美元的经常性业务</li>
+<li>核心洞察：许多营收良好的应用缺乏基本的多账户、多数据流交叉测试，存在显著的自动化测试服务市场空白</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我做前端自由职业。之前在一家拿过融资的创业公司干了几年，那边有正规的 QA 体系，所以我知道好的测试应该是什么样。正是这段经历，让我接下来看到的情况格外让人抓狂。</p>
+<p>自由职业大概 4 个月的时候，我在给一个做家政服务平台的老板开发功能。 plumber、电工、保洁，预约上门，实时追踪，完事写评价。App 下载量大概 89 万。我接的活是重构他们的搜索和筛选流程。</p>
+<p>但我在看代码库的时候，发现他们内部 Slack 里反复出现同样的客服工单。评价系统把评分绑错了服务者。用户周一约了 plumber，周四约了保洁，给保洁打了 1 星，结果显示在 plumber 主页上。这种情况出过好几次。</p>
+<p>我查了一下。评价提交的时候，是按最近一条订单的时间戳来关联评分，而不是用户在评价页面实际选中的订单 ID。所以如果用户点&quot;写评价&quot;和评价页面加载完成之间，订单列表顺序变了，就会抓错订单。一个基础的竞态条件，出在 App 获取订单引用的逻辑上。</p>
+<p>他们的技术负责人知道这个问题。Jira 工单挂了两个月。但他们的测试流程就是：在自己手机上打开 App，点点主要页面，看起来没崩就发版。他从来不测有多条订单的评价流程，因为他的测试账号永远只有一条订单。这个 bug 只在真实用户同一周有重叠订单时才触发。而这正是他们大多数活跃用户的情况。</p>
+<p>一个下载量近百万、收入不错的 App，居然没人对涉及用户生成数据跨账户流转的流程做最基本的检查。</p>
+<p>我自己用 OpenClaw 搭工作流已经 3 个月了。但看着这个 App 栽在这么可预防的问题上，让我决定用它做点不一样的东西。我搞了个 agent，把测试步骤写成简单语句，连上云模拟器，可视化地跑完整个 App。你描述用户会做什么，agent 看屏幕执行，每一步都记录下来。出 bug 或者数据不对，你能精确看到在哪一步、当时屏幕长什么样。</p>
+<p>一开始我先给几个朋友的小 App 免费跑了几轮，把步骤写法摸熟。大概两周后，我才敢拿给真正的客户用。</p>
+<p>然后我回头找了那个家政平台的老板。免费跑了 5 个流程。评价流程跑到第 2 遍就挂了。正是那个 bug。他看了报告、截图、出错的那一步。问我这个怎么收费。</p>
+<p>180 美元/月。26 个流程覆盖核心用户路径。我负责跑 agent、维护上下文、他们发新功能时加流程，出问题了标红。我每个月大概花 2.5 小时维护。</p>
+<p>客户是这么来的。头两个是之前公司认识的人。有一个跳槽去了做车队管理的公</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好，我刚私信你了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>对，差不多就是这样</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈哈...
+私聊你</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rtq3mn/11_clients_3840month_recurring_all_from_an/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
