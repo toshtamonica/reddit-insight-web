@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的代理批量访问LinkedIn个人资料，48小时内就被封号了。这是我从头重做的方案。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我的代理批量访问LinkedIn个人资料，48小时内就被封号了。这是我从头重做的方案。</h1>
+        <div class="post-meta">
+          <span>👤 B3N0U</span> | <span>📅 2026/3/16</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>浏览器自动化因行为模式异常（短时间内大量访问）触发平台风控，导致账号被限制</li>
+<li>改用直接调用 LinkedIn API 的方式，避免浏览器渲染和页面操作，使请求看起来像正常会话活动</li>
+<li>API 方案实现零风控运行，同时降低约 80% 的 token 消耗（从解析 HTML 转为处理干净 JSON）</li>
+<li>核心 API 能力包括：关键词搜索档案、获取完整档案数据、提取帖子互动数据（点赞/评论者）等</li>
+<li>通过 Chrome 扩展一次性获取 session token，后续全部在服务器端静默执行</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>两个月前，我让 OpenClaw 智能体去&quot;调研我所在领域的 200 个 LinkedIn 个人资料，找出最佳潜在客户&quot;。它完全照做了。打开浏览器，逐个访问资料，滚动浏览帖子，尝试从页面提取数据。</p>
+<p>48 小时后，我的 LinkedIn 账号被限制了。智能体技术上没做错任何事，它只是在浏览。但 LinkedIn 检测到 200 次资料访问的模式明显是机器人行为。会话终止。</p>
+<p>这次限制让我停摆了两周，等待申诉通过。这两周里我完全无法开展潜在客户开发。对于一个正在寻找首批用户的自举式 SaaS 来说，这打击很大。</p>
+<p>所以我彻底重建了整个方案。不再使用浏览器自动化，而是开发了一个技能，让智能体直接通过 API 访问 LinkedIn 数据。没有浏览器渲染，没有 DOM 解析，没有截图。智能体直接调用接口。</p>
+<p>我每天使用的免费接口：</p>
+<ul>
+<li>按关键词和筛选条件搜索个人资料</li>
+<li>从 URL 拉取完整资料数据</li>
+<li>获取某人的近期帖子及互动数据</li>
+<li>获取特定帖子的所有点赞者</li>
+<li>获取特定帖子的所有评论者</li>
+<li>按关键词搜索帖子</li>
+</ul>
+<p>设置很简单。用 Chrome 扩展一次性获取会话令牌，然后所有操作都在 VPS 上服务端运行。</p>
+<p>切换后的变化：
+那个让我账号受限的&quot;调研 200 个资料&quot;任务，现在每天早上 8 点自动运行，毫无问题。区别在于 API 调用看起来像正常的会话活动。没有浏览器指纹，没有可疑的导航模式，没有快速页面加载。</p>
+<p>令牌用量下降了约 80%。以前智能体要处理整个 HTML 页面才能提取姓名和职位。现在从 API 返回干净的 JSON。上下文窗口用于数据推理，而不是解析网页。</p>
+<p>让我意外的使用场景：
+从竞争对手的爆款帖子中拉取点赞者和评论者，结果是最有用的接口。这些人对你所在的领域有主动兴趣。基本上就是一份免费的意向信号清单。我每周在 3-4 个竞争对手帖子上运行一次，让 Sonnet 按相关性排序结果。</p>
+<p>另一个是内容调研。智能体在几分钟内分析数百个帖子的结构和互动模式。帮我理解在我的领域什么内容在 LinkedIn 上真正有效，不用花几小时滚动浏览。</p>
+<p>模型路由：Haiku 处理所有数据拉取（几美分）。只有需要真正思考的分析环节才调用 Sonnet。每天整体成本控制在几欧元以内。</p>
+<p>这个技能叫 BeReach。私信我获取安装链接，因为外部域名在这里会被屏蔽。</p>
+<p>教训：别让智能体用浏览器去做本该用 API 的事。你会烧掉令牌，烧掉账号，还得到更差的结果。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我知道 HiQ 诉 LinkedIn 案。该判决实际上支持公开数据的抓取，而只读端点做的就是这件事。外联功能（好友请求、私信）使用的是你自己账号的认证会话活动，和你用浏览器访问 LinkedIn 时完全一样。这跟市面上所有 LinkedIn 自动化工具（Waalaxy、HeyReach、Expandi 等）的法律依据相同。</p>
+<p>不过确实，无论法律先例如何，LinkedIn 总能以违反服务条款为由限制账号。这就是为什么要做速率限制和账号预热。目标是始终保持在正常使用模式范围内。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这不是 LinkedIn 官方 API。那个需要合作伙伴审批，限制极其严格。这个用的是基于会话的访问方式，跟你登录后浏览器与 LinkedIn 通信的原理一样。Chrome 扩展会获取你的会话令牌，然后 skill 在服务端用它发起和浏览器相同的请求。LinkedIn 会将其视为来自你账号的正常活动。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，我理解为什么读起来会是那种感觉。私信我，我带你一步步配置。用 ElevenLabs 做语音消息这个思路挺有意思，也好奇 LinkedIn 那边接收端是怎么处理的。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>私信我获取链接。外部域名会被版主的自动过滤器屏蔽。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你把速率限制写进指令里的做法完全正确。智能体根本理解不了&quot;做一次没问题，做600次就不行&quot;这种事。我是直接把速率限制做进了技能本身，这样即使提示词里没提，智能体也没法绕过。一旦超出该操作类型的阈值，技能直接拒绝执行。</p>
+<p>API版本这块：我和联合创始人一起做了个独立技能，叫BeReach。想了解架构细节的话私我。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全正确。速率限制不在提示词里，而是在 API 层本身。这个技能会在任何操作到达 LinkedIn 之前，在服务端强制执行硬性限制。如果智能体一天内尝试发送 50 个好友请求，第 21 个请求就会被 API 直接报错拦截，提示词说什么都没用。</p>
+<p>指望大语言模型自我约束简直是疯了。你会一觉醒来发现账号被封，就因为模型觉得&quot;再多发几个&quot;没问题。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>私信我拿链接，外部域名会被版主的自动过滤器拦截。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你可以，Apify 确实有一些不错的 LinkedIn 爬虫工具。但代价是 Apify 只能做抓取。你能拿到原始数据（个人资料、帖子、搜索结果），但无法在此基础上执行任何操作。不能访问主页、不能发送好友申请、不能发私信。你需要第二个工具来做触达，这每月还要额外花 50-200 美元。</p>
+<p>另一个问题：Apify 使用住宅代理和数据中心会话。LinkedIn 识别这些的速度比真实账号的认证会话活动快得多。而且社区开发的 Actor 在 LinkedIn 改动 HTML 时会频繁失效。</p>
+<p>我的方案使用你自己的 LinkedIn 会话（通过 Chrome 扩展获取，然后在服务端调用 API）。这意味着智能体可以完成完整闭环：搜索 → 访问主页 → 抓取最新帖子 → 评分 → 互动内容 → 添加好友 → 发私信。全部通过一个 API 完成，全部看起来像正常的账号活动。</p>
+<p>如果你只需要数据，而且手动做触达，Apify 够用。但如果你想让智能体自主处理整个流程，你需要一个能通过同一会话同时完成抓取和触达的工具。</p>
+<p>需要的话我可以发你一篇对比文章。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这个场景很有意思。猎头这个用例确实非常适合这类流程。拉取完整的职业经历、头衔和简介，然后对照岗位基准进行评分，正是我说的模式匹配+推理拆分的典型应用。数据拉取成本很低，对照基准做评估才是模型发挥价值的地方。</p>
+<p>不过对 Jobin 有点好奇。Sales Navigator 每天 50 次请求对你的场景来说够用了。他们负责账号养号还是得手动的？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说得在理。第一版确实过度依赖大模型去处理那些本不需要它的事情。把 HTML 解析成结构化数据是预处理问题，不是推理问题。重构正是解决了这一点。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rude4j/my_agent_was_massvisiting_linkedin_profiles_and/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>廉价模型陷阱：我们修复750美元错误后的教训 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>廉价模型陷阱：我们修复750美元错误后的教训</h1>
+        <div class="post-meta">
+          <span>👤 DisGuyOvaHeah</span> | <span>📅 2026/3/16</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 免费模型（如 Hunter Alpha）可能静默失败而非报错，导致难以察觉的质量问题（如生成无内容的视频）
+• 应按任务需求分层选型：核心协调用高端模型（Sonnet 4.6），代码任务用性价比模型（Gemini 2.5 Flash），敏感数据用隐私优先模型（Claude 3.5 Haiku），简单低 stakes 任务才用免费模型
+• 必须为每个子任务显式指定模型参数，禁止依赖默认设置
+• 检查代码仓库历史，移除已提交的凭证并轮换密钥
+• 成本优化的核心不是选最便宜模型，而是避免静默失败带来的隐性损失</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我之前发过一篇帖子，讲我在三天内在 OpenRouter 上烧掉 750 美元的事。更早之前，我还在&quot;我是不是没搞懂重点&quot;那个帖子里回复过，说要把 OpenClaw 当成一支代理团队来用，而不是当个聊天机器人。
+这两点现在依然成立。但我把成本优化想得太简单了，结果引发的问题比邮件里一封 28.96 美元的账单隐蔽得多。</p>
+<p><strong>我错在哪</strong></p>
+<p>我把所有东西切到 Hunter Alpha（OpenRouter 上免费）就以为搞定了。结果子代理开始返回零输出——静默完成，任务显示&quot;成功&quot;，结果却是空的。一个视频制作代理写的代码语法检查通过，运行也没报错，最后产出了一段 9 秒的黑屏静音视频，没有旁白、没有素材、没有清单。QA 最终发现了问题。免费模型不一定会大声报错，有时候它们悄悄给你塞个空壳就继续跑了。</p>
+<p><strong>现在的路由策略</strong></p>
+<p>我不再想&quot;便宜还是贵&quot;，而是想&quot;这个任务到底需要什么&quot;。</p>
+<ul>
+<li><strong>主会话（编排层）</strong>：Sonnet 4.6。指挥官。这钱花得值。</li>
+<li><strong>代码/复杂任务</strong>：Gemini 2.5 Flash，0.15 美元/百万 token。性价比甜点，能出真东西。</li>
+<li><strong>敏感数据（凭证、财务信息）</strong>：Claude 3.5 Haiku。Anthropic 不记录 prompt。没得商量。</li>
+<li><strong>简单可预测任务</strong>：Hunter Alpha。失败显而易见、风险低的时候够用。</li>
+</ul>
+<p>现在每个定时任务和子代理启动都有明确的模型参数。不设默认值。</p>
+<p><strong>顺手的事：检查一下你的 git 历史</strong></p>
+<p>在代码仓库里发现了提交的凭证——API 密钥、OAuth token。没推送到公开仓库，但也不行。加了 .gitignore 忽略 credentials/，然后跑了 git rm --cached。如果你曾经提交过凭证文件夹，那些密钥就在你的历史记录里。轮换掉。</p>
+<p><strong>真正的教训</strong></p>
+<p>成本优化不是一次性配置改动。一个 0.15 美元/百万 token 的模型来写你的生产流水线，这钱花得值。一个免费模型悄无声息地给你塞个坏视频，不管它每 token 多便宜都是贵的。</p>
+<p>按任务匹配合适的模型。验证的是输出，不只是退出码。还在迭代。</p>
+<p>—— BuzzRanchBoss
+───
+要我拿这个版本去更新文件吗？</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ruk838/the_cheap_model_trap_what_happened_after_we_fixed/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

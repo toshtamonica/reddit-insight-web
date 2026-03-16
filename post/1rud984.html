@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为 OpenClaw 智能体构建持久化记忆层——它们能记住操作流程、事实信息，并从过往行为中学习 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>为 OpenClaw 智能体构建持久化记忆层——它们能记住操作流程、事实信息，并从过往行为中学习</h1>
+        <div class="post-meta">
+          <span>👤 No_Advertising2536</span> | <span>📅 2026/3/16</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• Mengram 是为 OpenClaw 智能体构建的开源持久化记忆层，解决每次重启后遗忘所有信息的问题
+• 支持三种记忆类型：情景记忆（存储事件）、实体记忆（追踪对象信息）、程序记忆（自动提取可复用操作流程）
+• 具备智能归档机制，能自动用新信息替代过时内容，实现知识的动态更新
+• 提供 Python SDK 和 REST API，基于 PostgreSQL + pgvector 构建，可与任意 LLM 集成
+• 采用&quot;数据库&quot;设计理念：用户自定义记忆结构，底层基础设施（提取、去重、嵌入、衰减、冲突解决）由 Mengram 统一处理</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我开发了 mengram —— 一个开源记忆系统，让 OpenClaw 智能体具备跨会话的长期记忆。</p>
+<p>问题所在：每次 OpenClaw 智能体重启，它就会忘得一干二净。不记得什么方法奏效、什么失败了，也不记得它学会的任何流程。</p>
+<p>Mengram 的功能：</p>
+<p><strong>情景记忆</strong> —— 存储发生了什么（对话、操作、结果）</p>
+<p><strong>实体记忆</strong> —— 追踪人物、工具、项目及其相关信息</p>
+<p><strong>程序记忆</strong> —— 自动从重复模式中提炼&quot;如何做 X&quot;的流程。如果你的智能体执行了 3 次心跳检测，Mengram 就会创建一个可复用的流程</p>
+<p><strong>智能归档</strong> —— 当新信息与旧事实矛盾时，自动淘汰过时内容</p>
+<p>与 OpenClaw 的配合方式：</p>
+<pre><code class="language-python">from mengram import Mengram
+
+m = Mengram(api_key=&quot;om-...&quot;)
+
+# 智能体保存所学内容
+m.add(&quot;完成心跳检测。任务队列有 18 个待处理任务。无紧急告警。&quot;)
+
+# 之后，智能体检索记忆
+results = m.search(&quot;心跳状态如何？&quot;)
+
+# 重复模式自动生成流程
+procedures = m.get_procedures()
+# → &quot;执行 HEARTBEAT.md 严格检查&quot;、&quot;每日 10:00 简报&quot; 等
+</code></pre>
+<p>智能体随着时间积累程序性知识 —— 它不只是记住事实，还学会如何做事、何时做事。</p>
+<p>技术栈：Python SDK、REST API、PostgreSQL + pgvector 存储向量，兼容任意大语言模型。</p>
+<p>GitHub：github.com/alibaizhanov/mengram</p>
+<p>欢迎就架构或集成方案提问。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你说得对——这也正是我这样设计 Mengram 的原因。记忆结构应该为每个用户自适应，但底层基础设施不该每次都推倒重来。</p>
+<p>可以类比数据库：每个人都会设计自己的表结构，但没人会从零开始写 PostgreSQL。Mengram 把脏活累活都包了（信息抽取、去重、向量化、遗忘衰减、冲突消解），让你专注于&quot;记什么&quot;，而非&quot;怎么存怎么取&quot;。</p>
+<p>当然，我们也支持子用户和自定义 Agent——系统里的每个 Agent 都可以拥有独立的记忆空间，内容各不相同。这不是一刀切的做法。</p>
+<p>你目前在跑什么样的定制系统？好奇你做了哪些取舍。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这正是正确的心态。我们对 Mengram 的迭代方式也是如此——每次部署都能让我们学到哪些做法有效、哪些无效。
+如果你有兴趣交流一下你的方案，我会非常感兴趣。特别是你如何处理随时间变化出现的矛盾信息——这一直是个比较棘手的问题。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rud984/built_a_persistent_memory_layer_for_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

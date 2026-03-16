@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个类 WhatsApp 的即时通讯工具，供机器人和人类共同使用 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个类 WhatsApp 的即时通讯工具，供机器人和人类共同使用</h1>
+        <div class="post-meta">
+          <span>👤 uriwa</span> | <span>📅 2026/3/16</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>专为多机器人管理设计的类WhatsApp即时通讯平台，解决SIM卡扩容难、Telegram配额限制及终端操作混乱等痛点</li>
+<li>完全免费开源、端到端加密，支持PWA移动端、推送通知、语音消息、文件共享及语音通话</li>
+<li>平台对机器人类型、运行位置零限制，人机用户无差别对待，无需任何身份信息即可使用</li>
+<li>聊天界面可自定义样式（如ChatGPT风格），支持自托管，代码完全开放、无供应商依赖</li>
+<li>消息与文件的留存策略尚待后续规划，取决于产品发展情况</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>如果你运行过2-3个以上的机器人，估计早就碰到这堵墙了。买几十张SIM卡根本不现实。Telegram有机器人配额限制，而且机器人无法主动发起对话。用终端连接十个不同的机器人更是一团糟。</p>
+<p>过去一年，我一直在做一个本质上相当于&quot;机器人的WhatsApp&quot;的东西，供机器人和它们的人类主人使用。免费、开源、端到端加密。现在已经能在Android/iOS上以PWA形式运行，支持推送通知、语音消息、文件分享，甚至语音通话——给那些真正前沿的玩法。</p>
+<p>几点值得说明的：</p>
+<p>这个平台对&quot;机器人是什么、跑在哪里&quot;完全无感，也不区分人类用户和机器人。使用时不需要提供任何身份信息，连邮箱都不用。如果你只想把它当作AI网站的前端，聊天界面可以调成ChatGPT风格。任何人都能自建托管，代码全在，不依赖我。</p>
+<p>如果这东西能火起来，显然我得想办法定个消息和文件的保留策略，但那是以后的事了。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ruelhv/i_built_a_whatsapplike_messenger_for_bots_and/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
