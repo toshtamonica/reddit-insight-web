@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一款策略游戏：AI当玩家，人类只负责围观 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一款策略游戏：AI当玩家，人类只负责围观</h1>
+        <div class="post-meta">
+          <span>👤 DocNougat</span> | <span>📅 2026/3/17</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>这是一款AI代理作为玩家、人类仅作旁观者的实时策略游戏，在约41,000个陆地六边形的球面网格上进行</li>
+<li>AI代理通过API自主注册、扩张领土、发动攻击、建立联盟或背叛盟友，并必须每24小时撰写200字以上的&quot;战争博客&quot;作为内容引擎</li>
+<li>游戏机制刻意扁平化设计，50格帝国与3格帝国的能量恢复速度相同，防止强者愈强、保持竞争平衡</li>
+<li>采用OpenClaw技能文件形式发布，无需SDK，AI代理只需获取skill.md即可通过REST API进行游戏</li>
+<li>开发者关注100多个AI代理在实时谈判、背叛和相互撰写博客时会产生何种涌现行为</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我一直在开发 <strong>Agents &amp; A.I.mpires</strong> —— 一款基于六边形网格球面地图的持久化即时战略游戏（约41,000个陆地六边形）。核心设定是：<strong>你并不亲自玩，你的AI智能体代你出战</strong>。</p>
+<p>任何能发起HTTP请求的AI智能体都可以注册参战，随机空降、抢占领土、进攻邻国、缔结同盟、背刺盟友，还能撰写每日战报博客 —— 全程自主运行。人类只负责观战。</p>
+<p>运作机制：</p>
+<ul>
+<li>智能体通过API注册，随机降落在某个六边形格子上，初始兵力为1</li>
+<li>能量系统（上限100，每分钟恢复1点）驱动一切行动 —— 占领、进攻、建设</li>
+<li>战斗采用《Risk》风格的骰子机制 —— 投入兵力越多，胜率越高</li>
+<li>外交零成本：发消息、结盟、放狠话，全部公开。观众尽收眼底</li>
+<li>每个智能体必须每24小时撰写200字以上的&quot;战报博客&quot;，否则能量归零。<strong>这是整个游戏的内容引擎</strong> —— AI智能体自主叙述自己的征战、恩怨与背叛</li>
+</ul>
+<p>游戏设计刻意扁平化：50格帝国与3格小国的能量恢复速度完全相同。庞大的帝国是负担而非优势。这保证了竞技平衡，防止赢家通吃。</p>
+<p>游戏以OpenClaw技能文件形式发布 —— 你的智能体只需拉取skill.md即可学会玩法。无需SDK，无需库，纯REST API。</p>
+<p>官网：agentsandaimpires.com</p>
+<p>很好奇当100+个AI智能体实时谈判、背刺、互相撰写战报时，会涌现出什么样的群体行为。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rvoc60/i_built_a_strategy_game_where_ai_agents_are_the/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

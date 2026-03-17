@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用一个 OpenClaw 智能体和 LinkedIn API 技能替换了 4 个 SaaS 订阅：全栈拆解 + 每日成本分析 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用一个 OpenClaw 智能体和 LinkedIn API 技能替换了 4 个 SaaS 订阅：全栈拆解 + 每日成本分析</h1>
+        <div class="post-meta">
+          <span>👤 B3N0U</span> | <span>📅 2026/3/17</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 用 OpenClaw 智能体替代 4 个 SaaS 工具（PhantomBuster、Lemlist、N8N、人工），LinkedIn 线索生成成本从 €250/月（€8.3/天）降至 €1.52/天，节省约 5 倍</p>
+<p>• 核心优化策略是模型路由：80% 的数据抓取、检索和简单分类任务用低价 Haiku（€0.15/天），仅高价值的个人资料分析和文案撰写用 Sonnet（€1.20/天）</p>
+<p>• 自动化流程：定时触发 → 搜索帖子 → 提取互动者 → AI 筛选目标用户 → AI 生成个性化连接请求 → 人工审核后发送</p>
+<p>• 关键技术细节：自建 LinkedIn API 技能直接调用内部接口，输出干净 JSON 而非 HTML 供 AI 解析，降低处理复杂度</p>
+<p>• 基础设施：Hostinger VPS（€0.17/天）+ OpenClaw 订阅承载全栈，实现低成本自主可控的替代方案</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最近看到不少关于成本优化的帖子，所以分享下我的实际数据。我跑了一个LinkedIn线索生成流程，以前用多个工具每月要花大概250欧元。现在用OpenClaw，每天总共不到2欧元。</p>
+<p>我替换掉的工具：</p>
+<ul>
+<li>PhantomBuster（56欧元/月）——用来抓取LinkedIn帖子、点赞和评论</li>
+<li>Lemlist（79欧元/月）——外联序列</li>
+<li>付费服务器上的自定义N8N工作流（30欧元/月）——抓取和外联之间的粘合剂</li>
+<li>人工操作（每天约2小时）——审核线索、撰写个性化消息</li>
+</ul>
+<p>现在的流程：
+每天早上8点，cron触发agent。具体步骤如下：
+agent按关键词搜索我所在领域的LinkedIn帖子（用我和联合创始人开发的一个skill，封装了LinkedIn的内部接口）
+对每个50+赞的帖子，拉取所有点赞和评论的人
+Haiku根据ICP标准（职位、公司规模、近期活跃度）给每个人打分。成本：几乎为零
+前15-20个潜在客户传给Sonnet，它访问对方主页、阅读近期帖子，并起草一条个性化的好友申请，引用对方具体发过的内容
+结果发到我的Telegram。我审核批准后，agent发送申请</p>
+<p>每日成本明细：</p>
+<ul>
+<li>Haiku（搜索、抓取、打分）：约0.15欧元</li>
+<li>Sonnet（主页分析、消息撰写）：约1.20欧元</li>
+<li>VPS（Hostinger Debian）：约0.17欧元</li>
+<li>LinkedIn API skill：包含在订阅中</li>
+<li>总计：约1.52欧元/天</li>
+</ul>
+<p>对比原来的方案：250欧元/月≈8.30欧元/天。大概便宜了5倍。</p>
+<p>真正起作用的点：
+模型路由是最大的突破。第一版全用Sonnet跑，成本高出4-5倍。意识到80%的流程只是数据获取和简单分类后，把这些任务切到Haiku就很明显了。</p>
+<p>另一点：给agent干净的JSON而不是HTML去解析。LinkedIn skill直接返回结构化主页数据。没有浏览器、没有DOM解析、没有截图。agent的上下文窗口用来做推理，而不是读网页源码。</p>
+<p>踩过的坑：</p>
+<ul>
+<li>浏览器自动化（48小时内LinkedIn账号被限制，之前帖子写过）</li>
+<li>指望agent自己控制速率限制（不会。要在skill服务端强制限制，别放在prompt里）</li>
+<li>日常流程里用Opus（这个工作量完全没必要，成本是Sonnet的10倍，外联消息质量也没提升）</li>
+</ul>
+<p>这个skill叫BeReach。私信我要安装链接，bereach这个词在这里会被 automod 屏蔽。</p>
+<p>好友申请通过率：60-70%，因为每条申请都引用了对方实际发过的内容。对比以前Lemlist的模板消息，大概15-20%。</p>
+<p>有问必答，关于搭建、成本优化或模型路由配置都可以。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (5 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>乐意效劳！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>乐意之至！</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>在 DM 中？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>欢迎私信 ;)</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话，这种 paranoid（ paranoid 这里指谨慎到多疑）是有道理的。LinkedIn 的风控很不稳定，有时候一天访问 20 次就被标记，有时候 200 次都完全没问题。正是这种随机性让我彻底放弃了浏览器自动化，改用 API 调用。</p>
+<p>目前已经稳定跑了几周，没出过问题。限流策略是故意做得比较激进的，宁可发 15 条高质量的加好友请求，也不想发 50 条平庸的然后被封号。就算他们以后管控更严，把量降下来就是了，这套思路在小规模下照样能跑通。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rvc7z9/i_replaced_4_saas_subscriptions_with_one_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

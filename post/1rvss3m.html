@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双机分布式AI工作流优化：5090 + M3 Ultra (512GB) 配合 OpenClaw 与 vLLM - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>双机分布式AI工作流优化：5090 + M3 Ultra (512GB) 配合 OpenClaw 与 vLLM</h1>
+        <div class="post-meta">
+          <span>👤 Aggravating_Print913</span> | <span>📅 2026/3/17</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li><strong>双机架构设计</strong>：M3 Ultra Mac Studio（512GB显存）作为推理服务器运行397B大模型，RTX 5090 PC作为执行端负责Agent控制与媒体生成，实现显存解耦</li>
+<li><strong>网络优化需求</strong>：计划采用10GbE直连，寻求vLLM通信的MTU等网络栈优化建议以降低延迟</li>
+<li><strong>量化方案咨询</strong>：针对M3 Ultra运行Qwen 3.5 397B，询问AWQ/GGUF/FP8等量化格式在vLLM上的效率对比</li>
+<li><strong>反馈循环机制</strong>：探索OpenClaw与ComfyUI API的&quot;生成-视觉检查-重生成&quot;闭环集成方案</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，
+我想请教一些技术建议，关于如何通过两台高端PC分布式部署来优化本地AI自动化环境。我希望构建一个无缝的&quot;大脑-身体&quot;工作流。以下是硬件配置和计划架构：</p>
+<p><strong>硬件配置</strong></p>
+<ul>
+<li>PC 1（主控/执行端）：Ryzen 9 9950X | RTX 5090 32GB | 128GB DDR5 内存（Windows 11）</li>
+<li>PC 2（推理/大脑端）：Mac Studio M3 Ultra | 80核GPU | 512GB 统一内存（macOS）</li>
+</ul>
+<p><strong>计划工作流</strong></p>
+<ul>
+<li>推理服务器（PC 2）：通过vLLM部署Qwen 3.5 397B，利用512GB显存进行大规模模型服务</li>
+<li>智能体控制器（PC 1）：运行OpenClaw（智能体框架），连接PC 2上的vLLM API</li>
+<li>本地控制：授予OpenClaw在PC 1上的文件系统权限，实现自主文件管理和编程任务</li>
+<li>媒体生成：智能体（PC 2）生成创意方案/提示词，发送至PC 1上的ComfyUI API，通过RTX 5090即时合成图像/视频</li>
+</ul>
+<p><strong>预期收益</strong></p>
+<ul>
+<li>显存解耦：将庞大的397B大模型卸载到Mac Studio后，可将5090的全部32GB显存留给ComfyUI（SDXL、Flux、视频生成），消除瓶颈</li>
+<li>高保真推理：使用397B参数模型作为大脑，最大限度降低复杂自主智能体任务中的幻觉问题</li>
+</ul>
+<p><strong>问题与建议需求</strong></p>
+<ul>
+<li>网络吞吐：考虑到大量的token/数据交换，我计划采用10GbE直连。对于vLLM到智能体的延迟，是否有特定的网络栈优化建议（如MTU设置）？</li>
+<li>Apple Silicon量化：在M3 Ultra 512GB上通过vLLM运行Qwen 3.5 397B，最高效的量化方式是什么（AWQ vs GGUF vs FP8）？</li>
+<li>智能体-ComfyUI集成：有人用OpenClaw和ComfyUI API实现过&quot;反馈循环&quot;（生成→视觉检查→重生成）吗？希望能看到现有的参考方案或逻辑流程</li>
+</ul>
+<p>如有任何关于潜在瓶颈或更优编排方式的建议，非常感谢！</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rvss3m/optimizing_a_2pc_distributed_ai_workflow_5090_m3/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

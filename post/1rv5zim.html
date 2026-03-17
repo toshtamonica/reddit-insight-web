@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20天内将 OpenClaw 成本从 420 美元降到 168 美元，完整拆解 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>20天内将 OpenClaw 成本从 420 美元降到 168 美元，完整拆解</h1>
+        <div class="post-meta">
+          <span>👤 Educational_Access31</span> | <span>📅 2026/3/17</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者通过分析20天的API调用日志，发现70%的任务（FAQ回答、基础格式化等简单工作）本可用便宜10倍的模型完成，却一直在用最贵的Opus模型
+• 按任务复杂度分层：70%简单、16%标准、9%复杂、6%需深度推理，据此实施模型路由策略，将简单任务分配给低价模型
+• 具体优化措施：简单任务用Gemini 3 Flash（$0.5/$3每百万token），标准任务用Sonnet或Gemini 3.1 Pro，仅复杂任务保留Opus
+• 成本从$420降至$168（降幅60%），日均从$21降至$8.4，同时保持输出质量不变
+• 关键经验：默认全用顶级模型是常见浪费，通过任务分类和智能路由可大幅降低成本</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>上个月我打开 API 控制台，数字吓了我一跳——20 天花了 420 美元。</p>
+<p>我在副业项目里跑 OpenClaw。它们负责网站数据分析、博客内容、代码审查和客户支持。没什么花哨的。</p>
+<p>按这些 Agent 实际干的活来算，每天 21 美元感觉太贵了。于是我决定搞清楚钱到底花哪儿去了。接下来 20 天我记录了所有东西，每次调用、每个 token。以下是我的发现。</p>
+<p><strong>问题根源</strong></p>
+<p>四个 Agent 都在跑 Opus。我最初配置完，好几天就忘了这事。输入 5 美元/百万 token，输出 25 美元/百万 token，一视同仁——包括 20 天内重复回答了十几次&quot;最近用户最常见的抱怨是什么&quot;这种问题。</p>
+<p><strong>离谱的部分</strong></p>
+<p>20 天内四个 Agent 总共约 13,500 次调用。</p>
+<p>按 Agent 实际执行的任务分类：</p>
+<ul>
+<li>约 70% 是简单任务：FAQ 回答、基础格式整理、一句话摘要、&quot;总结一下这个只改了 readme 错别字的 PR&quot;。这种活儿完全可以用比 Opus 便宜 10 倍的模型跑。</li>
+<li>16% 是标准任务：较长的邮件草稿、中等规模的代码审查、多段落摘要。值得用个不错的模型，但没必要上最好的。</li>
+<li>9% 确实复杂：深度代码分析、长内容生成、多文件上下文。</li>
+<li>6% 需要真正的推理：架构决策、复杂调试、多步逻辑。</li>
+</ul>
+<p>所以我基本上是在为 70% 的任务付高价，而这些任务用便宜模型做质量完全不会下降。</p>
+<p><strong>解决方案</strong></p>
+<p>第一件事：我深入研究了市场上讨论最多的模型的定价。</p>
+<table>
+<thead>
+<tr>
+<th align="left">模型</th>
+<th align="left">厂商</th>
+<th align="left">输入$/百万</th>
+<th align="left">输出$/百万</th>
+<th align="left">上下文</th>
+<th align="left">档位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Claude Opus 4.6</td>
+<td align="left">Anthropic</td>
+<td align="left">$5.00</td>
+<td align="left">$25.00</td>
+<td align="left">1M</td>
+<td align="left">高端</td>
+</tr>
+<tr>
+<td align="left">Claude Sonnet 4.6</td>
+<td align="left">Anthropic</td>
+<td align="left">$3.00</td>
+<td align="left">$15.00</td>
+<td align="left">1M (beta)</td>
+<td align="left">中端</td>
+</tr>
+<tr>
+<td align="left">Claude Haiku 4.5</td>
+<td align="left">Anthropic</td>
+<td align="left">$1.00</td>
+<td align="left">$5.00</td>
+<td align="left">200K</td>
+<td align="left">经济</td>
+</tr>
+<tr>
+<td align="left">GPT-5.4</td>
+<td align="left">OpenAI</td>
+<td align="left">$2.50</td>
+<td align="left">$15.00</td>
+<td align="left">1.05M</td>
+<td align="left">高端</td>
+</tr>
+<tr>
+<td align="left">Gemini 3.1 Pro</td>
+<td align="left">Google</td>
+<td align="left">$2.00</td>
+<td align="left">$12.00</td>
+<td align="left">1M</td>
+<td align="left">中端</td>
+</tr>
+<tr>
+<td align="left">Gemini 3 Flash</td>
+<td align="left">Google</td>
+<td align="left">$0.50</td>
+<td align="left">$3.00</td>
+<td align="left">1M</td>
+<td align="left">经济</td>
+</tr>
+<tr>
+<td align="left">GLM-5</td>
+<td align="left">智谱</td>
+<td align="left">$0.72–1.00</td>
+<td align="left">$2.30–3.20</td>
+<td align="left">200K</td>
+<td align="left">经济</td>
+</tr>
+<tr>
+<td align="left">Kimi K2.5</td>
+<td align="left">Moonshot AI</td>
+<td align="left">$0.60</td>
+<td align="left">$3.00</td>
+<td align="left">256K</td>
+<td align="left">经济</td>
+</tr>
+<tr>
+<td align="left">MiniMax M2.5</td>
+<td align="left">MiniMax</td>
+<td align="left">$0.30</td>
+<td align="left">$1.20</td>
+<td align="left">1M</td>
+<td align="left">超经济</td>
+</tr>
+</tbody></table>
+<p>现在我只在真正复杂的任务上跑 Opus，其他全部路由到 Sonnet、Haiku、Kimi K2.5 或 Qwen。花了一周左右找到合适的组合，但说实话，用户在简单任务上完全没察觉出差别。</p>
+<p>有一点值得一提：不是所有经济型模型表现都一样。我用 Haiku 和 Kimi K2.5 并排测试了大约一周的客户支持 Agent  workload。</p>
+<p>Haiku 做客户支持最靠谱。响应快、遵守格式指令、回答简洁。缺点是提示词必须写得非常明确。它不会像 Opus 那样从模糊的指令里推断语气或风格。我把系统提示重写了一遍，明确说明回复的结构要求之后，表现就很稳了。</p>
+<p>Kimi K2.5 更便宜，长上下文处理能力不错，多轮对话时挺好用。但它比较啰嗦。一句话能说清的事，它会写三段。简单 FAQ 类的问</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (4 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这种基准测试方法很扎实。我也有过类似的经历，Haiku 在简单的支持分类任务上表现超过了 Opus，仅仅是因为提示词为它做了优化。贵≠好，这是整个实践过程中最大的教训。</p>
+<p>棘手的是，大多数非技术用户永远不会运行这类基准测试。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我给自己写了个小工具，可以在所有对话中实时切换模型，还能自动追踪每次请求的花费。整个优化过程因此变得轻松多了，因为我能实时看到具体花了多少钱。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>没错！一个高性价比的模型。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>没错，正是如此。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rv5zim/i_cut_my_openclaw_costs_from_420_to_168_in_20/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
