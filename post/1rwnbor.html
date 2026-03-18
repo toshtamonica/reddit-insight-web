@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GNS3 网络自动化的最佳本地大模型？（RTX 4070 Ti，32GB 内存） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>GNS3 网络自动化的最佳本地大模型？（RTX 4070 Ti，32GB 内存）</h1>
+        <div class="post-meta">
+          <span>👤 FindingJaded1661</span> | <span>📅 2026/3/18</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li><strong>推荐模型</strong>：Qwen2.5-Coder 或 DeepSeek-Coder 最适合代码生成和网络配置任务，在 RTX 4070 Ti 上运行良好</li>
+<li><strong>运行环境</strong>：Ollama 是更轻量、开源的首选；LM Studio 适合需要图形界面的场景</li>
+<li><strong>Agent 功能</strong>：可搭配 Open Interpreter 或 Continue.dev 实现 OpenClaw 式的代码执行能力，完全免费</li>
+<li><strong>硬件适配</strong>：32GB RAM 足够运行 7B-13B 参数模型，量化版本可扩展至更大模型</li>
+<li><strong>成本优势</strong>：本地方案避免 API 按 token 计费的不确定性，适合大型网络自动化项目的长期迭代</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>接上篇背景：我正在做GNS3网络部署自动化（路由器、交换机、ACL、VPN、防火墙配置）。原本考虑用OpenClaw，但想避开Claude/ChatGPT这类付费API，费用不可控。</p>
+<p>我的配置：</p>
+<ul>
+<li>系统：Nobara Linux</li>
+<li>显卡：RTX 4070 Ti（笔记本）</li>
+<li>内存：32 GB</li>
+<li>GNS3已安装并运行正常</li>
+</ul>
+<p>需求：本地LLM需满足：</p>
+<ul>
+<li>生成Python/Bash网络自动化脚本</li>
+<li>理解Cisco IOS、MikroTik RouterOS配置</li>
+<li>对接GNS3 API或基于CLI的配置</li>
+<li>最好能像OpenClaw一样执行代码（具备Agent能力）</li>
+</ul>
+<p>核心问题：</p>
+<ul>
+<li>哪款本地模型最适合我的硬件？（Qwen2.5-Coder？DeepSeek？Llama 3.1？CodeLlama？）</li>
+<li>运行环境选Ollama、LM Studio还是其他？</li>
+<li>能否搭配Open Interpreter之类的工具，免费实现OpenClaw的功能？</li>
+<li>有人用本地LLM做过GNS3配置自动化吗？有什么经验？</li>
+</ul>
+<p>顾虑付费API的原因：</p>
+<ul>
+<li>Claude API：约$3-15/百万token（大项目费用不可预测）</li>
+<li>ChatGPT API：价格相近</li>
+<li>宁可前期多花时间搭建，也不想账单爆炸</li>
+</ul>
+<p>求推荐、实战经验或避坑指南，感激不尽！</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rwnbor/best_local_llm_for_gns3_network_automation_rtx/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

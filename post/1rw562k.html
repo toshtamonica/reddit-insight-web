@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有人用 OpenClaw 自动化创建和配置 GNS3 网络吗？ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>有人用 OpenClaw 自动化创建和配置 GNS3 网络吗？</h1>
+        <div class="post-meta">
+          <span>👤 FindingJaded1661</span> | <span>📅 2026/3/18</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>用户希望使用 OpenClaw 自动化 GNS3 中的网络创建与配置，包括自动生成路由器、交换机、VLAN 以及自动应用 ACL、DHCP、DNS、NAT 等配置</li>
+<li>核心关注 OpenClaw 是否能通过 GNS3 API、CLI 自动化或其他方式直接创建和配置网络基础设施</li>
+<li>特别关心 OpenClaw 对基于 CLI 的设备配置（如 MikroTik、Cisco）的可靠性，以及可能的混合方案（如 OpenClaw + Python 脚本）</li>
+<li>寻求替代工具建议，以评估更适合该用例的方案</li>
+<li>当前环境为 Nobara Linux、RTX 4070 Ti、32GB RAM，GNS3 已安装运行</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，
+我正在研究 OpenClaw（开源计算机使用应用）能否帮我自动化部署 GNS3 中的网络基础设施。我的目标是：</p>
+<ul>
+<li>根据网络项目规范自动生成路由器、交换机和 VLAN</li>
+<li>自动应用 ACL、DHCP、DNS、NAT 等配置，无需人工干预</li>
+<li>与 GNS3 集成，使拓扑可直接使用</li>
+</ul>
+<p>我的当前环境：</p>
+<ul>
+<li>操作系统：Nobara Linux</li>
+<li>GPU：RTX 4070 Ti（笔记本）</li>
+<li>内存：32 GB</li>
+<li>GNS3 已安装并正常运行</li>
+</ul>
+<p>我的核心问题：有没有人成功让 OpenClaw 直接在 GNS3 中创建并配置网络基础设施——无论是通过 GNS3 API、CLI 自动化，还是其他方式？</p>
+<p>我特别想了解：</p>
+<ul>
+<li>OpenClaw 能否可靠地处理基于 CLI 的设备配置（MikroTik、Cisco 等）</li>
+<li>有没有什么变通方案或混合方案（例如 OpenClaw + Python 脚本）</li>
+<li>有没有更适合这个场景的其他工具</li>
+</ul>
+<p>任何经验、建议或参考资料都将不胜感激！</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rw562k/has_anyone_used_openclaw_to_automate_network/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

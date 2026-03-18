@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一个智能体总是丢失上下文，所以我把它拆成了三个。现在它们互相发消息了。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>一个智能体总是丢失上下文，所以我把它拆成了三个。现在它们互相发消息了。</h1>
+        <div class="post-meta">
+          <span>👤 Aware-Increase406</span> | <span>📅 2026/3/18</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 将单一智能体拆分为多个专业智能体（个人助理、工作、财务、生活），每个拥有独立内存和工作空间，解决上下文窗口不足导致的遗忘问题
+• 通过简单的&quot;邮箱&quot;系统让智能体在隔离会话中相互通信，保持上下文清洁
+• 不同智能体基于不同优先级（体验 vs 省钱）进行协商，而非由单一智能体勉强兼顾多重视角
+• 实际案例：规划日本旅行时，个人助理、生活助理和财务助理三方协作，财务约束在决策早期即被纳入
+• 通信层的设计是关键挑战，通过 WebSocket 网关实现智能体间的隔离会话线程</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在同一台机器上跑多个 AI 智能体。它们会互相发消息。我知道这听起来怎么样。</p>
+<p>每个智能体分工不同：个人助理、工作、财务、生活。各自有独立的记忆和工作空间。默认情况下它们看不到彼此的上下文。</p>
+<p>原因纯粹是上下文窗口的限制。一个智能体同时处理我的工作收件箱、个人日程、代码审查和晚餐安排，肯定会开始丢三落四。已经发生过这种情况，所以我才把它们拆开了。</p>
+<p>我搭了一个简单的邮箱系统，让智能体可以在隔离会话里互相开线程。简单到极点，但覆盖的场景比预期多得多。</p>
+<p>让我彻底信服的那个例子：我跟个人助理说&quot;规划一下四月份去日本的旅行&quot;。它去找生活助理查航班和酒店。生活助理带着选项回来，但在预订任何东西之前，它会先跟财务助理确认。财务助理看了我的预算，发现下次发薪日是什么时候，然后反馈：&quot;可以去，但机票等15号之后再买&quot;或者&quot;那家酒店占了你每月娱乐预算的40%，这里有两家更便宜的&quot;。它们来回协商，最后给我的是一个真正合理的方案。</p>
+<p>这就是让我意外的地方。这些智能体有不同的优先级。生活助理优化体验。财务助理优化别破产。它们会协商，而不是让一个智能体同时兼顾两种视角，结果两边都做得很平庸。</p>
+<p>还有谁也在这样拆分智能体吗？好奇大家用什么通信模式比较顺手。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (5 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>配置里有多个智能体，每个都有自己的工作空间。通信层是更难搞定的部分。我开发了一个邮箱技能，通过网关 WebSocket 在智能体之间建立隔离会话。每个线程都有独立会话，这样上下文就能保持干净。每个智能体只能访问自己的记忆和历史记录，需要其他智能体协助时就通过邮箱通信。我还做了个 UI 来可视化智能体之间的对话，这对调试和理解实际运行情况帮助很大。如果有人感兴趣，我可以写个更详细的说明。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，底层用的是隔离会话。我在上面搭了一层邮箱机制，负责线程创建、路由和追踪，这样智能体就能进行持续对话，而不是一次性消息。每个线程都有独立的会话，上下文不会在不同主题之间串味。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>每个智能体都有自己的工作空间、角色、规则、记忆、工具和技能。系统还维护一份名册来控制哪些智能体相互知晓——并非每个智能体都能看到其他所有智能体。智能体间的消息格式仅为&quot;智能体 X 就 Y 事由向你发送消息&quot;，接收方智能体基于自身上下文进行处理。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>因为真要全流程做下来，确实很复杂。不是简单的&quot;搜个航班&quot;就完事了。得查日程、协调预算、找餐厅、订位子。我的 lifestyle agent 甚至会在没法在线预订的时候直接打电话去订位。规划一次旅行会调动我所有的 agent，所以我觉得这是个很好的例子。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我一直在让它承担越来越多的任务。说实话，教会你的智能体做事需要很大的耐心。（虽然你自己做会快得多），然后分析它为什么没做成，补上漏洞，再重复这个过程……</p>
+<p>希望经过这些迭代，它能越来越独立地完成任务，不再需要手把手地教。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rwjocq/one_agent_kept_dropping_context_so_i_split_it/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

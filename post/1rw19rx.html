@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 无需技能就能做到的 5 件事，多数新手都不知道 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>OpenClaw 无需技能就能做到的 5 件事，多数新手都不知道</h1>
+        <div class="post-meta">
+          <span>👤 ShabzSparq</span> | <span>📅 2026/3/18</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>OpenClaw 基础版本已具备文件读写、整理能力，无需安装笔记类技能</li>
+<li>可直接运行终端命令，实现系统监控、磁盘清理等功能，无需额外技能</li>
+<li>内置网页抓取功能，基础浏览任务无需浏览器技能</li>
+<li>过度安装技能会导致系统故障、循环消耗和Token浪费</li>
+<li>使用Shell功能需优先做好安全防护，防范提示注入攻击</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大多数人安装 OpenClaw 后的第一件事，就是去 clawhub 装 10 个技能。然后出问题了——某个技能死循环、token 烧光——他们就开始骂 OpenClaw。</p>
+<p>事实是：零技能的原版 OpenClaw，能力已经远超大多数人的认知。我帮 50 多人调试过环境，一半的情况解决办法都是：&quot;这个不需要技能，你的 agent 本来就能做。&quot;</p>
+<p>在装任何东西之前，先试试这些。</p>
+<ol>
+<li>它能读写整理你电脑上的文件</li>
+</ol>
+<p>你不需要笔记技能。你的 agent 本来就有文件访问权限，直接告诉它就行。</p>
+<p>现在就可以试：
+&quot;创建一个 meeting-notes.md 文件，把我接下来要说的保存进去&quot;
+&quot;读取 ~/documents/todo.txt 这个文件并总结内容&quot;
+&quot;把下载文件夹里的所有 .pdf 文件按主题分类到子文件夹&quot;</p>
+<p>它能创建、编辑、移动、重命名、搜索文件。大多数人装个笔记技能，做的却是基础 agent 本来就搞定的事。技能只是增加了开销和 token 消耗，结果一样。</p>
+<ol start="2">
+<li>它能直接运行 shell 命令</li>
+</ol>
+<p>你的 agent 能访问你的终端。这意味着你在终端里能做的任何事，它都能做。大多数新手没意识到这有多强。</p>
+<p>试试：
+&quot;查一下我还剩多少磁盘空间&quot;
+&quot;现在哪些进程占用内存最多&quot;
+&quot;ping 一下 google.com，看看我的网络连接稳不稳&quot;
+&quot;找出系统里所有大于 100MB 的文件&quot;</p>
+<p>你不需要系统监控技能，不需要磁盘清理技能。shell 本来就在，直接问就行。</p>
+<p>（重要提示：这也是安全如此关键的原因。如果你的 agent 能运行任意 shell 命令，那么恶意技能或恶意网页的提示注入也能。先锁好你的 gateway。）</p>
+<ol start="3">
+<li>不用浏览器技能也能上网</li>
+</ol>
+<p>这点让很多人意外。OpenClaw 内置了网页抓取功能，很多基础任务不需要装 browser-use 或任何浏览器自动化技能。</p>
+<p>试试：
+&quot;今天 [你的城市] 天气怎么样&quot;
+&quot;总结这篇文章：[粘贴 URL]&quot;
+&quot;现在 Hacker News 的热门头条是什么&quot;
+&quot;查一下 [本地商家] 的营业时间&quot;</p>
+<p>内置网页工具能处理简单查询、文章摘要和基础研究。只有需要 agent 真正与页面交互（点击按钮、填写表单、在网站内导航）时才需要浏览器技能。纯阅读和总结，原版就够了。</p>
+<ol start="4">
+<li>能用内置 cron 设置定时任务</li>
+</ol>
+<p>你不需要调度技能或提醒技能。OpenClaw 的 gateway 内置了 cron。你可以直接告诉 agent：</p>
+<p>&quot;每天早上 8 点，给我发送今日日程摘要&quot;
+&quot;每周五下午 5 点，提醒我提交工时表&quot;
+&quot;每晚 11 点，总结今天的对话，把重要内容保存到记忆&quot;</p>
+<p>用自然语言说就行，agent 会帮你设置 cron。随时用 <code>openclaw cron list</code> 查看运行中的任务。</p>
+<p>一个警告：别在 y</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (5 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>文件系统访问默认是关闭的，需要在网关配置里手动开启。这更可能是问题所在，而不是 OpenRouter 的锅。不过话说回来，免费版模型在工具调用方面普遍表现拉胯，所以就算配置改对了，也可能遇到各种诡异行为。有条件的话建议试试付费的 Sonnet，体验天差地别。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是给想要大内存但又希望数据留在本地的人准备的方案。强烈推荐。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这种情况确实经常遇到。Agent 不会主动检查文件，除非明确告知，否则它没有理由这么做。在系统提示词里加上类似&quot;在回答任何任务之前，先读取 ~/rules.md&quot;的指令，并且让它不可协商。没有这条指令的话，Agent 每次都会凭感觉瞎搞。文件确实放在那里，但 Agent 不会把它们当作必读内容，除非你强制要求。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话……我本该在安全方面多下点功夫的。Shell 访问是把双刃剑，大多数人都是等到出事了才想起来。ClawSecure 的发现我一点都不意外，把未过滤的输入直接丢给 shell 执行这种低级错误，基本就等于全盘皆输。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>没错，但要说完全没有风险那肯定是假话……如果你是新手，建议先在 Docker 容器里运行。真正的危险其实不在于 OpenClaw 本身，而是某个来路不明的 skill 或者提示词注入，在你毫无防备的情况下利用 shell 权限搞事情。等你搞懂了它的权限模型，再放到主力机上跑也完全没问题，但前提是你得先做好功课。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rw19rx/5_things_openclaw_can_do_without_any_skills_that/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

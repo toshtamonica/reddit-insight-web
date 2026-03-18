@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个 OpenClaw 扩展，将所有请求通过 Claude Code CLI 路由，而非直接调用 API - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个 OpenClaw 扩展，将所有请求通过 Claude Code CLI 路由，而非直接调用 API</h1>
+        <div class="post-meta">
+          <span>👤 ChampionMuted9627</span> | <span>📅 2026/3/18</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>开发者创建了 OpenClaw 扩展，通过调用 Claude Code CLI 子进程替代 API 调用，实现按固定月费而非按 token 计费</li>
+<li>该方案完整保留 Claude Code 功能（工具使用、文件编辑、多步推理、MCP 服务器、记忆），并将 CLI 的 NDJSON 输出转换为 OpenAI 兼容的 SSE 格式</li>
+<li>安装仅需 5 条命令：克隆仓库、运行安装脚本、登录 Claude、重启网关</li>
+<li>支持所有 Claude Code CLI 可用的模型（Opus 4.5、Sonnet 4.6/4、Haiku 4.5 等）</li>
+<li>灵感来源于 jinn 项目，但以 OpenClaw 扩展形式实现，无需替换现有网关架构</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>无需按 token 付费调用 Anthropic API，也无需冒着违反服务条款被封禁的风险，这个项目直接以子进程方式启动真正的 claude CLI 二进制文件。</p>
+<p>你能获得完整的 Claude Code 体验——工具调用、文件编辑、多步推理、MCP 服务器、记忆功能——全部以最高档位的固定月费享用。</p>
+<p>原理很简单：OpenClaw 网关收到请求后转交给扩展，扩展执行 <code>claude -p &quot;your prompt&quot; --output-format stream-json</code>，解析 NDJSON 输出并转换为兼容 OpenAI 的 SSE 格式。网关甚至不知道自己不是在跟 API 对话。</p>
+<p>安装只需 5 条命令：</p>
+<pre><code>git clone https://github.com/siimvene/openclaw-claude-runner.git
+cd openclaw-claude-runner
+bash install.sh
+claude login
+openclaw gateway restart
+</code></pre>
+<p>灵感来自 jinn 项目，它实现了类似功能但作为独立服务。我觉得做成 OpenClaw 扩展会更干净，可以无缝接入现有网关而无需替换任何东西。</p>
+<p>支持 Opus 4.5、Sonnet 4.6、Sonnet 4、Haiku 4.5——Claude Code CLI 支持的全部模型。</p>
+<p>仓库：<a href="https://github.com/siimvene/openclaw-claude-runner">https://github.com/siimvene/openclaw-claude-runner</a></p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rwokq7/i_made_an_openclaw_extension_that_routes/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
