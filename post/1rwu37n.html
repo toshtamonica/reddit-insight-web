@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为 OpenClaw 打造更优的开源 Agent 优先型 CRM + 客户上下文引擎 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>为 OpenClaw 打造更优的开源 Agent 优先型 CRM + 客户上下文引擎</h1>
+        <div class="post-meta">
+          <span>👤 rangerrrr</span> | <span>📅 2026/3/19</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 开源CRM+客户上下文引擎CRMy，专为AI Agent设计，支持OpenClaw和MCP原生集成
+• 数据自主：使用任意PostgreSQL数据库，支持自托管，一键初始化启动
+• 内置上下文记忆层，Agent可跨会话存储和检索联系人、账户、交易等结构化信息
+• 关键操作需人工审批（HITL），同时提供完整REST API和现代化Web界面
+• 技术栈为Node.js + Express + PostgreSQL + React，通过CLI和插件快速部署</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我用 OpenClaw 来运营 B2B SaaS。受够了各种 CRM 集成（说的就是你，HubSpot），于是做了 CRMy——一个开源 CRM + CCE（客户上下文引擎），真正能和我的 agent 协同工作。</p>
+<p>亮点：</p>
+<ul>
+<li>OpenClaw 原生支持：完整的 CLI、插件、Skills.md &gt;&gt; <a href="https://clawhub.ai/codycharris/crmy">https://clawhub.ai/codycharris/crmy</a></li>
+<li>同时支持 MCP：你可以直接说&quot;把我刚和 Acme 公司 Sarah Chen 的通话记下来，推进到谈判阶段&quot;，它就能执行</li>
+<li>任意 PostgreSQL：你的数据、你的数据库，没有专有存储，没有订阅费</li>
+<li>自托管：一条命令初始化，一条命令启动服务，完事</li>
+<li>上下文引擎：内置记忆层，agent 可以跨会话存储和检索联系人、客户、商机的结构化上下文</li>
+<li>HITL 审批：批量更新和敏感操作执行前需要人工确认</li>
+<li>完整 REST API + 流畅的 Web 界面：这是正经 CRM，不只是 API 包装</li>
+</ul>
+<p>技术栈：Node.js、Express、PostgreSQL、React</p>
+<p>快速开始：</p>
+<pre><code>npx @crmy/cli init
+npx @crmy/cli server
+</code></pre>
+<p>OpenClaw 原生插件：注册 12 个 CRM 工具，附带 SKILL.md 帮助你的 agent 了解如何使用（先搜索再创建、记录每次互动、建议下一步等）</p>
+<pre><code># 1. 先运行 init（生成 ~/.crmy/config.json，插件会读取）
+npx @crmy/cli init
+# 2. 安装插件
+openclaw plugins install @crmy/openclaw-plugin
+</code></pre>
+<p>链接：</p>
+<ul>
+<li>GitHub：<a href="https://github.com/crmy-ai/crmy">https://github.com/crmy-ai/crmy</a></li>
+<li>npm（CLI）：<a href="https://www.npmjs.com/package/@crmy/cli">https://www.npmjs.com/package/@crmy/cli</a></li>
+<li>npm（OpenClaw 插件）：<a href="https://www.npmjs.com/package/@crmy/openclaw-plugin">https://www.npmjs.com/package/@crmy/openclaw-plugin</a></li>
+</ul>
+<p>还处于早期阶段，非常欢迎反馈还缺什么功能。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢分享，很有见地。我对房产经纪人的CRM需求不太熟悉，但听起来那边需求确实不小。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rwu37n/built_a_better_open_source_agentfirst_crm/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

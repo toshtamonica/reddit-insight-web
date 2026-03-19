@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claw 三周体验：我的基础助手配置 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>Claw 三周体验：我的基础助手配置</h1>
+        <div class="post-meta">
+          <span>👤 crypt0amat00r</span> | <span>📅 2026/3/19</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者在 Mac Mini 上运行 OpenClaw 三周，采用基础配置并注重安全隔离（独立用户、限制权限）
+• 使用 Claude Code 搭建和管理 OpenClaw，通过预读文档让其构建插件集来处理管理、排障和优化
+• 初期因 API 费用过高（3天$60-70）进行审计优化，包括清理高频 LLM 调用型 cron、简化上下文文档、基础任务改用 Haiku 模型
+• 当前每日固定开销约 $0.6，日常交互约 $1-2，复杂任务外包给 Claude Code 的 Opus 模型以控制成本
+• 强调实际应用案例分享的重要性，认为社区缺乏足够的基础使用场景参考</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>这篇文章100%由我亲自撰写。我让Claude帮忙检查了一下准确性（要不是这样我就忘了提Telegram了！），除此之外，没有大语言模型参与本文的撰写。</p>
+<p>过去三周我一直在Mac Mini上运行OpenClaw，想分享一下我的配置。倒不是说我的做法有多惊艳——恰恰相反，我的配置相当基础——而是因为在这个社区里看不到足够的实际用例和应用场景，所以我想贡献一个。</p>
+<p><strong>基础配置</strong></p>
+<p>我的Claw跑在一台Mac mini上，这台机器平时只用来跑本地NAS/DLNA服务器。安装前我就锁死了SSH和端口，给Claw单独创建了一个用户（没有完整磁盘访问权限、SUDO权限等）。</p>
+<p>所有配置工作——以及对OpenClaw配置的重大修改——我都用Claude Code完成。搭建OpenClaw之前，我先把官网文档全部下载下来喂给CC，让它构建了一套插件，用来管理、维护和排查我的OpenClaw。它有SSH权限访问我的Mac mini，是确保Claw平稳运行（以及不烧光token）的关键。</p>
+<p><strong>模型/Token</strong></p>
+<p>刚开始用Claw那几天就烧掉了大约60-70美元的API费用，我直接用Claude Code做了一次彻底审计。它发现了一堆Claw自己设置的、管理混乱的定时任务（每15分钟就用LLM调用而不是纯脚本），我的SOUL.md和其他上下文文档里也有不少低效之处。我们把所有基础定时任务都迁移到了Haiku，主代理用Sonnet 4.6，太复杂的任务直接外包给跑Opus的Claude Code。</p>
+<p>现在如果什么都不做，只让每日定时任务跑，大概每天0.6美元；把Claw当助理用（管理日历、笔记、小任务）每天再花1-2美元。成本真正飙升的情况是：1）让Claw去搞定大型多步骤请求（外包给Claude Code！等准备好执行了再交给Claw），2）让它自己安装新技能（同样，用Claude Code）。</p>
+<p><strong>我实际在做什么？</strong></p>
+<p>这是很多OpenClaw文章里我最想问的。我可不是在跑什么多代理LinkedIn爬虫线索生成集群，这点可以先说明。过去几周我慢慢添加技能和集成，目前跑的是这些：</p>
+<p><strong>Telegram</strong></p>
+<p>我的主力通讯平台是iMessage，WhatsApp排第二，但就像所有OpenClaw安装指南说的，Telegram是最省事的选项，基本上开箱即用。短期内我没理由换别的。</p>
+<p><strong>AgentMail.to</strong></p>
+<p>我给Claw配了个免费的AgentMail邮箱，这样它就能有自己的在线服务登录账号，也能收转发邮件。目前用得不多，但它是我的Claw登录Dropbox的账号。</p>
+<p><strong>Dropbox（Composio）</strong></p>
+<p>我的整个数字生活都在Dropbox上，所以用这个服务跟Claw协作是顺理成章的事。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (9 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！嗯，我可能会设置费用提醒，但目前我还在为头几天花的钱震惊中，所以我现在一天要刷五次 API 控制台看账单。:P</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢您对我人性的信任。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全正确。完美运行。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>随手记一下。我在 Telegram 上搭了个语音频道，但基本没用过。功能倒是符合预期，只是得另外建个频道/机器人来接收语音指令，然后回复会发到主 agent 聊天里。</p>
+<p>关于 Composio，一开始确实有点小问题，每次定时任务会触发巨多的工具调用，后来发现是我这边的配置问题，现在没事了。具体原因记不清了，反正原本 3-5 个工具调用就能搞定的任务，定时任务硬是刷了 20-25 次，token 烧得飞快，不过现在解决了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我所有东西都跑在 Anthropic API 上。所有定时任务加起来，Haiku 调用大概每天 6 毛钱左右。如果只是把 Sonnet 当助手用，调用一下工具（比如加日历、设提醒之类的），每天大概 1 到 2 美元。</p>
+<p>但一旦让 Sonnet 开始深度思考、干那些本来该用 Claude Code 做的活儿，成本就蹭蹭往上涨。让&quot;爪子&quot;（我的 AI 助手）自己给自己加功能，是目前为止最烧 token 的操作。（比如我的 Whoop 集成，大部分是用&quot;爪子&quot;做的，花了我 10 到 12 美元；昨晚用 Claude Code 搭 Plaud，一分钱没花，现在跑成定时任务也几乎零成本。）</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>关于活动日历我也有类似的想法！就等下一封包含多个日期和活动的邮件来测试了。</p>
+<p>不过我得给你提个醒，这话我已经看过无数遍了：务必确保你的 agent 邮箱是只读的。你的 agent 不应该执行收到的邮件中的指令（哪怕是你自己发的）。也许可以让它在 Telegram 或其他地方先问你一下，确认后再添加，而不是自动添加？可能有更优雅的方案能彻底杜绝通过邮件进行 prompt injection 的风险，但我还没深入研究。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>没错！我当时 obsessively 地盯着 API 日志，反复琢磨&quot;为什么每个请求都要发这么多 token&quot;，用各种方法在 Claude Code 里排查，最后终于搞清楚了——原来是几个因素叠加：1）cron 任务效率太低，2）cron 用了太贵的大模型，3）soul.md 和其他上下文文档里有不少冗余内容，4）早期用 composio 时工具调用有些问题，token 烧得飞快。</p>
+<p>花了不少 token（头几天 API 烧的那些钱 + 在 CC 里排查问题消耗的），也费了不少耐心，但现在总算把运行成本压到合理水平了。我能想象很多人会因此抓狂，要么放弃，更糟的是放任不管，几周后收到账单才傻眼。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>什么广告？我明明说了我几乎不用它。
+我之前还担心大家会觉得这篇帖子是 Composio 的广告——那个我是真觉得有用。
+AgentMail 目前也就一般般。我只是看到一堆帖子说有人新注册的 Gmail 被封了，所以才走了替代方案。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>原来如此！我大概还是会保持现状，一来我的 Google 登录选项里已经有 8 个账号了，二来除了注册 Dropbox 需要邮箱之外，我也看不出我的 AI 助手非得有个专属地址不可。再说吧！</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rx31x2/3_weeks_of_claw_my_basic_assistant_set_up/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

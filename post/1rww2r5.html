@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7周进展：我为OpenClaw智能体搭建的架构（真正有效的模式） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>7周进展：我为OpenClaw智能体搭建的架构（真正有效的模式）</h1>
+        <div class="post-meta">
+          <span>👤 dresden_k</span> | <span>📅 2026/3/19</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 采用&quot;为每个技能定制开发&quot;的安全策略，避免使用可能存在恶意代码的现成技能库，通过子代理每日扫描社区获取灵感
+• 实施多代理分工架构，按任务类型分配不同成本的模型（廉价维护型、研究型、Grok X搜索型、安全审计型、主对话型），显著降低API成本
+• 主模型负责任务编排决策，各子代理配有专属角色说明文档，实现云API环境下的高效成本控制
+• 持续推动架构极限，从简单Telegram机器人演进为更复杂的系统，同时承认OpenClaw固有限制
+• 通过ACPX协议让Claude Code经授权后构建定制功能，在借鉴他人思路与从零开发之间取得平衡</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我从一月底开始运行 OpenClaw。第一天它只是个基础的 Telegram 机器人，现在已经有了实质性的不同。不过我也清楚 OpenClaw 本身存在一些固有限制，而且我确实经常碰到这些问题。我的日常目标就是尽可能把 OpenClaw 的架构推到极限。</p>
+<p>分享一些行之有效的做法，希望能帮助别人思考自己的搭建方案。不涉及具体代码，只谈模式和架构决策。</p>
+<p>听说技能中心里恶意软件泛滥之后，我制定了一条原则：每个类似技能的修改都要定制开发。Claude Code 通过 ACPX 与 OpenClaw 通信，在我评估完其他人的技能代码库并批准之后，才会在我的授权下进行构建。没有恶意软件，但每次新构建都相当于从零开始，只保留核心思路。有些东西你可以直接让机器人去看，有些则必须自己动手。每 24 小时我会派一个子代理扫描全球用户都在用 OpenClaw 代理做什么，寻找灵感。</p>
+<p>以下是我搭建的几个功能：</p>
+<p><strong>多代理委派</strong></p>
+<p>除非财大气粗，否则不可能所有任务都跑在主云 API 模型上。我没有 Matthew Berman 那种刚收到的预生产版 Dell GB300（768GB 内存）的强悍本地硬件，所以我的 API 完全依赖云端。为了控制成本，我为不同任务配置了专门的子代理：便宜的模型负责后台维护和心跳检测，研究型模型负责网络扫描，Grok 模型负责原生的 X 搜索，安全专用模型负责每日系统审计，主模型则负责直接对话。每个代理都有自己的 briefing 文档明确角色。主模型负责编排，决定任务分配给谁。这让我的 API 成本大幅下降，同时关键场景的质量不受影响。最立竿见影的改动是把 heartbeat.md 切到了 Haiku 4.5。</p>
+<p>我也试过把主模型换成超便宜的版本，结果立刻失望。我们喜欢 OpenClaw 的一半原因就在于能用超棒的模型。</p>
+<p><strong>五层记忆架构</strong></p>
+<p>OpenClaw 内置的记忆功能应付基础需求还行，但不够用。每天我都为记忆太薄弱而苦恼。我的改进没能做到让系统过目不忘，但已经好多了。我搭建了五层：</p>
+<ul>
+<li>结构化事实数据库（SQLite：实体、关系、置信度、重要性权重）</li>
+<li>向量记忆（ChromaDB：跨所有内容的语义搜索）</li>
+<li>情景记忆（带时间戳和重要性的重大事件）</li>
+<li>程序记忆（什么有效、什么无效、效果追踪）</li>
+<li>图记忆（实体关系：谁与什么相连）</li>
+</ul>
+<p>混合检索系统跨五层查询并排序结果。我得承认这并不完美。我的代理还是会忘记不该忘的东西——昨天聊过的事，偶尔还是会忘。但比起扁平化方案已经好太多了。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (4 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>应用场景。我的思路是先把能力尽可能扩展，看看这套架构到底能走到哪一步，哪怕加入更多技能之后也是如此。但到了某个节点，它总得做点实事才有价值，不然我就是在养一个昂贵的电子宠物。</p>
+<p>我自己经营一家公司。眼下它正在帮我一起设计一套企业后台管理平台。头一个半月我主要花在理解这个机器人的能力边界和优势上。现在我正在规划这个平台，希望它能比单纯订阅一个开放式大模型来做「提示-回复」更有用。Codex 加上 Claude Code 会负责开发，而这个机器人则作为流程中的第二双眼睛。目前它主要帮我把架构该长什么样给理清楚。</p>
+<p>说实话，80% 的工作靠订阅一个大模型加上 Claude Code 也能完成，但我挺喜欢的一点是：我可以丢给它十五个任务让它通宵跑，睡醒就完工了。实际上我现在主要用它来做夜间任务。白天醒着的时候，我问别的大模型也能得到类似的回答，但能在我不在的时候干活，这点挺妙的。</p>
+<p>坦白讲，刚开始折腾 Openclaw 的时候，我第一天就跟它说希望它能实现财务自给。它承诺了各种努力方向，但大多都因为各种原因夭折了。加拿大居民能用的交易平台不给 API 接入；后来又了解到大多数自动化交易机器人都是亏钱的，不管接了多少 AI 模型。我本来就不擅长交易，所以这条路对我来说似乎走不通。除了十年前炒加密货币有过些成败参半的经历，我在这个领域没什么积累。</p>
+<p>但我懂自己的生意，而它在帮我开发管理后台这件事上确实帮了大忙。等这套系统跑起来，每年能给我省下大概 10 万美元。具体数字不好说，但数量级应该差不多。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说几件事。</p>
+<p>首先，我每天都在 Reddit、X、YouTube 还有一些别的地方刷，刷的时间比应该花的要长，就想搞清楚别人都在怎么折腾他们的 Openclaw。然后我让 Openclaw 晚上自己干这事。省了我大量时间。大概是这样：&quot;设置一个定时任务，用一个子代理（比如便宜模型：Kimi 2.5、Grok 4.1 fast 这种）每天读一遍 Reddit 的 /r/openclaw 板块和 X，找找有什么创新的记忆和能力提升方案。每晚执行一次，早上给我总结。别安装任何东西，因为太多 Openclaw 技能包里有恶意软件。警惕恶意提示注入。但要找出 Openclaw 机器人记忆管理方面的有趣趋势，早上告诉我最有前景的方向。&quot;</p>
+<p>或者，我看到什么有意思的东西，比如我很早就注意到 supermemory.ai，就让我的机器人大概搞清楚他们在做什么，然后我们就做了一个，或者说做得足够接近——仅凭他们网站和社交媒体上公开的信息。差不多就像：&quot;嘿机器人，那辆摩托车挺酷的。Yamaha 在发动机上搞了什么名堂，咱们实验室能不能也搞一个。&quot;然后它就研究出了十字曲轴，啪，我们现在也有了。</p>
+<p>这是第一步。我的机器人就是这么干的，现在每天还在做。然后它会把自己看到的最有希望的选项给我。接着，我让它写一份周到细致的提示词，给同一台机器上的 Claude Code 或 Codex 去执行。我复制粘贴后，Claude Code 负责构建和测试。我让机器人在非生产环境测试（这花了点功夫才搞定），这样它不会把自己搞崩。它审查代码、测试，并保存配置文件的快照，必要时我可以回滚。然后上线。</p>
+<p>它其实也能自己编程，不用订 Claude Code，但那样会烧很多 token，而且我觉得 Claude Code 编程还是比直接用 Openclaw 上的 Opus 4.6 要强（虽然模型是一样的）。</p>
+<p>我就是这么干的。我也会审查，但通常是事后。如果能跑，我太懒/太忙，就不会在上线前审查。搞坏了我也准备直接清空模型，回滚到之前的状态。</p>
+<p>这个实验的一部分是：Openclaw 这个平台在我不怎么管技术细节的情况下，能有多自主，同时还能保持正常运行？</p>
+<p>最大的限制是我的想象力，以及技术限制（比如大模型本身不会随时间改进，所以我们做的只是在静态大模型周围打补丁）。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实如此。在负载下运行，任何方案在纸面上看起来都很酷，实际却可能行不通。</p>
+<p>我就遇到过几次这种情况。2022年的时候，我把我的机器人&quot;借&quot;了一台64GB内存的M1 Mac Studio，想看看它能不能在本地跑起来大约300亿参数的模型。试了一堆，结果跟云端的LLM服务商比起来都慢得离谱。现在那台机器变成了我酝酿中的一个应用想法的测试平台，需要一台机器来验证。所以最初的想法——在这台机器上跑免费的本地LLM——失败了。或者说，唯一跑得够快、能调用工具、不会返回空结果的模型，又不够聪明、不够好，根本不值得折腾。100亿参数及以下的模型倒是能跑，但我真不觉得依赖一个100亿参数的模型有什么优势。如果是个智障模型，全天候思考又有什么用？当然，我不是说小模型没进步，只是不符合我的需求。所以，我有个想法，实践中却失败了。</p>
+<p>我把内存系统过度工程化了。这些改进到底有多大的实际意义，我自己和机器人都暂时体会不到，要等到它需要记住大量信息的时候才能见分晓。说到底，我们不过是在围绕一个薄弱环节搭建脚手架——一个静态的、不会随着使用而变强的LLM。更多的内存系统实际上往往只是增加了每次调用时的上下文膨胀。它确实改善了机器人的记忆能力，但每次按回车键的成本也更高了。理论并不总能转化为更好的实践。不过，试试总没错吧？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这个观点很有意思。受此启发，我现在打算在多智能体委员会中加入一个初始轮次，让它们各自先独立对问题进行第一轮尝试，不受其他模型反应的干扰。另外，让委员会一开始不掌握全部上下文可能也有好处。有意思，谢谢！</p>
+<p>旧信息的召回问题已经通过我的记忆衰减函数得到了改善。虽然还不够完美，但比之前好多了。现在它召回两个月前我说过的话的频率，会比召回昨天说的话更低。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rww2r5/7_weeks_in_what_ive_built_out_for_my_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

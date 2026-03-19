@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>更新：已让 AI 智能体成功预订餐厅和叫 Uber。下一步该做什么想听听大家的建议 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>更新：已让 AI 智能体成功预订餐厅和叫 Uber。下一步该做什么想听听大家的建议</h1>
+        <div class="post-meta">
+          <span>👤 BraveCup8132</span> | <span>📅 2026/3/19</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 成功实现AI代理完成Uber叫车和餐厅预订等真实网站操作，突破了浏览器自动化中的会话保持、验证码和反爬虫检测等技术障碍
+• 当前技术栈依赖隐身浏览器、住宅代理和验证码破解等多个组件手动拼接，尚未形成可一键安装的产品形态
+• 正在探索从&quot;技术验证&quot;转向&quot;用户可用产品&quot;的路径，优先考虑用户实际需求而非理想化功能
+• 核心待解决问题：明确用户真正需要自动化的具体场景（如特定网站/服务）以及首选的产品交付形式（OpenClaw插件或独立工具）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>几天前我在这里吐槽过 OpenClaw 浏览器自动化的各种限制：会话频繁掉线、CAPTCHA 拦路、大部分真实网站都有 bot 检测。
+之后我就埋头开发和测试了。想同步下进展，也听听大家的想法。</p>
+<p><strong>现在真正能跑通的</strong></p>
+<p>我们的 agent 已经成功完成了完整流程：</p>
+<ul>
+<li><strong>Uber</strong>：打开应用、输入起点/终点、选择车型、到达确认页面</li>
+<li><strong>餐厅预订</strong>：找到餐厅、填写预订表单、完成确认</li>
+</ul>
+<p>这些不是写死的演示脚本。agent 在真实网站上导航、处理动态元素、过掉 bot 检测。</p>
+<p><strong>当前的技术栈</strong></p>
+<p>几个独立模块拼在一起工作：</p>
+<ul>
+<li>带持久化配置和指纹伪装的隐身浏览器</li>
+<li>住宅代理路由</li>
+<li>CAPTCHA 破解集成</li>
+</ul>
+<p>能跑通，但还不是产品，只是些需要手动配置的拼凑方案。</p>
+<p><strong>正在琢磨的事</strong></p>
+<p>我们想把它做成 OpenClaw 用户装完就能用的东西。但在造&quot;理想版&quot;之前，想先搞清楚大家到底需要什么。</p>
+<p>理想形态大概是：装个 skill，你的 agent 就能获得带保存会话的完整浏览器环境，自主上网办事。</p>
+<p>但这还得几周。现在可以先出个简单版本，我更愿意做大家真会用的，而不是瞎猜。</p>
+<p><strong>想请教各位</strong></p>
+<ul>
+<li><strong>你实际会用它做什么？</strong> 别谈理论，说说你试过用 OpenClaw 自动化但卡在浏览器限制上的场景？</li>
+<li><strong>你希望 agent 能用哪些网站/服务？</strong> Uber、Airbnb、LinkedIn、特定政府门户、外卖平台，还是别的？</li>
+<li><strong>哪种形式对你最实用？</strong><ul>
+<li>a) 给 agent 提供隐身浏览器的 OpenClaw skill</li>
+<li>b) 跑在 VPS 上的独立工具，agent 连过来用</li>
+<li>c) 桌面浏览器应用（类似 Comet / OpenAI Operator），本地安装，开箱自带反检测、会话管理、指纹伪装，OpenClaw agent 连接并控制它</li>
+<li>d) 配置指南，你自己把各模块串起来</li>
+<li>e) 其他？</li>
+</ul>
+</li>
+<li><strong>必须本地运行，还是接受 VPS 方案？</strong></li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (7 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>支付确实是个硬门槛，说实话我们还没解决。
+测试时倒是没遇到障碍——餐厅预订本来就不需要即时付款，Uber 又已经存了卡，所以没触发 3DS。
+目前我们重心在浏览器基础设施层（会话、身份、检测）。支付这块，大概率还是得靠存量账户里的保存方式，而不是冷卡录入。
+不过好奇，你见过谁把 3DS 处理得比较好的吗？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这确实是个很棒的场景。政府门户网站正是浏览器自动化能派上用场的地方——没有 API，只有表单和点击。</p>
+<p>税务申报、多步骤表单、上传文件，这些用现有的工具都能搞定。而且没错，完全开源，以后也一直保持开源。</p>
+<p>这是哪个国家的税务网站？想具体了解一下操作流程。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>还没呢，正在做。ARCA 就是个很好的例子。政府门户网站界面复杂、让人摸不着头脑，这正是我们该发力的地方。感谢指路，我去研究一下。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实，用户肯定想接入自己的验证码/代理服务商。</p>
+<p>我们其实也是这么想的——不是要取代谁现有的方案，而是把那些烦人的部分做得更简单。浏览器环境本身（持久化配置、跨会话的指纹一致性、隐身注入）才是最难自己搞定的，而且一旦出问题往往是悄无声息的崩溃。</p>
+<p>验证码和代理应该是可插拔的，你爱用2captcha、CapMonster、smartproxy都行。价值不在于这些，而在于能把一切串起来的浏览器层——让会话真正能存活下去，让网站不会在第二次运行时就标记你。</p>
+<p>至于给browser-use贡献代码，这个我们也在考虑。他们的框架在智能体推理这块做得确实好，但底层的浏览器基础设施才是缺口所在。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我们主要关注的是跨运行时的会话连续性。</p>
+<p>公平地说，OpenClaw 的托管浏览器确实通过 user-data-dir 持久化 cookie，所以每次并不是完全从头开始。但问题更具体：cookie 能保留，浏览器指纹却留不住。于是第二次运行时，网站看到你昨天的 cookie，但今天的设备指纹却变了。这种不匹配实际上比完全重新开始更糟——它比全新会话更快地触发风控检测。</p>
+<p>我们目前的方案效果更好的地方在于：</p>
+<p>完整配置持久化——cookie、指纹、localStorage 保持一致。Canvas、WebGL、字体、navigator 属性，每次都一样。网站看到的是回访用户，而不是一个不断换设备的 cookie 容器。</p>
+<p>没有重复登录循环，agent 只需登录一次，下次会话已经处于认证状态。</p>
+<p>真实的输入模式，可变的打字速度、鼠标轨迹、滚动行为、阅读停顿。还不够完美，但足以让 LinkedIn 没有标记我们的测试账号。</p>
+<p>至于 shadow ban 的问题，长期效果还不好说。但我们持续运行的测试账号在多次会话后仍未被标记，这比纯 browser-use 或 Playwright 方案的表现要好。</p>
+<p>关于 GoLogin 的对比，确实，那跟我们想的模式很接近。GoLogin 解决了人工操作的浏览器配置/指纹问题，我们要解决的是 agent 的问题。GoLogin 缺的是 agent 集成，你还是需要人工点击；browser-use 缺的则是底层的持久身份层。</p>
+<p>如果你在跑多阶段流程，涉及验证邮件和账号创建，那正是最棘手的部分。想了解一下哪些网站给你带来的麻烦最多。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>是啊，指纹这块一开始也让我们措手不及。OpenClaw 能正确持久化 cookie，但没有把指纹和 profile 绑定。所以每次重启技术上都是带着相同 cookie 的&quot;新设备&quot;，这正是风控系统要抓的情况。</p>
+<p>账号/密码管理这块，完全同意，必须让 agent 感知到。我们正在做这块。思路是做一个凭据存储，agent 知道哪些站点有活跃会话，登录前能检查会话是否还有效，过期了自动重认证。不是简单的&quot;给你个密码文件&quot;，而是真正的会话状态管理。常见流程的模板（注册、登录、2FA）这个主意不错——记下了。</p>
+<p>5sim 配 Cloudflare Turnstile，这个确实比较棘手。Turnstile 的检测比标准 reCAPTCHA 更激进。我们通过验证码破解方案效果还行，但还没做到 100%。Proton 也是出了名的严，他们在验证码之外还叠了多层校验。</p>
+<p>pixelscan 和开放式任务那个问题挺有意思，这更多是 agent 推理层的事，不是浏览器层。但这是个好例子，说明工具能帮到忙。如果浏览器层返回的是结构化页面数据而不是原始 DOM，agent 处理&quot;告诉我这个仪表盘显示什么&quot;这类任务会轻松很多。</p>
+<p>你跑这些用的哪个 agent 模型？VPS 还是本地？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话，我认为两种情况会同时发生，只是场景不同。</p>
+<p>在意欺诈的网站（银行、票务系统、政府门户）会持续加大检测难度。这是一场价值数十亿美元的军备竞赛，不会停止。</p>
+<p>但想要客户的网站——餐厅、打车服务、外卖、预订平台——会逐渐停止与智能体对抗。他们不在乎点击&quot;确认预订&quot;的是真人还是智能体。预订就是预订。</p>
+<p>没人提及的第三种选择：智能体与服务之间的协议。类似MCP，但面向网站，提供结构化端点让智能体无需操作UI即可完成预订、下单、预约。Google等公司正在朝这个方向推进。但现实是，这还需要数年才能实现，且可能只覆盖20%的服务。</p>
+<p>这就是为什么我们认为浏览器层长期来看仍然重要。即使明天所有验证码都消失，智能体仍然需要登录、填写表单、保持会话、操作界面。这些需求不会消失。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rx218m/update_got_ai_agents_to_successfully_book/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

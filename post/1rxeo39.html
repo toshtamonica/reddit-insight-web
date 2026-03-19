@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在树莓派5上搭了个语音控制指挥中心，用像素风智能体——还有人在硬件上玩多智能体方案吗？ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>在树莓派5上搭了个语音控制指挥中心，用像素风智能体——还有人在硬件上玩多智能体方案吗？</h1>
+        <div class="post-meta">
+          <span>👤 wolverinee04</span> | <span>📅 2026/3/19</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 基于树莓派5构建语音控制中心，配备7英寸触摸屏和像素艺术界面，支持语音交互
+• 采用主代理+两个子代理（编程/研究）的多代理架构，子代理禁用思考模式并强制简短回复以优化响应速度
+• 代理具有可视化行为：在像素办公室中移动、开会、使用咖啡机等，服务器机架实时显示系统指标
+• 面临硬件限制挑战：通过Web Audio API增强音频输出，考虑将子代理切换为本地模型以降低运行成本
+• 寻求社区经验：询问其他开发者在受限硬件上运行多代理系统的实践，特别是小型模型的工具调用能力</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>终于把这个项目打磨到可以分享的程度了。这是一个树莓派5配7寸触摸屏，运行着三个智能体，场景是像素风格的办公室——你通过USB麦克风跟它们对话，它们会用不同的声音回应。</p>
+<p>主智能体负责协调调度，把任务分派给两个子智能体，一个处理编程任务，一个负责研究。它们在办公室里各占一张工位，真的会走来走去，在圆桌旁开会，还会去咖啡机那边转悠。办公室里的服务器机柜显示树莓派的实时系统指标，还有一个天气小组件拉取本地数据。</p>
+<p>迭代次数最多的部分是速度优化。子智能体关闭了思考模式，系统提示词强制要求超短回复——没做这个优化之前，语音循环慢得让人难受。另外还得通过Web Audio API放大音量，因为树莓派对USB音箱没有真正的混音器支持。</p>
+<p>好奇有没有其他人也在受限硬件上跑多智能体方案。同时维持三个智能体在线的成本累积得很快，我在考虑把子智能体换成本地模型。有没有人在树莓派5这种级别的设备上，用足够小的模型实现过好用的工具调用？</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rxeo39/built_a_voicecontrolled_command_center_on_a_pi_5/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
