@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第4天 - Bub 15分钟烧掉20美元，搭建移动端网站，学习中（Driftwatch V3） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>第4天 - Bub 15分钟烧掉20美元，搭建移动端网站，学习中（Driftwatch V3）</h1>
+        <div class="post-meta">
+          <span>👤 ObjectiveWitty1188</span> | <span>📅 2026/3/20</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>Bub/Opus 存在反复出现的委托问题，倾向于自己完成&quot;简单&quot;任务，导致成本失控（15分钟烧掉20美元）</li>
+<li>详细规范模板能显著提升效率，缺乏轻量级QA模板导致自由提示词成本膨胀</li>
+<li>未提前规划移动端适配，事后改造比一开始就采用移动优先策略更耗时费钱</li>
+<li>Google Docs 语音转文字功能（Ctrl+Shift+S）是高效的QA笔记和提示词起草工具</li>
+<li>下一项目需前置影响分析，将网站重设计等潜在需求纳入初始详细规范</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>QA阶段继续推进。我把测试发现的修复清单交给了Bub（OpenClaw机器人），让他去执行。</p>
+<p>实际情况：
+我问他到底有没有在委派任务。他说有些东西确实委派了，但觉得自己做其他任务会更快更便宜。这已经是本轮构建第四次出现这种情况了。Opus根本不知道怎么评估自己的成本和时间，默认遇到&quot;简单&quot;任务就自己动手，结果有些任务越做越大。</p>
+<p>我发现一个规律：当我给Bub一份按照我的规范模板写的详细需求时，事情就顺畅得多。我一直没做QA轮次和补丁工作的轻量化模板，所以这些 inflated 成本大概率是我随手写的prompt造成的。我打算等这轮构建做完再去搞模板这些，免得跑题……</p>
+<p>他修完之后我又做了一轮QA。网站有缩放问题，移动端显示效果很差。再给他一轮去优化移动端视图，清理剩下的问题。功能都正常，就是在打磨外观。</p>
+<p>刚发现Google Docs里Ctrl+Shift+S可以调出语音输入。写QA笔记不用边审边打字了，效率神器。</p>
+<p>把修复清单又丢回给Bub了，这轮修复明天再开始。</p>
+<p>本次心得：
+委派问题反复出现，Bub/Opus总觉得自己动手才是最快最省钱的方案。这个问题得在Bub的改造里解决掉。</p>
+<p>下个项目我得提前做好影响分析。没料到网站需要重新设计，原始详细项目规范里完全没提。结果时间和成本都超了预期。</p>
+<p>真该一开始就让Bub按移动端优先来建新站。现在在 retrofit，额外花了时间和钱。</p>
+<p>Google Docs的语音输入（Ctrl+Shift+S）记笔记、写Claude prompt初稿都很好用。Claude聊天里也有语音输入，但听说会更快消耗会话额度，所以我先在Docs里语音起草，再粘贴到Claude聊天里。</p>
+<p>构建进度：
+移动端优化和剩余修复即将交给Bub
+V3版本快收尾了</p>
+<p>成本：本轮$25-30，肉疼。大部分都是Opus该委派却没委派的活。目前API费用总计约$70。</p>
+<p>心情：有点担心下一轮修改会不会把网站搞崩。</p>
+<p>这些更新都有视频版，看我主页。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rydvbk/day_4_bub_burned_20_in_15_minutes_building_the/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

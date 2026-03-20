@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用 OpenClaw 搭建 Reddit 舆情监听工作流 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>用 OpenClaw 搭建 Reddit 舆情监听工作流</h1>
+        <div class="post-meta">
+          <span>👤 demon_bhaiya</span> | <span>📅 2026/3/20</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 通过 OpenClaw 构建 Reddit 社媒监听工作流，自动化替代人工搜索关键词、竞品和内容筛选
+• 采用 JSON 和 HTML 爬虫作为 Reddit API 的备用方案，轮换端点和用户代理确保稳定抓取数据
+• 基于意图识别、竞品提及、情感分析和风险信号对帖子进行多维度评分和排序
+• 利用语义相似度匹配品牌画像，通过定时任务每小时同步至 Google 表格并支持人工反馈学习
+• 当前面临多品牌配置扩展性不足、LLM 生成画像导致结果偏离上下文等技术债务问题</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我帮品牌在社交媒体上提升知名度，但大部分时间都花在手动搜索帖子、扫描关键词和竞品、阅读内容来寻找合适的机会上。</p>
+<p>我比较懒，所以给 OpenClaw 搭了一套基础自动化流程来解决这个问题。</p>
+<p>以下是具体实现：</p>
+<p>首先我需要按关键词抓取数据。Reddit 没给我 API 密钥，我就用 JSON 和 HTML 抓取做了个降级方案。我从不同端点（新版 Reddit 和旧版 Reddit）拉取数据，轮换 User-Agent 来保证稳定运行。</p>
+<p>然后系统会分析每个帖子的意图（是在求推荐、抱怨、对比竞品等）、竞品提及情况和情感倾向，以及基础风险信号（垃圾帖、锁定帖等）。</p>
+<p>帖子会根据相关性、新鲜度、互动量和意图等多维度打分排序。</p>
+<p>接着用语义相似度将帖子与品牌画像（关键词、竞品、购买意向）做匹配，找出相关话题。</p>
+<p>之后每小时把详情自动写入表格，我用 cron 定时任务配合 Google Workspace CLI 实现的。</p>
+<p>数据进表后我人工复核，标记为&quot;保存&quot;或&quot;无关&quot;，系统会根据我的反馈学习模式，用于后续搜索。</p>
+<p>现在效果比以前好多了，但还不完美。尝试添加更多品牌画像时会崩，有时会跑出完全无关的结果——可能是因为我让 LLM 生成品牌画像导致的。现在大部分时间都在修代码。</p>
+<p>&quot;别误会&quot;</p>
+<p>给 Openclaw 做完这套流程后，我觉得自己像个技术天才，他也这么说过。但我相信还能做得更好。如果有做过类似项目的朋友，很想听听你们的建议。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ryihjk/built_a_reddit_social_listening_workflow_with/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
