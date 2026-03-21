@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自动化任务一大堆，但每个都要折腾几小时。Claude Code 一小时全搞定。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>自动化任务一大堆，但每个都要折腾几小时。Claude Code 一小时全搞定。</h1>
+        <div class="post-meta">
+          <span>👤 Kitchen-Medium-6835</span> | <span>📅 2026/3/21</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>Claude Code 在一小时内完成了用户花费数小时未能完成的自动化任务，显著提升了效率</li>
+<li>用户试图将已验证有效的图像重建流程迁移到基于 Gemini 3.1 Pro 的 OpenClaw AI agent，但遭遇推理能力差、输出质量低、响应慢等问题</li>
+<li>核心矛盾在于：Claude 能完成的任务，同等流程在 Gemini 3.1 Pro 上无法复现，模型能力差异成为瓶颈</li>
+<li>用户考虑直接让 agent 调用 Claude Code 或更换模型（如通过 Vertex 使用 Gemini 可能存在问题）来解决迁移困境</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我很喜欢我们能够构建一整套生态系统，这也是我正在努力实现的，以下是具体案例：</p>
+<p>我想为客户自动化使用 nanobanana 重新生成图片的流程。（我经营一家营销代理公司）</p>
+<p>我知道 Claude Code 整体上是更优秀的模型，所以我就直接跟它对话，给了它我的 API 密钥，然后它运行了多轮测试，使用了多种工具来提取背景，并通过视觉分析我要重新生成的图片来优化模板提示词。</p>
+<p>现在我有了完美且<strong>可运行</strong>的 Claude Code 流水线。但关键是要把这个流程教给我的 OpenClaw 里的 AI 智能体，以便在代理公司内部实现这项任务的自动化。</p>
+<p>于是我把学到的整个流程都给了我的主智能体，它运行在 Gemini 3.1 Pro 上（老实说我觉得这就是问题所在）。</p>
+<p>结果我怎么都搞不定，推理能力太差，它试图让子智能体去处理，但子智能体跑的模型不行，所以效果很糟，输出质量差，响应还慢，快一整天了我都没能达到 Claude Code 那样的效果。</p>
+<p>想听听各位的想法怎么解决，我考虑过直接把 Claude Code 的代码给它，这样至少能跟我做得一样快，但不确定行不行。</p>
+<p>也许我应该换个模型，或者通过 Vertex 使用 Gemini 3.1 Pro 本身就是问题……我也不确定。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ryt7k0/so_much_things_to_automate_but_everything_im/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

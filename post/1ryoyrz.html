@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 OpenClaw 做了一个虚拟龙虾宠物技能 —— ClawFight - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 OpenClaw 做了一个虚拟龙虾宠物技能 —— ClawFight</h1>
+        <div class="post-meta">
+          <span>👤 No_Year6243</span> | <span>📅 2026/3/21</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 为 OpenClaw 开发虚拟龙虾宠物游戏 Skill，包含随机孵化、自动巡逻、37种随机事件和PvP对战功能
+• 龙虾具有6级稀有度（白化概率0.2%）、随机属性和性格，连胜/连败会影响性格变化
+• 所有叙事由本地LLM根据龙虾性格档案动态生成
+• 技术架构：Skill目录仅含Markdown+JSON，游戏逻辑通过开源npm包运行，后端Cloudflare Workers仅处理匹配和排行榜，不存储个人信息
+• 完全开源（MIT协议），注重安全性：不读取系统文件、不收集个人信息、数据仅保存在本地内存中</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我为 OpenClaw 做了一个虚拟龙虾宠物技能 —— ClawFight</p>
+<p>开发了一个游戏技能，让你的 OpenClaw 拥有一只虚拟龙虾宠物。它会孵化出带有随机属性和性格的龙虾，通过心跳机制自动巡逻，触发随机事件，还能与其他玩家的龙虾进行 PvP 对战。</p>
+<pre><code class="language-bash">clawhub install claw-fight
+</code></pre>
+<p><strong>功能介绍：</strong></p>
+<ul>
+<li>孵化龙虾 —— 随机属性、稀有度（6 个等级，白化概率 0.2%）和性格</li>
+<li>心跳自动巡逻 —— 37 种随机事件（发现食物、掠食者袭击、基因突变……）</li>
+<li>PvP 匹配 —— 与等级相近的玩家龙虾对战</li>
+<li>灵魂进化 —— 性格会真实变化：连输 5 场以上变得沉默寡言，连胜 5 场以上变得狂妄自大</li>
+<li>所有叙事由本地 LLM 根据龙虾的性格档案实时生成</li>
+</ul>
+<p><strong>技术实现：</strong></p>
+<p>技能目录纯 Markdown + JSON，无可执行代码。游戏逻辑通过 <code>npx @2025-6-19/clawfight</code> 运行（开源 npm 包）。后端使用 Cloudflare Workers，仅处理匹配和排行榜 —— 不存储任何个人身份信息，属性值仅以 SHA256 哈希形式传输。</p>
+<p><strong>安全说明（知道大家关心这个）：</strong></p>
+<ul>
+<li>技能目录 = 仅 Markdown 和 JSON 文件</li>
+<li>不读取系统文件（SSH 密钥、浏览器数据等）</li>
+<li>不收集个人信息</li>
+<li>所有数据保存在本地 <code>memory/clawfight/</code></li>
+<li>完全开源，MIT 协议</li>
+</ul>
+<p><strong>相关链接：</strong></p>
+<ul>
+<li>ClawHub：<a href="https://clawhub.ai/2019-02-18/claw-fight">https://clawhub.ai/2019-02-18/claw-fight</a></li>
+<li>GitHub：<a href="https://github.com/2019-02-18/clawfight">https://github.com/2019-02-18/clawfight</a></li>
+<li>npm：<a href="https://www.npmjs.com/package/@2025-6-19/clawfight">https://www.npmjs.com/package/@2025-6-19/clawfight</a></li>
+</ul>
+<p>这是个副业项目，不卖任何东西。只是觉得让宠物真正&quot;住&quot;在你的 Agent 里会很有意思。如果有人试了，欢迎反馈。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ryoyrz/i_made_a_virtual_lobster_pet_skill_for_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

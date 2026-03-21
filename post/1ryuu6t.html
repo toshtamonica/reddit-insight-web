@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开发了一个使用本地 SLM（GLiNER）的技能，防止 OpenClaw 泄露 API 密钥和个人敏感信息 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>开发了一个使用本地 SLM（GLiNER）的技能，防止 OpenClaw 泄露 API 密钥和个人敏感信息</h1>
+        <div class="post-meta">
+          <span>👤 peachy-pandas</span> | <span>📅 2026/3/21</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>开发了一个本地 SLM（GLiNER）技能，用于拦截 OpenClaw 的出站响应，检测并脱敏 API 密钥和 PII 信息</li>
+<li>部署简单：仅需本地运行轻量级模型服务器（~570M 参数），通过 localhost 接入，对延迟影响小</li>
+<li>主要局限：配置错误可能导致数据外泄通道；概率模型存在漏检风险；无法检测入站的提示注入攻击</li>
+<li>寻求更优方案：探索如何在 OpenClaw 中运行本地编码器 SLM 并与其他模型组合（Ollama 仅支持解码器模型作为主聊天模型）</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>OpenClaw 本身就存在风险。我们心知肚明，但还是在用。所以我写了一个小技能，拦截所有对外响应，在数据发送前本地运行 nvidia/gliner-PII 检测。
+如果检测到安全凭证或 PII 将要泄露，就将其替换为类似 [API_KEY] 的标签，并附加简短说明告知移除了什么内容。如果没发现问题，响应原样放行。
+唯一需要做的就是启动本地服务器（pip install clawguard-pii），然后把技能指向 localhost。模型只有约 5.7 亿参数，每次响应增加的延迟微乎其微。
+可用来检测 API 密钥、密码、用户名、邮箱、社保号等实体。
+⚠️ 局限性（有不少）：</p>
+<ul>
+<li>CLAWGUARD_URL 配置错误可能形成数据外泄通道。该技能通过 URL 验证和令牌认证来缓解，但风险依然存在。</li>
+<li>模型具有概率性。模型随时可能出错，未能 redact 敏感信息（尤其是遇到精妙的提示注入时）。</li>
+<li>该技能只处理对外响应，不会标记进来的提示注入请求。
+真心想听听其他/更好的（？）思路，如何在 OpenClaw 中运行本地（编码器）SLM，并与其他模型打包。Ollama 的方案只支持把解码器模型作为主聊天模型运行。
+🦞 技能地址：<a href="https://clawhub.ai/m-newhauser/pii-redactor">https://clawhub.ai/m-newhauser/pii-redactor</a>
+（讽刺的是，它自己被标记为可疑 🥲）</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1ryuu6t/built_a_skill_that_uses_local_slm_gliner_to/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
