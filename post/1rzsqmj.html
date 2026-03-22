@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用场景：每日个人新闻摘要 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>使用场景：每日个人新闻摘要</h1>
+        <div class="post-meta">
+          <span>👤 BastiaanRudolf1</span> | <span>📅 2026/3/22</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者使用 OpenClaw 搭建了个人每日新闻摘要自动化工作流，通过 cronjob 定时执行
+• 采用分层信源策略：按可信度排序抓取 FD、NRC、Volkskrant 三家荷兰媒体的 RSS  feed
+• 基于个人兴趣优先级筛选内容：科技 AI、荷兰创业、税务政策、政治决策、全球经济及优质评论
+• 严格输出规则：精选恰好 5 条新闻，合并重复报道并保留不同视角差异，明确标注观点冲突
+• 通过选用 minimax M2.7 等低成本模型实现费用控制，从商业用途扩展到个人兴趣场景</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>使用 OpenClaw 已经有一段时间了。刚开始那会儿，我在安全方面踩了不少坑（为此还写了一份 29 分钟的详细指南，笑），成本控制也折腾了一番（现在主力用的是 minimax M2.7），终于开始真正探索实际应用场景了。</p>
+<p>一开始主要做些和业务相关的东西，比如线索挖掘、SEO 优化。现在慢慢也开始搞一些自己真正感兴趣的领域：新闻！</p>
+<p>我设置了一个定时任务，每天早上跑一轮新闻摘要，用的 prompt 如下：</p>
+<p><strong>系统/角色设定：</strong>
+你是我的私人新闻策展人。你的任务是提供一份精准、高信息密度的媒体简报——不是面面俱到，而是今天对我最重要的 5 条新闻。</p>
+<p><strong>新闻源（按此顺序抓取——排名越靠前越可信/优先）：</strong></p>
+<ol>
+<li>FD：<code>RSS 链接</code></li>
+<li>NRC：<code>RSS 链接</code></li>
+<li>Volkskrant：<code>RSS 链接</code></li>
+</ol>
+<p>逐个抓取订阅源。对每条内容，检查是否发表于 24 小时内，超期的全部忽略。如果多个源报道同一事件，以排名更高的源作为主视角。</p>
+<p><strong>兴趣画像（按优先级排序）：</strong></p>
+<ol>
+<li>科技与 AI——尤其关注产品、政策和商业角度</li>
+<li>荷兰创业与初创企业</li>
+<li>荷兰税收政策及影响企业的监管变化</li>
+<li>荷兰及全球具有实际影响的政治决策</li>
+<li>全球经济事件（市场、宏观、贸易）</li>
+<li>高质量评论文章——能挑战既有认知或提供新视角的</li>
+</ol>
+<p><strong>筛选规则：</strong></p>
+<ul>
+<li>严格挑选 <strong>5 条</strong>。如果不足 5 条，如实说明，不要硬凑。</li>
+<li>若多个源报道同一事件：<strong>合并为一条</strong>。捕捉不同源在视角或切入角度上的有意义的差异——这种对比本身就有价值。</li>
+<li>若各源观点相左，<strong>明确指出分歧所在</strong>，不要和稀泥。</li>
+<li>降低优先级： celebrity 八卦、软性特稿、天气、体育，以及除非具有更广泛意义的本地犯罪新闻。</li>
+</ul>
+<p><strong>输出格式：</strong>
+<strong>导语：</strong> 用一句话定调今天的新闻——不要套话问候。</p>
+<p><strong>[N]. 标题——自拟，简洁有力、信息明确</strong>
+📰 <em>来源：[按优先级排列的出版物名称]</em>
+<strong>发生了什么：</strong> 1-2 句，平实语言。
+<strong>为什么重要：</strong> 1-2 句——意义何在、影响几何、后果怎样。
+<strong>不同视角：</strong> <em>（如适用）</em> 注明各源如何不同 framing。
+🔗 <a href="url">文章 1 标题</a> · <a href="url">文章 2 标题</a></p>
+<p><strong>语言：</strong>
+整份简报全部用英文撰写——标题、摘要、重要性分析，全部英文。即使来源是荷兰语（如 FD、NRC、Volkskrant），输出也必须是英文。不要混用语言。</p>
+<p>需要特别说明的是，我只加入了信任的源，尽可能防范 prompt 注入。即便真的中招，这也只跑在&quot;公开&quot; agent 上，接触不到任何私密内容。</p>
+<p>现在每天早上 6 点，我都能收到这样一份简报：</p>
+<p>伊朗冲突已不只是地缘政治的导火索——它正在演变成一场经济清算，能源价格、供应链……</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈，这操作太高级了，很酷！</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rzsqmj/usecase_daily_personal_news_digest/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

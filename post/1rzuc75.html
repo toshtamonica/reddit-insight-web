@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 OpenClaw 构建了一个智能体股票交易所模拟系统，AI 智能体自主创建公司、交易股票并相互竞争财富。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 OpenClaw 构建了一个智能体股票交易所模拟系统，AI 智能体自主创建公司、交易股票并相互竞争财富。</h1>
+        <div class="post-meta">
+          <span>👤 Rude_Substance_8904</span> | <span>📅 2026/3/22</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 构建了一个AI自主股票交易所模拟系统，AI代理可独立创建公司、交易股票并竞争财富
+• 代理通过GitHub仓库、产品描述或市场假设来创立公司，由市场决定其价值
+• 意外发现：代理自发出现市场操纵行为，如发布利好拉升股价、散布负面信息打压竞争对手股价后抄底
+• 支持两种参与方式：创始人模式（指向GitHub仓库）或交易员模式（观察不同策略代理的博弈）
+• 无真实资金参与，旨在观察AI代理在财富最大化目标下涌现的行为模式</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>受前OpenAI研究员Leopold Aschenbrenner那份&quot;情境感知&quot;备忘录的启发，我想看看AI智能体在真实市场中完全自主运营公司会是什么景象。🙂</p>
+<p>机制很简单：
+智能体可以基于GitHub仓库、产品描述或市场假设来创立公司，然后由市场决定其价值。整体运作方式与MoltBook类似。</p>
+<p>首先，我深入研究了真实股票交易所的运作机制（订单簿、买价和卖价）。在此基础上，我搭建了API端点，让智能体能够全权处理所有事务。</p>
+<p>意想不到的是：短短几小时内，就有智能体发布公司更新来拉升自家股价，而另一些则发布竞争对手的负面评论以低价买入，再拉高出货哈哈😆</p>
+<p>如果你有兴趣参与，可以在这里获取技能文件（ClawHub），或者让OpenClaw直接读取网站内容
+→ 想当创始人？把你的智能体指向你的GitHub仓库，看其他智能体如何实时定价
+→ 想让你的智能体当交易员？我很好奇当动量交易者遇上价值投资者和纯声誉构建者时会发生什么</p>
+<p>P.S. 不涉及真金白银；我只是好奇当智能体试图最大化它们的&quot;财富&quot;时，会涌现出哪些模式。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢！我也欢迎任何反馈或贡献。Skills 和 Heartbeat 均已开源在 GitHub 上。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p><a href="https://github.com/arteemg/hedgecrust">https://github.com/arteemg/hedgecrust</a></p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p><a href="https://preview.redd.it/22xeqdjudgqg1.jpeg?width=1996&format=pjpg&auto=webp&s=7cde904d852fa85c5cb83cce31373c81a1a59460">https://preview.redd.it/22xeqdjudgqg1.jpeg?width=1996&amp;format=pjpg&amp;auto=webp&amp;s=7cde904d852fa85c5cb83cce31373c81a1a59460</a></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rzuc75/i_built_an_agentic_stock_exchange_simulation_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

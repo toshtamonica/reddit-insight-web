@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个 MCP 服务器，让 OpenClaw 能在电商平台下单真实商品——支持语义搜索、持久化偏好、购物车和结账功能 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个 MCP 服务器，让 OpenClaw 能在电商平台下单真实商品——支持语义搜索、持久化偏好、购物车和结账功能</h1>
+        <div class="post-meta">
+          <span>👤 Massive_Leopard_9052</span> | <span>📅 2026/3/22</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 构建了一个名为 RiserFlow 的开源 MCP 服务器，让 AI 助手能够完成真实的电商购物流程（搜索、加购、下单）
+• 核心功能包括：语义化商品搜索（基于向量嵌入）、跨会话持久化用户偏好（尺寸、颜色、品牌等）、多店铺购物车管理、真实订单提交至商店后台
+• 解决了 AI 电商代理的关键难点：与真实商店系统的可靠交互，而非仅提供聊天界面
+• 当前已支持 Bitrix 平台，通过适配器架构可扩展至 Shopify、WooCommerce 等其他电商平台</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>嘿！</p>
+<p>如果你试过用 OpenClaw 做电商相关的事，估计很快就碰壁了：没有商品搜索、没有购物车、没法下真实订单。我搭了一个 MCP 服务器来解决这些问题。下面的演示展示了 OpenClaw 搜索商品、管理购物车、并完成一笔真实订单——订单会出现在店铺后台。</p>
+<p>过去半年我一直在为电商构建 AI 助手。</p>
+<p>最初的构想很简单：AI 与商家的交互迟早会取代大量传统界面。不用层层点击筛选条件、商品页、购物车和结算流程，直接告诉店铺你想要什么就行。</p>
+<p>比如：&quot;订一件和上个月一样的黑色T恤，周五前送到。&quot;</p>
+<p>真正难的其实不是聊天界面，而是让 AI 智能体稳定地对接真实店铺：找商品、记住用户买过什么、正确处理购物车、下一笔能进后台的真实订单。</p>
+<p>这部分被我抽出来做成了开源 MCP 服务器，叫 RiserFlow。</p>
+<p>功能一览</p>
+<ul>
+<li>语义商品搜索
+将店铺目录同步到本地 Prisma/PostgreSQL 数据库，生成向量嵌入，给智能体提供比电商平台那些老旧搜索 API 更强的搜索层</li>
+<li>持久化客户偏好
+智能体能记住尺码、颜色、品牌等信息，跨会话保持。第二次或第三次购买时特别管用，客户直接说&quot;按上次买的来&quot;就行</li>
+<li>购物车管理
+支持多店铺购物车</li>
+<li>真实订单下单
+订单进入真实 CMS/后台，不是假演示流程。目前内置 Bitrix 适配器，但适配器架构支持 Shopify、WooCommerce 等平台，无需改动 MCP 层</li>
+<li>商品图片、描述和对比
+智能体可直接在对话中展示商品，并在上下文里对比选项</li>
+</ul>
+<p>这不是玩具演示，已经具备：</p>
+<ul>
+<li>多租户：单服务器可服务多个店铺</li>
+<li>幂等性：重试安全，避免重复下单</li>
+<li>适配器模式：切换后端集成无需重写 MCP 层</li>
+<li>本地目录同步 + 向量嵌入：搜索独立于老旧电商平台的限制</li>
+</ul>
+<p>技术栈</p>
+<ul>
+<li>Next.js 16+、Prisma、PostgreSQL、BullMQ，目前适配 Bitrix。开源。</li>
+</ul>
+<p>为什么现在做
+MCP 开始真正起势了。Anthropic 宣布了认证计划，OpenAI 和 Google 也都采用了这个协议。</p>
+<p>与此同时，电商领域的 MCP 基础设施几乎空白。</p>
+<p>大家在为文件、GitHub、数据库和内部工具搭 MCP 服务器，但连接 AI 智能体与实际发生交易的在线店铺，这方面还很少。</p>
+<p>这就是 RiserFlow 的定位。</p>
+<p>Apache 2.0 开源。</p>
+<p>演示
+这里有一段 OpenClaw 订购T恤的视频：</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实，亚马逊和那些大型平台完全同意——它们都被锁在自己的生态里，根本没动力向AI智能体开放。这本来也不是目标方向。</p>
+<p>这更多是面向独立商家和中型店铺——帮它们做好AI时代的准备。可以理解为给店铺搭一层API，让AI智能体能真正用起来：搜索、加购、结账。这样当智能体开始帮人们购物时，这些店铺不会被直接无视。</p>
+<p>说实话，现在还很早期——目前只是个Beta版，接了几家真实店铺，先摸索什么能跑通。最终这事会怎么发展，谁也说不准，但总得有人先开始建。</p>
+<p>你提到你也想过这个方向——后来为什么没做？真心好奇。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！时间会证明一切，但此刻我很享受这段旅程。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>目前我已经用几百个SKU测试了目录同步——运行很顺畅。上万种商品的话显然会有不同的挑战，到那个规模你可能需要直接操作数据库，而不是同步两个库。</p>
+<p>但我觉得从长期来看更重要的是：MCP服务器存储了客户偏好——位置、购买历史、尺码、价格区间、过往订单（无论成交与否）。这样智能体就不是盲目搜索目录，而是基于真实语境做推荐。这可能比依赖那些为平台而非买家优化的市场算法，带来更诚实的体验。</p>
+<p>理论上这正是让独立店铺摆脱市场平台束缚的关键——智能体基于相关性而非广告投入来发现它们。但说实话，现在还早，最终走向谁也说不准。</p>
+<p>有趣的是你们Readable从品牌端切入这件事——很想听听你们那边的观察。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rzqjml/i_built_an_mcp_server_that_lets_openclaw_order/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个技能，能告诉你的 OpenClaw agent 还缺哪些技能 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个技能，能告诉你的 OpenClaw agent 还缺哪些技能</h1>
+        <div class="post-meta">
+          <span>👤 whooshinglander</span> | <span>📅 2026/3/22</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 开发者创建了名为 iknowkungfu 的工具，通过扫描用户的工作空间、记忆文件、已安装技能和对话日志，分析用户实际工作模式，从而推荐真正需要的技能
+• 推荐结果基于个人使用数据（如日志中多次提到 Slack 却无相关集成），而非通用排行榜，并附带信任评分和安装命令
+• 工具采用只读本地运行，不安装任何内容、不上传数据，同时过滤低质量技能（少于50次下载或存在安全标记）
+• 扫描过程中会进行基础安全检查，标记可疑的已安装技能（如 base64 载荷、环境变量收集等）
+• 技能目录筛选标准包括：最少50次下载、无病毒标记、作者有其他发布作品、权限与功能匹配</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>ClawHub 有 13,700 多个技能。没人会全部浏览一遍。大多数人装个 5 到 10 个听说过的，就完事了。</p>
+<p>所以我做了 iknowkungfu（对，就是《黑客帝国》那个梗）。它会扫描你的智能体工作区，读取你的记忆文件，检查你已安装的技能，查看最近的对话日志，然后搞清楚你整天到底在干什么。接着它会将这些信息与精选的优质 ClawHub 技能索引进行交叉比对，告诉你缺了什么。</p>
+<p>运行 /kungfu，你会得到一个工作流画像 + 前 5 条推荐，附带可信度评分。大概长这样：</p>
+<p>🥋 I KNOW KUNG FU — 推荐
+🟢 slack (★ 4.5)
+原因：最近 7 天的日志里，你有 4 天提到了 Slack，但还没装 Slack 集成技能。
+安装：clawhub install slack</p>
+<p>每条推荐都基于<strong>你的具体使用习惯</strong>给出理由，不是那种千篇一律的&quot;十大榜单&quot;。如果找不到合适的匹配，它会直接告诉你，而不是硬塞个 mediocre 的给你。</p>
+<p>检查内容：
+• MEMORY.md + 每日日志（哪些话题经常出现）
+• 已安装技能（你已有哪些）
+• AGENTS.md（你的智能体角色和偏好）
+• HEARTBEAT.md（定时任务）
+• 近期对话模式</p>
+<p>不做什么：
+• <strong>绝不安装任何东西</strong>。只读。
+• <strong>绝不向任何地方发送数据</strong>。100% 本地。
+• <strong>绝不推荐下载量少于 50 或被 VirusTotal 标记的技能</strong>。</p>
+<p>扫描时还会对你已安装的技能做个快速安全检查。如果发现可疑内容（base64 载荷、环境变量收集等），会标记出来。不是深度审计，只是提个醒。</p>
+<p>安装：clawhub install iknowkungfu</p>
+<p>欢迎反馈，特别是关于推荐质量的。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>谢谢！收录标准如下：</p>
+<ul>
+<li>ClawHub 下载量不低于 50（过滤掉废弃/测试技能）</li>
+<li>VirusTotal 无报毒</li>
+<li>作者至少发布过其他技能（过滤一次性上传）</li>
+<li>权限与功能匹配（天气技能不应需要 filesystem:write）</li>
+<li>近 6 个月内有更新</li>
+</ul>
+<p>然后我将它们分为 15 个类别，并逐一手动验证可用性。</p>
+<p>信任评分权重：下载量 25%、星标数 20%、作者信誉 15%、更新时效 15%、权限合理性 15%、安全扫描 10%。因此，知名作者开发的热门技能、且权限最小化者得分最高。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s00j0h/i_built_a_skill_that_tells_your_openclaw_agent/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

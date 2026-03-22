@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我让 AI 智能体做个视频，它自己装了工具然后渲染出来了 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我让 AI 智能体做个视频，它自己装了工具然后渲染出来了</h1>
+        <div class="post-meta">
+          <span>👤 jelloojellyfish</span> | <span>📅 2026/3/22</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>AI 智能体正从&quot;增强型自动补全&quot;向&quot;目标输入、成品输出&quot;的自主架构演进，能够独立完成多步骤任务（规划、编码、运行、纠错、迭代）</li>
+<li>作者实测案例：仅提供目标，智能体自主安装视频渲染库（Remotion）、编写代码、调试问题并生成成品视频，全程无需人工干预</li>
+<li>当前探索方向包括：基于任务上下文自主选择工具、基于角色的工作流一致性、以及将耗时半天的研究流程自动化</li>
+<li>技术仍处于早期阶段，存在不稳定性和失败模式，但观察智能体的自我纠错（或失败）过程有助于发现真实的能力边界</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最近一直在深入研究 AI Agent，不是那种套壳 ChatGPT 的玩意儿，而是真正能自主执行多步骤任务的 Agent。
+规划、写代码、运行、处理错误、循环往复直到完成。</p>
+<p>这周我扔给它一个没指望能成的任务：做个关于这个话题的短视频。没有脚手架，没有预定义工具，就给了个目标。
+它自己分析出需要视频渲染库，拉来了 Remotion，写了合成代码，独立 debug 了几个问题，最后交给我一个渲染好的视频文件。我全程没打开任何剪辑工具。</p>
+<p>真正让我印象深刻的不是输出结果，而是架构层面的转变。现在大多数 AI 工具还停留在&quot;增强版自动补全&quot;阶段——你提示，它建议，你执行。但我这次体验完全不同：输入目标，输出成品，中间所有杂七杂八的步骤都自主搞定了。</p>
+<p>接下来我还在探索几个方向：能根据任务上下文自主选择工具的 Agent、在工作流中保持一致性的角色化 Agent，以及用 Agent 做以前要花我半天时间的研究流程。</p>
+<p>还在早期，很多东西很糙。但失败模式也挺有意思，看着一个 Agent 自信满满地往错路上走，然后自我纠正（或者干脆不纠正），能让你看清真正的短板在哪。</p>
+<p>好奇大家在这里都在实验什么工作流。你们试过把什么任务交给 Agent，结果跟预期不一样的？</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s01wy6/i_asked_an_ai_agent_to_make_a_video_it_installed/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

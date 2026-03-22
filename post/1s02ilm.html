@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花了一天时间从零重建自动化视频生产流水线 🛠️ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>花了一天时间从零重建自动化视频生产流水线 🛠️</h1>
+        <div class="post-meta">
+          <span>👤 DisGuyOvaHeah</span> | <span>📅 2026/3/22</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 从旧版通用素材升级为AI智能分析脚本，自动匹配相关内容片段
+• 实现语音同步转场、片段长度限制、竖版格式转换等全流程自动化
+• 人工仅保留字幕标题、转场效果等后期环节，并主动遵守版权与AI披露规范
+• 基于OpenClaw+yt-dlp+ffmpeg+ElevenLabs技术栈，单日下午完成可用版本迭代
+• 开发者强调依赖Sonnet 4.6，通过集中管理上下文文件解决此前多应用混乱问题</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>旧版本只会拉取与内容毫无关联的通用库存素材。做演示还凑合——真拿来做产品就太尴尬了。</p>
+<p>今天的版本：
+✅ 分析脚本识别关键主体，自动搜索相关素材
+✅ 未找到特定主体时，自动降级到主题级搜索
+✅ 片段转场与配音节奏同步——而非简单等分
+✅ 限制片段长度，避免明显循环
+✅ 开场片段与第一段内容主体匹配</p>
+<p>全部自动搞定。Agent 读取脚本，理解内容主题，拉取上下文相关的素材，处理成竖屏格式，最终合成视频——全程无需人工介入。</p>
+<p>基于 OpenClaw 构建，使用 yt-dlp、ffmpeg 和 ElevenLabs 配音。🎙️</p>
+<p>人工环节我刻意保留了几处：
+• 片段保持极短（每条 8 秒内）——评论类内容的合理使用范围
+• 字幕、标题和转场用剪映手动添加
+• 背景音乐无版权 🎵
+• 所有内容明确标注为 AI 生成</p>
+<p>还有不少粗糙的地方，但一个下午就从&quot;一眼自动化&quot;进化到了&quot;真的能看&quot;。这就是目标。🎯</p>
+<p>如果你在搞类似的东西，欢迎提问或提建议。👇</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>现在我只信任 Sonnet 4.6</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我一开始用手机应用和上下文文件来管理，直到数量太多实在管不过来。其实我一度放弃了，直到后来搭了 OpenClaw（也就是 ClawdBot）才重新捡起来。我把所有上下文文件都喂进去，从那儿开始干。相信原力吧，卢克。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我已经发过很多次了</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s02ilm/spent_the_day_rebuilding_an_automated_video/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

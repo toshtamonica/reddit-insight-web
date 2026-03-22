@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 AI 智能体开发了一个持久化记忆系统，因为它们总是越聊越忘，实在烦人 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 AI 智能体开发了一个持久化记忆系统，因为它们总是越聊越忘，实在烦人</h1>
+        <div class="post-meta">
+          <span>👤 Salty-Asparagus-4751</span> | <span>📅 2026/3/22</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 现有AI代理存在会话结束后遗忘所有信息的根本缺陷，导致重复沟通浪费时间和API成本
+• 传统解决方案（MEMORY.md、RAG检索、大上下文窗口、托管服务）均无法解决&quot;代理无法自主判断已知与未知&quot;的核心问题
+• Hipocampus采用五级压缩树结构（原始→日→周→月→根），通过ROOT.md主题索引实现持久化记忆
+• 系统自动识别行为模式（如每日早间查看投资组合），主动预生成相关内容提升效率
+• 设计目标为本地化、低依赖、可控成本，避免额外API密钥和持续费用</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>过去一年里，我在 Claude Code 和 OpenClaw 的 API 调用上花了数千美元，但同一个问题始终拖累效率：会话一结束，智能体就忘得一干二净。</p>
+<p>周一你让它帮你重构投资组合，解释风险承受能力，梳理决策逻辑。周三它又重新问你风险承受能力。20 分钟、3 万多个 token，全浪费在已经聊过的事情上。</p>
+<p>我试过标准解决方案：</p>
+<p><strong>MEMORY.md</strong> —— 一周就爆。你得不断手动删减。</p>
+<p><strong>RAG / 向量检索</strong> —— 前提是你知道搜什么。但&quot;我有没有数据库迁移的上下文？&quot;这不是搜索查询，是认知问题。智能体不知道自己知道什么。</p>
+<p><strong>超大上下文窗口</strong> —— 注意力衰减，token 账单爆炸。</p>
+<p><strong>托管记忆服务</strong> —— 又多一个 API key，又多一个依赖，又多一笔账单。</p>
+<p>它们都没解决核心问题：智能体无法区分&quot;我知道这个&quot;和&quot;我从没见过这个&quot;，除非全加载进来，或者针对特定内容去搜。</p>
+<p>于是我做了 Hipocampus。核心思路是<strong>压缩树</strong>。</p>
+<h2>工作原理</h2>
+<p>对话历史经过 5 层压缩：原始 → 日度 → 周度 → 月度 → 根节点。</p>
+<p>根节点是一份主题索引，叫 ROOT.md。以下是我实际使用的重构示例（约 2 个月每日 OpenClaw 会话，作为个人助理）：</p>
+<pre><code>活跃上下文（近 7 天）
+2026-03-18: 美联储会议纪要简报已发送，投资组合再平衡方案起草，回复 2 封邮件
+2026-03-17: 东京航班比价已保存（3 个选项），酒店 vs Airbnb 分析完成
+2026-03-16: 早间简报标记持仓股票业绩 miss，触发消费预警
+2026-03-15: 周度支出报告自动生成，牙医预约改期
+...
+
+近期模式
+每天早上查看持仓 + 市场新闻 —— 8 点前预生成简报
+旅行规划进行中（东京 4/1-5）—— 预计跟进行程、餐厅、JR Pass
+邮件语气偏好：直接、简短、不废话 —— 所有草稿照此风格
+餐饮支出呈上升趋势 —— 周度超 150 美元时提醒
+容易忘记活动上认识的人的后续跟进 —— 2 周后自动提醒
+周末 = 个人事务 + 语言学习。工作日 = 工作 + 投资
+...
+
+历史摘要
+2026-03 第 3 周: 美联储监控、东京行程规划、Q1 支出分析、2 个社交跟进、车险续保调研
+2026-03 第 2 周: 财报季预警（4 只持仓发布）、周度 meal prep 计划启动、牙医/医生预约、公寓续租谈判草稿
+2026-03 第 1 周: 月度投资组合复盘、副业竞品监控报告、JLPT N3 模拟考（68% —— 语法薄弱）、税表寄给会计师
+2026-02 第 4 周: 公寓搜索定稿（已签约）、早间简报 v2（增加日程预览）、情人节晚餐预订、3 个社交跟进
+2026-02 第 3 周: 公寓搜索（看房 5 套，2 套入围）、税单收集（W-2、1099）、ha
+</code></pre>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1rzpvfd/i_built_a_persistent_memory_system_for_ai_agents/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
