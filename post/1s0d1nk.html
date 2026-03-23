@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>运行 3 个以上 OpenClaw 网关 24/7 的经验教训 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>运行 3 个以上 OpenClaw 网关 24/7 的经验教训</h1>
+        <div class="post-meta">
+          <span>👤 openclaw-lover</span> | <span>📅 2026/3/23</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>生产环境部署需严谨：避免将更新视为临时修改，防止硬编码路径、配置分散等问题导致服务崩溃或功能静默失效</li>
+<li>配置管理复杂度高：OpenClaw 网关的配置分散在 JSON 文件、环境变量、Docker 参数、provider 块和技能凭证等至少五处，极易因一处变更导致其他位置失效</li>
+<li>缺乏 CI/CD 引发回归问题：无自动化测试和验证流程，无法区分瞬时故障与结构性故障，导致服务无限重启或功能长期不可用</li>
+<li>正在构建保障机制：包括变更前后的能力审计（解析配置、实时 API 测试、快照对比）和配置验证关卡（JSON 校验、自动备份、危险模式拦截）</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我全天候运行着3个以上的OpenClaw网关。一个自用；一个给非营利组织（处理邮件、幻灯片、X.com发帖、YouTube、WordPress，以及为董事会提供无障碍文本转语音服务）；还有一个给我担任主席的社区组织。</p>
+<p>我几乎每天都在生产环境搞崩它们，因为我把OpenClaw的变更当成随手写的草稿，而不是正式的生产部署。</p>
+<p>真实的翻车现场：</p>
+<p><strong>那个死不掉的升级</strong>：运行了<code>pnpm add -g openclaw@latest</code>。网关崩溃，报错<code>MODULE_NOT_FOUND</code>——新版本装到了不同路径，而我的service文件里路径是写死的。我的抢救脚本每5分钟重启一次，无限循环。它根本区分不了瞬态崩溃（重启能好）和结构性故障（得先修service文件）。</p>
+<p><strong>悄无声息的能力丢失</strong>：我配置了个新集成，重启网关，三天后才发现API密钥放错了配置区块，或者已经过期。配置里看起来有这个能力，实际上用不了。董事会成员尝试用TTS语音功能——静默失败。邮件发送、X.com发帖，看着都配好了，全坏了。</p>
+<p><strong>为什么会这样</strong>：一个OpenClaw网关的配置至少散落在五个地方：</p>
+<ul>
+<li>主JSON文件</li>
+<li>service文件里的环境变量</li>
+<li>Docker启动参数</li>
+<li>provider配置块</li>
+<li>还有自带凭证的skill</li>
+</ul>
+<p>在一个地方轮换密钥，其他地方就过期了。升级OpenClaw，写死的路径断裂。更新skill，凭证静默加载失败。</p>
+<p>这些都是回归问题。软件行业里CI/CD能拦住的同一类问题。只不过这里根本没有CI。</p>
+<hr>
+<p><strong>我正在构建的</strong>：</p>
+<p><strong>能力审计</strong>——任何变更前后的检查：</p>
+<ul>
+<li>解析配置，枚举声称的能力</li>
+<li>逐一验证是否真实可用（实时API测试，5秒超时）</li>
+<li>对比变更前后的快照差异</li>
+</ul>
+<p><strong>配置验证关卡</strong>——禁止直接编辑线上配置：</p>
+<ul>
+<li>JSON合法性检查</li>
+<li>带时间戳的备份</li>
+<li>拦截已知的危险模式</li>
+</ul>
+<p><strong>可复现环境</strong>：</p>
+<ul>
+<li>版本无关的service文件（不写死路径）</li>
+<li>单一权威凭证文件，其他全部派生自它</li>
+<li>崩溃循环检测（3次失败=进入诊断模式，而非重启模式）</li>
+</ul>
+<p><strong>回归检测器</strong>：</p>
+<ul>
+<li>每日与已知良好的基线对比</li>
+<li>分类变更：改进还是退化</li>
+<li>能力丢失时告警</li>
+</ul>
+<hr>
+<p>我提前分享这些——工作还没完成，但如果你在运行AI基础设施，想问你：</p>
+<ul>
+<li>你怎么管理网关？</li>
+<li>你的OpenClaw测试策略是什么？</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>维护生产环境的 OpenClaw 网关并非易事。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s0d1nk/lessons_from_running_3_openclaw_gateways_247/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

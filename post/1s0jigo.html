@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用 AI 智能体规划中日之旅，结果翻车了 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>用 AI 智能体规划中日之旅，结果翻车了</h1>
+        <div class="post-meta">
+          <span>👤 eduardez_</span> | <span>📅 2026/3/23</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者使用自托管的 MoLOS（生产力记忆层）和 OpenClaw（AI 代理操作器）组合，尝试以最少人工干预规划中日多城市旅行</li>
+<li>系统能自动生成每日行程、推荐航班酒店、创建任务清单，并检测日程冲突，但仍需人工审批关键决策（如城市选择、预订）</li>
+<li>主要优势：信息集中管理避免数据分散，自动生成结构化任务（如订票、买 JR 通票），最终产出 50+ 完成任务和完整旅行文档</li>
+<li>现存问题：交通时间、景点信息等细节有误，签证和准入要求等仍需人工核实，尚未实现 100% 自主运行</li>
+<li>核心体验转变：从使用孤立工具转向监督&quot;代思考&quot;的系统，目前已成为作者日常生产力驱动工具，并提供免费在线演示</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>我想测试一下 OpenClaw 在标准 ChatGPT 回复之外还能走多远，于是给自己设了一个真正的挑战：以最少的人工干预，组织一次多城市旅行（中国+日本）。</p>
+<p>我用了一套自托管的技术栈：MoLOS 作为结构化的生产力记忆层（管理代理的任务和笔记），OpenClaw 作为执行操作的 AI 代理。</p>
+<p>我的做法：只向系统输入行程数据（日期、兴趣和预算），让它自行创建规划任务。OpenClaw 自动生成逐日行程、推荐航班和酒店，并分配要去的景点。后台方面，MoLOS 把所有内容记录到任务和项目中。</p>
+<p>有些环节需要我审批，比如它给出的不同城市选项或预订操作，我只需阅读各个选项，把决定写入任务，MoLOS 就会自动与 OpenClaw 对接，继续推进工作。</p>
+<p>做得好的地方：初始行程结构相当清晰，甚至能检测日程冲突并调整时间。所有信息集中在一处（MoLOS），避免了数据分散在各个应用里。比如它自动创建了&quot;预订北京-上海航班&quot;、&quot;购买 JR 铁路通票&quot;等任务。</p>
+<p>不足之处：我发现了一些细节错误（交通时间有时不准，部分景点信息无效）。签证、准入要求等仍需人工核实。这还不是 100% 自主的系统。</p>
+<p>结果：与其说是在使用孤立的工具，不如说是在监督一个替我思考的系统。最终我在 MoLOS 里得到了一份可编辑的行程，包含 50 多个已完成的任务，以及完整的旅行文档。</p>
+<p>目前还在测试阶段，但它已经成为我日常生产力的核心工具，我对它相当满意。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>如果有人想了解具体实现方式，我现在正提供一个免费的在线演示，任何人都可以将自己的 OpenClaw 实例通过 MCP 连接到 MoLOS，亲身体验它如何将 OpenClaw 提升到全新维度。
+（另外还准备了开箱即用的 Docker 镜像）
+欢迎评论或私信了解更多详情。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这实际上是我最想测试的核心功能。</p>
+<p>它不只是生成行程。系统真的会执行工作流中的部分环节，而不只是提出建议。</p>
+<p>比如：</p>
+<ul>
+<li>自动创建并追踪任务（机票、签证、预订）</li>
+<li>自动结构化所有行程数据（地点、日期、限制条件），无需我手动整理</li>
+<li>当我添加新的限制条件（日期、城市、优先级）时，自动更新计划</li>
+</ul>
+<p>当然，我没让它完全自主完成预订（显然还没到那一步）。支付和关键事项我都保留了人工确认环节。</p>
+<p>所以它更像是一个持续组织、更新并推进执行的系统。</p>
+<p>这跟单纯给 ChatGPT 或 Claude 发提示词的感觉完全不同。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s0jigo/i_tried_planning_a_chinajapan_trip_with_ai_agents/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

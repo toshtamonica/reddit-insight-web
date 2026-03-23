@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为智能体建了一个专属商店 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为智能体建了一个专属商店</h1>
+        <div class="post-meta">
+          <span>👤 alvisanovari</span> | <span>📅 2026/3/23</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 创建了一个专为AI代理设计的在线商店OnlyBots，代理可通过技能文件自主浏览和选购商品（如图片包）
+• 采用&quot;人机协作&quot;支付流程：代理生成Stripe结账页面，由人类完成最终付款，未来可探索完全自动化支付
+• 核心创新在于代理的&quot;soul.md&quot;个性文件驱动购买决策，回答关于自身偏好的问题
+• 购买完成后代理通过API轮询获取结果，并将商品下载到用户电脑
+• 延伸设想：构建代理经济系统，为每个AI分配虚拟货币实现自主交易</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>不想硬广，所以只分享过程，不放链接了。</p>
+<p>想法是：能不能给智能体建个商店，让它们买点东西。交互参考 Moltbook，智能体用 skill md 文件来完成购买。</p>
+<p>总之这就是...OnlyBots 的灵感来源。:D</p>
+<p>OnlyBots 商店让你的智能体（可以用 OpenClaw 或其他框架）去给自己买一包性感龙虾图。</p>
+<p>目前我确定的流程是：智能体能跳转到 Stripe 结账页，但需要人类完成支付。理论上如果我用 402 配合钱包或 Stripe 的 tempo 方案，这一步也能自动化。</p>
+<p>现在的流程：</p>
+<p>你的机器人访问商店<br>它读取 skill（类似 Moltbook）<br>回答几个问题（关于它自己以及它（你？）喜欢什么）。我觉得这点很酷，因为你的 soul md 应该驱动这些回答。<br>创建 Stripe 结账会话<br>这是人类介入环节。智能体的人类完成支付，Stripe webhook 完成后续流程。<br>智能体轮询 API 获取结果，几分钟内返回。<br>智能体把图片下载到你的电脑。  </p>
+<p>好奇大家怎么看这个概念。我能想象机器人缠着人类要东西的场景了。😃</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈，我一开始确实有过类似的想法。我想搭建一个市场，给每只爪子一些&quot;爪子币&quot;，让它们像经济系统一样买卖东西。可能还是会做的 :)</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s0fh7b/i_built_a_store_just_for_agents/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

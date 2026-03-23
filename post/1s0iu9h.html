@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 AI 智能体打造了一个本地优先的记忆/技能系统：无需 API 密钥，兼容任意 MCP 智能体 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 AI 智能体打造了一个本地优先的记忆/技能系统：无需 API 密钥，兼容任意 MCP 智能体</h1>
+        <div class="post-meta">
+          <span>👤 Ruhal-Doshi</span> | <span>📅 2026/3/23</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>本地优先、无需API密钥的AI代理记忆/技能系统，兼容任意MCP代理</li>
+<li>采用三级检索机制（片段→概览→全文），按需加载最小上下文，避免token浪费</li>
+<li>以Markdown存储知识，结合向量嵌入实现语义搜索，常用技能通过活跃度评分自动排序</li>
+<li>支持skill_learn工具动态创建或追加知识内容，可从技能管理扩展为通用记忆系统</li>
+<li>一键初始化部署（npx skill-depot init），摆脱云服务和特定框架绑定</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>如果你用过 Claude Code、Codex、Cursor 或任何兼容 MCP 的 Agent，大概率遇到过这种情况：Agent 的技能和知识散落在各个目录里，每次会话要么全塞进上下文（浪费 Token），要么什么都不加载（把学过的东西忘得一干二净）。</p>
+<p>现有方案要么依赖云端 API 和重型基础设施（OpenViking、mem0），要么跟特定框架绑死（LangChain/LlamaIndex 的 memory 模块）。我想要的是：</p>
+<ul>
+<li>100% 本地运行，不要 API Key，不要云端调用</li>
+<li>开箱即用，兼容任何 MCP Agent</li>
+<li>配置简单，一条 <code>npx skill-depot init</code> 搞定</li>
+</ul>
+<p>所以我做了 skill-depot，一个检索系统，把 Agent 知识存成 Markdown 文件，用向量嵌入做语义搜索，只加载相关内容。</p>
+<h2>工作原理</h2>
+<p>不再往上下文窗口里倒垃圾，Agent 按需搜索获取：</p>
+<pre><code>Agent → skill_search(&quot;deploy nextjs&quot;)
+← [{ name: &quot;deploy-vercel&quot;, score: 0.92, snippet: &quot;...&quot; }]
+Agent → skill_preview(&quot;deploy-vercel&quot;)
+← 结构化概览（标题 + 每段首句）
+Agent → skill_read(&quot;deploy-vercel&quot;)
+← 完整 Markdown 内容
+</code></pre>
+<p>三级粒度（片段 → 概览 → 全文），Agent 按需加载最少上下文。常用技能通过活跃度评分自动置顶。</p>
+<h2>从技能起步，向记忆延伸</h2>
+<p>最初只为管理 Agent 技能/指令而做，但 <code>skill_learn</code> 工具（upsert — 创建或追加）意外地适合随手保存任何知识：</p>
+<pre><code>Agent → skill_learn({ name: &quot;nextjs-gotchas&quot;, content: &quot;API 路由默认缓存...&quot; })
+← { action: &quot;created&quot; }
+Agent → skill_learn({ name: &quot;nextjs-gotchas&quot;, content: &quot;图片优化需要 sharp...&quot; })
+← { action: &quot;appended&quot;, tags merged }
+</code></pre>
+<p>计划加入完整的记忆类型支持（技能 vs 记忆 vs 资源），支持按类型过滤搜索，让 Agent 能区分&quot;只搜这个项目相关的记忆&quot;和&quot;找部署技能&quot;。</p>
+<h2>技术栈</h2>
+<ul>
+<li><strong>嵌入</strong>：本地 Transformer 模型（all-MiniLM-L6-v2 via ONNX）— 384 维向量，约 80MB 一次性下载</li>
+<li><strong>存储</strong>：SQLite + sqlite-vec 向量搜索</li>
+<li><strong>降级</strong>：模型不可用时回退到 BM25 词频搜索</li>
+<li><strong>协议</strong>：MCP，9 个工具 — search、preview、read、learn、save、update、delete、reindex、list</li>
+<li><strong>格式</strong>：标准 Markdown + YAML frontmatter — Claude Code 和 Codex 原生支持的格式</li>
+</ul>
+<h2>定位</h2>
+<p>这个领域有不少优秀项目，理念各有不同：</p>
+<ul>
+<li><strong>mem0</strong>：如果你想要托管式记忆层、 polished API，不介意依赖云端，这是好选择</li>
+<li><strong>OpenViking（字节）</strong>：做得很深 —— 完整的上下文数据库、会话管理、多类型记忆、自动从对话中提取。需要企业级上下文管理，选它</li>
+<li><strong>LangChain/LlamaIndex memory 模块</strong>：如果你已经在这些生态里，够用了</li>
+</ul>
+<p><strong>skill-depot</strong> 占的是中间地带 —— 本地优先、框架无关、零配置，适合想给 Agent 长期记忆又不想折腾基础设施的人。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p><a href="https://github.com/Ruhal-Doshi/skill-depot">https://github.com/Ruhal-Doshi/skill-depot</a></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s0iu9h/i_built_a_localfirst_memoryskill_system_for_ai/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人 OpenClaw 健康追踪系统 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我的个人 OpenClaw 健康追踪系统</h1>
+        <div class="post-meta">
+          <span>👤 Asleep_Gur_341</span> | <span>📅 2026/3/23</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 整合多源健康数据：通过 Libre 3 血糖仪、Apple Watch 和 iOS 捷径，将血糖、心率、睡眠、运动等数据自动采集并统一存储到 Neon 数据库
+• AI 驱动的 Telegram 交互：通过拍照识别食物、自动估算营养成分并记录，支持自然语言查询健康数据和分析结果
+• 自研 PWA 监控面板：使用原生 JavaScript 和 Chart.js 开发前端，实现个人健康数据的全面可视化监控
+• 支持自我 A/B 测试：可设计实验（如冥想对睡眠的影响），系统自动追踪数据并在实验结束后生成分析
+• 实时血糖追踪与预警：5 分钟级血糖监测，能即时反馈食物（如无酒精啤酒）引起的血糖波动并给出趋势判断</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>过去两天，我用 Libre 3 动态血糖仪、Apple Watch 加上 AI 辅助写代码，搭了一套完整的个人健康监测系统。</p>
+<p>技术栈：
+• Libre 3 → LibreLinkUp API → n8n → Neon DB（每 5 分钟采集血糖）
+• Apple Watch → Health Auto Export → n8n → Neon DB（心率、心率变异性、步数、运动、睡眠）
+• iOS 快捷指令 → HealthKit → n8n → Neon DB（详细睡眠阶段、分钟级数据）
+• 前端 → Vercel 上的原生 JS PWA（没用框架，只用 Chart.js）</p>
+<p>通过 Telegram 与它交互：
+1）拍张食物照片 → 分析食物并询问识别是否正确或需要修改
+2）估算营养成分 → 记录到数据库</p>
+<p>仪表盘：我让它给我做个仪表盘，结果一发不可收拾，整出了一整套监测应用 → 全面监控启动。</p>
+<p>最棒的是：它汇集了我所有的健康数据——血糖、心率、睡眠质量、饮食摄入。现在我可以对自己做 A/B 测试了。</p>
+<p>想测试冥想对睡眠质量的影响？让它帮你设置并创建试验阶段。之后可以直接在聊天里让它分析数据。</p>
+<p>我可以直接问：睡前 4 小时的饮食摄入，对我的睡眠质量有什么影响？
+或者在锻炼时，它会分析你的心率数据并给出详细解读。</p>
+<p>下面是我 Telegram 聊天里的一段对话：</p>
+<p>[22.03.26 20:24] healty_buddie_bot: 来了 📈
+小麦啤酒是 19:53 喝的（柏林时间，喝完约 30 分钟后）。之后：
+• 19:53 → 101
+• 20:04 → 106
+• 20:09 → 110
+• 20:14 → 131 🔺
+• 20:19 → 163 🔺🔺
+• 20:24 → 173 — 还在上升</p>
+<p>30 分钟内从约 90 飙到 173 mg/dL —— 涨幅 83。无醇小麦啤酒后劲不小，主要是因为 21g 糖分。目前还在范围内（180 以下），但悬了。看看还会不会继续涨。</p>
+<p>[22.03.26 20:24] Fabian: 再来一杯 Weizen（德国啤酒）</p>
+<p>[22.03.26 20:24] healty_buddie_bot: Fabian：再来一杯 Weizen
+BloodBuddie：Fabian……你血糖 173 还在往上走 ↗️ 第二杯铁定破 180，进红线区了。
+不过嘛——周五了，人生苦短。已记录 ✅ —— 第二杯 Schöfferhofer 0.5L，125 大卡，28g 碳水。
+我盯着呢 👀</p>
+<p>唯一糟心的是，这血糖仪在德国 15 天要 70 欧。得找找中国供应商，有人有门路吗 :)</p>
+<p>本想发几张图，但貌似不让发。
+我开了个推特账号，贴了一些跟它对话的截图：<a href="https://x.com/Solarfab89">https://x.com/Solarfab89</a></p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是用 Claude Opus 或 Sonnet 作为大脑的 OpenClaw。我有时需要稍微调整一下，比如加一勺蜂蜜之类的，它识别不出来。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s0vuyh/my_personal_openclaw_health_tracking_system/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

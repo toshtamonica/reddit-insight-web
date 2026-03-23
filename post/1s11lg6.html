@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今天我构建了"Clawfluence"——一个面向OpenClaw智能体的自文档化知识库！ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>今天我构建了"Clawfluence"——一个面向OpenClaw智能体的自文档化知识库！</h1>
+        <div class="post-meta">
+          <span>👤 mearcliff</span> | <span>📅 2026/3/23</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• Clawfluence 是为 OpenClaw AI 代理设计的自动文档知识库平台，解决代理工作缺乏集中记录、难以追踪项目成本和决策的问题
+• 核心功能包括：自动触发文档生成、结构化记录项目信息、内置成本追踪表记录每次 token 消耗、支持全文搜索和分类空间管理
+• 与传统文档工具的区别在于完全自动化（无需人工指令）、实时成本可视化、类似 Confluence 的组织架构和现代化 UI 设计
+• 实际应用案例显示，用户可通过该平台清晰掌握项目总 token 消耗（如 Diopicks 项目累计 59k tokens），实现对多代理运行成本的精准管控</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，想分享一个我最近做的工具，意外地好用。</p>
+<p><strong>问题：</strong> 如果你在实际项目中运行 OpenClaw 智能体，你一定懂这种痛苦——智能体干活很给力，但没有统一的地方追踪它做了什么、做了哪些决策，或者每个项目花了你多少 token。最后只能翻遍会话日志和记忆文件，试图拼凑出全貌。</p>
+<p><strong>解决方案：</strong> 我做了 Clawfluence——本质上就是专为 AI 智能体设计的 Confluence。它是一个文档平台，你的 OpenClaw 智能体在工作时会自动为每个项目生成文档。</p>
+<p><strong>工作原理：</strong></p>
+<ul>
+<li>它是一个技能（<code>clawfluence-docs</code>），在智能体完成项目工作时自动触发——包括新构建、功能增强、Bug 修复、架构决策</li>
+<li>智能体撰写结构化文档页面，包含项目概览、架构设计、文件结构、部署说明和状态追踪</li>
+<li>每个页面都有<strong>成本追踪表</strong>，记录每次变更的 token 消耗，让你随时掌握项目开销</li>
+<li>液态玻璃 UI（深色玻璃拟态风格）——说实话，帅炸了</li>
+</ul>
+<p><strong>这和直接写文档有什么区别？</strong></p>
+<ul>
+<li><strong>全自动。</strong> 你不用吩咐智能体去写文档——它自己就会写</li>
+<li><strong>成本追踪。</strong> 每次子智能体运行、每次重大编辑都记录 token 数</li>
+<li><strong>全文搜索。</strong> 按 Ctrl+K 即可搜索所有项目文档</li>
+<li><strong>空间划分。</strong> 像真正的 Confluence 一样分为工程、产品、设计、运营等空间</li>
+<li><strong>行内编辑。</strong> 可以手动调整任何内容</li>
+</ul>
+<p><strong>真实案例：</strong> 我让智能体跑一个每日体育预测流水线（Diopicks）。Clawfluence 自动追踪每次迭代——初始构建（26k token）、品牌重塑与扩展（又花了 33k）、定时任务配置等等。一眼就能看出这个项目总共花了我约 59k token。当你同时跑多个项目时，这种可见性太重要了。</p>
+<p><strong>技术栈：</strong> 纯 HTML/CSS/JS，不需要框架。数据存在 localStorage，支持 JSON 导入导出。直接打开 index.html 就能用——无需服务器。</p>
+<p>它是作为 OpenClaw 技能构建的，任何人都可以直接集成到自己的工作区。欢迎反馈或建议，看看还有什么值得追踪的功能。目前在考虑加入版本历史对比和跨项目依赖映射。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p><a href="https://preview.redd.it/n7wbldkbroqg1.png?width=1576&format=png&auto=webp&s=37e9cd5a88312f23c0dd819bd5d0f3c87411ac1b">https://preview.redd.it/n7wbldkbroqg1.png?width=1576&amp;format=png&amp;auto=webp&amp;s=37e9cd5a88312f23c0dd819bd5d0f3c87411ac1b</a></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s11lg6/today_i_built_clawfluence_a_selfdocumenting/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

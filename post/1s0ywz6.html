@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我给家里装了个大脑：50天自托管AI实测，叫醒、打扫、记账、评判睡眠，全自己跑，真香 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我给家里装了个大脑：50天自托管AI实测，叫醒、打扫、记账、评判睡眠，全自己跑，真香</h1>
+        <div class="post-meta">
+          <span>👤 RelationDull2825</span> | <span>📅 2026/3/23</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者自建了名为 G-Bot 的 AI 助手，基于 OpenClaw 运行 50 天，通过 Telegram 交互，支持 12+ 大模型按需调度（如 Kimi K2.5 处理复杂推理、Claude 处理代码、MiniMax 处理语音播报）
+• 系统架构采用 Linux VM + 9 个 Docker 容器，实现 23 项服务监控和 1000+ 记忆块，支持英法双语无缝切换
+• 深度整合 Home Assistant 实现全屋智能：扫地机器人分 room 清洁、Hue 灯光自动化、Govee 温湿度监测入库、摄像头按需抓拍、Nest Hub 语音播报与 AI 新闻投屏等
+• 功能覆盖四大场景：晨起简报（新闻/天气/日程/创意）、财务追踪、健康睡眠监测、长期记忆对话（如记住历史 bug 修复方案）
+• 实践中踩坑：Roborock 扫地机器人 API 每次调用会静默重置拖地强度，导致全屋被拖一遍的教训</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好！我运行一个自托管的 AI 助手 G-Bot 已经大约 50 天了，它基于 OpenClaw 构建。最初只是一个简单的 Telegram 聊天机器人，后来逐渐发展成能管理我的家、追踪财务、监测健康，并且了解我的一切。以下是完整的技术拆解。</p>
+<p><strong>数据一览</strong>：12+ 个大语言模型 · 9 个 Docker 容器 · 23 个监控服务 · 1,078 个记忆片段 · 7×24 小时运行</p>
+<p>🧠 <strong>核心架构</strong>
+G-Bot 跑在一台 Linux 虚拟机上，我全程通过 Telegram 与它交互。所有消息都流经一个以 systemd 用户服务运行的 OpenClaw Gateway。</p>
+<p>默认模型是 GLM-5（Ollama 云端中继），但它会根据任务智能选择模型：</p>
+<ul>
+<li><strong>Kimi K2.5</strong> — 复杂推理、长上下文</li>
+<li><strong>Claude Sonnet</strong> — 精细的编程任务</li>
+<li><strong>MiniMax M2.7</strong> — 语音晨间简报</li>
+<li><strong>GLM4-Flash</strong> — 轻量级后台任务</li>
+</ul>
+<p>它还完全支持双语（法语/英语）—— 我一句话里中英法混着说，它都能跟上。</p>
+<p>示例指令：</p>
+<ul>
+<li>&quot;给我一份晨间简报 —— 新闻、天气、日程，再加一个 AI 项目灵感&quot;</li>
+<li>&quot;这个月我在餐厅花了多少钱？&quot;</li>
+<li>&quot;Tu te souviens comment on a fixé le bug du Roborock?&quot;（它记得 😄）</li>
+</ul>
+<p>🏠 <strong>智能家居</strong>
+所有设备通过 Home Assistant（Docker）接入：</p>
+<ul>
+<li><strong>Roborock S7 Max Ultra</strong> — 通过分区 ID 实现分房间清扫</li>
+<li><strong>Philips Hue</strong> — 日出/日落自动化</li>
+<li><strong>Govee H5100 温湿度计</strong> — 3 个房间 + 室外，每 5 分钟数据 → InfluxDB</li>
+<li><strong>Tapo C225 摄像头</strong> — ffmpeg 截取 RTSP 画面 + ONVIF 云台控制，按需发送照片到 Telegram</li>
+<li><strong>Google Nest Hub 2</strong> — TTS 语音播报 + 照片轮播（Immich Kiosk）+ DashCast AI 新闻幻灯片</li>
+<li><strong>VeSync 加湿器</strong> — 湿度自动调节</li>
+<li><strong>NVIDIA Shield</strong> — ADB 控制投送 URL</li>
+<li><strong>Sonos</strong> — 语音控制音乐</li>
+</ul>
+<p>⚠️ <strong>踩坑经验</strong>：Roborock 的 <code>app_segment_clean</code> 每次调用都会静默重置拖地强度。我为此完整重绘了一次地图。启动前务必设置拖地参数并 <code>sleep 15</code>。API 文档里根本没提这事。</p>
+<p>示例指令：</p>
+<ul>
+<li>&quot;在 Hub 上投送我的照片&quot;</li>
+<li>&quot;让我看看摄像头里的猫&quot;</li>
+<li>&quot;卧室现在多少度？&quot;</li>
+<li>&quot;打扫厨房和卫生间&quot;</li>
+<li>&quot;在 Sonos 上播放我的 Spotify 歌单&quot;</li>
+<li>&quot;电影模式 —— 调暗灯光&quot;</li>
+</ul>
+<p>💰 <strong>财务追踪</strong>
+完整的 Firefly III 配置，支持银行自动同步：</p>
+<ul>
+<li>SimpleFIN Bridge 同步 13 个账户（支票、信用卡、储蓄、RRSP、LIRA、TFSA），每天 2 次</li>
+<li>65+ 条自动分类规则</li>
+<li>4 个预算，设月度限额</li>
+<li>自定义 Python 脚本全量推送至 InfluxDB → Grafana（支出仪表盘 + 退休投资组合走势）</li>
+</ul>
+<p>示例指令：</p>
+<ul>
+<li>&quot;这个月我在餐厅花了多少钱？&quot;</li>
+<li>&quot;AI 工具预算超了吗？&quot;</li>
+<li>&quot;汇总 2026 年 Q1 前五大支出类别&quot;</li>
+<li>&quot;退休投资组合比上月表现如何？&quot;</li>
+</ul>
+<p>🏃 <strong>健康追踪</strong>
+Apple Health 数据通过本地 webhook 自动同步到 InfluxDB：</p>
+<ul>
+<li>6 个 Grafana 仪表盘（睡眠、HRV、心率、最大摄氧量、活动、血氧）</li>
+<li>随机森林 ML 模型，每周日凌晨 3 点自动重训练</li>
+<li>13 个 CLI 命令：<code>summary</code>、<code>predict-sleep</code>、<code>anomalies</code>、<code>correlations</code>、<code>best-days</code>……</li>
+</ul>
+<p>⚠️ 曾</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这是一台在 Windows 11 Pro 宿主机上的 Hyper-V 中运行的 Unubuntu 虚拟机：
+i7 14代，64GB 内存，RTX 3090</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s0ywz6/i_gave_my_home_a_brain_heres_what_50_days_of/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
