@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>那些意外好用的 OpenClaw 插件（以及我现在离不开的几款） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>那些意外好用的 OpenClaw 插件（以及我现在离不开的几款）</h1>
+        <div class="post-meta">
+          <span>👤 geekeek123</span> | <span>📅 2026/3/24</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 开发工具类插件显著提升效率：commit-guard 防止敏感信息泄露，dep-audit 一键扫描漏洞，pr-review 自动捕捉代码问题，docker-helper 和 api-tester 减少频繁切换窗口的操作
+• 代码库分析插件帮助快速理解项目：git-stats 提供代码热点和贡献者信息，todo-scanner 发现遗留问题，file-metrics 评估代码库复杂度，changelog-gen 自动生成详细更新日志
+• 内存管理插件解决长期会话痛点：cortex-memory 实现分层记忆，memory-lancedb-pro 优化检索性能，lossless-claw 避免会话中途丢失上下文</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>这周花了不少时间研究 OpenClaw 插件，把必需的都测了一遍。有些确实让我意外。
+按类别整理如下：</p>
+<p><strong>开发工具</strong></p>
+<ul>
+<li><strong>commit-guard</strong>：推送前拦截密钥、大文件和劣质提交。已经两次帮我避免了社死，不然团队负责人肯定要找我谈话。</li>
+<li><strong>dep-audit</strong>：一条命令扫描几乎所有技术栈的漏洞。居然在我以为很干净的副业项目里发现了漏网之鱼， humbling。</li>
+<li><strong>pr-review</strong>：AI 代码 diff 摘要，在正式评审前抓低级错误。本来挺怀疑的，结果它揪出了我留在三个文件里的 console.log。出乎意料地不是表面功夫。</li>
+<li><strong>docker-helper</strong>：不用切出聊天窗口就能查日志和容器状态。以前每天要 alt-tab 到终端五十次，现在不用了。</li>
+<li><strong>api-tester</strong>：直接调用接口并格式化输出 JSON。同事看我用了之后，问我怎么早没装。</li>
+<li><strong>git-stats</strong>：展示代码库热点和贡献者，让 agent 动手前真有上下文。编辑策略完全不一样。</li>
+<li><strong>todo-scanner</strong>：找出所有被遗忘的 TODO/FIXME 地雷。在老项目上跑了一次，真心想哭。先警告你了。</li>
+<li><strong>changelog-gen</strong>：基于约定式提交自动生成更新日志。比我试过的大多数自动生成工具都实用。用户开始夸我们发版说明详细了。</li>
+<li><strong>file-metrics</strong>：快速摸底仓库到底有多乱。每次接手别人代码必用，让我知道自己在踩什么坑。</li>
+</ul>
+<p><strong>记忆</strong></p>
+<ul>
+<li><strong>cortex-memory</strong>：分层记忆，设计确实用心。以前长会话到后面就崩，这个稳得住。</li>
+<li><strong>memory-lancedb-pro</strong>：检索比默认强。记忆密集型任务直接换这个，一小时内就能感觉到差别。</li>
+<li><strong>lossless-claw</strong>：会话中途不再丢上下文。装上就不用管了，再也不用操心压缩问题，这就是目的。</li>
+<li><strong>openclaw-engram</strong>：完全本地记忆，隐私优先。哪怕只有一点点担心数据去向——说实话你应该担心——就用这个。</li>
+</ul>
+<p><strong>集成</strong></p>
+<ul>
+<li><strong>composio</strong>：把 OpenClaw 连到 860+ 工具，包括 Gmail、Slack、GitHub、Notion、Linear，不用自己管 OAuth。凭据由 Composio 托管，OpenClaw 不碰你的主密钥。我拖了两周才装，装完就后悔怎么没早点弄。</li>
+</ul>
+<p><strong>安全</strong></p>
+<ul>
+<li><strong>env-guard</strong>：在 agent 看到之前就把工具输出里的密钥和 API key 脱敏。先装这个，别的再说。我是认真的。</li>
+<li><strong>clawsec</strong>：完整安全套件，拦截提示注入等一大堆问题。配合 env-guard 打底很稳。花了一下午配好，每分钟都值。</li>
+<li><strong>secureclaw</strong>：跑 OWASP 风格检查，找你真漏掉的东西。首次运行就在我环境上找出两个问题，都不明显。</li>
+</ul>
+<p><strong>可观测性与成本</strong></p>
+<ul>
+<li><strong>cost-tracker</strong>：final</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s1hnr3/the_openclaw_plugins_i_didnt_expect_to_love_and/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 2026.3.22-beta.1 更新要点：你的工作流真正需要关注什么 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>OpenClaw 2026.3.22-beta.1 更新要点：你的工作流真正需要关注什么</h1>
+        <div class="post-meta">
+          <span>👤 SelectionCalm70</span> | <span>📅 2026/3/24</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li><strong>插件安装源优先级变更</strong>：裸包名安装时优先从 ClawHub 获取，npm 降为后备，维护者需将插件上架 ClawHub 以确保用户无缝安装</li>
+<li><strong>Chrome 扩展中继方案废弃</strong>：旧版浏览器自动化扩展路径已移除，需运行 <code>openclaw doctor --fix</code> 迁移至 existing-session 模式，Docker/无头/远程流程不受影响</li>
+<li><strong>核心架构向模块化演进</strong>：更新涉及 Discord 机器人、浏览器自动化、语音工作流等多场景的基础组件重构，提升安全性与可移植性</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>如果你用 OpenClaw 不只是聊聊天——比如跑 Discord 机器人、浏览器自动化、插件驱动的智能体、语音工作流，或者移动端节点——这次更新不动声色地重构了一堆底层模块，让你的现有配置更模块化、更安全，也更容易交接给别人。</p>
+<p>这篇帖子只聊实际用例价值。有兴趣的话，把你的配置或迁移方案丢到评论区，咱们一起攒个&quot;智能体配置&quot;的共享库。</p>
+<hr>
+<p><strong>ClawHub 现在是默认安装源——npm 降级为备选</strong></p>
+<p>来自更新日志：</p>
+<blockquote>
+<p>Plugins/install: 裸 openclaw plugins install 现在优先使用 ClawHub 解析 npm 安全名称，仅当 ClawHub 没有该包或版本时才回退到 npm。</p>
+</blockquote>
+<p>对你意味着什么：</p>
+<ul>
+<li>如果你之前用裸包名装插件，解析顺序已经翻转，ClawHub 现在优先。</li>
+<li>npm 仍然可用——只是不再是第一站。</li>
+</ul>
+<p>用例视角：</p>
+<ul>
+<li>如果你维护内部或社区插件，现在就把它们上架 ClawHub，这样用户安装时无需指定来源即可直接可用。</li>
+<li>顺便审计一下你的插件安装脚本，确保解析行为仍然正确。</li>
+</ul>
+<hr>
+<p><strong>Chrome 扩展中继已移除——existing-session 是唯一正路</strong></p>
+<p>来自更新日志：</p>
+<blockquote>
+<p>Browser/Chrome MCP: 移除遗留的 Chrome 扩展中继路径、捆绑的扩展资源、driver: &quot;extension&quot; 和 browser.relayBindHost。运行 openclaw doctor --fix 进行迁移。</p>
+</blockquote>
+<p>对你意味着什么：</p>
+<ul>
+<li>任何依赖扩展中继的浏览器自动化，升级后会直接挂掉。</li>
+<li>openclaw doctor --fix 会自动把本机配置迁移到 existing-session / user 模式。</li>
+<li>Docker、无头、沙箱和远程浏览器流程不受影响——它们继续走原生 CDP。</li>
+</ul>
+<p>用例视角：</p>
+<ul>
+<li>如果你用浏览器工具，升级后第一件事就是跑 openclaw doctor --fix。</li>
+<li>以后写浏览器智能体配置，围绕 existing-session 来构建——这才是现在的稳定路径。</li>
+</ul>
+<hr>
+<p><strong>图像生成已整合——nano-banana-pro 彻底退场</strong></p>
+<p>来自更新日志：</p>
+<blockquote>
+<p>Tools/image generation: 将 stock 图像创建/编辑路径统一到核心 image_generate 工具。旧的 nano-banana-pro 文档/示例已移除。
+Skills/image generation: 移除捆绑的 nano-banana-pro skill 包装器。使用 agents.defaults.imageGenerationModel.primary: &quot;google/gemini-3-pro-image-preview&quot; 走原生路径。</p>
+</blockquote>
+<p>对你意味着什么：</p>
+<ul>
+<li>如果你曾经抄过 nano-banana-pro 的示例 skill 配置，现在它已经坏了。</li>
+<li>新路径更干净：设置 agents.defaults.imageGenerationModel.primary，内置图像生成直接可用。</li>
+</ul>
+<p>用例视角：</p>
+<ul>
+<li>更新所有通过旧 skill 包装器接入图像生成的智能体配置。</li>
+<li>一行配置取代过去整段 skill 配置块。</li>
+</ul>
+<hr>
+<p><strong>Plugin SDK 全新公开接口——无兼容垫片</strong></p>
+<p>来自更新日志：</p>
+<blockquote>
+<p>Plugins/SDK: 新的公开插件 SDK 接口为 openclaw</p>
+</blockquote>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好的，感谢提供这些有用的信息。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>根据更新日志，我认为他们并没有解决安全问题。
+这更像是重构旧代码。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>啥叫&quot;LLM发帖&quot;啊，我把更新日志简化一下，让非技术用户也能看懂，这有什么问题吗</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s1d310/i_read_the_openclaw_2026322beta1_release_notes_so/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

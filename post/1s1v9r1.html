@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个事件驱动的 cron 心跳轮询替代方案 —— 开源，期待反馈 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个事件驱动的 cron 心跳轮询替代方案 —— 开源，期待反馈</h1>
+        <div class="post-meta">
+          <span>👤 mindfulcitizen</span> | <span>📅 2026/3/24</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者开发了 heartbeat-gateway，用事件驱动替代传统的 cron 心跳轮询，将月度成本从约 $86 降至约 $4.50，延迟从 30 分钟缩短至 2 秒内</li>
+<li>系统接收 GitHub/Linear/PostHog 的 webhook，通过零成本预过滤和轻量 LLM 分类，将有效事件直接写入 HEARTBEAT.md 供代理读取</li>
+<li>该工具并非完全取代心跳系统，cron 仍适用于定时任务，仅用于处理工具已知的反应性事件</li>
+<li>项目已开源（Apache-2.0），处于生产环境，但配置流程仍较手动，计划增加配置验证器和简化部署</li>
+<li>作者寻求三方面反馈：SOUL.md 分类器的上下文读取策略、预过滤的范围粒度、以及还需支持哪些 webhook 来源</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在 VPS 上跑 OpenClaw 已经几周了，心跳轮询的 API 账单让我挺头疼的。看来这不是我一个人抱怨。每隔 30 分钟，agent 就要加载完整上下文，问 LLM 有没有变化，结果 99% 的时间收到的都是 HEARTBEAT_OK。按默认设置算下来，一个月大概 86 美元。</p>
+<p>我知道项目已经加了 lightContext 和 isolatedSession 来优化——这些改进不错。但本质上还是在轮询。agent 还是在定时问&quot;有没有事发生&quot;，而不是在有事发生时被通知。</p>
+<p>所以我做了 heartbeat-gateway。它接收 GitHub、Linear 和 PostHog 的 webhook，先跑一个零成本的预过滤（按仓库/项目/分支限定范围、永远丢弃的名单），然后用轻量级 LLM 调用（约 200 token）把符合条件的事件跟你的 SOUL.md 做匹配。有行动价值的事项直接写入 HEARTBEAT.md。你的 agent 读取方式和以前一样。</p>
+<p>成本：约 4.5 美元/月。延迟：2 秒内，而不是最长 30 分钟。</p>
+<p>这不是要取代整个心跳系统——cron 对时间类任务依然合理，比如每日摘要和定时汇总。这个只处理你的工具已经知道、能主动推送给你的响应式事件。</p>
+<p>v0.1.1，Apache-2.0 协议，Python 3.11+。已生产环境运行。134 个测试通过。部署目前还是手动的，我知道上手体验比较糙——如果真有人用，我计划做个 gateway doctor 配置校验器和更简单的部署选项。</p>
+<p>仓库：<a href="https://github.com/kahunahana/heartbeat-gateway">https://github.com/kahunahana/heartbeat-gateway</a></p>
+<p>真心想听听反馈：</p>
+<p>SOUL.md 分类器的接口——读取前 500 个字符合理吗，还是你想要别的上下文策略？</p>
+<p>预过滤的范围限定——仓库/项目/分支够了吗，还是你想要事件类型级别的控制？</p>
+<p>你实际想要哪些 webhook 来源？现在是 GitHub、Linear、PostHog。正在考虑 Slack、Sentry、Jira。</p>
+<p>架构问题随便问。完全坦白：我是 PM，不是软件工程师。这个是我用 Claude Code 做的，因为我需要它，不想干等着别人做。代码能用、有测试，但肯定有经验丰富的 Python 开发者能改进的模式——这也是我分享的原因之一。</p>
+<p>我是新人，还在学习。以及是的，用 Anthropic 的工具来优化 Anthropic API 的成本，这个讽刺我没忽略。这篇帖子也是 Claude 写的 ;-)</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s1v9r1/i_built_an_eventdriven_replacement_for_cron/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

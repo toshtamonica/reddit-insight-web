@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>你们到底是怎么做到运行 OpenClaw 又不烧钱的？ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>你们到底是怎么做到运行 OpenClaw 又不烧钱的？</h1>
+        <div class="post-meta">
+          <span>👤 Big-Inevitable-9407</span> | <span>📅 2026/3/24</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 实际运行成本与网上宣传的&quot;低成本&quot;差距巨大，API调用费用累积迅速（如Anthropic 15分钟消耗€10）
+• 便宜方案存在明显缺陷：本地Ollama运行太慢、免费GLM API响应延迟高达7分钟、Gemini免费额度政策已变更
+• 简单业务场景（线索生成、基础工作流）仍难以找到性价比稳定的方案，便宜模型不可靠、可靠模型成本高
+• 本地部署（如Mac mini）虽被推荐，但用户因安全稳定性考虑不愿依赖个人设备，也不想额外购置硬件
+• 用户核心诉求：寻找经长期验证、真实可落地的稳定低成本方案，而非演示或理想场景下的配置</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我想搞明白大家是怎么低成本跑 OpenClaw 的，因为我的体验完全相反。</p>
+<p>我试了一堆方案，结果卡在同个问题上。用了 Anthropic API，15 分钟左右烧了 10 欧元。然后换 Gemini，想着能用赠金，但 3 月份政策变了之后根本没那么回事。最开始用的 Hostinger VPS，现在换到 Hetzner。也试过本地跑 Ollama，但机器太慢，根本没法用。还测了很多其他选项，甚至试过免费的 GLM API，结果完全过载，等个响应要 7 分钟左右。（现在打算试试 Deepseek）</p>
+<p>我的使用场景一点都不复杂。不是要搞什么高级自治系统或者编程 Agent，就是想要个能做潜客开发和简单工作流的东西。基础、稳定、不花哨就行。</p>
+<p>但现在的感觉是，便宜模型要么太慢要么不靠谱，真正能用的又因为调用量累积，成本远超预期。</p>
+<p>还看到很多人说直接用 Mac mini 本地跑所有东西。我确实有 Mac，但不想把个人机器搭进去，主要是安全和稳定性考虑，也不想专门买个 Mac mini 就为了跑这个。</p>
+<p>现在感觉我肯定漏掉了什么，因为我的实际体验和网上看到的（20 个 Agent 每月只要几美元/欧元）完全对不上。如果真有人能稳定跑起来，成本不会爆炸、系统也不会崩，我很想知道实际配置到底是什么样的。不要演示或者理想情况，就要真实能长期稳定跑的那种。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s1t8d0/how_are_you_actually_running_openclaw_without/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
