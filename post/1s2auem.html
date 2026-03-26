@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我让 Opus 4.6 和 GPT 5.4 互相评审，设计了一套内存栈架构，这是它们的成果 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我让 Opus 4.6 和 GPT 5.4 互相评审，设计了一套内存栈架构，这是它们的成果</h1>
+        <div class="post-meta">
+          <span>👤 Terumag</span> | <span>📅 2026/3/26</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>通过让 Claude Opus 4.6 和 GPT 5.4 相互评审，设计出一套分层记忆栈架构，而非依赖单一插件</li>
+<li>核心设计原则：不同记忆插件解决不同层级问题，因此采用 Lossless Claw（LCM）作为第一层替代默认压缩</li>
+<li>AI 互评方法有效：Opus 擅长架构与插件细节，GPT 擅长运营风险与边界情况，三轮迭代后收敛到双方都认可的设计</li>
+<li>GPT 评审发现的关键问题：反馈循环风险、cron 权限过大、FTS5 验证缺失、版本锁定和 token 开销</li>
+<li>研究覆盖的记忆插件包括：Mem0、Supermemory、Cognee、Hindsight、QMD、Lossless Claw、LanceDB、MemOS 等</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>刚开始接触 OpenClaw，想先把记忆层的基础打牢，再往上搭建其他东西。我不是工程师，但有技术/商业背景，能跟得上技术细节。目前通过 API token 运行 Opus 4.6 作为主模型（暂时先用着，等环境稳定后再降级）。</p>
+<p>和所有人一样，很快就撞上了记忆问题。在这里、Discord、博客、GitHub issue 等地方读了一堆资料。与其随便选一个插件赌运气，我决定尝试实现一套分层架构。</p>
+<p>我做了什么</p>
+<p>调研了当前的记忆插件生态（Mem0、Supermemory、Cognee、Hindsight、QMD、Lossless Claw、LanceDB、MemOS 等）</p>
+<p>和 Claude Opus 4.6 一起设计记忆策略。研究过程中反复出现的一个核心洞见是：没有单个插件能解决所有记忆问题——它们运作在不同的层级上。所以我们设计了一套分层架构。</p>
+<p>让 Opus 写了一份完整的实现提示词（就是那种贴进 OpenClaw 让它直接执行的）。</p>
+<p>质量把关方面，我把整套设计发给 GPT 5.4 做同行评审。GPT 确实揪出了一些问题——反馈循环风险、权限过大的定时任务、FTS5 验证缺口、版本锁定、以及 token 开销顾虑。</p>
+<p>然后我把 GPT 的反馈回传给 Opus 回应。Opus 接受了大部分，对几点做了反驳，并向 GPT 提出澄清问题。</p>
+<p>GPT 回应，Opus 再次回应，三轮之后双方收敛到一个最终设计，都认可签字。</p>
+<p>AI 互审 AI 的方法效果其实很好。它们发现的问题各不相同。Opus 在架构和插件层面细节更强。GPT 在运营风险、边界情况、以及&quot;这东西崩了怎么办&quot;方面更敏锐。</p>
+<p>它们最终确定的分层架构</p>
+<p>第一层：Lossless Claw（LCM）——完全替代默认的压缩机制。不是把旧消息总结后删掉，而是把每条消息都保留在 SQLite 数据库中，并构建一个渐进式压缩摘要的树状结构（有向无环图）。模型看到的是摘要 + 最新消息，但可以通过 lcm_grep、lcm_expand 等工具钻取完整细节。总结用 Haiku 跑，控制成本。</p>
+<p>第二层：SQLite 混合搜索——不是插件，只是改配置。开启 BM25 关键词匹配，配合默认的向量搜索。这样精确术语（项目名称、错误码、ID）能被真正找到，而不只是语义相近的内容。同时启用 MMR 保证结果多样性，以及时间衰减让近期笔记排名更高。大多数人似乎不知道这个功能存在——内置的，但默认关闭。</p>
+<p>第三层：Mem0 Cloud——跨会话持久记忆。自动召回在每轮响应前注入相关事实，自动捕获在每轮响应后提取事实。调参为 topK=3、更高的搜索阈值（0.45）以降低 token 开销。这一层让它能在会话重启后仍然记得你。</p>
+<p>配套配置：</p>
+<p>7</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s2auem/i_had_opus_46_and_gpt_54_peerreview_each_other_to/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

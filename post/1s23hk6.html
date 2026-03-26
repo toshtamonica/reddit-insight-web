@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大家用 OpenClaw 到底在做什么？这是我的用法 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>大家用 OpenClaw 到底在做什么？这是我的用法</h1>
+        <div class="post-meta">
+          <span>👤 Additional_Shake_422</span> | <span>📅 2026/3/26</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>OpenClaw 近期热度极高，但部署复杂，作者选择先用更简单的 SkyClaw 入门</li>
+<li>日常追踪是最实用的功能：自动每晚收集消费、情绪、运动等数据，生成日/周总结</li>
+<li>图像识别购物：发送照片即可自动识别商品并加入亚马逊购物车</li>
+<li>自动化信息聚合：每日 AI 新闻摘要、饮食记录估算卡路里、自动抓取并整理招聘信息</li>
+<li>核心优势在于低摩擦交互：无需结构化输入，随意回复即可自动整理成有序数据</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最近 OpenClaw 简直无处不在。怎么说呢……我在 Reddit 上刷个 5 分钟就能看到有人提到它。</p>
+<p>说实话——我被这股 hype 带动了，真的很想试试。
+然后我去研究了一下实际部署……结果就卡住了。功能确实强大，但如果你只是想快速跑起来，部署过程还是挺折腾的。所以没直接硬上，我决定先找个更简单的试试——SkyClaw。</p>
+<p>另外，我发现这里很多人问：&quot;大家到底用 OpenClaw 干什么？&quot;
+那就说说我在用的——没什么花哨的，就是日常真实场景：</p>
+<p><strong>日常生活追踪</strong>（这个我用得最久）每天晚上 9 点它都会来问我：</p>
+<ul>
+<li>今天花了多少钱（花在哪了）</li>
+<li>心情怎么样（1-10 分 + 简单备注）</li>
+<li>有没有运动
+……</li>
+</ul>
+<p>好处是我不用很正式地记录，随便回复几句，它会自动整理好。
+然后生成每日总结，我可以在一个简单的 HTML 页面里查看所有内容。
+周末还会给周报 + 一些基础分析，其实挺有用的。</p>
+<p><strong>&quot;发图 → 加购物车&quot;</strong> 我给它发张东西的照片，它能识别出来并加到亚马逊购物车。</p>
+<p><strong>早间 AI 新闻</strong> 每天早上收到一小份 AI 新闻摘要，不会信息过载，刚好跟上节奏。</p>
+<p><strong>饮食记录</strong> 随便打几个字说吃了啥（哪怕很随意），它会估算卡路里并长期追踪。比传统 App 省事多了。</p>
+<p><strong>求职追踪</strong>（这个低调但超实用）每天自动抓取新职位（我设的是数据类岗位），然后：</p>
+<ul>
+<li>有新职位就通知我</li>
+<li>提取关键信息（公司、岗位、地点、技能要求、链接）</li>
+<li>自动更新到表格里</li>
+</ul>
+<p>久而久之，我就有了自己的结构化求职追踪系统，不用每天手动去搜了。</p>
+<p>说实话，我觉得这类工具火起来不只是因为&quot;AI 很酷&quot;，而是：</p>
+<ul>
+<li>能直接在 WhatsApp / Telegram 里用</li>
+<li>有记忆，能处理长期任务</li>
+<li>可以设置每日/每周自动化</li>
+<li>不像是在 prompt ChatGPT，更像是后台默默运行的东西</li>
+<li>而且能在 Github 和 Clawhub 上找到很多技能</li>
+</ul>
+<p>对我来说，最大的变化是：我不是在&quot;主动使用 AI&quot;——更像是它就……在那，一整天在小事上帮帮忙。</p>
+<p>好奇问一下，这里有没有真正把 OpenClaw 跑在生产环境的？你们在用它做什么？</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s23hk6/what_are_people_actually_using_openclaw_for_heres/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

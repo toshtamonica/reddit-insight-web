@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我打造了 Claw-Brain：基于 git + md 的第二大脑，供你和你的 OpenClaw 智能体使用 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我打造了 Claw-Brain：基于 git + md 的第二大脑，供你和你的 OpenClaw 智能体使用</h1>
+        <div class="post-meta">
+          <span>👤 Lucky_Historian742</span> | <span>📅 2026/3/26</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• Claw-Brain 是一个基于 git + Markdown 的&quot;第二大脑&quot;系统，供用户与 OpenClaw 智能体协作共享知识
+• 采用文件系统架构，包含 memory（个人资料/学习记录）、knowledge（知识库）、drop（收件箱）、output（输出）四个核心目录
+• 无需数据库，使用 JSON 文件存储数据，配合 git 实现版本控制、分支和多人协作
+• 提供 /onboard、/recall、/learn 等斜杠命令，支持智能体随时间自我改进和积累上下文
+• 可直接迁移至 OpenClaw 实例，实现知识无缝交接和持续复用</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>OpenClaw 发布时，我想把之前用 Claude Code 搭建的所有自动化流程都迁移过去。最大的难题是：怎么打造一个真正可扩展的共享记忆空间？试过的方案大多维护起来太折腾。</p>
+<p>于是做了 Claw-Brain。核心理念是和你的 Agent 紧密协作，一起构建第二大脑。你和 OpenClaw Agent 在同一个仓库里工作，逐步积累知识和上下文。整个系统就是文件系统，但结构经过设计，能真正扩展，也支持多人协作：</p>
+<ul>
+<li><code>memory/</code> 你的个人档案、会话学习记录，以及大脑所掌握内容的索引</li>
+<li><code>knowledge/</code> 研究资料、联系人、策略、参考文档。唯一可信来源。</li>
+<li><code>drop/</code> 收件箱。扔文件进去，执行 <code>/process-inbox</code>，Agent 自动分类归档</li>
+<li><code>output/</code> Agent 生成的所有内容，按日期命名</li>
+</ul>
+<p>全部 Git 版本控制，自带完整历史、分支和协作能力。数据存储不需要数据库，纯 JSON 文件，附带同目录的 schema 定义和 pre-commit 钩子做校验。Agent 直接读写这些文件。</p>
+<p>内置最精简的斜杠命令，开箱即用：<code>/onboard</code> 构建个人档案，<code>/recall</code> 在任务前调取相关知识，<code>/learn</code> 在会话后提取可复用的洞察，还有几个用于收件箱处理和创建新知识领域的命令。</p>
+<p>快速开始
+克隆仓库，执行 <code>/onboard</code>，然后每天配合你的编程 Agent 使用。会话结束后用 <code>/learn</code>。这样 Agent 能真正持续自我改进。久而久之，你不再从零开始，而是在 Agent 已掌握的一切基础上继续构建。准备好后，直接交给你的 OpenClaw 实例，完整上下文已经共享完毕。</p>
+<p>我们创业团队内部一直在用类似方案运行自己的 Agent，也看到其他团队开始采用这种基于文件的方式。我把功能精简到最少，做到 fork 下来就能用。</p>
+<p>欢迎任何反馈和改进建议。</p>
+<p>仓库：<a href="https://github.com/Lanzelot1/claw-brain">https://github.com/Lanzelot1/claw-brain</a></p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s2luds/i_built_clawbrain_a_second_brain_using_git_md_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

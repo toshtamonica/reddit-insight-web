@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>他们让桥接网络下通过 Control-UI 访问 Docker 版 OpenClaw 变得极其困难 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>他们让桥接网络下通过 Control-UI 访问 Docker 版 OpenClaw 变得极其困难</h1>
+        <div class="post-meta">
+          <span>👤 seemebreakthis</span> | <span>📅 2026/3/26</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>用户希望使用有效 token 实现 Control-UI 的 LAN 访问，但该功能仅在 2026.3.14 版本短暂可用，后续版本（包括 2026.3.23）均存在各种错误</li>
+<li>Docker 桥接网络导致 SSH 隧道方案失效，因为容器看到的连接源 IP 会被伪装成远程地址</li>
+<li>用户被迫在 Wireguard 容器内安装并配置 sshd，建立复杂的 SSH 隧道方案来绕过限制</li>
+<li>每次版本更新都有破坏现有功能的风险，增加维护负担</li>
+<li>用户希望官方尽快修复基于 token 的 LAN 访问功能，或考虑使用反向代理作为替代方案</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>有那么一瞬间（2026.3.14 版本），其实是可以配置网关接受来自局域网的 Control-UI 连接的，只要提供有效的 token 就行。但后来我升级/降级到了其他版本（试图绕过另一个问题），却发现其他版本都无法正常处理局域网连接，死活报错（需要配对、缺少 scope:operater.read 权限，各种理由都有）。</p>
+<p>这个问题在 2026.3.23 版本中依然存在。</p>
+<p>没错，SSH 隧道方法是可行的，但如果 OpenClaw 容器跑在（默认的）docker bridge 网络上就不行了，因为 docker 主机会做地址伪装，导致从 SSH 隧道进来的连接在 OpenClaw 看来像是来自远程 IP。</p>
+<p>更麻烦的是，我的 OpenClaw 容器还接在 Wireguard docker 网络上用于 VPN 出站。</p>
+<p>最后我不得不在 Wireguard 容器里装上 sshd，折腾了一大套用户/密码/权限配置，再专门配置 sshd 只允许建立 SSH 隧道。而这一切，只不过是想访问一个本来就被屏蔽了所有外部入站连接的 docker 容器里的 Control-UI 罢了。</p>
+<p>希望 Control-UI 的局域网 token 访问能尽快修复，这样我就不用维护这套复杂的方案了。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>反向代理对我来说应该也行。而且在群晖 NAS（我的 Docker 主机）上设置起来应该不难。要不是我直接在 Wireguard 容器里加了 sshd，我可能早就按你说的去做了……</p>
+<p>但痛点依然存在——每次更新似乎都有很大的搞崩风险。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，第二种 compose 服务应该也能用，不过我现在直接在 Wireguard 容器里（配置了 macvlan IP）额外跑了一个 sshd，加固配置为仅允许同子网访问，目前运行正常。</p>
+<p>但我真心希望 <code>gateway.controlUi.dangerouslyDisableDeviceAuth</code> 能像 3.14 版本那样再次生效。（3.23 上似乎不行）</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s35ycr/they_are_making_it_really_tough_for_controlui/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

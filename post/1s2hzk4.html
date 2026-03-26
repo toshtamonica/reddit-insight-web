@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我是如何使用 OpenClaw 高效发现信息的 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我是如何使用 OpenClaw 高效发现信息的</h1>
+        <div class="post-meta">
+          <span>👤 Inevitable-Ear-3696</span> | <span>📅 2026/3/26</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>信息过载本质是检索工作流问题，而非阅读问题，应聚焦于更快找到优质输入而非读更多内容</li>
+<li>以&quot;问题块&quot;替代关键词搜索，先明确决策目标、时间范围和可信信源，再输入结构化提示</li>
+<li>采用信源感知查询策略：广泛搜索用于发现，限定域搜索用于验证，确保输入达到决策级质量</li>
+<li>强制设置时间窗口（如24小时/7天）保持信息时效性，避免陈旧叙事干扰</li>
+<li>要求智能体输出双结构结果：执行摘要（变化与影响）+行动切片（后续监控点），确保可直接用于执行</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大多数人把&quot;信息过载&quot;当成阅读问题。
+我认为这是信息检索流程的问题。
+过去几个月，我一直在优化 OpenClaw 中的日常工作流——不是为了读更多，而是为了更快找到更优质的输入。结果出奇地简单：更少滚动，更少标签页，更好的决策。
+这篇文章将实际拆解：我改变了什么，什么真正奏效，以及哪些 OpenClaw 习惯给我带来了最大的杠杆效应。</p>
+<p>我真正想解决的问题</p>
+<p>和很多创作者一样，我以前是这样做的：</p>
+<ul>
+<li>打开 8-15 个标签页</li>
+<li>在多个地方搜索同一主题</li>
+<li>手动对比来源</li>
+<li>把链接存到&quot;稍后读&quot;（通常意味着再也不读）</li>
+</ul>
+<p>这感觉上很高效，但大部分时间都花在了检索和过滤上，而不是思考。</p>
+<p>我真正想要的是：
+广泛覆盖（全球新闻 + 垂直领域信源）
+快速收窄（按时间、来源、相关性）
+智能体辅助综合（可信赖的结构化摘要）</p>
+<p>我最终固定下来的 OpenClaw 工作流</p>
+<p>1）以&quot;问题块&quot;开场，而非关键词</p>
+<p>搜索前，我先问自己：</p>
+<ul>
+<li>我要做什么决策？</li>
+<li>什么时间范围重要？</li>
+<li>这个主题我最信任哪些来源？</li>
+</ul>
+<p>然后我给 OpenClaw 一个前置这些约束的精简提示。
+这能立即减少噪音结果。</p>
+<p>2）使用来源感知的查询</p>
+<p>广泛探索时，我让智能体大范围搜索。
+验证信息时，我按来源域名约束（如财经或政策媒体）。
+这个来源控制步骤，决定了是&quot;有趣的 feed&quot;还是&quot;决策级输入&quot;。</p>
+<p>3）积极添加时间窗口</p>
+<p>如果主题变化快，我先强制限定近期窗口（如 24 小时/7 天），仅在需要时扩展。
+这让我的每日简报保持时效，避免陈旧叙事。</p>
+<p>4）让智能体输出两个结果</p>
+<p>我要求：</p>
+<ul>
+<li>执行摘要（什么变了，为什么重要）</li>
+<li>行动切片（接下来监控什么）</li>
+</ul>
+<p>这让输出对执行有用，而非仅供阅读。</p>
+<p>什么让这出奇地高效</p>
+<p>我现在依赖 OpenClaw 流内的一个精简聚合设置（多新闻聚合器技能，clawhub 可安装）。
+它静默处理广泛的网络覆盖 + 过滤，日常成本几乎可忽略——按我的工作量约每天 0.1 美元。</p>
+<p>但更大的收益不是成本。
+是一致性：相同结构，相同质量标准，更少上下文切换。</p>
+<p>给我最大 ROI 的 OpenClaw 技巧</p>
+<p>技巧 A：&quot;分层提问&quot;</p>
+<p>不要一上来就要完整分析。
+用三轮：
+获取并过滤
+对比叙事
+综合 + 置信度备注</p>
+<p>这提升质量，减少幻觉式确信。</p>
+<p>技巧 B：始终要求输出包含来源/时间元数据</p>
+<p>我要求每个关键声明包含：</p>
+<ul>
+<li>来源</li>
+<li>发布时间</li>
+<li>置信度备注</li>
+</ul>
+<p>这一条规则大幅提升了最终简报的可信度。</p>
+<p>技巧 C：构建可复用的提示模板</p>
+<p>我保留 4 个模板：</p>
+<ul>
+<li>宏观/市场</li>
+<li>政策/监管</li>
+<li>AI/产品</li>
+<li>竞品追踪</li>
+</ul>
+<p>模板消除提示疲劳，保持输出质量。</p>
+<p>技巧 D：区分&quot;</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s2hzk4/how_i_use_openclaw_for_highefficiency_information/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 冷邮件外发系统 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>OpenClaw 冷邮件外发系统</h1>
+        <div class="post-meta">
+          <span>👤 sprfrkr</span> | <span>📅 2026/3/26</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>该系统是一个全自动化的冷邮件外呼系统，由Nexus（SEO链接代理）负责研究潜在客户网站、运行真实分析并将发现作为邮件内容，全程无需人工干预</li>
+<li>Maven通过定时心跳在工作日创建SDR任务，Nexus接收任务后执行三项核心操作：研究新潜在客户、批量发送邮件、分类处理回复</li>
+<li>针对每个潜在客户，Nexus会运行约2分钟、成本约0.05美元的深度分析，包括反向链接数据、网站地图抓取、内容页面检测和搜索索引对比</li>
+<li>系统基于真实分析数据生成三封纯文本邮件序列，每封不超过80字，主题行使用分析得出的实际数据</li>
+<li>整个流程通过Notion管理潜在客户全周期管道，使用Instantly发送邮件，实现从研究到回复分类的完整自动化闭环</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>构建成果
+一套全自动冷邮件外呼系统，Nexus（SEO链接分析智能体）会研究每个潜在客户的网站，进行真实分析，并将分析结果直接作为邮件内容。系统每日批量创建任务，在Notion中全程追踪潜在客户漏斗，通过Instantly发送邮件，并自动分类回复——全程无需人工干预。</p>
+<p>运行原理</p>
+<ol>
+<li>Maven 创建每日SDR任务
+Maven的心跳任务（步骤1.8.5）在工作日触发，检查：</li>
+</ol>
+<ul>
+<li>今天是否已为xxx创建SDR任务？（限流键：last_nexus_sdr_outreach）</li>
+<li>Nexus是否已有进行中的SDR批次？
+两项均通过后，Maven在Notion中创建任务：&quot;SDR批次&quot;，指派给Nexus并附带完整说明。
+限流键位置：workspace-seo-pm/memory/heartbeat-state.md，<strong>SDR外呼（SOP-OUT-002/003）</strong> 章节下</li>
+</ul>
+<ol start="2">
+<li>Nexus 领取任务
+Nexus下次心跳时，查询Notion中的指派任务。SDR批次任务指示Nexus：</li>
+</ol>
+<ul>
+<li>若&quot;已研究&quot;状态少于10条，则研究新客户</li>
+<li>加载并发送最多20个已验证潜在客户</li>
+<li>在Instantly统一收件箱中分类回复</li>
+<li>更新外呼潜在客户数据库</li>
+</ul>
+<ol start="3">
+<li>单客户分析流程
+撰写邮件前，Nexus对每个域名执行以下操作（约2分钟，约$0.05）：</li>
+</ol>
+<ul>
+<li>DataForSEO外链摘要 → 域名排名、引用域名数、垃圾分</li>
+<li>抓取sitemap.xml → 总URL数、内容分类</li>
+<li>抓取2-3个内容页 → 每页内链数、检测CMS（Ghost/WP/Webflow/HubSpot/自定义）</li>
+<li>网页搜索&quot;site:{domain}&quot; → 索引页面数与站点地图总数对比</li>
+<li>汇总3条发现，填入洞察摘要字段：<ul>
+<li>内链密度（如&quot;平均每页2.3个链接——基准为8-12个&quot;）</li>
+<li>索引缺口或域名权重观察</li>
+<li>平台特定限制或机会</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>邮件序列
+三个纯文本序列，每步不超过80词。主题行使用分析中的真实数据。</li>
+</ol>
+<p>序列A — &quot;洞察投递&quot;（全细分）</p>
+<ul>
+<li>第0天：两条发现 + 免费报告链接</li>
+<li>第5天：他们遗漏的另一条洞察</li>
+<li>第12天：直接询价</li>
+</ul>
+<p>序列B — &quot;代理商策略&quot;（仅代理商）</p>
+<ul>
+<li>相同结构，侧重组合级影响与代理商定价</li>
+</ul>
+<p>序列C — &quot;索引警报&quot;（存在索引缺口的网站）</p>
+<ul>
+<li>以&quot;Google只收录了你的Y页中的X页&quot;开头</li>
+</ul>
+<p>Instantly活动命名规则：-sdr-{序列}-{YYYY-MM}</p>
+<ol start="5">
+<li>回复分类</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>回复类型</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对免费报告感兴趣</td>
+<td>发送链接，状态→感兴趣</td>
+</tr>
+<tr>
+<td>询问价格/方案</td>
+<td>通过SOP-OUT-004模板转交Forge，状态→已转交</td>
+</tr>
+<tr>
+<td>企业/白标咨询</td>
+<td>转交Forge</td>
+</tr>
+<tr>
+<td>不感兴趣/退订</td>
+<td>Instantly黑名单，状态→不感兴趣</td>
+</tr>
+<tr>
+<td>退信</td>
+<td>状态→退信，从活动移除</td>
+</tr>
+</tbody></table>
+<p>基础设施</p>
+<p>外呼潜在客户数据库（Notion）
+ID：32d139ea-e81f-813c-9606-e7108c1ab672</p>
+<p>漏斗：已研究 → 已入序列 → 已打开 → 已回复 → 感兴趣 → 试用开始 → 已转化</p>
+<p>核心字段：</p>
+<ul>
+<li>联系人、公司、域名、邮箱</li>
+<li>客户（关联）——限定xxx范围，支持多客户</li>
+<li>细分：内容丰富型...</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>本视频简要介绍：<a href="https://youtu.be/Y4pYMmc7n3k">https://youtu.be/Y4pYMmc7n3k</a></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s2owbo/cold_email_outbound_system_w_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
