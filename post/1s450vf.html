@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用 OpenClaw 本身为 OpenClaw 智能体构建了一个可观测性仪表盘 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用 OpenClaw 本身为 OpenClaw 智能体构建了一个可观测性仪表盘</h1>
+        <div class="post-meta">
+          <span>👤 Fancy-Win9202</span> | <span>📅 2026/3/27</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者因缺乏AI agent可观测性工具，用OpenClaw自身开发了开源仪表盘ClawMetry，实现实时监控、成本追踪和异常告警</li>
+<li>核心痛点：AI agent异步执行、并行操作，故障难以即时发现，且涉及文件系统/API等敏感权限时风险极高</li>
+<li>开发效率提升：借助OpenClaw将原本2-3周的工作量大幅缩短</li>
+<li>产品特性：本地运行、数据不出机、支持pip一键安装</li>
+<li>项目已开源并获早期贡献者，地址：github.com/vivekchand/clawmetry</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>一月底迷上了 OpenClaw。几周后我就开始跑各种 agent，却发现我完全不知道它们到底在干什么。我以前习惯了 Grafana、SLO、仪表盘，对生产系统有完整的可观测性。但 AI agent 这边完全没有对应的东西。</p>
+<p>问题不只是成本（虽然 token 费用失控确实存在）。更关键的是 agent 不再是同步的了。它们在抓取数据、执行命令、并行运行各种任务。出问题了你也只能事后才知道。而当你把文件系统、API、账户权限都交给 agent 的时候，这就成了大问题。</p>
+<p>所以我做了 ClawMetry。一个面向 OpenClaw 的可观测性仪表盘：实时会话活动、token 成本趋势、内存文件变更检测、卡死会话告警。开源、本地运行、数据不出本机。pip install clawmetry。</p>
+<p>最 meta 的是：我用 OpenClaw 本身来做的。原本要花两三周的活，现在只用了一小部分时间。</p>
+<p>还很早期，但已经有贡献者了。如果你在跑 agent 且想更清楚它们实际在做什么，欢迎提问。
+github.com/vivekchand/clawmetry</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s450vf/i_built_an_observability_dashboard_for_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
