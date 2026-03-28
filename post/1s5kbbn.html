@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 AI 智能体造了个本地优先的记忆层，因为现有的记忆系统大多还只是查询时检索 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 AI 智能体造了个本地优先的记忆层，因为现有的记忆系统大多还只是查询时检索</h1>
+        <div class="post-meta">
+          <span>👤 loolemon</span> | <span>📅 2026/3/28</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 当前AI代理记忆系统多为查询时检索（RAG），依赖用户消息包含足够查询信号，无法处理隐式上下文场景
+• Signet采用&quot;环境式回忆&quot;架构，将记忆处理移至代理循环外：保留原始记录、提炼结构化记忆、构建实体关系图谱、混合检索与重排序
+• 核心转变：从&quot;代理决定何时搜索&quot;变为&quot;代理启动时已具备上下文&quot;
+• 本地优先设计（SQLite + Markdown），可检查、可修复，兼容Claude Code、Codex等多款工具
+• LoCoMo基准测试显示87.5%回答准确率与100% Hit@10检索率（小样本）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我一直在开发 Signet，一个面向 AI 智能体的开源记忆基座。</p>
+<p>问题在于，大多数智能体记忆系统本质上仍是 RAG 模式：
+用户消息 → 搜索记忆 → 获取结果 → 生成回答</p>
+<p>这在用户明确询问已存储信息时有效，但在相关上下文隐含时就会失效。</p>
+<p>例如：</p>
+<ul>
+<li>&quot;为新服务搭建数据库&quot; 应该提示 PostgreSQL 已被选定</li>
+<li>&quot;我的成绩单被拒了，查不到我的记录&quot; 应该提示用户改过名字</li>
+<li>&quot;我 8:30 的会议该设几点闹钟？&quot; 应该提示通勤时间</li>
+</ul>
+<p>这些情况下，问题不在于存储。而是系统在苦等当前消息包含足够的查询信号，才能检索到正确的历史上下文。</p>
+<p>Signet 的核心理念是：记忆不应是一个循环内的工具调用问题。</p>
+<p>相反，Signet 在智能体循环之外处理记忆：</p>
+<ul>
+<li>保留原始对话记录</li>
+<li>将会话提炼为结构化记忆</li>
+<li>将实体、约束和关系链接成图</li>
+<li>使用图遍历 + 混合检索构建候选集</li>
+<li>针对提示时刻的相关性重排候选</li>
+<li>在下一条提示开始前注入上下文</li>
+</ul>
+<p>这样智能体无需决定保存什么、何时搜索。它从一开始就有上下文。</p>
+<p>这种架构转变正是关键所在：从依赖查询的检索，转向更接近环境式回忆的机制。</p>
+<p>Signet 本地优先（SQLite + markdown）、可检查、可修复，支持 Claude Code、Codex、OpenCode 和 OpenClaw。</p>
+<p>在 LoCoMo 基准上，目前 8 题样本达到 87.5% 回答准确率，100% Hit@10 检索率。样本虽小，不做过度宣称，但足以表明该方向前景可期。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>仓库：<a href="https://github.com/Signet-AI/signetai">https://github.com/Signet-AI/signetai</a>
+欢迎从事记忆系统、检索或长程智能体上下文相关工作的朋友提供技术反馈</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s5kbbn/i_built_a_localfirst_memory_layer_for_ai_agents/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
