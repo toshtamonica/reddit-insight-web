@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>搭建了一个真正好用的内存系统！！ - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>搭建了一个真正好用的内存系统！！</h1>
+        <div class="post-meta">
+          <span>👤 Pristine_Use5236</span> | <span>📅 2026/3/29</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>构建了一个基于适配器架构的持久化记忆系统，为LLM智能体提供跨会话的上下文连续性，在LoCoMo和LongMemEval基准测试中分别达到90.8%和89.1%的领先性能</li>
+<li>采用4通道RRF检索管道（FTS5 + Qdrant KNN + 时间衰减 + 图遍历）和智能层（意图分类、经验模式、RL策略），可与任何智能体框架集成</li>
+<li>核心技术栈包括TypeScript、SQLite、Qdrant和Ollama，实现双写架构（SQLite主存储+Qdrant加速）并支持优雅降级</li>
+<li>关键设计原则：所有操作非抛出式（单个失败不中断管道）、毫秒级临时钩子捕获、纯TypeScript实现的RL策略模型、后台内容感知嵌入回填</li>
+<li>项目规模29K行代码、1,968个测试用例，MIT开源许可，支持快速本地部署（Ollama + Bun构建）</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我为 Claude Code 和 OPENCLAW 构建的持久化记忆系统，让 LLM 代理真正实现跨会话的上下文连续性。</p>
+<p>基准测试：</p>
+<ul>
+<li>LoCoMo：90.8%（超越所有已发布系统）</li>
+<li>LongMemEval：89.1%</li>
+</ul>
+<p>对代理开发者的价值：
+架构采用适配器模式。目前接入生命周期事件，但核心（存储、检索、智能层）与框架无关。检索管道（4 通道 RRF：FTS5 + Qdrant KNN + 时效性 + 图遍历）和智能层（意图分类、经验模式、RL 策略）可接入任何代理框架。</p>
+<p>快速开始：</p>
+<pre><code>ollama pull snowflake-arctic-embed2
+bun install &amp;&amp; bun run build &amp;&amp; bun run setup
+node dist/angel/index.cjs
+</code></pre>
+<p>技术栈：TypeScript、SQLite（better-sqlite3）、Qdrant、Ollama、esbuild、Vitest</p>
+<p>关键设计决策：</p>
+<ul>
+<li>双写架构（SQLite 主存储 + Qdrant 加速），支持优雅降级</li>
+<li>所有操作无异常抛出——单个失败不会中断整个流程</li>
+<li>捕获阶段使用毫秒级生命周期的临时钩子，反思阶段使用持久化的 Angel</li>
+<li>RL 策略模型纯 TypeScript 实现（Float32Array 运算，无 PyTorch）</li>
+<li>后台根据内容长度智能回填嵌入向量</li>
+</ul>
+<p>29K 行代码，1,968 个测试，MIT 协议：<a href="https://github.com/grigorijejakisic/Claudex">https://github.com/grigorijejakisic/Claudex</a></p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>&quot;我一直在为 Claude Code 和 OPENCLAW 构建的一个持久化记忆系统，它能让大语言模型智能体真正拥有上下文&quot;</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>那还费什么劲评论呢？</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s5xx7d/built_a_memory_system_that_actually_works/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

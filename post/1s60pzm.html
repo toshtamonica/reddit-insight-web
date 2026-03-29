@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛡️ Claw 规则集——我为 OpenClaw 智能体构建了一套生产级安全规则，现已开源 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>🛡️ Claw 规则集——我为 OpenClaw 智能体构建了一套生产级安全规则，现已开源</h1>
+        <div class="post-meta">
+          <span>👤 Bahuleyan</span> | <span>📅 2026/3/29</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者为 OpenClaw 智能体构建了一套包含 139 条规则的 JSON 安全规则集，作为工具调用层的硬拒绝层
+• 核心防护包括：阻止破坏性命令执行、保护凭证文件、防止指令文件被篡改、禁用网络侦察工具、隔离不同智能体的认证配置
+• 关键设计决策：零 LLM 依赖，通过正则表达式在工具层执行，实现微秒级延迟且无法被提示注入攻击绕过
+• 提供三种预设模式（最小/标准/严格）、JSON Schema、验证脚本和一键安装技能，并附带真/假阳性测试套件
+• 与 OpenClaw 原生 Guardian 框架的关系：后者提供引擎，本项目提供生产级预编写规则库，降低用户自行编写完整覆盖规则的成本</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>运行 OpenClaw 几周后，反复遇到同一个问题：拥有广泛工具权限的 agent，一次恶意的 skill 安装或提示词注入就可能造成实质性破坏。于是我构建了一套 JSON 规则集，作为 agent 工具调用的硬拒绝层。功能如下：</p>
+<ul>
+<li>拦截破坏性执行（对工作区/配置目录执行 rm -rf、管道到 shell、curl 下载未知可执行文件）</li>
+<li>保护凭证文件不被读写（openclaw.json、auth-profiles.json、.secrets/）</li>
+<li>防止指令文件（SOUL.md、AGENTS.md）被 agent 擅自修改</li>
+<li>禁用网络侦察工具（nmap、masscan、netcat）</li>
+<li>阻止 agent 读取其他 agent 的认证配置</li>
+</ul>
+<p>共 139 条规则。三种预设模式：minimal / standard / strict。附带 JSON schema、验证脚本，以及一键安装 skill。</p>
+<p>关键设计决策：<strong>零 LLM 依赖</strong>。规则在工具层通过正则表达式执行——微秒级延迟，且与基于 LLM 的护栏不同，正则表达式无法被社会工程或提示词注入绕过。</p>
+<p>→ github.com/Bahuleyandr/rules-of-the-claw MIT 协议开源。</p>
+<p>欢迎提交 PR 补充新的规则模式。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (4 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>你说得没错，OpenClaw 确实内置了 Guardian 并支持自定义规则，而这是建立在其基础之上的。区别在于，一个是拥有框架，一个是拥有生产级的规则库。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>OpenClaw 提供开箱即用的引擎。包含 139 条预编写且经过实战检验的规则，覆盖范围远超多数人在出事后才想到要写的那些；内置真/假阳性测试套件，确保规则不会误伤正常业务流程；提供三种预设配置，无需纠结该启用哪些规则；每次变更均通过 CI 验证。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>如果你自己已经写过同等覆盖率的测试，那很好，这部分内容可能不适合你。它是为那些还没写过的人准备的。感谢阅读，干杯。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>朋友，看看这个，要是觉得对你有用就告诉我。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s60pzm/rules_of_the_claw_i_built_a_production_security/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

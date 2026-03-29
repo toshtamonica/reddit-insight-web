@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>厌倦了老套的网站部署方式，我造了个 OpenClaw 平台工程师 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>厌倦了老套的网站部署方式，我造了个 OpenClaw 平台工程师</h1>
+        <div class="post-meta">
+          <span>👤 mutonbini</span> | <span>📅 2026/3/29</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• Pleng 是一个自托管的云平台，通过 Telegram 机器人用自然语言管理基础设施和部署，无需传统仪表盘操作
+• 采用严格的沙箱隔离设计：AI 代理运行在受限 Docker 容器中，无主机访问权限、无 sudo、无 Docker socket 访问，只能通过 HTTP 调用平台 API
+• 核心功能包括：GitHub/本地代码部署、自动 Traefik 路由与 SSL 证书、内置基础分析、自动备份、健康监控和日志查看
+• 底层使用确定性 CLI 工具，物理上无法执行破坏性命令（如 rm -rf /），防止 AI 幻觉导致的安全事故
+• 旨在解决&quot;本地开发综合征&quot;，通过零摩擦部署让 side project 能够真正上线</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好，</p>
+<p>相信很多人和我一样，都患有&quot;localhost综合征&quot;。我做过很多 side project，但一到部署环节，VPS 配置、Docker 调优、Traefik 折腾、SSL 证书申请这套流程实在让人头大，结果就是无限拖延，项目永远见不得光。</p>
+<p>Coolify 和 Dokploy 这些工具确实很棒，但我想要的是完全零摩擦的体验。于是，我造了 Pleng（AGPL-3.0 开源）。简单说，它就是个&quot;基础设施和部署领域的 OpenClaw&quot;。</p>
+<p><strong>这是啥？</strong></p>
+<p>Pleng 是一个由 AI 智能体驱动的自托管云平台（目前接的是 Claude）。在一台全新的 Ubuntu VPS 上，一条命令就能完成安装。之后你不用碰什么仪表盘，全程通过 Telegram 机器人用自然语言管理基础设施。</p>
+<p>直接发消息就行：&quot;把这个 GitHub 仓库的 main 分支部署到 mydomain.com&quot;，或者&quot;我应用为啥崩了？&quot;——智能体自动搞定代码拉取、Docker 容器、反向代理、SSL 证书，还能查日志。</p>
+<p><strong>房间里的大象：安全性</strong></p>
+<p>我知道你在想什么：让 AI 拿到服务器 root 权限？疯了。同意。所以 Pleng 做了严格的隔离设计：</p>
+<ul>
+<li>智能体跑在重度沙箱化的 Docker 容器里</li>
+<li>对宿主机零访问、无 sudo 权限、绝不碰 Docker socket</li>
+<li>只能通过 HTTP 调用独立的平台 API 来操作基础设施</li>
+<li>底层用的是确定性 CLI 工具，能部署、重启、拉日志、读指标，但物理上不可能 hallucinate 出一个 <code>rm -rf /</code></li>
+</ul>
+<p><strong>现有功能：</strong></p>
+<ul>
+<li>GitHub（公私仓）或本地目录一键部署</li>
+<li>自动 Traefik 路由 + Let&#39;s Encrypt SSL</li>
+<li>内置基础分析（PV、UV），不用接外部统计</li>
+<li>自动备份、健康监控、聊天内直接查日志</li>
+</ul>
+<p>目前还是早期版本，主要是我自用顺手造的，但觉得其他独立开发者和程序员可能也需要这个，来把项目真正推上线。</p>
+<p>🎥 视频演示：<a href="https://youtu.be/GGSgVFchs70">https://youtu.be/GGSgVFchs70</a><br>🐙 GitHub 仓库：<a href="https://github.com/mutonby/pleng">https://github.com/mutonby/pleng</a></p>
+<p>真心求反馈。架构、代码随便喷，功能建议也欢迎。如果觉得概念不错，GitHub 给个 star 感激不尽！评论区有问必答。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s5qc6x/i_got_tired_of_deploying_new_websites_the_same/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

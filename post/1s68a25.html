@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>厌倦了每轮对话都向 AI 代理重新解释基础设施，于是我给它们造了一个真正能记住的"大脑"。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>厌倦了每轮对话都向 AI 代理重新解释基础设施，于是我给它们造了一个真正能记住的"大脑"。</h1>
+        <div class="post-meta">
+          <span>👤 Most_Capital_7877</span> | <span>📅 2026/3/29</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者因AI助手每次会话都丢失上下文、需要重复解释基础设施问题，开发了长期记忆解决方案
+• 核心方案是Engram（基于Go和SQLite的轻量级记忆服务器）+ OpenClaw插件，实现会话间的持久化记忆
+• 关键创新是&quot;自动召回&quot;机制：插件自动提取关键词、搜索相关记忆并注入提示词，无需用户主动要求
+• 技术实现包括关键词提取、渐进式回退搜索、BM25相关性评分、动态去重和上下文大小控制
+• 最终效果：AI助手能主动记住过往决策和项目背景，消除重复沟通成本</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>每天早上，同样的流程。打开聊天窗口，给编排器发消息，然后花头10分钟提醒它我的凭证存在哪里、集群是怎么部署的、上周我们达成了什么共识、项目遵循什么规范。周二帮我调试部署的代理，到周三就真不知道自己干过这事了。</p>
+<p>压缩触发、上下文重置、会话结束，一切归零。几个月积累的知识，每次都被抹得干干净净。</p>
+<p>我每天运行多个 OpenClaw 代理。这样折腾了几个月后，我决定解决这个问题。</p>
+<p>解决方案：Engram + OpenClaw 插件</p>
+<p>我开发了一个插件，将 OpenClaw 连接到 Engram——一个轻量级的 Go 语言内存服务器，用 SQLite 存储结构化观察记录，支持 FTS5 全文搜索。可以把它理解为代理的长期记忆，能扛过重启、压缩和休眠。</p>
+<p>插件本身约 750 行 TypeScript。它为代理提供了 11 个工具、4 个生命周期钩子，以及一个 CLI。但真正改变我工作方式的是<strong>自动召回</strong>。</p>
+<p>神奇之处：代理无需指令就能记住</p>
+<p>每次代理轮询前，插件会拦截传入消息，提取关键词，搜索 Engram，并自动将相关记忆注入提示词。代理在思考你的消息之前，就能看到过去的决策和上下文。</p>
+<p>不用再喊&quot;嘿，搜一下你的记忆里的 X&quot;。不用反复解释。它就是知道。</p>
+<p>底层大致流程如下：</p>
+<p>你的消息进来<br>插件剥离频道元数据（Mattermost/Telegram 的框架信息、时间戳——这些会污染搜索结果）<br>去除停用词，提取有意义的关键词<br>渐进式回退搜索 Engram（FTS5 用 AND 逻辑，所以逐个丢弃关键词直到有匹配）<br>按 BM25 相关性评分，跳过本会话已注入的内容（避免重复上下文浪费 token）<br>动态调整片段长度——1 个结果给更多细节，5 个结果给更短摘要<br>全部注入时附带观察 ID，方便代理调用 engram_get 获取完整内容</p>
+<p>代理实际保存什么：</p>
+<p>记忆不是聊天记录。它们是带类型的观察——decision、bugfix、config、procedure、discovery、pattern 等——并打上项目和主题标签。当代理保存与现有记忆相同 topic_key 的内容时，会更新而非重复。知识原地进化。</p>
+<p>几周后，我的 Engram 数据库已有数百条观察，横跨几十个项目。比如：</p>
+<p>基础设施偏好和约束<br>各环境的服务凭证及该用哪个 CLI 封装<br>端口预留和部署规范<br>重复任务的逐步流程——代理现在无需我逐字说明就能执行</p>
+<p>我踩过的坑（供你避雷）：</p>
+<p>FTS5 的 AND 逻辑：搜&quot;kubernetes cluster configuration&quot;，只要有一个词没索引就返回空。渐进式关键词回退是解决办法——不断丢最后一个词直到有结果。<br>频道元数据...</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>启用&quot;自动回忆&quot;功能后，每次发送消息时都会增加上下文，因为它会查找与提示内容匹配的记忆，如果命中则会将其添加到发送给 LLM API 的出站上下文中。但你也可以禁用此行为，将其作为当前基于 Markdown 的核心记忆的替代或补充。这不会影响你现有的费用。</p>
+<p>我认为最好的方法是你可以先试用一下，不喜欢再移除。由于我没有成本限制（使用的是 minimax 编程套餐），所以没有追踪费用.. :(</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>关于成本问题，我在第一次回复中说得过于简化了，这里再详细说明一下：</p>
+<p>自动召回每轮有固定的预算限制，约1500个字符（约375个token）。这个上限是固定的，无论你的数据库里有50条还是5000条记忆，它都不会随时间增长。插件会搜索并挑选最相关的结果，然后在这个预算范围内进行填充。</p>
+<p>此外，同一次对话中早些时候已经注入的记忆，在后续消息中会被跳过。所以随着对话进行，token消耗实际上是下降的，而不是上升。</p>
+<p>给你个具体数字：最坏情况下每条消息增加约375个token。对大多数模型和定价来说这可以忽略不计，但确实不是零。</p>
+<p>话说回来，自动召回才是这个功能真正实用的地方。没有它，你就得每次在代理出错或忘记已约定的规则时，手动告诉它&quot;先查一下记忆&quot;。有了自动召回，代理在回复前就拥有了相关上下文，第一次就能做对，而不是等纠正后才做对。</p>
+<p>如果你希望成本最小化，可以在插件配置中设置 <code>autoRecall: false</code>。11个engram工具仍然可用，代理可以自行搜索、保存和检索记忆。你依然能享受到跨会话的持久化结构化记忆，只是没有了每轮自动注入的功能。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s68a25/i_got_tired_of_reexplaining_my_infrastructure_to/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

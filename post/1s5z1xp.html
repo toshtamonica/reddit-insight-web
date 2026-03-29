@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我给 Mac Mini 装了大脑、安防系统和人格。连续使用 6 周后，实际体验是这样的。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我给 Mac Mini 装了大脑、安防系统和人格。连续使用 6 周后，实际体验是这样的。</h1>
+        <div class="post-meta">
+          <span>👤 Able_Particular_4674</span> | <span>📅 2026/3/29</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 一位非开发者工业工程师利用 Mac Mini M4 在6周内自建了功能完整的本地 AI 助手，开源全部代码，月成本仅30-50美元
+• 系统实现三层模型级联（Claude→MiniMax→本地Qwen），每日自动执行晨间简报、发票扫描分类、本地语音转写、iCloud双向同步等任务
+• 核心亮点是完整的安全架构：57个白名单二进制文件、域名/收件人出站限制、30+关键文件完整性监控、全外部输入注入检测、内存写入前验证
+• 所有敏感操作（语音转录、数据处理）均在本地完成，确保隐私数据不出设备
+• 通过严格的执行审批和多层防护机制，实现6周零误发、零安全事件的稳定运行</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>最初只是个 Telegram 聊天机器人。
+六周后，它每天早上叫我起床汇报简报，扫描我的发票，本地转录语音消息，监控自身内存防止注入攻击，而且从未擅自发送过任何消息。
+我不是开发者。我在化工厂做工业工程。利用晚上和周末搭出来的，全部开源。</p>
+<p>快速一览：
+• 硬件：Mac Mini M4，24GB 内存，专用机
+• 模型级联：Claude Sonnet → MiniMax → 本地 Qwen（三层）
+• 自定义工具：15+
+• 定时任务：12 个每日运行
+• 运行时间：连续 6 周
+• 成本：约 30-50 美元/月
+• 每日消息：20-50 条</p>
+<p>实际功能：</p>
+<p>每日简报，每天早上 5:08 准时推送——天气、日程、邮件、市场数据、待办提醒，外加一个单词。全部本地从缓存数据源组装，无需等待。</p>
+<p>发票扫描，读取 GMX、iCloud、Gmail 收件箱，下载 PDF 发票，AI 分类归档。首次运行：61 份 PDF 一次性分入 11 个类别。</p>
+<p>语音消息，我发一条语音，它用 Whisper 本地转录（不上云），处理并回复。音频数据绝不离开本机。</p>
+<p>iCloud 桥接，双向文件同步。iPhone 上丢文件进文件夹，智能体自动获取；它回传文件也走同一路径。</p>
+<p>安全部分（我最得意的）：</p>
+<p>见过的大多数配置都是 exec.security: &quot;off&quot;。一次提示注入就完蛋。我搭了完整的安全架构：
+• 执行审批，约 57 个白名单二进制文件
+• HTTP 出站锁定域名白名单（禁止 curl 到未知地址）
+• SMTP 出站锁定收件人白名单
+• 30+ 关键文件的完整性监控，SHA256 校验
+• 所有外部输入的注入检测——邮件、日程、网页、语音
+• 每次写入前的内存验证（防止邮件内容投毒）
+• 紫队审计，映射 MITRE ATT&amp;CK</p>
+<p>安全评分：7.5/10——起步时只有 3/10。</p>
+<p>踩过的坑：</p>
+<p>sandbox.mode: &quot;all&quot; 会静默拒绝所有 exec 调用。没报错，没日志，就是没反应。找了两天才发现。</p>
+<p>内存不硬限就会爆炸。日志限 200 行 + 每周蒸馏进长期记忆。没这机制，两周后智能体明显退化。</p>
+<p>即使所有二进制都在白名单，shell 管道仍会触发审批。解决：包装脚本。</p>
+<p>exec-approvals.json 不能设 immutable——OpenClaw 每次执行都会写它。</p>
+<p>仓库：<a href="https://github.com/Atlas-Cowork/openclaw-reference-setup">https://github.com/Atlas-Cowork/openclaw-reference-setup</a></p>
+<p>MIT 协议。模板、安全架构、工具目录、定时配置——全在里面。如果你周末都在调试而不是用起来，或许这里能帮到你。🦞</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这确实很有帮助，谢谢。</p>
+<p>你说得对，双用户方案对于单用户配置来说确实过度设计了。最初的动机是让 agent 远离 sudo 和 keychain，但对大多数人来说，这种摩擦成本可能并不值得。</p>
+<p>uchg 那个点说得太准了，这周一模一样的问题。jobs.json 上的 uchg 悄无声息地干掉了所有定时任务，整整 3 天。现在在往 SHA256 看门狗告警的方向转，不再用写保护了。</p>
+<p>工具目录确实有点理想化，我承认。Piper 和 Whisper 是每天跑的，其他的都是锦上添花。&quot;选 2-3 个把它做稳&quot; 这条建议，真希望早点听进去。</p>
+<p>sqlite-vec 配 FastEmbed 跑在 Pi 上挺有意思，没想到 ARM 上也能跑。现在扁平文件还能用，但蒸馏开销在涨，这可能是我们下一步的方向。</p>
+<p>注入检测反响不错， glad。搭起来最省事，但能挡住最可怕的失败模式。大多数人直到出事之前，都不会想到邮件主题也能成为 prompt 注入的入口。</p>
+<p>想多听听你那 41 个脚本的配置。是跑隔离会话还是主会话？</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s5z1xp/i_gave_my_mac_mini_a_brain_a_security_system_and/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
