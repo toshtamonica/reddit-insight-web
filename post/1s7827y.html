@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>为了更好保存 OpenClaw 社区有价值的讨论，我开发了一个将其转为静态网站的工具 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>为了更好保存 OpenClaw 社区有价值的讨论，我开发了一个将其转为静态网站的工具</h1>
+        <div class="post-meta">
+          <span>👤 __Yelo</span> | <span>📅 2026/3/30</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者开发了一个名为 clawpage 的工具，将 Openclaw 对话历史转换为静态网页，以保存完整的交流过程</li>
+<li>现有方案（Discord/Telegram 搜索、Openclaw Memory）无法满足需求，无法保留来回调试、推理等完整上下文</li>
+<li>该工具能保留对话流程，并可包含通常不显示的工具调用和思考痕迹</li>
+<li>目前仍处于早期阶段，脱敏依赖 LLM，发布前需人工审核</li>
+<li>作者希望了解其他 Openclaw 用户是否也有类似需求</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>过去几个月重度使用 Openclaw 后，我发现自己最优质的对话基本上都在流失。</p>
+<p>不只是最终答案，而是整个过程：来回推敲、调研摸索、调试排错，那些真正让我有所收获的思考路径。</p>
+<p>Discord / Telegram 的搜索功能还算能用，Openclaw 的 Memory 也有助于压缩式回顾，但我想要的是能把原始对话完整保留下来，方便日后重读、分享给他人，或者二次利用。</p>
+<p>于是我写了个小工具，跑在 /clawpage 这个 skill 上，把 openclaw 的会话历史转成静态网页。它保留了对话的完整流程，还能包含那些通常在频道里看不到的工具调用和思考轨迹。</p>
+<p>目前还比较早期，略显粗糙，但已经能满足我想要的工作流了。脱敏处理目前依赖 LLM，所以发布前我还是会手动检查一遍。</p>
+<p>GitHub: <a href="https://github.com/imyelo/clawpage">https://github.com/imyelo/clawpage</a></p>
+<p>发在这里是因为好奇，其他 openclaw 用户是否也遇到过同样的问题。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s7827y/i_wanted_a_better_way_to_keep_valuable_openclaw/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

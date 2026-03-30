@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用 OpenClaw 打造的 BeanWhisperer —— 能读取咖啡袋信息并直接向 GaggiMate 推送压力曲线的 AI - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>用 OpenClaw 打造的 BeanWhisperer —— 能读取咖啡袋信息并直接向 GaggiMate 推送压力曲线的 AI</h1>
+        <div class="post-meta">
+          <span>👤 ca_sig_z</span> | <span>📅 2026/3/30</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• BeanWhisperer 是一款基于 OpenClaw 的开源 AI 工具，能读取咖啡豆包装信息并自动生成 GaggiMate 咖啡机的压力曲线配置
+• 根据烘焙程度、产地和处理方式自动选择冲泡策略（如 bloom、turbo、lever 等），并计算温度、粉水比和粉量
+• 优先搜索社区现有配置，若无匹配则从零生成，支持通过 WebSocket 直接推送至机器，无需手动复制 JSON
+• 采用 Lance Hedrick 的咖啡方法论进行训练，适用于 Rancilio Silvia + GaggiMate Pro 及其他 GaggiMate 设备
+• 展示了 OpenClaw 在智能家居/硬件集成领域的实际应用潜力，开发者欢迎功能建议和更多应用场景探索</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>一直在琢磨 OpenClaw 除了常规玩法之外还能干点啥正经事，结果机会自己送上门了。</p>
+<p>每次开新豆子都得猜谜——用哪个曲线、什么温度、什么粉水比。于是搞了个 BeanWhisperer，开源工具，输入豆子信息（或者拍张包装袋照片）就能自动匹配或生成完整的 GaggiMate 压力曲线。</p>
+<p>AI 这块 OpenClaw 扛大梁。功能包括：</p>
+<ul>
+<li>根据烘焙度、产地、处理方式自动选择 bloom、turbo、lever、declining、flat、low-contact 等萃取策略</li>
+<li>自动计算温度、粉水比和粉量</li>
+<li>生成前先搜一遍 GaggiMate Discord 的 #profiles 频道，看看有没有社区现成的方案</li>
+<li>通过 WebSocket 直推曲线到机器，不用复制粘贴 JSON</li>
+</ul>
+<p>训练数据用了 Lance Hedrick 的方法论，包括他最近那期 GaggiMate 视频。为我自己的 Rancilio Silvia + GaggiMate Pro 打造的，但应该兼容所有 GaggiMate 机型。</p>
+<p>GitHub: <a href="https://github.com/zsiddique/bean-whisperer">https://github.com/zsiddique/bean-whisperer</a></p>
+<p>有问题尽管问，功能需求也欢迎提。想听听看有没有人发掘出 OpenClaw 在其他家电/硬件集成上的好用法。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s6ynsh/built_beanwhisperer_with_openclaw_ai_that_reads/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

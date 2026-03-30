@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用3个文件和3条规则解决了AI代理的失忆问题——这是系统方案 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用3个文件和3条规则解决了AI代理的失忆问题——这是系统方案</h1>
+        <div class="post-meta">
+          <span>👤 Hot_Interest457</span> | <span>📅 2026/3/30</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li><strong>核心设计原则</strong>：将任务状态存储在文件中而非对话线程里，使AI代理能在任何时间、任何渠道恢复上下文</li>
+<li><strong>三个关键文件</strong>：ACTIVE-TASKS.md（任务索引表，包含&quot;下一步&quot;关键列）、progress.md（每个任务的进度文件，含5个必需章节）、CLOSED-TASKS.md（已完成/放弃任务的归档）</li>
+<li><strong>progress.md的核心价值</strong>：&quot;下次需要知道的事&quot;章节用人类语言为未来的自己留下3-5条备忘录，实现跨会话无缝衔接</li>
+<li><strong>系统优势</strong>：无需向量数据库或API调用，仅用3个Markdown文件和3条规则即可解决AI代理的&quot;失忆&quot;问题</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我用3个文件和3条规则解决了AI智能体的失忆问题——这是我的系统</p>
+<h2>正文</h2>
+<p>每次会话结束，你的智能体就忘得一干二净。上下文窗口限制让它无法跨会话继续任务。你在线程A讨论的那个项目？到线程B就消失了。</p>
+<p><strong>我搭建了一个系统来解决这个问题。不需要向量数据库，不需要API调用，只需要3个Markdown文件和3条规则。</strong></p>
+<hr>
+<h3>设计原则</h3>
+<p><strong>任务状态存于文件，而非线程。</strong></p>
+<p>无论你在哪个频道、哪个线程、哪天开启对话——只要智能体读取同一个文件，就能恢复上下文。我已经用了两周，现在我的智能体能无缝衔接不同Discord频道、相隔数天的任务。</p>
+<hr>
+<h3>3个文件</h3>
+<p><strong>1. ACTIVE-TASKS.md（任务索引）</strong></p>
+<p>每个会话首先读取的简单表格：</p>
+<pre><code>| 任务名称 | 关键词 | 项目目录 | 状态 | 最后更新 | 下一步 |
+|---------|--------|---------|------|---------|--------|
+| 项目X | 评审、提案 | projects/project-x/ | 进行中 | 2026-03-29 | 起草报告 |
+</code></pre>
+<p><strong>下一步</strong>这一列最关键——它告诉下一个会话从哪里开始接手。</p>
+<p><strong>2. progress.md（单任务进度文件）</strong></p>
+<p>每个任务拥有独立的进度文件，包含5个必填章节：</p>
+<ul>
+<li><strong>基本信息</strong> —— 名称、截止日期、文件路径</li>
+<li><strong>进度清单</strong> —— 复选框格式，标记已完成项</li>
+<li><strong>关键决策与规则</strong> —— 做了什么决定、原因是什么</li>
+<li><strong>文件位置</strong> —— 所有资料存放在哪里</li>
+<li><strong>⭐ 下次需要知道的事</strong> —— 给未来自己的人类语言备忘（3-5个要点）</li>
+</ul>
+<p>最后一节是精髓所在。就像给自己留便条：&quot;你已完成数据收集。主要痛点是定价透明度。下一步是撰写报告草稿。截止日期4月15日。&quot;</p>
+<p><strong>3. CLOSED-TASKS.md（归档）</strong></p>
+<p>已完成或放弃的任务移入此处。30天以上未触碰的任务会被标记，等待确认归档。</p>
+<hr>
+<h3>3条规则</h3>
+<p><strong>规则1：会话开始 → 读取 ACTIVE-TASKS.md</strong></p>
+<p>每次新对话先读取任务索引，让智能体知道哪些任务正在进行。</p>
+<p><strong>规则2：会话结束 → 更新任务状态</strong></p>
+<p>对话结束前，更新进度文件和任务索引。<strong>下一步</strong>列需要刷新。</p>
+<p><strong>规则3：处理项目任务 → 先检查现有任务</strong></p>
+<p>当用户提及项目名称时，先搜索 ACTIVE-TASKS.md。找到则继续，不确定则询问。</p>
+<hr>
+<h3>实际运作流程</h3>
+<ul>
+<li><strong>第1天</strong>：在线程A讨论项目，完成一半</li>
+<li><strong>第10天</strong>：在线程B说&quot;继续那个项目&quot;</li>
+<li><strong>智能体</strong>：读取 ACTIVE-TASKS.md → 找到任务 → 读取 progress.md → 获知截止日期、已完成步骤、下一步 → 无缝续接</li>
+</ul>
+<hr>
+<h3>心跳兜底机制</h3>
+<p>防止智能体忘记更新任务状态：</p>
+<ul>
+<li>每2-3个心跳周期，扫描 ACTIVE-TASKS.md</li>
+<li>任务7天以上未触碰 → 提醒</li>
+<li>截止日期3天内</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s6z6nj/i_solved_my_ai_agents_amnesia_problem_with_3/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
