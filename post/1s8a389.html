@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有人做出过真正好用的全能旅行代理工具吗？（机票、积分兑换、值机、酒店） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>有人做出过真正好用的全能旅行代理工具吗？（机票、积分兑换、值机、酒店）</h1>
+        <div class="post-meta">
+          <span>👤 kurosh8788</span> | <span>📅 2026/3/31</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>构建全功能旅行代理面临三大技术难题：反爬虫检测（需开发隐身浏览器层）、多忠诚度计划奖励搜索碎片化（需统一24+计划缓存）、以及主观化&quot;最佳航班&quot;评分（开发昼夜节律0-100分模型）</li>
+<li>核心功能模块包括：多维度航班搜索排序、跨计划奖励可用性查询、实时价格抓取、自动值机、机场附近酒店/日间房、积分钱包管理与最优兑换路径计算</li>
+<li>技术栈方案：将各功能封装为ClawHub技能供代理调用，免费版涵盖航班搜索、奖励、休息室、酒店和优惠</li>
+<li>关键洞察：单纯价格排序不足，需结合时差影响、到达时间等主观因素建立综合评分体系</li>
+<li>开放问题：反爬虫对抗和多计划奖励搜索仍是行业共性挑战，寻求更优解决方案</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我一直在尝试构建一个超越&quot;搜索谷歌航班&quot;的旅行智能体。好奇有没有人成功让智能体实现以下功能：</p>
+<ul>
+<li>搜索航班并按价格以外的维度排序（我在实验用时差/昼夜节律评分）</li>
+<li>跨多个常旅客计划查询里程票可用性（而非一次只查一家航司）</li>
+<li>从谷歌航班和Kayak抓取实时价格而不被封禁</li>
+<li>自动办理达美、英航、西南等航司的值机</li>
+<li>查找机场附近的酒店优惠和日间休息室</li>
+<li>管理积分/里程钱包并计算最优兑换路径</li>
+</ul>
+<p>我遇到的最大难点：</p>
+<p><strong>反爬虫检测</strong>——航司网站用Akamai/Cloudflare/Datadome。普通Playwright秒封。不得不搭了一套隐形浏览器层。</p>
+<p><strong>里程搜索碎片化</strong>——每个常旅客计划各有怪癖。最终搭建了覆盖24+计划的统一搜索，带1400万+行的缓存。</p>
+<p><strong>&quot;最佳航班&quot;很主观</strong>——光看价格不行。凌晨3点落地的红眼航班，就算更便宜也客观上来说比早班机差。我搭了一个昼夜节律模型，给航班打0-100分。</p>
+<p>最后我把这些打包成ClawHub技能，智能体可以当作工具调用。免费版涵盖航班搜索、里程票、休息室、酒店和优惠。</p>
+<p>好奇大家都怎么做的——尤其是反爬虫问题和多计划里程搜索这块。</p>
+<p>你的旅行智能体技术栈长什么样？</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s8a389/has_anyone_built_a_full_travel_agent_that/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

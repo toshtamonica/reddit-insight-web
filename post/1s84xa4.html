@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>周末速成的完整学习平台 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>周末速成的完整学习平台</h1>
+        <div class="post-meta">
+          <span>👤 Glad_Spend_1004</span> | <span>📅 2026/3/31</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者用一个周末搭建了一套完整的AI驱动学习平台BrewAcademy，包含管理后台、用户门户和落地页，总成本不到1000美元
+• 采用Claude辅助设计并生成各类技术文档，结合Openclaw（12个AI代理）和Haiku/Sonnet模型进行开发
+• 技术栈包括Vercel、Supabase、Stripe、Cloudflare等，AI教练采用RAG架构实现零持续API成本
+• 开发过程中因Openclaw的LLM调度失误导致400美元Sonnet token浪费，本可降至1/4成本
+• 该系统可快速复用于其他业务领域，作者计划本月再启动3家独立公司，并提供免费创始会员资格邀请体验</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>想分享一下，我周末花了一个周末搭了一套完整的 AI 驱动学习平台。这篇写得比较简略，其实有很多可以聊的，但想保持简洁。</p>
+<p><a href="http://www.BrewAcademy.co">www.BrewAcademy.co</a></p>
+<p><strong>做了哪些东西：</strong></p>
+<ul>
+<li>功能齐全的管理后台</li>
+<li>内容丰富的用户端，包含 AI 教练、资源、计算器等等</li>
+<li>落地页</li>
+</ul>
+<p><strong>我的方法：</strong>
+用 Claude 做设计，让它产出所需的文件（产品规格、内容地图、UI 地图、原型代码、规范注册表、认证模型、AI 规格、权限规则），然后把项目推进到 Openclaw。</p>
+<p>我加载了 12 个具备不同技能的 agent（编排器、身份、souls、记忆、工具、用户等 md 文件）。主力用 Haiku，Sonnet 作为备用。给 Openclaw 加载了大量需要遵守的规则和指南。</p>
+<p><strong>技术栈：</strong>
+Vercel、Openclaw、Supabase、Resend、Cloudflare、Google Analytics、Openrouter、Stripe、Claude</p>
+<p><strong>成本：</strong>
+Openclaw 犯了个大错。我一直在烧 Sonnet 的 token，它没有正确匹配不同场景该用哪个 LLM。白白烧了大概 400 美元的 Sonnet 用量，如果用 Haiku 只要四分之一。不过即便如此，整套系统做下来花了不到 1000 美元，跑得还挺好。后续成本？基本没有。AI 教练用的是 RAG 架构，不需要调 LLM API。</p>
+<p><strong>成果：</strong>
+我还有其他更大的项目，这是我第一次完成从构思 → 原型 → 上线的全流程。学到很多。而且这套 Academy 系统可以套用到任何其他业务上，只需要填充内容，搞定，又一家公司启动。目标？这个月再搞 3 家独立公司。</p>
+<p>欢迎大家注册免费入门版体验平台。私信我的话，可以免费给完整创始会员权限。有问题也欢迎问。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>面向有意投身移动咖啡车创业的人群。我拥有该领域的专业积累与成熟的资源分发体系。
+简言之：移动咖啡车创业者能够获取深度的行业知识学习，以及助力成功开业的各类资源支持。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我觉得你没抓住重点。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我有一个大型分销合作伙伴。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s84xa4/full_learning_platform_built_in_a_weekend/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
