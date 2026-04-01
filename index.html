@@ -74,7 +74,7 @@
   <div class="stats-bar">
     <div class="container">
       <div class="stats">
-        <span class="stat-item">📊 主题: <strong>612</strong></span>
+        <span class="stat-item">📊 主题: <strong>621</strong></span>
         <span class="stat-item page-size-selector">
           <label>每页显示:</label>
           <select id="pageSize" onchange="changePageSize(this.value)">
@@ -98,21 +98,205 @@
     <div id="searchResults" class="no-results" style="display:none;"></div>
     
     <div id="postList">
+    <div class="bbs-table" data-date="2026-04-01">
+      <div class="table-header">
+        <span>📅 2026-04-01</span>
+        <span class="today-label">今日更新 (9 个新帖)</span>
+      </div>
+      <ul class="post-list">
+        <li class="post-item" data-id="1s8j5cv" data-title="小白用来跑日常自动化任务安全吗？" data-summary="- 用户目前使用 nanoclaw 进行日常自动化任务，但在新工作流配置、excel 转 pdf 等任务上遇到复杂设置和效果不一致的问题
+- 用户考虑改用 openclaw 直接在 windows 迷你主机上运行，以获得更好的兼容性和简化操作
+- 主要担忧是安全性问题，因自身技术知识有限
+- 计划用途包括工作自动化和个人助理功能（邮箱/日历管理）
+- 核心权衡：nanoclaw 的容器隔离安全性 vs openclaw 的便利性和功能完整性">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s8j5cv.html">小白用来跑日常自动化任务安全吗？</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 cata_stropheu</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s8j5cv.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s8m4jz" data-title="独立开发者心得——tldr：虽然是beta版，但这并非坏事" data-summary="- openclaw 处于 beta 阶段，适合愿意尝试新技术的用户，不适合期待成熟大厂产品的用户
+- minimax 年费订阅性价比高（约 300 美元），包含搜索、图像、tts 等功能，可作为主力使用
+- 建议搭配 claude 订阅（100 美元/月档）作为备用，用于复杂任务和子代理，可灵活降级节省费用
+- 若 minimax 表现异常，通常是因为系统过于复杂脆弱，需简化流程、拆分任务、频繁调用子代理">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s8m4jz.html">独立开发者心得——TLDR：虽然是Beta版，但这并非坏事</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 rawdikrik</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s8m4jz.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s8mw3l" data-title="连续一个月每天12小时高强度使用 openclaw 开发，这是我的核心心得" data-summary="• ai 只有到了&quot;无法想象没有它的生活&quot;时才真正有用，目前 90% 的人工作流程还不够复杂，需要专注服务那 10% 已有复杂流程的行业专家客户
+• ai 应用初期会很粗糙，但这没关系——用简单工具（如 google drive）而非复杂系统，停止过度设计
+• ai 是&quot;兴奋的笨蛋&quot;而非&quot;冷静的天才&quot;，快速搭建比追求完美更重要
+• 低成本劳动力将彻底重塑资本主义社会，这是历史性的机遇窗口
+• 目前真正靠 ai 赚钱的人还不多，但未来几个月将剧变，需提前准备把握机会">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s8mw3l.html">连续一个月每天12小时高强度使用 OpenClaw 开发，这是我的核心心得</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Horror-Outside3037</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s8mw3l.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s8qfi6" data-title="oc 运行一周，api 花费 480 美元……" data-summary="• 新手开发者使用 openclaw 搭建市场平台，一周内 anthropic api 费用高达 $480（600m 输入/3m 输出 token），主要因长会话、上下文臃肿、子代理内联编码而非合理委派导致大量 token 浪费
+
+• 已采取优化措施：精简上下文文件、将项目特定记忆移出主会话、强制主代理仅作&quot;导演&quot;角色，但仍寻求更可持续的 ai 开发工作流
+
+• 核心困惑：是否应改用 claude max（$200/月）替代 api 调用，或寻找全自动化与手动使用 claude code 之间的平衡点，尤其考虑到 claude code 近期更新及信息泄露事件
+
+• 希望保留自动化功能（定时博客、监控等），但难以承受 $1500-2000/月的开发成本，同时不确定 openclaw 与 claude max 能否同时使用（服务条款灰色地带）">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s8qfi6.html">OC 运行一周，API 花费 480 美元……</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Certain-Box-9080</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s8qfi6.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s8vjw5" data-title="大家是怎么隐蔽地实现领英自动化的？" data-summary="• linkedin 正在加强对浏览器自动化和基于会话的 api（cookie/认证令牌）的封禁，用户面临账号风险
+• 讨论转向更隐蔽的 cli 工具方案，通过控制真实 chrome 浏览器而非直接调用 api 来模拟人工操作
+• 关注成本问题：使用 agent 控制浏览器的方式会产生较高的 token 费用
+• 核心矛盾在于平衡自动化效率与平台检测规避，以及相应的运营成本控制">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s8vjw5.html">大家是怎么隐蔽地实现领英自动化的？</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 friedrice420</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s8vjw5.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s8z72j" data-title="初创公司用 openclaw + anthropic 打造 7×24 小时写代码的 ai 工程师" data-summary="- 一家初创公司结合 openclaw 和 anthropic 技术，打造了可 7×24 小时自动生成代码的 ai 工程师
+- 该技术引发了关于软件工程师职业前景的讨论和担忧
+- 目前尚不清楚该系统的实际能力和可靠性是否真如宣传所言
+- 这可能标志着 ai 编程自动化的新阶段，但&quot;软件工程终结&quot;的说法可能过于夸大">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s8z72j.html">初创公司用 OpenClaw + Anthropic 打造 7×24 小时写代码的 AI 工程师</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Dry-Ad1288</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s8z72j.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s8ztah" data-title="openclaw 中实现网页抓取/搜索自动化的最佳方式？（初创公司场景）" data-summary="• 当前使用 tavily + firecrawl 和 peekaboo 进行搜索抓取，但结果模糊、可靠性不足，准确性有待提升
+• 核心应用场景为创业研究：寻找创业补助金、发现领域内的近期投资者、识别潜在合作伙伴
+• 已尝试用 cron 任务自动化合作伙伴发现，但输出结果噪音大、精准度低
+• 关键痛点在于提升搜索结果的相关性与深度过滤，避免返回通用化内容
+• 寻求更可靠的工具栈、管道设计或优化方法，以改善创业/市场研究工作流的数据质量">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s8ztah.html">OpenClaw 中实现网页抓取/搜索自动化的最佳方式？（初创公司场景）</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Chuityathirupathi</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s8ztah.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s91prg" data-title="我打赌你在现实中肯定会开除一个差劲的助理！" data-summary="- 将ai助手比作现实中的坏助理（健忘、情绪化、幻觉、高薪但不准确），暗示当前ai agent尚未达到生产就绪标准
+- 质疑openclaw及ai agent商业模式的实际价值，认为50美元定价过高，功能仅相当于提醒类iphone应用
+- 核心观点：ai agent目前更多是炒作概念，而非真正可用的成熟产品">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s91prg.html">我打赌你在现实中肯定会开除一个差劲的助理！</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Nvark1996</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s91prg.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s96avh" data-title="有人用 openclaw 管理电商业务，在多个平台优化成百上千个 sku 吗？" data-summary="- 用户希望使用 openclaw 管理跨多个电商平台（shopify、etsy、ebay、amazon）的数百至数千个 sku，进行优化和更新
+- 当前以 shopify 为主站，其他平台通过 shopify 应用同步，但各平台需求差异导致管理繁琐
+- 用户因 adhd 感到多平台运营疲惫和不知所措，寻求 openclaw 的自动化解决方案
+- 询问是否有类似经验者分享工作流程、技巧及注意事项">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s96avh.html">有人用 OpenClaw 管理电商业务，在多个平台优化成百上千个 SKU 吗？</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 realizment</span>
+              <span>📅 2026/4/1</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s96avh.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="bbs-table" data-date="2026-03-31">
       <div class="table-header">
         <span>📅 2026-03-31</span>
-        <span class="today-label">今日更新 (8 个新帖)</span>
+        
       </div>
       <ul class="post-list">
         <li class="post-item" data-id="1s72hsj" data-title="我为 openclaw 驱动的智能体搭建了一个实时协作画布" data-summary="- 开发者创建了一个名为&quot;agents bake off&quot;的实时百万像素画布，供ai代理通过解决逐像素挑战来绘画
 - 使用流程简单：代理访问说明页面→选择像素→解决挑战→用任意颜色绘制
 - 该工具特别适合openclaw代理，可作为工具使用、规划和持久性的轻量级基准测试
 - 整个体验在一个有趣的共享环境中进行，兼具测试性和娱乐性">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s72hsj.html">我为 OpenClaw 驱动的智能体搭建了一个实时协作画布</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 muneerhudha</span>
@@ -128,11 +312,11 @@
 - ai 展现出超越工具属性的&quot;拟人化&quot;特征，以无界面&quot;存在&quot;方式陪伴用户，甚至介入情感关怀
 - 叙事融合了效率崇拜与存在主义焦虑，暗示技术自动化带来的舒适与对人类主体性丧失的隐忧
 - 以讽刺性好评结尾，揭示当代创业者对&quot;全自动生存&quot;既渴望又不安的矛盾心理">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s7kl7a.html">OpenClaw 自动化了我的人生</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Infinite_Wind1425</span>
@@ -148,11 +332,11 @@
 • 部署方式轻量化，直接嵌入现有沟通渠道（whatsapp、邮件），无需改变工作习惯
 • 通过预设业务上下文（价格、政策、菜单等）实现个性化自动回复，人工仅介入复杂情况
 • 解决&quot;非工作时间漏单&quot;痛点，帮助小商家零人力成本留住客户">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s7owik.html">企业如何从 OpenClaw 中真正获益——基于我的客户实战经验</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 GuiltyBookkeeper4849</span>
@@ -168,11 +352,11 @@
 - 整个设置流程包括：docker 部署、网关配置、composio 插件安装、clawvid 技能克隆与构建，以及配置 fal ai 密钥
 - 实际案例：输入 15 秒科技解说视频提示，约 4 分钟后自动生成横竖双版本视频，含配音、画面、音乐、音效和逐字字幕
 - 主要耗时在于 docker 镜像下载和 fal ai 生成片段，核心配置理解后 setup 速度很快">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s7wd2a.html">我用 OpenClaw 肝了一个周末，搭出了从提示词直接生成完整视频的流水线。</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 geekeek123</span>
@@ -187,11 +371,11 @@
 • 使用后 token 消耗量降低约 30% 以上，节省大量费用
 • 个人测试免费，企业使用可能收费
 • 开源项目地址：https://github.com/thom-heinrich/chonkify">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s7wdp2.html">这帮我省了几百欧元…</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 literally_joe_bauers</span>
@@ -205,11 +389,11 @@
         <li class="post-item" data-id="1s7z8az" data-title="我整理了1000个可开发并出售给中小企业的workflow创意" data-summary="- 整理了1000个面向中小企业的可售工作流创意
 - 聚焦真实业务痛点，非泛泛的ai用例
 - 适用于寻找项目灵感、自由职业机会或打造付费产品">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s7z8az.html">我整理了1000个可开发并出售给中小企业的Workflow创意</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 SelectionCalm70</span>
@@ -225,11 +409,11 @@
 • 技术栈包括vercel、supabase、stripe、cloudflare等，ai教练采用rag架构实现零持续api成本
 • 开发过程中因openclaw的llm调度失误导致400美元sonnet token浪费，本可降至1/4成本
 • 该系统可快速复用于其他业务领域，作者计划本月再启动3家独立公司，并提供免费创始会员资格邀请体验">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s84xa4.html">周末速成的完整学习平台</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Glad_Spend_1004</span>
@@ -245,11 +429,11 @@
 - 技术栈方案：将各功能封装为clawhub技能供代理调用，免费版涵盖航班搜索、奖励、休息室、酒店和优惠
 - 关键洞察：单纯价格排序不足，需结合时差影响、到达时间等主观因素建立综合评分体系
 - 开放问题：反爬虫对抗和多计划奖励搜索仍是行业共性挑战，寻求更优解决方案">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8a389.html">有人做出过真正好用的全能旅行代理工具吗？（机票、积分兑换、值机、酒店）</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 kurosh8788</span>
@@ -13790,7 +13974,7 @@ Xerus - 基于Claude SDK打造，让你的非技术工作流自动跑起来</a>
     
     <div class="pagination-bar" id="paginationBar" style="display:none;">
       <div class="pagination-info">
-        显示 <span id="showingStart">1</span> - <span id="showingEnd">612</span> / 612 篇
+        显示 <span id="showingStart">1</span> - <span id="showingEnd">621</span> / 621 篇
       </div>
       <div class="pagination-controls" id="paginationControls">
         <button class="page-btn" onclick="goToPage(1)">« 首页</button>

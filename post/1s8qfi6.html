@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OC 运行一周，API 花费 480 美元…… - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>OC 运行一周，API 花费 480 美元……</h1>
+        <div class="post-meta">
+          <span>👤 Certain-Box-9080</span> | <span>📅 2026/4/1</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 新手开发者使用 OpenClaw 搭建市场平台，一周内 Anthropic API 费用高达 $480（600M 输入/3M 输出 token），主要因长会话、上下文臃肿、子代理内联编码而非合理委派导致大量 token 浪费</p>
+<p>• 已采取优化措施：精简上下文文件、将项目特定记忆移出主会话、强制主代理仅作&quot;导演&quot;角色，但仍寻求更可持续的 AI 开发工作流</p>
+<p>• 核心困惑：是否应改用 Claude Max（$200/月）替代 API 调用，或寻找全自动化与手动使用 Claude Code 之间的平衡点，尤其考虑到 Claude Code 近期更新及信息泄露事件</p>
+<p>• 希望保留自动化功能（定时博客、监控等），但难以承受 $1500-2000/月的开发成本，同时不确定 OpenClaw 与 Claude Max 能否同时使用（服务条款灰色地带）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我刚接触 OpenClaw 不久，开发经验也尚浅。</p>
+<p>我一直在搭建一个 marketplace 平台，用的是 OpenClaw 方案，它会生成 Claude 子代理来处理编码任务。作为非开发者 / vibe coder，我几乎不怎么需要亲自动手……</p>
+<p>刚查了下 Anthropic 的 API 账单，一周（5 天）就烧了 480 美元。每次会话大概 4-6 小时，所以用 OC 的时间总共也就 20-30 小时。全程用的都是 Sonnet 4.6。</p>
+<p>大头主要来自长时间的开发会话，上下文量很大。我猜是 OpenClaw 每次部署都带着庞大的 memory 文件，做的是 inline coding 而不是合理拆分任务，而且反复迭代很久才能交付。token 浪费应该很严重。（输入 6 亿 token，输出 300 万）</p>
+<p>我已经做了一些调整：精简上下文文件、把项目相关的 memory 从主会话里拆出去、强制主代理只当 &quot;director&quot; 不直接写代码。但想听听大家是怎么做的。</p>
+<p>具体想请教：
+• 有没有人用 Claude Max（200 美元/月）直接跑 Claude Code，完全不走 API？
+• 大家做 AI 辅助开发的工作流是怎样的，既能提效又不至于破产？
+• 全自动和手动跑 Claude Code 之间有没有平衡点？我知道 Claude Code 最近 4 天进步很大，加上今天泄露的消息，是不是该彻底放弃 OC 了？</p>
+<p>如果弃用，怎么把 memory 迁移到 CC Max？</p>
+<p>我喜欢自动化那部分（定时发博客、监控之类），但如果开发成本一直这么离谱，就很难 justify 了。想听听大家是怎么架构的。</p>
+<p>先谢过。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>愿意为我的项目成果付费，但每月1500-2000美元确实不太理想哈哈。你知道能不能同时用OpenClaw和Claude Max吗？服务条款这块比较模糊，到处都找不到明确答案。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1s8qfi6/oc_running_1_week_480_api_spend/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
