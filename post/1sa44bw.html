@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可视化图解生成器 - 开源项目，一条命令将任何主题转为图解说明（白板、信息图、思维导图） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>可视化图解生成器 - 开源项目，一条命令将任何主题转为图解说明（白板、信息图、思维导图）</h1>
+        <div class="post-meta">
+          <span>👤 erictblue</span> | <span>📅 2026/4/2</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>翻译失败: Command failed: curl -s -X POST &quot;<a href="https://api.kimi.com/coding/v1/messages">https://api.kimi.com/coding/v1/messages</a>&quot;       -H &quot;x-api-key: sk-kimi-WtgHC0JBY0RWKJBUjgUJ4ghTHX6PCStFhbUSzZal4v482nql6GqC5Vi7jo5uoOVc&quot;       -H &quot;anthropic-version: 2023-06-01&quot;       -H &quot;Content-Type: application/json&quot;       -H &quot;User-Agent: Claude Code/1.0.0&quot;       -d @/tmp/translate_1775096390574_61wj5tezn4q.json 2&gt;/dev/null</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我一直在用 NotebookLM 的可视化摘要和 Gemini 的信息图生成功能，但想要一个能自定义、直接在终端里用的类似工具。于是我给 Claude Code 写了个斜杠命令，也给 OpenClaw 做了个技能。这成了一个有趣的场景——不用跳转到其他工具或服务，就能做出高质量的可视化内容。</p>
+<p>用法很简单：
+/visual-explainer --style infographic 机器学习是如何工作的</p>
+<p>然后就会生成一张精致的信息图。</p>
+<p>目前有 6 种风格：
+白板手绘
+信息图
+演示文稿
+技术架构图
+彩色思维导图
+数据导向的 XMind 风格思维导图</p>
+<p>核心洞察是：出图质量取决于提示词质量。</p>
+<p>这个技能会先分析你的内容（提取概念、关系、视觉隐喻、布局策略），然后用风格专属模板构建 400-800 词的提示词。每个模板都规定了空间布局、图标、配色、字体和连接方式。</p>
+<p>这才是输出质量能逼近（有时甚至超越）专业工具的关键。</p>
+<p>几个我比较满意的功能：</p>
+<p>--draw-level  控制手绘感 vs 精致度（草图 / 正常 / 精致）
+--complexity  控制概念密度（简单 / 适中 / 详细）
+--mode multi-frame  生成 3-5 张渐进式图片，逐步展开概念
+Mermaid 图表转换：指向任意流程图、时序图等，转换成任意视觉风格
+支持现有文档：指向 README、PRD 或会议纪要来生成可视化
+底层调用 OpenAI 的 gpt-image-1.5，成本约 $0.19-0.29 每张图。</p>
+<p>各风格示例的仓库：
+<a href="https://github.com/ericblue/visual-explainer-skill">https://github.com/ericblue/visual-explainer-skill</a></p>
+<p>欢迎提问或提功能需求。</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sa44bw/visual_explainer_open_source_project_that_turns/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

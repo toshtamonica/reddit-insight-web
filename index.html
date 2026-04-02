@@ -74,7 +74,7 @@
   <div class="stats-bar">
     <div class="container">
       <div class="stats">
-        <span class="stat-item">📊 主题: <strong>621</strong></span>
+        <span class="stat-item">📊 主题: <strong>627</strong></span>
         <span class="stat-item page-size-selector">
           <label>每页显示:</label>
           <select id="pageSize" onchange="changePageSize(this.value)">
@@ -98,10 +98,135 @@
     <div id="searchResults" class="no-results" style="display:none;"></div>
     
     <div id="postList">
+    <div class="bbs-table" data-date="2026-04-02">
+      <div class="table-header">
+        <span>📅 2026-04-02</span>
+        <span class="today-label">今日更新 (6 个新帖)</span>
+      </div>
+      <ul class="post-list">
+        <li class="post-item" data-id="1s97ph0" data-title="openclaw 工作流救了我。" data-summary="- 减少社交媒体使用，每天只发布1-2条有价值内容，不再刷新页面
+- 利用ai自动化信息收集和手机琐事处理，显著改善心理状态
+- 将节省的社交媒体时间用于项目，无需压缩睡眠
+- 降低fomo焦虑，他人的动态和新功能并不会产生实质影响
+- 使用ai自动化技术博客的发布、git提交和代码审查，同时人工审核确保质量">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s97ph0.html">OpenClaw 工作流救了我。</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 JacketDangerous9555</span>
+              <span>📅 2026/4/2</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s97ph0.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s9ioiz" data-title="很多人说 openclaw 是骗局。我删了两次，差点放弃。然后醒来看到这个。" data-summary="- 作者第三次尝试使用 openclaw，从简单场景入手（单一 api、whatsapp 渠道），最终取得突破
+- 成功搭建自动化邮件营销系统：自动发送 150 封邮件、筛选收件箱回复、预约会议，完全无需手动操作 gmail
+- 邮件页脚标注&quot;由 openclaw 研究、撰写和发送&quot;，成功吸引培训机构关注，获得 ai 培训合作机会
+- 进一步扩展为第二条自动化管道：自动搜索 google maps 商家、搭建演示网站、邮件/短信触达、协商报价、发送发票
+- 关键经验：从简单开始、保持人工介入（human in the loop）、持续迭代克服初期频繁故障">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s9ioiz.html">很多人说 OpenClaw 是骗局。我删了两次，差点放弃。然后醒来看到这个。</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 triftan</span>
+              <span>📅 2026/4/2</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s9ioiz.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s9kbyy" data-title="为不懂技术的用户配置 openclaw 的真实用例" data-summary="- 非技术用户最看重的是日常小场景的便利性，而非功能本身
+- 核心使用场景：收件箱处理、碎片时间管理、智能提醒、快速研究与起草、语音交互
+- 语音功能是让用户真正重视该产品的转折点
+- 任何需要额外解释或设置的复杂功能都会被非技术用户弃用
+- 用户真正想要的是能通过短信随时处理琐事的工具，而非复杂的ai系统">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s9kbyy.html">为不懂技术的用户配置 OpenClaw 的真实用例</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Ghostismee</span>
+              <span>📅 2026/4/2</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s9kbyy.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s9my6h" data-title="移动客户端喂 openclaw（ios → 树莓派）：健康应用场景 + 架构设计 + 踩坑经验" data-summary="• **本地优先架构**：手机端完全本地运行，不依赖云服务，使用 apple 原生 ocr 和端侧智能处理文档，仅在用户主动推送时才传输至 openclaw
+• **二维码配对机制**：通过 base64 编码的 json 二维码实现零配置配对，包含 websocket 地址、认证令牌等，敏感信息存入 ios keychain
+• **分层处理流程**：手机作为采集层 → http post 推送至 openclaw → python 脚本处理（保存原件、更新索引、支持分块组装）→ 专用健康智能体进行 ocr 与结构化输出
+• **隐私与安全设计**：原始文档和提取内容默认保留在设备端，hookstoken 安全存储，传输使用 bearer 认证，支持本地网络或 vpn 连接
+• **专用健康智能体**：openclaw 配置多智能体架构，健康相关文档由独立智能体处理，实现下游验证与结构化输出的专门化 pipeline">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s9my6h.html">移动客户端喂 OpenClaw（iOS → 树莓派）：健康应用场景 + 架构设计 + 踩坑经验</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 CheesecakeSpecific40</span>
+              <span>📅 2026/4/2</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s9my6h.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1s9zhqz" data-title="claude code 泄露了，所以我用 rust 重写了它：更快、开源" data-summary="- 开发者用 rust 重写了 claude code，实现更快的启动速度和更低的内存占用
+- 项目完全开源，采用单二进制文件设计，无需繁重依赖
+- 支持 openai 和 gemini 模型（需先取消 anthropic 环境变量设置）
+- 核心功能与 claude code 相同，但代码实现从 typescript 改为 rust
+- 项目地址：https://github.com/soongenwong/claudecode">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1s9zhqz.html">Claude Code 泄露了，所以我用 Rust 重写了它：更快、开源</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 Ambitious_Voice_454</span>
+              <span>📅 2026/4/2</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1s9zhqz.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+        <li class="post-item" data-id="1sa44bw" data-title="可视化图解生成器 - 开源项目，一条命令将任何主题转为图解说明（白板、信息图、思维导图）" data-summary="翻译失败: command failed: curl -s -x post &quot;https://api.kimi.com/coding/v1/messages&quot;       -h &quot;x-api-key: sk-kimi-wtghc0jby0rwkjbujguj4ghthx6pcstfhbuszzal4v482nql6gqc5vi7jo5uoovc&quot;       -h &quot;anthropic-version: 2023-06-01&quot;       -h &quot;content-type: application/json&quot;       -h &quot;user-agent: claude code/1.0.0&quot;       -d @/tmp/translate_1775096390574_61wj5tezn4q.json 2>/dev/null
+">
+          <div class="post-icon new">🔥</div>
+          <div class="post-content">
+            <div class="post-title">
+              <a href="post/1sa44bw.html">可视化图解生成器 - 开源项目，一条命令将任何主题转为图解说明（白板、信息图、思维导图）</a>
+              <span class="new-tag">NEW</span>
+            </div>
+            <div class="post-meta">
+              <span>👤 erictblue</span>
+              <span>📅 2026/4/2</span>
+            </div>
+          </div>
+          <div class="post-actions">
+            <a href="post/1sa44bw.html" class="btn btn-primary">阅读</a>
+          </div>
+        </li>
+      </ul>
+    </div>
     <div class="bbs-table" data-date="2026-04-01">
       <div class="table-header">
         <span>📅 2026-04-01</span>
-        <span class="today-label">今日更新 (9 个新帖)</span>
+        
       </div>
       <ul class="post-list">
         <li class="post-item" data-id="1s8j5cv" data-title="小白用来跑日常自动化任务安全吗？" data-summary="- 用户目前使用 nanoclaw 进行日常自动化任务，但在新工作流配置、excel 转 pdf 等任务上遇到复杂设置和效果不一致的问题
@@ -109,11 +234,11 @@
 - 主要担忧是安全性问题，因自身技术知识有限
 - 计划用途包括工作自动化和个人助理功能（邮箱/日历管理）
 - 核心权衡：nanoclaw 的容器隔离安全性 vs openclaw 的便利性和功能完整性">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8j5cv.html">小白用来跑日常自动化任务安全吗？</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 cata_stropheu</span>
@@ -128,11 +253,11 @@
 - minimax 年费订阅性价比高（约 300 美元），包含搜索、图像、tts 等功能，可作为主力使用
 - 建议搭配 claude 订阅（100 美元/月档）作为备用，用于复杂任务和子代理，可灵活降级节省费用
 - 若 minimax 表现异常，通常是因为系统过于复杂脆弱，需简化流程、拆分任务、频繁调用子代理">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8m4jz.html">独立开发者心得——TLDR：虽然是Beta版，但这并非坏事</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 rawdikrik</span>
@@ -148,11 +273,11 @@
 • ai 是&quot;兴奋的笨蛋&quot;而非&quot;冷静的天才&quot;，快速搭建比追求完美更重要
 • 低成本劳动力将彻底重塑资本主义社会，这是历史性的机遇窗口
 • 目前真正靠 ai 赚钱的人还不多，但未来几个月将剧变，需提前准备把握机会">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8mw3l.html">连续一个月每天12小时高强度使用 OpenClaw 开发，这是我的核心心得</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Horror-Outside3037</span>
@@ -170,11 +295,11 @@
 • 核心困惑：是否应改用 claude max（$200/月）替代 api 调用，或寻找全自动化与手动使用 claude code 之间的平衡点，尤其考虑到 claude code 近期更新及信息泄露事件
 
 • 希望保留自动化功能（定时博客、监控等），但难以承受 $1500-2000/月的开发成本，同时不确定 openclaw 与 claude max 能否同时使用（服务条款灰色地带）">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8qfi6.html">OC 运行一周，API 花费 480 美元……</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Certain-Box-9080</span>
@@ -189,11 +314,11 @@
 • 讨论转向更隐蔽的 cli 工具方案，通过控制真实 chrome 浏览器而非直接调用 api 来模拟人工操作
 • 关注成本问题：使用 agent 控制浏览器的方式会产生较高的 token 费用
 • 核心矛盾在于平衡自动化效率与平台检测规避，以及相应的运营成本控制">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8vjw5.html">大家是怎么隐蔽地实现领英自动化的？</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 friedrice420</span>
@@ -208,11 +333,11 @@
 - 该技术引发了关于软件工程师职业前景的讨论和担忧
 - 目前尚不清楚该系统的实际能力和可靠性是否真如宣传所言
 - 这可能标志着 ai 编程自动化的新阶段，但&quot;软件工程终结&quot;的说法可能过于夸大">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8z72j.html">初创公司用 OpenClaw + Anthropic 打造 7×24 小时写代码的 AI 工程师</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Dry-Ad1288</span>
@@ -228,11 +353,11 @@
 • 已尝试用 cron 任务自动化合作伙伴发现，但输出结果噪音大、精准度低
 • 关键痛点在于提升搜索结果的相关性与深度过滤，避免返回通用化内容
 • 寻求更可靠的工具栈、管道设计或优化方法，以改善创业/市场研究工作流的数据质量">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s8ztah.html">OpenClaw 中实现网页抓取/搜索自动化的最佳方式？（初创公司场景）</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Chuityathirupathi</span>
@@ -246,11 +371,11 @@
         <li class="post-item" data-id="1s91prg" data-title="我打赌你在现实中肯定会开除一个差劲的助理！" data-summary="- 将ai助手比作现实中的坏助理（健忘、情绪化、幻觉、高薪但不准确），暗示当前ai agent尚未达到生产就绪标准
 - 质疑openclaw及ai agent商业模式的实际价值，认为50美元定价过高，功能仅相当于提醒类iphone应用
 - 核心观点：ai agent目前更多是炒作概念，而非真正可用的成熟产品">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s91prg.html">我打赌你在现实中肯定会开除一个差劲的助理！</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 Nvark1996</span>
@@ -265,11 +390,11 @@
 - 当前以 shopify 为主站，其他平台通过 shopify 应用同步，但各平台需求差异导致管理繁琐
 - 用户因 adhd 感到多平台运营疲惫和不知所措，寻求 openclaw 的自动化解决方案
 - 询问是否有类似经验者分享工作流程、技巧及注意事项">
-          <div class="post-icon new">🔥</div>
+          <div class="post-icon ">📄</div>
           <div class="post-content">
             <div class="post-title">
               <a href="post/1s96avh.html">有人用 OpenClaw 管理电商业务，在多个平台优化成百上千个 SKU 吗？</a>
-              <span class="new-tag">NEW</span>
+              
             </div>
             <div class="post-meta">
               <span>👤 realizment</span>
@@ -13974,7 +14099,7 @@ Xerus - 基于Claude SDK打造，让你的非技术工作流自动跑起来</a>
     
     <div class="pagination-bar" id="paginationBar" style="display:none;">
       <div class="pagination-info">
-        显示 <span id="showingStart">1</span> - <span id="showingEnd">621</span> / 621 篇
+        显示 <span id="showingStart">1</span> - <span id="showingEnd">627</span> / 627 篇
       </div>
       <div class="pagination-controls" id="paginationControls">
         <button class="page-btn" onclick="goToPage(1)">« 首页</button>
