@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用 OpenClaw 为本地服务商部署了 AI 接待员——这是我的心得 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用 OpenClaw 为本地服务商部署了 AI 接待员——这是我的心得</h1>
+        <div class="post-meta">
+          <span>👤 DisGuyOvaHeah</span> | <span>📅 2026/4/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 本地服务企业27%的电话无人接听，导致大量商机流失，AI接待员可24/7全天候响应并自动记录预约
+• 采用OpenClaw+Retell AI方案，1小时即可部署上线，首周处理23通电话、捕获7个预约，AI成本仅4.12美元
+• 关键设计在于&quot;交接机制&quot;而非让AI处理一切，对异常对话设置简洁回退话术覆盖90%边缘情况
+• 无需专用硬件，Retell AI提供电话号码和语音交互，OpenClaw在廉价VPS（月费5-10美元）运行自动化层
+• 通过来电显示+PIN码实现业主远程查收消息，经迭代简化后成为实用功能</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>大家好——想分享一个我们用 OpenClaw 搭建的方案，目前已经在本地服务类商家身上跑出了实际效果。</p>
+<h2>痛点</h2>
+<p>27% 打给本地商家的电话无人接听。 HVAC、水管工、草坪护理这类行业——老板们整天都在工地上，根本没法接电话。每漏接一个电话，就是丢了一单生意。</p>
+<h2>我们的方案</h2>
+<p>OpenClaw + Retell AI。智能客服 7×24 小时接听所有来电，熟知商家的服务项目、价格、营业时间，记录预约需求，并在每通电话结束后给老板发短信或邮件。老板还能通过来电显示 + PIN 码验证身份，随时用电话查收留言。</p>
+<p>一次部署：一小时从 0 到上线。第一周——处理 23 通电话，其中 15 通原本会直接进入语音信箱，成功捕获 7 个预约。</p>
+<p>整周 AI 成本：4.12 美元。</p>
+<p>关于具体配置或 OpenClaw 在整个流程中的角色，欢迎提问。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全正确——交接环节正是大多数人搞砸的地方。他们想让机器人处理所有情况，结果一遇到非常规场景就崩了。</p>
+<p>第一周的边缘案例主要集中在那些不按套路出牌的来电者身上——有人不等提示语就开始自说自话，有人想留一段冗长的碎碎念，还有一位一直追问AI无法回答的问题。解决方案是收紧开场白，让引导更明确，并增加了一个干净的兜底话术：&quot;我会确保负责人回复您——请问哪个号码联系您最方便？&quot; 这覆盖了90%的奇葩情况。</p>
+<p>机主验证系统（来电显示+PIN码查收留言）是另一块需要迭代的——第一版做得比较笨重，第二周做了简化。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全正确</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>完全不需要特殊硬件。Retell AI 负责电话端——你获得一个本地号码，由语音 AI 坐席接听来电。OpenClaw 在廉价 VPS 上运行自动化层（DigitalOcean 上每月 5-10 美元）。整个技术栈都在云端。只要能跑 Linux 服务器，你就能搭建这套系统。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好建议，我会跟进一下。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>Retell 按通话分钟数收费——根据语音模型不同，大约每分钟 0.05-0.08 美元。对于一家典型的服务型企业，每天接 20-30 通电话，平均每通 2-3 分钟，Retell 的成本大概在每天 3-12 美元。这是最大的变动成本。</p>
+<p>底层的大模型我通过 OpenRouter 跑 Claude Sonnet。响应快，对话处理得也不错，按常规通话量来算，token 费用几乎可以忽略不计——大多数小企业每天不到 1 美元。真正的成本大头是 Retell 的语音合成，不是大模型。</p>
+<p>我们上线第一周的总成本是 4.12 美元——测试阶段通话量很低，但足以说明成本下限可以压到多低。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好问题！
+Retell 负责语音层，并不是让 Claude 直接处理通话。Retell 使用自研的优化 TTS/STT 流水线，大多数情况下轮询延迟低于 500 毫秒——感觉很自然。Claude 在后台负责 LLM 推理，但 Retell 会对其进行批处理和流式传输，所以对话过程中不会有明显的停顿。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>没错，但我不能在这里发售卖信息，所以发到另一个 Reddit 了——链接在下面
+<a href="https://www.reddit.com/r/SideProject/s/H9FCThxqyV">https://www.reddit.com/r/SideProject/s/H9FCThxqyV</a></p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>响应时间不到1秒就能接听——没有等待音乐，没有响铃。这一点用户立刻就能感受到。</p>
+<p>护栏通过系统提示词来设置——你需要明确定义范围。比如对水管工来说，大致是这样：&quot;你只处理与[商家名称]的水管服务、预约安排和收费相关的来电。如果有人询问无关事项，请礼貌告知你只能解答水管相关问题，并提供留言服务。&quot;实际使用中效果很好——AI会乖乖待在自己的车道上，因为你已经明确告诉它车道在哪里。</p>
+<p>比较棘手的边缘情况通常是：单纯想找个人聊天的用户，或者不信任留言能真正传达给老板的用户。后者通过每次通话后自动短信通知老板就能解决——老板直接回拨，来电者很快就能收到回复。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>基于云端，全部通过部署在VPS上的Retell AI和OpenClaw运行。客户完全不需要接触任何技术细节。我给他们一个电话号码，他们把下班后电话转接过来，完事。没有本地硬件，我这端也不共享任何访问权限。商家每次通话后只会收到邮件形式的文字记录。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>每个客户都拥有完全独立的智能体——专属的 Retell 智能体、专属的电话号码、基于其业务数据单独训练的提示词。不存在共享上下文，也不可能产生数据交叉。扩展方式非常简单：为每位新客户启动一个新的智能体，配置时间约 20 分钟。OpenClaw 层负责处理每个客户的自动化流程。这不是复杂的多租户架构，而是设计上就保持的干净隔离。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sa4i91/i_deployed_ai_receptionists_for_local_service/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

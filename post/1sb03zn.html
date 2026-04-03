@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>别再为AI根本不需要读的token付费了。我给OpenClaw工作区文件写了个编译器，查询token直降95%。（个人版免费） - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>别再为AI根本不需要读的token付费了。我给OpenClaw工作区文件写了个编译器，查询token直降95%。（个人版免费）</h1>
+        <div class="post-meta">
+          <span>👤 TooCasToo</span> | <span>📅 2026/4/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 问题核心：OpenClaw 每次对话都重复发送完整的系统文件（USER.md、SOUL.md 等），导致大量 token 浪费，50 轮对话可浪费 35 万+ token
+• 解决方案：SMELT 编译器通过四层处理（归档→编译→压缩→选择），仅发送与查询相关的片段，实现最高 95% 的 token 削减
+• 关键发现：简单 JSON 转换反而比原始 markdown 差 30%；字节压缩 ≠ token 压缩；必须针对实际 tokenizer 测量
+• 实际效果：查询&quot;Who is Sally?&quot;从 1,373 token 降至 73 token；首 token 生成时间缩短 6%
+• 当前局限：Schema 专为 OpenClaw 设计，通用 markdown 需后续支持；13 个测试文件中 2 个密集档案文件存在保真度问题</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>每次发送消息时，OpenClaw 都会向你的模型重新发送 USER.md、SOUL.md、MEMORY.md 和 AGENTS.md。不是在启动时。是每一次。每一条消息。用 API 调用 Claude/GPT 时，这很烧钱。</p>
+<p>我在自己的环境上测过（M3-Ultra 上的 Qwen 3.5 122B）。仅启动时的打包文件就有 7,268 个 token，每次推理调用都要重新处理。在一个 50 条消息的会话中，你的模型光是重复读取这些静态工作区文件就超过 35 万个 token，还没算你真正想问的内容。</p>
+<p>所以我做了 SMELT。它把你的工作区 Markdown 编译成更紧凑的运行时格式，只发送与每次查询相关的内容。</p>
+<p>来自真实 OpenClaw 工作区的实测数据：</p>
+<table>
+<thead>
+<tr>
+<th align="left">查询</th>
+<th align="left">原始 Markdown</th>
+<th align="left">SMELT</th>
+<th align="left">节省</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&quot;Sally 是谁？&quot;</td>
+<td align="left">1,373 token</td>
+<td align="left">73 token</td>
+<td align="left">94.7%</td>
+</tr>
+<tr>
+<td align="left">&quot;John 什么时候出生的？&quot;</td>
+<td align="left">1,374 token</td>
+<td align="left">62 token</td>
+<td align="left">95.5%</td>
+</tr>
+<tr>
+<td align="left">宽泛查询：&quot;讲讲 Alex&quot;</td>
+<td align="left">1,373 token</td>
+<td align="left">328 token</td>
+<td align="left">76.1%</td>
+</tr>
+</tbody></table>
+<p>首 token 时间（TTFT）：从 14,121ms 降至 13,273ms（提速 6%）。</p>
+<p>构建过程中的一些发现：</p>
+<ul>
+<li>粗暴的 JSON 转换（很多人尝试的&quot;优化&quot;手段）实际上比原始 Markdown 还差 30%</li>
+<li>去掉标题格式收效甚微（7-8%）。开销在于结构，不只是格式</li>
+<li>字节压缩和 token 压缩是两回事。如果你没按实际 tokenizer 来测算，数据就是在骗你</li>
+</ul>
+<p>工作原理：四层架构。归档层（原始文件永不触碰）。编译层（感知 schema 的结构压缩）。压缩层（字典替换）。选择层（基于查询条件的检索，只发送相关记录及其父级上下文）。95% 的节省来自第四层。</p>
+<p>目前还没做到的：</p>
+<ul>
+<li>Schema 是手工为 OpenClaw 工作区文件约定打造的。任意 Markdown 需要 schema 学习（已规划）</li>
+<li>13 个测试文件中有 11 个达到 100% 保真度。两个密集归档文件出现已知失败案例</li>
+</ul>
+<p>编译器用 Python 编写。个人使用免费。完整基准测试的论文已发布在 Zenodo。</p>
+<p>代码和论文搜 GitHub：TooCas/SMELT。正式研究文献搜 Zenodo：&quot;SMELT Schema-Aware Markdown&quot;，带 DOI。</p>
+<p>与 GPT、Claude 和 Codex 协作完成。点名致谢，他们值得。</p>
+<p>如果你在本地跑 OpenClaw，厌倦了看着模型浪费时间重复读同一批文件，可以试试。个人使用免费。有问题欢迎交流。（或者去问 Claude/GPT 😉）</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sb03zn/stop_paying_for_tokens_your_ai_never_needed_to/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

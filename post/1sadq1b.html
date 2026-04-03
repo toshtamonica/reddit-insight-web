@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我用最近泄露的信息，用 Go 语言写了一个开源版 Claude Code - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我用最近泄露的信息，用 Go 语言写了一个开源版 Claude Code</h1>
+        <div class="post-meta">
+          <span>👤 dolm09</span> | <span>📅 2026/4/3</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 开发者用 Go 语言开源复刻了 Claude Code CLI，项目名为 claw-code-go，约 1 万行代码
+• 核心功能包括：完整 TUI 界面、多模型提供商支持、MCP 客户端、OAuth/API 认证、工具执行引擎、权限安全层、会话持久化
+• 选择 Go 的原因是生成单文件可执行二进制（约 300MB Node 依赖 vs 零依赖），支持跨平台编译，可在树莓派、VPS、CI 环境等无运行时场景运行
+• 当前状态：可构建运行，核心工具可用，但跳过了 Anthropic 专有云服务部分
+• 代码已开源在 GitHub，欢迎 PR 和 issue，尤其需要社区参与完善 MCP 和权限模型</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>启动这个开源项目，近一万行代码。</p>
+<p>项目名为 claw-code-go，是 Claude Code CLI 的完整 Go 移植版本。目前已实现的功能：</p>
+<p>• 完整的 CLI 与 TUI（基于 bubbletea 的终端界面）
+• 多供应商支持——Anthropic、OpenAI 兼容端点、Bedrock
+• MCP（模型上下文协议）客户端
+• OAuth + API 密钥认证流程
+• 工具执行引擎（bash、文件读写、搜索等）
+• 权限与安全层
+• 对话压缩
+• 会话持久化</p>
+<p>为什么用 Go？</p>
+<p>原版包含依赖后约 300MB 的 Node 安装包。Go 编译后是单一自包含可执行文件。交叉编译到 Linux/ARM 后可在树莓派、VPS、GitHub Actions runner 上运行——无需运行时。这对我的使用方式很重要（作为无头组件嵌入其他工具中运行）。</p>
+<p>当前状态：能构建、能运行，核心工具可用。原版功能尚未全部移植，Anthropic 专有云基础设施部分我故意跳过了。但核心的智能体循环、工具调用和 TUI 应该已经稳固。</p>
+<p>仓库：github.com/daolmedo/claw-code-go</p>
+<p>欢迎提交 PR 和 issue，特别是 MCP 和权限模型方面，需要更多人审阅。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>基础功能都有，代码是移植过来的..!</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sadq1b/i_built_an_opensource_port_of_claude_code_in_go/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
