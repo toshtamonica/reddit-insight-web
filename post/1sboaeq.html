@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我为 AI 智能体打造了一个自维护的记忆系统 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我为 AI 智能体打造了一个自维护的记忆系统</h1>
+        <div class="post-meta">
+          <span>👤 CIRRUS_IPFS</span> | <span>📅 2026/4/4</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• <strong>自维护内存架构</strong>：StixDB 通过后台循环自动合并相似条目、追踪使用频率，并降低未使用条目的重要性，实现内存的自我清理与优化。
+• <strong>可控的成本设计</strong>：每轮仅处理小批量节点（64个），确保即使内存规模增长，维护成本仍保持可预测。
+• <strong>检索与清理联动</strong>：清理循环依赖于实际检索行为，提高未来检索的预测准确性。
+• <strong>已验证的实用性</strong>：系统已在实际客户环境中稳定运行4个月，证明其工程可行性。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我在构建智能体时反复遇到同一个问题：
+记忆只会无限增长，从不清理。
+于是我尝试了一种不同的思路——把记忆当作一个能自我维护的系统。
+StixDB 就是围绕这个想法做的一个小实验。
+它不只是存储事实，而是运行一个后台循环来：</p>
+<ul>
+<li>合并相似的条目</li>
+<li>追踪哪些真的在被使用</li>
+<li>逐渐降低未被使用条目的重要性
+随着时间推移，记忆图谱会自我重塑。
+一个有趣的约束设计：</li>
+</ul>
+<ul>
+<li>后台进程每轮只处理一小批数据（64 个节点），这样即使记忆膨胀，成本依然可控。
+我不确定这真的有用，还是只是过度设计。
+很想听听大家是怎么处理智能体的长期记忆的。</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不知道你是怎么得出这个结论的……我这边的系统已经在公司客户那边稳定运行了4个月，没有任何问题……</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>StixDB 同时处理检索和清理循环……实际上，清理循环与你检索的内容有一定关联，这使得未来的检索具有高度可预测性……</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>GitHub: <a href="https://github.com/Pr0fe5s0r/StixDB">https://github.com/Pr0fe5s0r/StixDB</a></p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sboaeq/i_built_a_memory_system_for_ai_agents_that/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

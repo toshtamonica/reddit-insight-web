@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我们用廉价智能体对交易平台进行压力测试——它们的失败反而给了我们最有价值的反馈 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我们用廉价智能体对交易平台进行压力测试——它们的失败反而给了我们最有价值的反馈</h1>
+        <div class="post-meta">
+          <span>👤 Various_Beyond_7701</span> | <span>📅 2026/4/4</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>刻意使用廉价智能体进行压力测试，而非依赖最昂贵的模型，以确保平台在各种能力水平下都能可用</li>
+<li>智能体的失败（携带旧指令、习惯、脚本或心智模型）揭示了&quot;上下文质量&quot;与代码质量同等重要的问题</li>
+<li>频繁的失败和多样化的错误模式迫使团队记录大量边缘情况，从而大幅完善了文档质量</li>
+<li>持续迭代文档、澄清流程、解释假设和消除模糊性，最终构建了更健壮的产品</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>用多个智能体构建 Claw Earn，是我们在 AI Agent Store 项目中最有趣的经历之一。</p>
+<p>很多人想象中的智能体构建产品，是那种完美的演示——最聪明的模型一次就写出完美代码。我们的经历完全不是这样。</p>
+<p>我们发布 Claw Earn 时，刻意采取了相反的做法：我不想做一个只有砸钱上最贵模型才能运行的东西。我希望这个平台即使使用更便宜、能力较弱的智能体，依然可用。这彻底改变了整个开发流程。</p>
+<p>实际情况是不断的失败。</p>
+<p>智能体尝试做某事，搞砸了；用过时的脚本；依赖陈旧的记忆；误解已变更的流程；或者产品已经迭代了，它还死守旧假设。与此同时，我们频繁推送更新，环境持续变化。在这种设定下，一个带着&quot;历史包袱&quot;的老智能体可能惨败，而全新的智能体却能立刻解决。</p>
+<p>这很让人沮丧，但也极其有价值。</p>
+<p>很多失败并非纯粹的代码问题。有时代码库没问题，但智能体因为带着旧指令、旧习惯、旧脚本，或对平台运作方式的旧认知而失败。这暴露了智能体开发中一个非常真实的问题：成功不仅取决于代码质量，还取决于上下文质量。</p>
+<p>而这正是让我们的文档如此扎实的原因。</p>
+<p>因为智能体以各种方式失败，我们记录的边界情况远超一切顺利时所需。那些人类开发者可能根本想不到要解释的情况，在便宜或更固执的智能体一头撞上去时，立刻变得显而易见。我们持续改进文档，澄清流程，解释假设，消除歧义。久而久之，这些反复失败成了一种压力测试。</p>
+<p>所以说来奇怪，&quot;笨&quot;智能体极其宝贵。它们迫使平台变得更健壮、更明确、更易用。</p>
+<p>这对 Claw Earn 的定位至关重要。</p>
+<p>Claw Earn 是我们打造真实市场的尝试——人类和智能体可以参与同一个经济循环。人类发布工作，智能体承接任务，智能体也可以在需要时将部分工作转包给人类。支付通过 Base 链上的 USDC 托管处理。让我觉得有意思的不只是&quot;AI 干活&quot;，而是我们开始看到一个市场的雏形：智能体不只是工具，而是经济参与者。</p>
+<p>这就是&quot;金融化 AI&quot;开始成真的地方。</p>
+<p>不是在理论中，不是在精美的 PPT 里，而是在混乱的现实里——智能体会失败、重试、协调、委派，最终在一个为此设计的系统中完成有用的工作。一旦你真的看到人类和智能体共享同一个任务市场，循环经济的那部分就变得容易想象多了。</p>
+<p>我觉得很多</p>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sbcltr/we_used_cheap_agents_to_stresstest_our/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

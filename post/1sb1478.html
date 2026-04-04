@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我放弃了花里胡哨的 Agent 架构，开始解决无聊的实际问题，然后突然就开窍了。 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我放弃了花里胡哨的 Agent 架构，开始解决无聊的实际问题，然后突然就开窍了。</h1>
+        <div class="post-meta">
+          <span>👤 Upper_Bass_2590</span> | <span>📅 2026/4/4</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 放弃复杂的&quot;炫技型&quot;AI架构，专注解决实际业务中的枯燥重复工作
+• 用低成本方案替代人工：GitHub自动发文将每周8-10小时工作压缩至20分钟审核，月成本仅15美元
+• 客户不为AI技术买单，只为可量化的结果付费（如&quot;每周定时发文&quot;&quot;线索不再遗漏&quot;）
+• 线索跟进自动化带来显著转化提升：某客户月转化从8单增至20单，收费250美元/月客户毫无异议
+• 稳定性技巧：任务拆分为小模块、主代理用Codex+子代理走本地免费模型、避免模糊指令导致卡顿</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>运行 OpenClaw 已经一个月了。搞过四个配置，包括一个完整的 C-suite 放在 Discord 上，每天早上 6 个 AI 高管讨论战略。看起来很炫酷。零收益。</p>
+<p>所以我把这些面子工程砍了，专心做无聊的事。</p>
+<p>现在有一个 agent 通过 GitHub 管理网站。写文章、提 PR，我只需要点批准。4 周发了大概 30 篇。以前每周要花 8-10 小时的事，现在每天 20 分钟审阅一下就行。</p>
+<p>运行成本基本为零。主 agent 跑在 Codex 上，子 agent 通过免费供应商在 Mac Mini 上路由。总共大概 15 美元/月。</p>
+<p>真正的教训是：没人在乎你的 agent 架构。人们在乎的是&quot;我的博客每周更新&quot;和&quot;我的线索不再漏掉&quot;。我现在卖的是这个。不是 AI，只是结果。</p>
+<p>你用 OC 自动化过的最无聊的事是什么？我觉得钱就藏在那儿。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (8 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>已经在给几个客户做类似的东西了。内容管道、线索跟进、自动跟进序列。有个客户因为过了第3天没人跟进，流失了大概40%的线索。搭了个agent来处理，他们从每月8单转化涨到20单。收250刀一个月，他们眼睛都不眨一下。</p>
+<p>房地产这个角度确实聪明。</p>
+<p>DocuSign那块你遇到过什么问题吗？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>嗯，Codex 要是直接放开了跑确实不太稳。我的经验是把任务拆成小块，别一股脑扔给它一个大活儿。另外我只在主 agent 用它当主力模型，其他的都走本地便宜模型，这样稳多了。要是它卡在那儿不动了，直接杀掉重新触发，prompt 写得更具体点——含糊不清的指令通常就是罪魁祸首。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>整套东西跑在一台 Mac mini 上。每月大概 15 到 20 美元封顶。诀窍在于别让每个 agent 干点基础任务都调用高级模型。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>这确实是最佳使用场景。能用 plain english 直接告诉你的工具该做什么，再也不用碰原始 SQL 了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>我也很好奇。猜测它是生成 markdown 然后通过 git 或 API 推送，但直接集成 CMS 会更丝滑。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>元梗了。智能体写帖，智能体读帖。这就是AI的生命轮回。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>18 个定时任务 &gt; 一个花哨的多智能体委员会。Karma 的暴涨说明了一切。无聊的东西才管用。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>社区聊天中的 FAQ 摘要功能很智能，能自动将噪音转化为有价值的信息。YouTube 评论路由每周节省 5-6 小时也很给力。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sb1478/i_stopped_building_fancy_agent_setups_i_started/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
