@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花两个月在 OpenClaw 上搭建真实 AI 运维栈：哪些方案真正奏效，哪些被我废弃 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>花两个月在 OpenClaw 上搭建真实 AI 运维栈：哪些方案真正奏效，哪些被我废弃</h1>
+        <div class="post-meta">
+          <span>👤 DisGuyOvaHeah</span> | <span>📅 2026/4/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• 作者用2个月在OpenClaw上搭建了10个自动化工作流，包括体育预测、线索挖掘、Stripe订单处理、每日运营报告等，全部无人值守运行
+• 核心经验：MEMORY.md机制让AI代理能跨会话记忆，这是系统可持续的关键
+• 反面教训：AI视频生产流水线因零收入、维护成本高、QA失效而被砍掉，属于&quot;为 ego 而非客户&quot;建造
+• 输出成果：将10个有效自动化整理成实战手册，含架构说明、错误避坑指南和系统连接图
+• 即将推出：第二卷聚焦数字产品履约栈（digital product fulfillment stack）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>两个月前我装了 OpenClaw，心想&quot;酷，我有 AI 助手了&quot;。
+然后我开始动手搭。到上周，我已经有了：</p>
+<ul>
+<li>每日体育预测流水线，每天中部时间上午 10 点跑，从 ESPN 数据生成预测，用我自建的置信度模型，格式化成订阅者短信卡片，通过邮件 + Twilio 送达</li>
+<li>夜间预测评分器，凌晨 1 点爬起来查最终比分，更新胜负记录</li>
+<li>潜在客户生成器，每个工作日早上爬 Google Maps 找本地商家线索</li>
+<li>Stripe 轮询器，每 5 分钟跑一次，自动给买家交付数字产品</li>
+<li>会话简报邮件，每次新会话启动时触发，让我的代理清楚知道上次做到哪了</li>
+<li>每日运营报告，早上 6 点推送，涵盖社交数据、预测战绩、凭证状态和待办事项</li>
+</ul>
+<h2>全部在我睡觉时自动运行。大部分花的时间比预期长。
+我还搭了一套完整的 AI 视频生产流水线——自动渲染、质检、ElevenLabs 配音，全套都有。我很喜欢。上周我把它砍了。零收入，维护不断，质检系统曾经通过了一个球员站在停车场接受采访的视频。&quot;质检通过&quot;。为面子而建，不是为客户。这个故事也在里面。</h2>
+<p>我把 10 个能用的自动化打包成了一份 playbook。不是教程——是实战手册。每个都讲清楚它是做什么的、怎么工作的、以及坑过我什么，让你别踩同样的坑。
+<strong>包含：</strong></p>
+<ul>
+<li>全部 10 个自动化及其架构说明</li>
+<li>MEMORY.md 规范，让代理真能跨会话记住东西</li>
+<li>全套 ASCII 架构图，展示各组件如何连接</li>
+<li>直面 ego 驱动产品的章节（视频流水线是案例研究）</li>
+<li>第二卷指引（数字产品交付栈）
+想要链接的评论区留言。关于任何自动化，乐意答疑。
+— u/DisGuyOvaHeah</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (1 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>很乐意解答任何关于自动化流程的问题。MEMORY.md 系统可能是最被低估的一个——它让每次会话真正产生复利效应，而不是每次都从零开始。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1scdzxf/i_spent_2_months_building_a_real_ai_operations/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

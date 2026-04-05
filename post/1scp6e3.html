@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude API 一小时烧了我 40 美元，然后我发现了一个省 95% 费用的套路 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>Claude API 一小时烧了我 40 美元，然后我发现了一个省 95% 费用的套路</h1>
+        <div class="post-meta">
+          <span>👤 Fancy-Win9202</span> | <span>📅 2026/4/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• <strong>问题</strong>：作者一小时内在 Claude API 上花费 40 美元，纯 API 调用成本极高（每月可达 800-2000 美元）
+• <strong>核心方案</strong>：采用&quot;调度器模式&quot;——用轻量级 API 调用作为分发层，将实际工作委派给 Claude Code CLI（已包含在 200 美元/月的 Max 订阅中）
+• <strong>成本对比</strong>：纯 API 方案每月 800-2000+ 美元 vs 调度器模式每月约 215 美元（节省 95%）
+• <strong>适用范围</strong>：不仅限于编程，还包括营销文案、邮件、研究、内容写作等所有需要深度思考的任务
+• <strong>关键洞察</strong>：将昂贵的大模型调用转为订阅制内的无限使用，仅保留极简的 API 编排层</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>（将这篇完整的 Reddit 帖子复制粘贴到你的 OpenClaw 代理中，即可获得相同效果）</p>
+<p>我一小时内在 Claude API 上烧掉了 40 美元。然后我找到了一个模式，让我每月 200 美元的订阅承担了 95% 的工作量。</p>
+<p>我是一名开发 AI 代理的开发者，昨天我看着仪表盘像加油泵一样疯狂跳动。一小时 40 美元。甚至没做什么夸张的事。调试代码、写 PR、起草邮件、研究营销角度。纯粹的 API token 燃烧。</p>
+<p>然后我突然意识到：我已经每月为 Claude Max 支付 200 美元了。这包括无限制的 Claude Code CLI 使用（在速率限制内）。我为什么要为 Claude Code 能用订阅完成的工作按 token 付费？</p>
+<p>调度器模式</p>
+<p>思路极其简单：</p>
+<ul>
+<li>你的 AI 代理充当轻量级调度器。它读取你的消息，决定做什么，然后委派。Token 消耗最小，成本最低。</li>
+<li>其他所有工作都委派给 Claude Code CLI，它运行在你的 Max 订阅上。零额外费用。</li>
+</ul>
+<p>我说的是所有工作。不只是写代码。营销文案、邮件草稿、销售外联、研究、内容写作、数据分析、Reddit 帖子（没错，这篇帖子就是这么起草的）。如果需要深度思考或长输出，就交给 Claude Code。</p>
+<p>唯一留在 API 上的是薄薄的编排层。&quot;用户问了什么？好，委派给 Claude Code。回报结果。&quot;仅此而已。</p>
+<p>把它想象成前台（便宜的 API 调用）把工作任务分发给整个团队（无限订阅）。</p>
+<p>成本对比</p>
+<table>
+<thead>
+<tr>
+<th align="left">方案</th>
+<th align="left">月成本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">纯 API（Opus，重度使用）</td>
+<td align="left">800-2000+ 美元/月</td>
+</tr>
+<tr>
+<td align="left">Max 订阅 + 调度器模式</td>
+<td align="left">200 美元/月 固定</td>
+</tr>
+<tr>
+<td align="left">调度器开销的 API 成本</td>
+<td align="left">约 5-15 美元/月</td>
+</tr>
+<tr>
+<td align="left"><strong>调度器模式总计</strong></td>
+<td align="left"><strong>约 215 美元/月</strong> vs 1000+ 美元/月</td>
+</tr>
+</tbody></table>
+<p>看清钱花在哪了</p>
+<p>让我恍然大悟的，其实是看到成本明细。完全披露，我是 ClawMetry（<a href="https://github.com/vivekchand/clawmetry%EF%BC%89%E7%9A%84%E5%88%9B%E9%80%A0%E8%80%85%EF%BC%88OpenClaw">https://github.com/vivekchand/clawmetry）的创造者（OpenClaw</a> 代理的开源可观测性仪表盘）。我开发它是因为我想确切知道钱花在哪了，而它确实告诉了我。</p>
+<p>我能 literally 看到切换到调度器模式的那一刻。成本曲线瞬间拉平。它追踪每次会话的 token 使用量、每个任务的成本，还能设置告警（&quot;如果 API 日支出超过 5 美元就通知我&quot;）。当我看到前后对比时，差距令人尴尬。我大部分支出都花在了 Claude Code 用订阅就能完美处理的任务上。</p>
+<p>ClawMetry 刚突破 10 万安装量，这说明不止我一个人在不自知地流血花钱。</p>
+<p>设置（5 分钟）</p>
+<pre><code class="language-bash"># 1. 安装 Claude Code CLI
+npm install -g @anthropic-ai/claude-code
+
+# 2. 用 Max 订阅登录 Claude Code
+# 3. 配置委派
+openclaw config set plugins.entries.acpx.enabled true
+openclaw config set plugins.entries.acpx.config.permissionMode approve-all
+openclaw config set acp.enabled true
+openclaw config set acp.defaultAgent claude
+openclaw config set &#39;acp.allowedAgents&#39; &#39;[&quot;claude&quot;]&#39; --json
+
+# 4.（可选）添加可观测性
+pip install clawmetry
+</code></pre>
+</div>
+        </section>
+        
+        
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1scp6e3/i_burned_40_in_one_hour_on_claude_api_tokens_then/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

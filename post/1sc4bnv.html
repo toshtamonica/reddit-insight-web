@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了一个技能，让 AI 助手记住你在电脑上做的所有事情 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了一个技能，让 AI 助手记住你在电脑上做的所有事情</h1>
+        <div class="post-meta">
+          <span>👤 Nex_Ai_Guy</span> | <span>📅 2026/4/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li><strong>本地活动追踪工具</strong>：nex-life-logger 是一款在本地运行的后台活动记录器，可追踪浏览器历史、活跃窗口、YouTube 视频及完整字幕，数据存储于本地 SQLite 数据库</li>
+<li><strong>智能问答与总结</strong>：支持自然语言查询历史活动（如&quot;昨天下午在做什么&quot;），并自动生成日/周/月/年度 AI 摘要</li>
+<li><strong>隐私优先设计</strong>：无云端、无账号、无遥测，所有数据保存在 <code>~/.life-logger/</code>，敏感窗口（密码管理器、银行等）自动排除</li>
+<li><strong>灵活部署</strong>：追踪和搜索功能无需 API 密钥，AI 功能兼容任意 OpenAI 兼容接口（Qwen、Groq、Ollama 等）</li>
+<li><strong>智能过滤机制</strong>：仅记录 AI、编程、设计、学习类内容，自动跳过政治、新闻、娱乐，并排除聊天应用</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>折腾了几周，刚刚发布到 ClawHub：<strong>nex-life-logger</strong></p>
+<p>这是一个后台活动追踪器，跑在你本地机器上，让你的 OpenClaw 智能体能回答关于你做过什么的问题。浏览器历史、活跃窗口、YouTube 视频并完整抓取字幕。所有数据都保存在本地 SQLite 数据库里。</p>
+<p>安装：<code>npx clawhub install nex-life-logger</code></p>
+<p>然后你可以问智能体：</p>
+<ul>
+<li>&quot;昨天下午我在做什么？&quot;</li>
+<li>&quot;在我的历史记录里搜索 Docker&quot;</li>
+<li>&quot;我看过哪些关于机器学习的 YouTube 视频？&quot;</li>
+<li>&quot;给我看看上周的生产力总结&quot;</li>
+</ul>
+<p>智能体底层调用 CLI，搜索本地数据库，自然流畅地作答。</p>
+<p><strong>工作原理：</strong></p>
+<p>后台采集器每 30 秒轮询一次。读取 Chrome/Edge/Brave/Firefox 的浏览器历史，追踪活跃窗口焦点，自动获取 YouTube 字幕。内容经过生产力过滤器（只追踪 AI、编程、设计、学习内容，跳过政治/新闻/娱乐）。聊天应用和敏感窗口（密码管理器、网银）自动排除。</p>
+<p>AI 摘要有固定生成节奏：每晚 11 点生成日报，每周日生成周报，每月 1 号生成月报，每年 1 月 1 号生成年报。每一层级汇总下一层级的数据。也可以随时手动生成。</p>
+<p>AI 功能支持任意兼容 OpenAI 的 API（Qwen、OpenAI、Groq、Ollama 等）。追踪、搜索、统计和关键词命令无需任何 API 密钥即可使用。</p>
+<p><strong>隐私方面：</strong> 没有云端。没有账号。没有遥测。你的数据只存在于 <code>~/.life-logger/</code>，别处不留。做这个是因为市面上类似的工具（Rewind、Recall）要么把数据传出去，要么把你锁死在某个平台里。</p>
+<p>ClawHub：<a href="https://clawhub.ai/nexaiguy/nex-life-logger">https://clawhub.ai/nexaiguy/nex-life-logger</a>
+GitHub：<a href="https://github.com/NexaiGuy/nex-life-logger">https://github.com/NexaiGuy/nex-life-logger</a></p>
+<p>欢迎反馈。还想追踪哪些数据源比较有用？</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>感谢！剪贴板历史确实在 v2 路线图上，正是出于这个原因。上下文切换是事后最难还原的东西之一，而剪贴板正好提供了应用之间缺失的那一环。</p>
+<p>日历事件也是个好点子。能把&quot;我在查 X&quot;和&quot;因为我下午两点有个关于 Y 的会&quot;关联起来，AI 总结会实用得多。加进需求列表了。</p>
+<p>对了，那个生产力过滤器确实是痛点催生的。第一版没这功能的时候基本没法用，90% 噪音，10% 有效信息。迭代了几版才把过滤做好，但效果天差地别。</p>
+<p>很想看看你在 macOS 上做了什么。是做截屏还是这种基于元数据的方式？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>好问题。目前它自带一套默认分类（AI、编程、设计、学习类内容），并自动排除政治、新闻、娱乐和敏感应用等。
+对大多数开发者/创作者来说开箱即用。
+但你说得对，&quot;高效&quot;的定义因人而异。
+所以用户可以自己定制关键词列表。
+你可以添加自己的包含/排除关键词，让过滤规则真正匹配你的工作方式，而不是只用我的默认设置。
+如果你是设计师，想追踪 Figma 和 Dribbble 但不想追踪 Reddit，直接更新关键词就行。
+这块还在持续迭代。我会一直推更新，直到整个产品打磨到位、对用户友好、开箱即用无需折腾。
+这样的反馈很有帮助，欢迎继续提。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sc4bnv/i_built_a_skill_that_gives_your_agent_memory_of/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

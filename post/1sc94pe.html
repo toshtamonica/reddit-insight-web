@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我开发了 Heart——一个基于 OpenClaw 的自托管家庭 AI 聊天应用，供全家人使用 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>我开发了 Heart——一个基于 OpenClaw 的自托管家庭 AI 聊天应用，供全家人使用</h1>
+        <div class="post-meta">
+          <span>👤 Warrence_Han</span> | <span>📅 2026/4/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>Hearth 是一款基于 OpenClaw 的自托管家庭 AI 聊天应用，专为多用户家庭场景设计，每位家庭成员拥有独立账户和私密对话</li>
+<li>核心功能包括：多用户支持、PIN/生物识别登录、基于角色的访问控制、提醒功能、实时流式响应、模型预设、附件与图像生成、移动端 PWA 体验</li>
+<li>技术栈采用 Vue 3 + Quasar 前端、NestJS 后端、PostgreSQL 数据库，通过 OpenClaw 插件实现 AI 路由</li>
+<li>核心理念区别于单用户 AI 产品，强调家庭共享的 AI 助手应随时间了解整个家庭，数据归属家庭而非平台</li>
+<li>已投入日常使用，支持一键安装和可选 HTTPS 部署，代码开源在 GitHub</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>过去几个月我一直在开发 Hearth。这是一款基于 OpenClaw 构建的自托管家庭 AI 聊天应用，专为真正的多用户家庭场景设计。</p>
+<p>我要解决的问题：我希望全家人一起使用 OpenClaw——而不是只有我一个人通过 Telegram 聊天。我需要每个人都有自己的账号、独立的对话记录、私密聊天，以及一个让他们愿意每天真正去用的应用体验。</p>
+<p>于是我把 Hearth 做成了 OpenClaw 之上的家庭产品层。</p>
+<p><strong>目前已实现的功能：</strong></p>
+<ul>
+<li>每人支持多轮对话</li>
+<li>多用户家庭支持（每位家庭成员独立账号）</li>
+<li>PIN 码 + 生物识别登录</li>
+<li>私密聊天配合角色权限控制（所有者/成员）</li>
+<li>提醒功能</li>
+<li>实时流式响应，支持停止按钮</li>
+<li>模型预设（每轮对话可选快速/深度模式）</li>
+<li>附件上传、图像生成、文本转语音</li>
+<li>移动优先的深色主题 PWA——可在手机上安装</li>
+<li>自托管部署，可选 Caddy 自动 HTTPS</li>
+<li>一键安装脚本，开箱即用</li>
+</ul>
+<p><strong>技术栈：</strong> Vue 3 + Quasar 前端，NestJS 后端，PostgreSQL 数据库，OpenClaw 插件负责 AI 路由。</p>
+<p><strong>更深层的理念：</strong> 大多数 AI 产品都是单用户设计。但真实的家庭生活并非如此。如果 AI 要成为家庭日常的一部分，那么家庭积累的上下文和记忆应该属于这个家庭本身——而不是某个平台。Hearth 是朝这个方向迈出的早期尝试。</p>
+<p>我的家人每天都在用它。目前还是早期版本，功能持续迭代中，但已经能稳定运行。</p>
+<p>GitHub: <a href="https://github.com/warrence/openclaw-hearth">https://github.com/warrence/openclaw-hearth</a></p>
+<p>欢迎提问，无论是架构设计、OpenClaw 集成，还是我在家里的实际使用方式，都很乐意交流。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (3 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>关于 OpenWebUI，我暂时不便多谈，毕竟还没亲自用过。
+至于 Hearth，我的想法更偏个人一些：我希望为家人打造一个 AI 助手，它能随着时间慢慢了解我们，最终融入家庭，就像家里多了一位成员——当然，隐私边界也会设置得恰到好处。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>给我老婆和儿子各配了一个大模型。我让智能助手帮他们设提醒。接下来打算接入智能家居设备。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>用自然语言设置提醒，只需指定提醒哪位家庭成员。我经常让妻子帮我设提醒，但她有时候会忘——现在我可以直接让智能助手提醒她了。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sc94pe/i_built_heart_a_selfhosted_household_ai_chat_app/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

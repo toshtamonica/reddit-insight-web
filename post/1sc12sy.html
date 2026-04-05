@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 公会：面向小型企业的多用户 AI 智能体服务器 - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>OpenClaw 公会：面向小型企业的多用户 AI 智能体服务器</h1>
+        <div class="post-meta">
+          <span>👤 sdc535</span> | <span>📅 2026/4/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><p>• OpenClaw Guild 将单用户 OpenClaw 扩展为面向团队的多用户 AI 服务器，解决企业内部不同部门数据隔离和权限管理的需求
+• 采用四层架构：Supabase 后端（Postgres + pgvector + RLS）、JWT 认证、Envoy 代理和 OpenClaw 工具策略，实现数据隔离、能力控制和网络过滤的纵深防御
+• 支持四层记忆系统（Agent、用户、角色、公司级别）和可复用的技能工作流，配合 Web 管理后台实现零命令行部署
+• 实际应用场景：营销部门运行 7 个 24/7 自主代理（策略、内容、SEO、社交、网站、广告、潜在客户研究），另有管理、编程和本地 LLM 测试等跨部门代理
+• 通过 Docker-compose 实现 15 分钟快速部署，确保各部门数据完全隔离（如营销无法查看财务或 HR 数据）</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>我们遇到了一个问题：我们想在企业内部使用 OpenClaw，但需要限制不同员工访问不同的 Agent。我们不希望营销团队看到财务或人事部门的工作内容，但 OpenClaw 是为单用户设计的。</p>
+<p>于是我们开发了 OpenClaw Guild —— 将单用户的 OpenClaw 转变为面向团队的多用户 AI 服务器。</p>
+<h2>新增功能</h2>
+<ul>
+<li><strong>多用户架构</strong>：基于角色的访问控制，每个 Agent 数据隔离</li>
+<li><strong>四级记忆</strong>：Agent 层、用户层、角色层、公司层（分级可见）</li>
+<li><strong>管理后台</strong>：Web 界面管理用户，无需命令行</li>
+<li><strong>技能系统</strong>：可复用的工作流（如&quot;LinkedIn 发帖助手&quot;、&quot;SEO 审计&quot;）</li>
+<li><strong>Docker-compose 部署</strong>：15 分钟完成搭建</li>
+</ul>
+<h2>技术架构</h2>
+<ul>
+<li>Supabase 后端（Postgres + pgvector + RLS）</li>
+<li>每个 Agent 独立 JWT 认证（上下文隔离）</li>
+<li>Envoy 代理（每个 Agent 独立的网络过滤）</li>
+<li>OpenClaw 工具策略（能力管控）</li>
+</ul>
+<h2>安全模型</h2>
+<p>三层防护：</p>
+<ul>
+<li>Supabase RLS（数据库层数据隔离）</li>
+<li>OpenClaw 工具策略（能力管控）</li>
+<li>Envoy 代理（网络过滤，每个 Agent 独立域名白名单）</li>
+</ul>
+<p>单层防护都不够。三者结合，实现纵深防御。</p>
+<h2>实际应用场景</h2>
+<p>公司目前运行着 15+ 个 Agent。仅营销部门就有 7 个 7×24 小时自主运行的 Agent：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Agent</th>
+<th align="left">职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">marketing-lead</td>
+<td align="left">策略制定、协调统筹、客户沟通</td>
+</tr>
+<tr>
+<td align="left">marketing-content</td>
+<td align="left">博客文章、新闻通讯、长内容</td>
+</tr>
+<tr>
+<td align="left">marketing-seo</td>
+<td align="left">搜索优化、关键词研究、AEO</td>
+</tr>
+<tr>
+<td align="left">marketing-social</td>
+<td align="left">LinkedIn、社交发帖、互动运营</td>
+</tr>
+<tr>
+<td align="left">marketing-website</td>
+<td align="left">WordPress 管理、落地页</td>
+</tr>
+<tr>
+<td align="left">marketing-adwords</td>
+<td align="left">Google Ads 投放管理</td>
+</tr>
+<tr>
+<td align="left">marketing-prospect-research</td>
+<td align="left">B2B 潜客研究、信息补全</td>
+</tr>
+</tbody></table>
+<p>营销之外的其他 Agent：</p>
+<ul>
+<li><strong>管理层</strong>：高管报告、决策支持、KPI 追踪</li>
+<li><strong>开发</strong>：开发任务、代码审查、安全审计</li>
+<li><strong>本地 LLM 测试</strong>：Ollama 集成、Embedding 生成、模型评估</li>
+</ul>
+<p>部门间数据完全隔离（营销看不到财务或人事），近期将向更多员工开放。Agent 的网络访问经过代理限制，仅开放必要权限。与 NemoClaw 不同，它支持需要 WebSocket 的应用，如 Discord。</p>
+<p>这是我们团队的本地共享私有 OpenClaw 实例。拥有共享技能、公司级知识库和部门级访问控制。</p>
+<h2>Web 管理后台</h2>
+<p>Guild 内置 Web 管理界面，无需命令行即可管理用户、Agent 和权限。你可以：</p>
+<ul>
+<li>创建/管理用户和角色</li>
+<li>为部门分配 Agent</li>
+<li>为每个 Agent 配置工具策略</li>
+<li>设置网络白名单（域名级别）</li>
+<li>查看审计日志</li>
+<li>浏览各级记忆（Agent/用户/角色/公司）</li>
+</ul>
+<h2>GitHub</h2>
+<ul>
+<li>Guild 核心：<a href="https://github.com/SpireTech/openclaw-guild">https://github.com/SpireTech/openclaw-guild</a></li>
+<li>管理后台：<a href="https://github.com/SpireTech/openclaw-guild-admin">https://github.com/SpireTech/openclaw-guild-admin</a></li>
+</ul>
+<h2>开源协议</h2>
+<p>AGPL-3.0。可自由自托管、定制或转售。</p>
+<h2>期待你的建议</h2>
+<p>我们正在积极开发中，欢迎反馈。</p>
+<p>有问题？欢迎在下方留言。</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (2 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>不清楚你是怎么想的。这些 agent 都是部署在同一个网关后面的 Docker 容器。按部门选择性共享内存和技能，如果完全隔离的话会更麻烦。不过，如果你坚持要这么做也行，因为技能和内存都是从 Postgres 取的，只要它们能用上 guild-memory-* 和 guild-skill-* 这些 CLI 工具，大概就能实现——但那样的话，内置的代理功能也就没了。OpenClaw 有一些 API 钩子来处理内存和 JSON 的交互，按你说的方案搞可能会更复杂。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>后端数据库中的每条记忆和技能都关联着公司+部门+代理+用户的组合信息。数据库对每条记录都设有行级安全策略，代理无法泄露它们无权访问的记忆。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sc12sy/openclaw_guild_multiuser_ai_agent_server_for/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>

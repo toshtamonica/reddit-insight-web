@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anthropic 废了我的 17 个智能体流水线。我用一个下午把所有东西迁移到了 Claude Code - Reddit Insight</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; font-size: 14px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+    .header { background: #2d3748; padding: 15px 0; border-bottom: 3px solid #4a5568; }
+    .header h1 { font-size: 1.8em; font-weight: 700; color: #fff; margin: 0; }
+    .subtitle { color: #a0aec0; font-size: 0.9em; margin-top: 5px; }
+    .post-detail { background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; margin: 20px 0; }
+    .post-header { background: #edf2f7; padding: 20px; border-bottom: 1px solid #e2e8f0; }
+    .post-header h1 { font-size: 1.4em; font-weight: 700; color: #2d3748; margin-bottom: 10px; }
+    .post-meta { color: #718096; font-size: 0.9em; }
+    .post-body { padding: 25px; }
+    .post-section { margin-bottom: 30px; }
+    .post-section h2 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .summary-box { background: #f7fafc; border-left: 4px solid #4299e1; padding: 20px; border-radius: 0 4px 4px 0; }
+    .content-box { background: #fff; border: 1px solid #e2e8f0; padding: 20px; border-radius: 4px; line-height: 1.9; }
+    .replies-section { margin-top: 30px; }
+    .reply-item { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; margin-bottom: 15px; }
+    .reply-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #e2e8f0; }
+    .reply-num { background: #4299e1; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; }
+    .links-box { background: #f7fafc; padding: 15px 20px; border-top: 1px solid #e2e8f0; }
+    .links-box a { color: #4299e1; text-decoration: none; }
+    .post-footer-bar { background: #edf2f7; padding: 15px 20px; border-top: 1px solid #e2e8f0; display: flex; gap: 10px; }
+    .btn { padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.9em; font-weight: 500; display: inline-block; }
+    .btn-primary { background: #4299e1; color: #fff; }
+    .btn-outline { background: #fff; color: #4a5568; border: 1px solid #cbd5e0; }
+    .footer { background: #2d3748; color: #a0aec0; text-align: center; padding: 20px; margin-top: 30px; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>📋 Reddit Insight</h1>
+      <p class="subtitle">OpenClaw 社区每日精选</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <article class="post-detail">
+      <header class="post-header">
+        <h1>Anthropic 废了我的 17 个智能体流水线。我用一个下午把所有东西迁移到了 Claude Code</h1>
+        <div class="post-meta">
+          <span>👤 nkondratyk93</span> | <span>📅 2026/4/5</span>
+        </div>
+      </header>
+      
+      <div class="post-body">
+        
+        <section class="post-section">
+          <h2>📋 内容摘要</h2>
+          <div class="summary-box"><ul>
+<li>作者因第三方工具支持终止，将17个AI代理从OpenClaw迁移至Claude Code，耗时约4小时</li>
+<li>迁移核心步骤：创建CLAUDE.md作为入口文件、编写bash脚本包装器调用claude命令、用macOS crontab替换原定时任务</li>
+<li>关键配置细节：需设置CLAUDE_CODE_OAUTH_TOKEN环境变量（解决cron无法访问Keychain问题）、注意claude二进制文件路径不在cron默认PATH中</li>
+<li>代理逻辑零重写，沿用原有的HEARTBEAT.md等指令文件，浏览器自动化可通过保留OpenClaw网关或切换至Playwright MCP实现</li>
+<li>提前将供应商调用抽象为薄包装层，可大幅降低未来迁移成本</li>
+</ul>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section">
+          <h2>📝 正文翻译</h2>
+          <div class="content-box"><p>今早收到邮件。第三方 harness 支持将于今天中午 12 点（太平洋时间）终止。我在 OpenClaw 上跑了 17 个 agent——10 个平台推广 agent，7 个内容流水线定时任务。都是 Max 订阅。</p>
+<p>好消息：Claude Code 明确包含在订阅内。而且迁移过程简单得令人尴尬。</p>
+<p>我的做法：</p>
+<p>在每个 OpenClaw 工作区目录下创建 CLAUDE.md 文件。这是入口——告诉 Claude&quot;你是这个 agent，读取 HEARTBEAT.md，按步骤执行&quot;。每个 agent 约 20 行。</p>
+<p>创建 bash 脚本封装器，运行 <code>claude -p --model sonnet --dangerously-skip-permissions</code> 并通过 curl 将输出管道到 Slack。</p>
+<p>用 macOS crontab 替换 OpenClaw 心跳。相同间隔，相同调度。</p>
+<p>在 crontab 中设置 CLAUDE_CODE_OAUTH_TOKEN（claude 使用钥匙串，而 cron 无法访问）。</p>
+<p>就这些。我的 agent 运行完全相同的 HEARTBEAT.md、PLAYBOOK.md、SOUL.md、BROWSER-*.md 文件，agent 逻辑零重写。</p>
+<p>踩到的坑：</p>
+<ul>
+<li>claude 二进制文件在 ~/.local/bin/claude，不在 cron 默认 PATH 里</li>
+<li>Cron 无法访问 macOS 钥匙串——需要 OAuth token 作为环境变量</li>
+<li>--bare 标志会破坏订阅用户的认证（跳过 OAuth）</li>
+</ul>
+<p>每个 agent 的一行命令：</p>
+<pre><code>claude -p --model sonnet --dangerously-skip-permissions --append-system-prompt &quot;You are the Reddit agent. Read CLAUDE.md first, follow HEARTBEAT.md.&quot; &quot;Execute your heartbeat.&quot;
+</code></pre>
+<p>浏览器自动化：我的 agent 使用 OpenClaw 的 CDP 浏览器。如果保持网关运行，Claude Code 可以用相同的 exec openclaw browser 命令，或者切换到 Chrome / Playwright MCP 中的 Claude。</p>
+<p>总迁移时间：约 4 小时（含测试）。17 个 agent 现在全部通过 crontab 运行。OpenClaw 网关已关闭。</p>
+<p>今天还有人在迁移吗？你们的配置是什么样的？</p>
+</div>
+        </section>
+        
+        
+        
+        <section class="post-section replies-section">
+          <h2>💬 OP 回复译文 (10 条)</h2>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">1</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说得在理。我们早期就把供应商调用抽象成了一层薄封装——只花了一天时间，但上次迁移的时候轻松无痛。说实话，换模型本身是最简单的。真正折磨人的是后面那一堆提示词调优。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">2</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>是啊，如果你用了20年cron，调度模式很快就能上手。真正不一样的地方在于如何优雅地处理agent故障——cron只管重试，agent却需要知道<em>为什么</em>失败。这才是有意思的地方。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">3</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈确实， bullet points 太多了。改了好几遍，还是脱不掉那股 corporate 味儿。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">4</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>说实话，这个路由设计挺合理的。我一直在考虑同样的拆分方案——用前沿模型做基础设施健康检查总觉得浪费，但我一直没做实际的 A/B 测试来验证。看到效果确实不错挺好。Gemma 4 拿来做 watchdog 的想法我可能会借鉴一下。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">5</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈没事，深夜审代码模式确实上头。测试覆盖这块本来就是我最不满意的地方，说得狠点也合理。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">6</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈对，就是那个。我在文档里找了老半天，挺不好意思的。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">7</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>哈哈确实。说实话，讨论里已经拿到我需要的东西了。帖子自然沉了。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">8</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>长期来说，自托管做编排是明智的。Francis 暂时跑在 ChatGPT-4.5 上凑合用——真正的问题是当你把他规模做大之后，上下文窗口和工具调用的可靠性。我这边的配置里，ollama 处理轻量级推理任务挺稳的，但代理需要串联 10 步以上还不跑偏的时候就差点意思了。好奇你最终打算把 Francis 迁到哪个模型上？</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">9</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>大规模漂移是会让你措手不及的那种问题。大概在40-50轮左右开始显现——智能体逐渐误读累积状态。加内存有帮助，但无法彻底解决逻辑漂移，只是推迟了它。</p>
+</div>
+          </div>
+          
+          <div class="reply-item">
+            <div class="reply-header">
+              <span class="reply-num">10</span>
+              <span>楼主回复</span>
+            </div>
+            <div class="reply-content"><p>确实说得在理。这玩意儿本来就不是为了对抗他们的改动——而是把现在能用的方案分享出来，等下次崩的时候大家能更快跟上。而且肯定还会再崩的，用这些 API 开发就是这样，没办法。</p>
+</div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <div class="links-box">
+        🔗 <a href="https://www.reddit.com/r/openclaw/comments/1sc48l6/anthropic_just_killed_my_17agent_pipeline_heres/" target="_blank">查看 Reddit 原文</a>
+      </div>
+      
+      <div class="post-footer-bar">
+        <a href="/" class="btn btn-primary">← 返回列表</a>
+      </div>
+    </article>
+  </div>
+  
+  <footer class="footer">
+    <p>© 2026 Reddit Insight | 自动抓取翻译</p>
+  </footer>
+</body>
+</html>
